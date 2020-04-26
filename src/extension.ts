@@ -2,15 +2,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { spawn } from 'child_process';
-import { tmpdir } from 'os';
-import * as fs from 'fs';
 import * as path from 'path';
-import packages from '../package.json';
-
-interface Config {
-    [key: string]: any;
-} 
+import * as fs from 'fs';
+import tools from './lib/tool';
+import Local from './lib/local';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -18,13 +13,77 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "markdown-image-helper" is now active!');
+    console.log('Congratulations, your extension "markdown-image" is now active!');
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let pasteCommand = vscode.commands.registerCommand('markdown-image.paste', () => {
-        
+    let pasteCommand = vscode.commands.registerCommand('markdown-image.paste', async () => {
+        let stop = () => {};
+        let config = tools.getConfig();
+        let index = 0;
+        try {
+            stop = tools.showProgress('Uploading...');
+            
+            let editor = vscode.window.activeTextEditor;
+            let selections = tools.getSelections();
+            let savePath = tools.getTmpFolder();
+            savePath = path.join(savePath, `pic_${new Date().getTime()}.png`);
+            let images = await tools.getPasteImage(savePath);
+            images = images.filter(img => ['.jpg', 'jpeg', '.gif', '.bmp', '.png'].find(ext => img.endsWith(ext)));
+
+            let upload;
+            switch(config.saveLocation) {
+                case 'local': upload = new Local(config); break;
+            }
+
+            let urls = [];
+            for (let i = 0; i < images.length; i++) {
+                if (images[i] !== savePath) { 
+                    let p = await upload?.upload(images[i]);
+                    if(p) { urls.push(p); }
+                    continue;
+                }
+                let name = path.basename(await tools.prompt('Name the picture you pasted', path.basename(savePath, '.png')));
+                if (name) {
+                    name = path.basename(name, path.extname(name)) + '.png';
+                    images[i] = path.join(path.dirname(savePath), name);
+                    fs.renameSync(savePath, images[i]);
+                }
+                let p = await upload?.upload(images[i]);
+                if(p) { urls.push(p); }
+            }
+
+            let insertCode = '';
+            for (let i = 0; i < urls.length; i++) {
+                let selection = selections?.[i] && editor?.document.getText(selections[i]) ? 
+                editor.document.getText(selections[i]) : `图${index++}`;
+                let text = `![${selection}](${urls[i].replace('http:', 'https:')})`;
+                if (selections?.[i]) { 
+                    editor?.edit(editBuilder => {
+                        if(selections) {
+                            editBuilder.replace(selections[i], text);
+                        }
+                    });
+                }
+                else {
+                    insertCode += text + '\n';
+                }
+            }
+
+            if (insertCode) {
+                editor?.edit(editBuilder => {
+                    if(editor?.selection.active) {
+                        editBuilder.insert(editor?.selection.active, insertCode.trim());
+                    }
+                });
+            }
+
+        } catch (error) {
+            vscode.window.showErrorMessage(`Something was wrong: ${error.message}`);
+        }
+
+        stop();
     });
 
     context.subscriptions.push(pasteCommand);
@@ -38,130 +97,4 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {
-}
-
-function showProgress(message: string) {
-    let show = true;
-    function stopProgress() {
-        show = false;
-    }
-
-    vscode.window.withProgress({
-        location: vscode.ProgressLocation.Window,
-        title: message,
-        cancellable: false
-    }, (progress, token) => {
-        
-        return new Promise(resolve => {
-            let timer = setInterval(() => {
-                if (show) { return; }
-                clearInterval(timer);
-                resolve();
-            }, 100);
-        });
-    });
-
-    return stopProgress;
-}
-
-function sleep (time: number) {
-    return new Promise((resolve) => setTimeout(resolve, time));
-}
-
-function getSelections() {
-    let editor = vscode.window.activeTextEditor;
-    if (!editor) {
-        return ''; // No open text editor
-    }
-
-    let selections = editor.selections;
-    return selections;
-}
-
-function getConfig() {
-    let keys: string[] = Object.keys(packages.contributes.configuration.properties);
-    let values: Config = {};
-    keys.forEach(k => values[k.split('.')[1]] = vscode.workspace.getConfiguration().get(k));
-    return values;
-}
-
-function getPasteImage(imagePath: string) {
-    return new Promise((resolve, reject) => {
-        if (!imagePath) { return; }
-    
-        let platform = process.platform;
-        if (platform === 'win32') {
-            // Windows
-            const scriptPath = path.join(__dirname, '../asserts/pc.ps1');
-    
-            let command = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
-            let powershellExisted = fs.existsSync(command);
-            let output = '';
-            if (!powershellExisted) {
-                command = "powershell";
-            }
-    
-            const powershell = spawn(command, [
-                '-noprofile',
-                '-noninteractive',
-                '-nologo',
-                '-sta',
-                '-executionpolicy', 'unrestricted',
-                '-windowstyle', 'hidden',
-                '-file', scriptPath,
-                imagePath
-            ]);
-            powershell.on('error', (e: any) => {
-                if (e.code === 'ENOENT') {
-                    vscode.window.showErrorMessage(`The powershell command is not in you PATH environment variables. Please add it and retry.`);
-                } else {
-                    vscode.window.showErrorMessage(e);
-                }
-            });
-            powershell.on('exit', function (code, signal) {
-                // console.debug('exit', code, signal);
-            });
-            powershell.stdout.on('data', (data) => {
-                if (data.toString().indexOf('Active code page:') < 0) { output += data.toString(); }
-            });
-            powershell.on('close', (code) => {
-                resolve(output.trim().split('\n').map(i => i.trim()));
-            });
-        }
-        else if (platform === 'darwin') {
-            // Mac
-            let scriptPath = path.join(__dirname, '../asserts/mac.applescript');
-    
-            let ascript = spawn('osascript', [scriptPath, imagePath]);
-            ascript.on('error', (e: any) => {
-                vscode.window.showErrorMessage(e);
-            });
-            ascript.on('exit', (code, signal) => {
-                // console.debug('exit', code, signal);
-            });
-            ascript.stdout.on('data', (data) => {
-                resolve(data.toString().trim().split('\n'));
-            });
-        } else {
-            // Linux 
-    
-            let scriptPath = path.join(__dirname, '../asserts/linux.sh');
-    
-            let ascript = spawn('sh', [scriptPath, imagePath]);
-            ascript.on('error', (e: any) => {
-                vscode.window.showErrorMessage(e);
-            });
-            ascript.on('exit', (code, signal) => {
-                // console.log('exit',code,signal);
-            });
-            ascript.stdout.on('data', (data) => {
-                let result = data.toString().trim();
-                if (result === "no xclip") {
-                    vscode.window.showInformationMessage('You need to install xclip command first.');
-                    return;
-                }
-                resolve(result.trim().split(' /').map(p => p.replace(/(^[^/])/, '/$1')));
-            });
-        }
-    });
 }

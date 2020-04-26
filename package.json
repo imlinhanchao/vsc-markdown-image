@@ -53,12 +53,16 @@
             ]
         },
         "configuration": {
-            "title": "Markdown Image",
+            "type": "object",
+            "title": "MarkdownImage",
             "properties": {
-                "markdown-image.saveInLocal": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Save the pasted pictures in a local directory."
+                "markdown-image.saveLocation": {
+                    "type": "string",
+                    "enum": [
+                        "local"
+                    ],
+                    "default": "local",
+                    "description": "Save the picture location, local or other picture CDN service."
                 },
                 "markdown-image.createDirectoryByDate": {
                     "type": "boolean",
@@ -67,7 +71,7 @@
                 },
                 "markdown-image.path": {
                     "type": "string",
-                    "default": "./image",
+                    "default": "/image",
                     "description": "Picture storage directory (automatically created if it does not exist)."
                 }
             }
