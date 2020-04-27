@@ -6,6 +6,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import tools from './lib/tool';
 import Local from './lib/local';
+import Coding from './lib/coding';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -35,6 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
             let upload : Upload | null = null;
             switch(config.saveLocation) {
                 case 'local': upload = new Local(config); break;
+                case 'coding': upload = new Coding(config); break;
             }
 
             let urls = [];

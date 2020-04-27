@@ -6,3 +6,7 @@ declare module "*.json" {
 declare type Config = {
     [key: string]: any;
 } 
+
+declare module 'coding-picbed' {
+    const Coding: any;
+}

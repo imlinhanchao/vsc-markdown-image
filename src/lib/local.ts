@@ -11,6 +11,10 @@ class Local implements Upload
         this.config = config;
     }
 
+    async reconfig(config: Config) {
+        this.config = config;
+    }
+
     async upload(filePath: string): Promise<string | null> {
         try {
             if (!tools.getCurrentRoot()) {
