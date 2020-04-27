@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
             let images = await tools.getPasteImage(savePath);
             images = images.filter(img => ['.jpg', 'jpeg', '.gif', '.bmp', '.png'].find(ext => img.endsWith(ext)));
 
-            let upload;
+            let upload : Upload | null = null;
             switch(config.saveLocation) {
                 case 'local': upload = new Local(config); break;
             }
@@ -56,15 +56,18 @@ export function activate(context: vscode.ExtensionContext) {
 
             let insertCode = '';
             for (let i = 0; i < urls.length; i++) {
-                let selection = selections?.[i] && editor?.document.getText(selections[i]) ? 
-                editor.document.getText(selections[i]) : `图${index++}`;
-                let text = `![${selection}](${urls[i].replace('http:', 'https:')})`;
-                if (selections?.[i]) { 
-                    editor?.edit(editBuilder => {
-                        if(selections) {
-                            editBuilder.replace(selections[i], text);
-                        }
-                    });
+                let selection = `picture ${index++}`;
+                if (selections?.length === 1 && editor?.document.getText(selections[0])) {
+                    selection = `${editor?.document.getText(selections[0])} ${i + 1}`;
+                }
+                else if(selections?.[i] && editor?.document.getText(selections[i]))
+                {
+                    selection = selections?.[i] && editor?.document.getText(selections[i]);
+                }
+                
+                let text = `![${selection}](${urls[i].replace('http:', 'https:')})  \n`;
+                if (selections?.[i] && selections?.length > 1) {
+                    await tools.editorEdit(selections[i], text);
                 }
                 else {
                     insertCode += text + '\n';
@@ -72,11 +75,7 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             if (insertCode) {
-                editor?.edit(editBuilder => {
-                    if(editor?.selection.active) {
-                        editBuilder.insert(editor?.selection.active, insertCode.trim());
-                    }
-                });
+                await tools.editorEdit(editor?.selection.active, insertCode.trim());
             }
 
         } catch (error) {

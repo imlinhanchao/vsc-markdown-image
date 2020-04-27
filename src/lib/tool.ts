@@ -30,8 +30,14 @@ function showProgress(message: string) {
     return stopProgress;
 }
 
-function sleep (time: number) {
-    return new Promise((resolve) => setTimeout(resolve, time));
+function editorEdit(selection: vscode.Selection | vscode.Position | undefined | null, text: string) :Promise<boolean> {
+    return new Promise((resolve, reject) => {
+        vscode.window.activeTextEditor?.edit(editBuilder => {
+            if(selection) {
+                editBuilder.replace(selection, text);
+            }
+        }).then(resolve);
+    });
 }
 
 function getSelections() : vscode.Selection[] | null{
@@ -154,6 +160,10 @@ function getTmpFolder() {
     return savePath;
 }
 
+function sleep (time: number) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 function confirm(message: string, options: string[]) : Promise<string> {
     return new Promise((resolve, reject) => {
         return vscode.window.showInformationMessage(message, ...options).then(resolve);
@@ -171,6 +181,7 @@ function prompt(message: string, defaultVal: string = '') : Promise<string> {
 
 export default {
     showProgress,
+    editorEdit,
     getConfig,
     getSelections,
     getPasteImage,

@@ -39,7 +39,7 @@ class Local implements Upload
             (await tools.confirm('The file was exists. Would you replace it?', ['Yes', 'No'])) === 'No') {
                 return null;
             }
-            fs.copyFileSync(filePath, savePath, fs.constants.COPYFILE_EXCL);
+            fs.copyFileSync(filePath, savePath);
 
             return path.relative(path.dirname(tools.getCurrentFilePath()), savePath);
         }
