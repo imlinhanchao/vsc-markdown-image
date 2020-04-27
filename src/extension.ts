@@ -70,12 +70,12 @@ export function activate(context: vscode.ExtensionContext) {
                     await tools.editorEdit(selections[i], text);
                 }
                 else {
-                    insertCode += text + '\n';
+                    insertCode += text;
                 }
             }
 
             if (insertCode) {
-                await tools.editorEdit(editor?.selection.active, insertCode.trim());
+                await tools.editorEdit(editor?.selection.active, insertCode);
             }
 
         } catch (error) {
