@@ -1,6 +1,6 @@
-# markdown-image-helper README
+# Markdown Image
 
-This is the README for your extension "markdown-image-helper". After writing up a brief description, we recommend including the following sections.
+Easy to insert a image to markdown.
 
 ## Features
 

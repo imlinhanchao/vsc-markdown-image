@@ -33,6 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
             let images = await tools.getPasteImage(savePath);
             images = images.filter(img => ['.jpg', 'jpeg', '.gif', '.bmp', '.png'].find(ext => img.endsWith(ext)));
 
+            console.log(`Get ${images.length} Images`)
             let upload : Upload | null = null;
             switch(config.saveLocation) {
                 case 'local': upload = new Local(config); break;
@@ -42,6 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
             let urls = [];
             for (let i = 0; i < images.length; i++) {
                 if (images[i] !== savePath) { 
+                    console.log(`Uploading ${images[i]}`);
                     let p = await upload?.upload(images[i]);
                     if(p) { urls.push(p); }
                     continue;

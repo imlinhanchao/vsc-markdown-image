@@ -21,6 +21,7 @@ class Local implements Upload
                 vscode.window.showInformationMessage('Please Open the project of the file with folder.');
                 return null;
             }
+
             let saveFolder = this.config.path.startsWith('/') ? 
                 path.join(tools.getCurrentRoot(), this.config.path) :
                 path.join(path.dirname(tools.getCurrentFilePath()), this.config.path);
@@ -28,6 +29,8 @@ class Local implements Upload
             if (!fs.existsSync(saveFolder)) {
                 fs.mkdirSync(saveFolder);
             }
+
+            console.log(`Create Project Upload Folder.`);
 
             let now = new Date();
             if (this.config.createDirectoryByDate) {

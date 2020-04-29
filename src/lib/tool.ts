@@ -132,7 +132,8 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                     vscode.window.showInformationMessage('You need to install xclip command first.');
                     return;
                 }
-                resolve(result.trim().split(' /').map(p => p.replace(/(^[^/])/, '/$1')));
+                let match = result.trim().match(/((\/[^\/]+)+\/[^\/]*?\.(jpg|jpeg|gif|bmp|png))/);
+                resolve(match?.slice(0, -2) || []);
             });
         }
     });
