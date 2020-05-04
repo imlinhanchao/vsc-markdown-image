@@ -20,9 +20,13 @@ class Coding implements Upload
     }
 
     async reconfig(config: Config) {
-        this.config = config;
-        Coding.coding.config = config;
-        await Coding.coding.config({ token: config.token, repository: config.repository });
+        try {
+            this.config = config;
+            Coding.coding.config = config;
+            await Coding.coding.config({ token: config.token, repository: config.repository });
+        } catch (error) {
+            vscode.window.showErrorMessage(`Config Failed: ${error.message}`);
+        }
     }
 
     async upload(filePath: string): Promise<string | null> {

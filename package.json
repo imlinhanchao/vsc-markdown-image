@@ -54,7 +54,7 @@
         },
         "configuration": {
             "type": "object",
-            "title": "MarkdownImage",
+            "title": "Markdown Image",
             "properties": {
                 "markdown-image.saveLocation": {
                     "type": "string",
