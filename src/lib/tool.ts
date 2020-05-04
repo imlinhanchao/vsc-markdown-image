@@ -102,7 +102,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
         }
         else if (platform === 'darwin') {
             // Mac
-            let scriptPath = path.join(__dirname, '../asserts/mac.applescript');
+            let scriptPath = path.join(__dirname, '..', '..' , 'asserts/mac.applescript');
     
             let ascript = spawn('osascript', [scriptPath, imagePath]);
             ascript.on('error', (e: any) => {
@@ -117,7 +117,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
         } else {
             // Linux 
     
-            let scriptPath = path.join(__dirname, '../asserts/linux.sh');
+            let scriptPath = path.join(__dirname, '..', '..' , 'asserts/linux.sh');
     
             let ascript = spawn('sh', [scriptPath, imagePath]);
             ascript.on('error', (e: any) => {
@@ -132,8 +132,8 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                     vscode.window.showInformationMessage('You need to install xclip command first.');
                     return;
                 }
-                let match = result.trim().match(/((\/[^\/]+)+\/[^\/]*?\.(jpg|jpeg|gif|bmp|png))/);
-                resolve(match?.slice(0, -2) || []);
+                let match = result.trim().match(/((\/[^\/]+)+\/[^\/]*?\.(jpg|jpeg|gif|bmp|png))/g);
+                resolve(match || []);
             });
         }
     });
