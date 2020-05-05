@@ -28,10 +28,12 @@
         "commands": [
             {
                 "command": "markdown-image.paste",
+                "category": "Markdown Image",
                 "title": "Paste Image"
             },
             {
                 "command": "markdown-image.config",
+                "category": "Markdown Image",
                 "title": "Markdown Image Config Setting"
             }
         ],
@@ -64,19 +66,24 @@
                         "Imgur"
                     ],
                     "default": "local",
-                    "description": "Method to upload pictures. To the local or another picture CDN service."
+                    "description": "Method to upload pictures. To the local or another picture CDN service.",
+                    "enumDescriptions": [
+                        "Upload the image to the project directory. You can use `#markdown-image.local.path` sets the relative path for upload.",
+                        "Upload the image to git repository in Coding.net . You can configure the repository through `#markdown-image.coding.repository`. You need to configure the Token to access the repository through `#markdown-image.coding.token`.",
+                        "Upload the image to Imgur. You can configure `Client Id` through `#markdown-image.imgur.clientId`."
+                    ]
                 },
-                "markdown-image.local.createDirectoryByDate": {
+                "markdown-image.local.createFolderByDate": {
                     "type": "boolean",
                     "default": false,
                     "description": "Create a folder according to the upload date."
                 },
                 "markdown-image.local.path": {
                     "type": "string",
-                    "default": "/image",
+                    "default": "/images",
                     "description": "Picture storage directory that in the local (automatically created if it does not exist)."
                 },
-                "markdown-image.coding.createDirectoryByDate": {
+                "markdown-image.coding.createFolderByDate": {
                     "type": "boolean",
                     "default": false,
                     "description": "Create a folder in the repository according to the upload date."
@@ -84,22 +91,23 @@
                 "markdown-image.coding.path": {
                     "type": "string",
                     "default": "/",
-                    "description": "Picture storage directory that in the repository (automatically created if it does not exist)."
+                    "description": "Picture upload directory that in the repository (automatically created if it does not exist)."
                 },
                 "markdown-image.coding.token": {
                     "type": "string",
                     "default": "",
-                    "description": "Coding person access token: https://help.coding.net/docs/member/tokens.html"
+                    "markdownDescription": "Coding person [access token](https://help.coding.net/docs/member/tokens.html)."
                 },
                 "markdown-image.coding.repository": {
                     "type": "string",
                     "default": "",
-                    "description": "Coding repository, for example: https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git"
+                    "pattern": "^(https:\/\/([^.]*?).coding.net\/p\/([^\/]*?)\/(d\/([^\/]*?)\/(git|)|)|)$",
+                    "markdownDescription": "Coding repository, for example: `https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`"
                 },
                 "markdown-image.imgur.clientId": {
                     "type": "string",
                     "default": "",
-                    "description": "The client id registered with imgur. You can registed it at here. https://api.imgur.com/oauth2/addclient"
+                    "markdownDescription": "The client id registered with imgur. You can registed it at [here](https://api.imgur.com/oauth2/addclient)."
                 },
                 "markdown-image.imgur.httpProxy": {
                     "type": "string",

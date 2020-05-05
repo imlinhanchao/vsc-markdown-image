@@ -33,7 +33,7 @@ class Local implements Upload
             console.log(`Create Project Upload Folder.`);
 
             let now = new Date();
-            if (this.config.local.createDirectoryByDate) {
+            if (this.config.local.createFolderByDate) {
                 saveFolder = path.join(saveFolder, 
                     `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${(now.getDate()).toString().padStart(2, '0')}`);
                 if (!fs.existsSync(saveFolder)) {

@@ -34,7 +34,7 @@ class Coding implements Upload
 
             let saveFolder = this.config.coding.path;
             let now = new Date();
-            if (this.config.coding.createDirectoryByDate) {
+            if (this.config.coding.createFolderByDate) {
                 saveFolder = path.join(saveFolder, 
                     `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${(now.getDate()).toString().padStart(2, '0')}`);
             }
