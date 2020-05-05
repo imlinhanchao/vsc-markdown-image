@@ -1,5 +1,4 @@
-import tools from './utils';
-import * as fs from 'fs';
+import utils from './utils';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { Coding as CodingPicbed } from 'coding-picbed';
@@ -31,7 +30,7 @@ class Coding implements Upload
 
     async upload(filePath: string): Promise<string | null> {
         try {
-            while (!Coding.coding.isInitialized()) { await tools.sleep(100); }  
+            while (!Coding.coding.isInitialized()) { await utils.sleep(100); }  
 
             let saveFolder = this.config.coding.path;
             let now = new Date();

@@ -5,7 +5,7 @@
     "version": "0.0.1",
     "publisher": "hancel",
     "engines": {
-        "vscode": "^1.44.0"
+        "vscode": "^1.33.0"
     },
     "keywords": [
         "Picture",
@@ -60,7 +60,8 @@
                     "type": "string",
                     "enum": [
                         "Local",
-                        "Coding"
+                        "Coding",
+                        "Imgur"
                     ],
                     "default": "local",
                     "description": "Method to upload pictures. To the local or another picture CDN service."
@@ -94,6 +95,16 @@
                     "type": "string",
                     "default": "",
                     "description": "Coding repository, for example: https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git"
+                },
+                "markdown-image.imgur.clientId": {
+                    "type": "string",
+                    "default": "",
+                    "description": "The client id registered with imgur. You can registed it at here. https://api.imgur.com/oauth2/addclient"
+                },
+                "markdown-image.imgur.httpProxy": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Connect to Imgur via http proxy."
                 }
             }
         }
@@ -113,6 +124,9 @@
         "@types/mocha": "^2.2.42"
     },
     "dependencies": {
-        "coding-picbed": "0.0.12"
+        "coding-picbed": "0.0.12",
+        "form-data": "^3.0.0",
+        "got": "^10.7.0",
+        "https-proxy-agent": "^5.0.0"
     }
 }

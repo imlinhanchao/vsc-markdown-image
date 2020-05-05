@@ -4,9 +4,10 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import tools from './lib/utils';
+import utils from './lib/utils';
 import Local from './lib/local';
 import Coding from './lib/coding';
+import Imgur from './lib/imgur';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -15,11 +16,12 @@ export function activate(context: vscode.ExtensionContext) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "markdown-image" is now active!');
-    let config = tools.getConfig();
+    let config = utils.getConfig();
     let upload : Upload | null = null;
-    switch(config.base.saveLocation) {
-        case 'local': upload = new Local(config); break;
-        case 'coding': upload = new Coding(config); break;
+    switch(config.base.uploadMethod) {
+        case 'Local': upload = new Local(config); break;
+        case 'Coding': upload = new Coding(config); break;
+        case 'Imgur': upload = new Imgur(config); break;
     }
 
     // The command has been defined in the package.json file
@@ -28,16 +30,16 @@ export function activate(context: vscode.ExtensionContext) {
     let pasteCommand = vscode.commands.registerCommand('markdown-image.paste', async () => {
         let stop = () => {};
         try {
-            stop = tools.showProgress('Uploading...');
+            stop = utils.showProgress('Uploading...');
             
             let editor = vscode.window.activeTextEditor;
-            let selections = tools.getSelections();
-            let savePath = tools.getTmpFolder();
+            let selections = utils.getSelections();
+            let savePath = utils.getTmpFolder();
             savePath = path.join(savePath, `pic_${new Date().getTime()}.png`);
-            let images = await tools.getPasteImage(savePath);
+            let images = await utils.getPasteImage(savePath);
             images = images.filter(img => ['.jpg', 'jpeg', '.gif', '.bmp', '.png'].find(ext => img.endsWith(ext)));
 
-            console.log(`Get ${images.length} Images`)
+            console.log(`Get ${images.length} Images`);
 
             let urls = [];
             for (let i = 0; i < images.length; i++) {
@@ -47,7 +49,7 @@ export function activate(context: vscode.ExtensionContext) {
                     if(p) { urls.push(p); }
                     continue;
                 }
-                let name = path.basename(await tools.prompt('Name the picture you pasted', path.basename(savePath, '.png')));
+                let name = path.basename(await utils.prompt('Name the picture you pasted', path.basename(savePath, '.png')));
                 if (name) {
                     name = path.basename(name, path.extname(name)) + '.png';
                     images[i] = path.join(path.dirname(savePath), name);
@@ -70,7 +72,7 @@ export function activate(context: vscode.ExtensionContext) {
                 
                 let text = `![${selection}](${urls[i].replace('http:', 'https:')})  \n`;
                 if (selections?.[i] && selections?.length > 1) {
-                    await tools.editorEdit(selections[i], text);
+                    await utils.editorEdit(selections[i], text);
                 }
                 else {
                     insertCode += text;
@@ -78,7 +80,7 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             if (insertCode) {
-                await tools.editorEdit(editor?.selection.active, insertCode);
+                await utils.editorEdit(editor?.selection.active, insertCode);
             }
 
         } catch (error) {

@@ -1,4 +1,4 @@
-import tools from './utils';
+import utils from './utils';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
@@ -17,14 +17,14 @@ class Local implements Upload
 
     async upload(filePath: string): Promise<string | null> {
         try {
-            if (!tools.getCurrentRoot()) {
+            if (!utils.getCurrentRoot()) {
                 vscode.window.showInformationMessage('Please Open the project of the file with folder.');
                 return null;
             }
 
             let saveFolder = this.config.local.path.startsWith('/') ? 
-                path.join(tools.getCurrentRoot(), this.config.local.path) :
-                path.join(path.dirname(tools.getCurrentFilePath()), this.config.local.path);
+                path.join(utils.getCurrentRoot(), this.config.local.path) :
+                path.join(path.dirname(utils.getCurrentFilePath()), this.config.local.path);
 
             if (!fs.existsSync(saveFolder)) {
                 fs.mkdirSync(saveFolder);
@@ -43,12 +43,12 @@ class Local implements Upload
 
             let savePath = path.join(saveFolder, path.basename(filePath));
             if (fs.existsSync(savePath) && 
-            (await tools.confirm('The file was exists. Would you replace it?', ['Yes', 'No'])) === 'No') {
+            (await utils.confirm('The file was exists. Would you replace it?', ['Yes', 'No'])) === 'No') {
                 return null;
             }
             fs.copyFileSync(filePath, savePath);
 
-            return path.relative(path.dirname(tools.getCurrentFilePath()), savePath);
+            return path.relative(path.dirname(utils.getCurrentFilePath()), savePath);
         }
         catch(e) {
             vscode.window.showInformationMessage(`Save File Failed: ${e.message}`);
