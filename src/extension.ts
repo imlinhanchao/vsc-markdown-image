@@ -8,6 +8,7 @@ import utils from './lib/utils';
 import Local from './lib/local';
 import Coding from './lib/coding';
 import Imgur from './lib/imgur';
+import SM_MS from './lib/sm.ms';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -22,6 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
         case 'Local': upload = new Local(config); break;
         case 'Coding': upload = new Coding(config); break;
         case 'Imgur': upload = new Imgur(config); break;
+        case 'sm.ms': upload = new SM_MS(config); break;
     }
 
     // The command has been defined in the package.json file

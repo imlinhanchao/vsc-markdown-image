@@ -63,14 +63,17 @@
                     "enum": [
                         "Local",
                         "Coding",
-                        "Imgur"
+                        "Imgur",
+                        "sm.ms",
+                        "define by code"
                     ],
-                    "default": "local",
+                    "default": "Local",
                     "description": "Method to upload pictures. To the local or another picture CDN service.",
                     "enumDescriptions": [
                         "Upload the image to the project directory. You can use `#markdown-image.local.path` sets the relative path for upload.",
                         "Upload the image to git repository in Coding.net . You can configure the repository through `#markdown-image.coding.repository`. You need to configure the Token to access the repository through `#markdown-image.coding.token`.",
                         "Upload the image to Imgur. You can configure `Client Id` through `#markdown-image.imgur.clientId`."
+                        "Upload the image to sm.ms. You don't need to configure anything others."
                     ]
                 },
                 "markdown-image.local.createFolderByDate": {
@@ -101,7 +104,7 @@
                 "markdown-image.coding.repository": {
                     "type": "string",
                     "default": "",
-                    "pattern": "^(https:\/\/([^.]*?).coding.net\/p\/([^\/]*?)\/(d\/([^\/]*?)\/(git|)|)|)$",
+                    "pattern": "^(https://([^.]*?).coding.net/p/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
                     "markdownDescription": "Coding repository, for example: `https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`"
                 },
                 "markdown-image.imgur.clientId": {
@@ -135,6 +138,6 @@
         "coding-picbed": "0.0.12",
         "form-data": "^3.0.0",
         "got": "^10.7.0",
-        "https-proxy-agent": "^5.0.0"
+        "https-proxy-agent": "^4.0.0"
     }
 }

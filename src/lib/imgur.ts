@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { HttpsProxyAgent } from 'https-proxy-agent';
+import * as HttpsProxyAgent from 'https-proxy-agent';
 import got from 'got';
 import * as formData from 'form-data';
 import * as fs from 'fs';
