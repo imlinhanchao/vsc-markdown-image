@@ -1,4 +1,4 @@
-import tools from './tool';
+import tools from './utils';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
@@ -22,9 +22,9 @@ class Local implements Upload
                 return null;
             }
 
-            let saveFolder = this.config.path.startsWith('/') ? 
-                path.join(tools.getCurrentRoot(), this.config.path) :
-                path.join(path.dirname(tools.getCurrentFilePath()), this.config.path);
+            let saveFolder = this.config.local.path.startsWith('/') ? 
+                path.join(tools.getCurrentRoot(), this.config.local.path) :
+                path.join(path.dirname(tools.getCurrentFilePath()), this.config.local.path);
 
             if (!fs.existsSync(saveFolder)) {
                 fs.mkdirSync(saveFolder);
@@ -33,7 +33,7 @@ class Local implements Upload
             console.log(`Create Project Upload Folder.`);
 
             let now = new Date();
-            if (this.config.createDirectoryByDate) {
+            if (this.config.local.createDirectoryByDate) {
                 saveFolder = path.join(saveFolder, 
                     `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${(now.getDate()).toString().padStart(2, '0')}`);
                 if (!fs.existsSync(saveFolder)) {

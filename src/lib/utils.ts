@@ -53,7 +53,16 @@ function getSelections() : vscode.Selection[] | null{
 function getConfig() {
     let keys: string[] = Object.keys(pkg.contributes.configuration.properties);
     let values: Config = {};
-    keys.forEach(k => values[k.split('.')[1]] = vscode.workspace.getConfiguration().get(k));
+    function toVal(str: string, val: string|undefined, cfg: Config) : string | Config {
+        let keys = str.split('.');
+        if (keys.length === 1) { 
+            cfg[keys[0]] = val; 
+        } else {
+            cfg[keys[0]] = toVal(keys.slice(1).join('.'), val, cfg[keys[0]] || {});
+        }
+        return cfg;
+    }
+    keys.forEach(k => toVal(k.split('.').slice(1).join('.'), vscode.workspace.getConfiguration().get(k), values));
     return values;
 }
 

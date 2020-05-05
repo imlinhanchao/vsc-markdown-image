@@ -4,7 +4,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import tools from './lib/tool';
+import tools from './lib/utils';
 import Local from './lib/local';
 import Coding from './lib/coding';
 
@@ -15,13 +15,18 @@ export function activate(context: vscode.ExtensionContext) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "markdown-image" is now active!');
+    let config = tools.getConfig();
+    let upload : Upload | null = null;
+    switch(config.base.saveLocation) {
+        case 'local': upload = new Local(config); break;
+        case 'coding': upload = new Coding(config); break;
+    }
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let pasteCommand = vscode.commands.registerCommand('markdown-image.paste', async () => {
         let stop = () => {};
-        let config = tools.getConfig();
         try {
             stop = tools.showProgress('Uploading...');
             
@@ -33,11 +38,6 @@ export function activate(context: vscode.ExtensionContext) {
             images = images.filter(img => ['.jpg', 'jpeg', '.gif', '.bmp', '.png'].find(ext => img.endsWith(ext)));
 
             console.log(`Get ${images.length} Images`)
-            let upload : Upload | null = null;
-            switch(config.saveLocation) {
-                case 'local': upload = new Local(config); break;
-                case 'coding': upload = new Coding(config); break;
-            }
 
             let urls = [];
             for (let i = 0; i < images.length; i++) {

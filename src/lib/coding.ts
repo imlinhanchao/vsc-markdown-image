@@ -1,4 +1,4 @@
-import tools from './tool';
+import tools from './utils';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
@@ -10,9 +10,9 @@ class Coding implements Upload
     static coding: any;
     constructor(config: Config) {
         if (!Coding.coding) { Coding.coding = new CodingPicbed(); }
-        if(!Coding.coding.config || 
-            Coding.coding.config['coding.token'] !== config['coding.token'] ||
-            Coding.coding.config['coding.repository'] !== config['coding.repository']
+        if(!Coding.coding.lastconfig || 
+            Coding.coding.lastconfig.token !== config.coding.token ||
+            Coding.coding.lastconfig.repository !== config.coding.repository
         ) {
             this.reconfig(config);
         }
@@ -22,8 +22,8 @@ class Coding implements Upload
     async reconfig(config: Config) {
         try {
             this.config = config;
-            Coding.coding.config = config;
-            await Coding.coding.config({ token: config.token, repository: config.repository });
+            Coding.coding.lastconfig = config.coding;
+            await Coding.coding.config({ token: config.coding.token, repository: config.coding.repository });
         } catch (error) {
             vscode.window.showErrorMessage(`Config Failed: ${error.message}`);
         }
@@ -33,17 +33,14 @@ class Coding implements Upload
         try {
             while (!Coding.coding.isInitialized()) { await tools.sleep(100); }  
 
-            let saveFolder = this.config.path;
+            let saveFolder = this.config.coding.path;
             let now = new Date();
-            if (this.config.createDirectoryByDate) {
+            if (this.config.coding.createDirectoryByDate) {
                 saveFolder = path.join(saveFolder, 
                     `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${(now.getDate()).toString().padStart(2, '0')}`);
-                if (!fs.existsSync(saveFolder)) {
-                    fs.mkdirSync(saveFolder);
-                }
             }
 
-            let data = await Coding.coding.upload(filePath, saveFolder);
+            let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'));
 
             return data.urls[0];
         }

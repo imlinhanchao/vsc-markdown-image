@@ -56,24 +56,34 @@
             "type": "object",
             "title": "Markdown Image",
             "properties": {
-                "markdown-image.saveLocation": {
+                "markdown-image.base.uploadMethod": {
                     "type": "string",
                     "enum": [
-                        "local",
-                        "coding"
+                        "Local",
+                        "Coding"
                     ],
                     "default": "local",
-                    "description": "Save the picture location, local or other picture CDN service."
+                    "description": "Method to upload pictures. To the local or another picture CDN service."
                 },
-                "markdown-image.createDirectoryByDate": {
+                "markdown-image.local.createDirectoryByDate": {
                     "type": "boolean",
                     "default": false,
                     "description": "Create a folder according to the upload date."
                 },
-                "markdown-image.path": {
+                "markdown-image.local.path": {
                     "type": "string",
                     "default": "/image",
-                    "description": "Picture storage directory (automatically created if it does not exist)."
+                    "description": "Picture storage directory that in the local (automatically created if it does not exist)."
+                },
+                "markdown-image.coding.createDirectoryByDate": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Create a folder in the repository according to the upload date."
+                },
+                "markdown-image.coding.path": {
+                    "type": "string",
+                    "default": "/",
+                    "description": "Picture storage directory that in the repository (automatically created if it does not exist)."
                 },
                 "markdown-image.coding.token": {
                     "type": "string",
