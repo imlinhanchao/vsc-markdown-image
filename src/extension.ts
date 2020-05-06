@@ -5,12 +5,6 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import utils from './lib/utils';
-import Local from './lib/local';
-import Coding from './lib/coding';
-import Imgur from './lib/imgur';
-import SM_MS from './lib/sm.ms';
-import Define from './lib/define';
-import Qiniu from './lib/qiniu';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -20,19 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "markdown-image" is now active!');
     let config = utils.getConfig();
-    let upload : Upload | null = getUpload();
-
-    function getUpload() : Upload | null {
-        switch(config.base.uploadMethod) {
-            case 'Local': return new Local(config);
-            case 'Coding': return new Coding(config);
-            case 'Imgur': return new Imgur(config);
-            case 'SM.MS': return new SM_MS(config);
-            case 'Qiniu': return new Qiniu(config);
-            case 'DIY': return new Define(config);
-        }
-        return null;
-    }
+    let upload : Upload | null = utils.getUpload(config);
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
@@ -111,7 +93,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     vscode.workspace.onDidChangeConfiguration(function(event) {
         config = utils.getConfig();
-        upload = getUpload();
+        upload = utils.getUpload(config);
     });
 }
 

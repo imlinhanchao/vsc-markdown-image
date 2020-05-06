@@ -5,8 +5,21 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as packages from '../../package.json';
 import * as crypto from 'crypto';
+import Uploads from './uploads';
 
 let pkg = packages as any;
+
+function getUpload(config: Config) : Upload | null {
+    switch(config.base.uploadMethod) {
+        case 'Local': return new Uploads.Local(config);
+        case 'Coding': return new Uploads.Coding(config);
+        case 'Imgur': return new Uploads.Imgur(config);
+        case 'SM.MS': return new Uploads.SM_MS(config);
+        case 'Qiniu': return new Uploads.Qiniu(config);
+        case 'DIY': return new Uploads.Define(config);
+    }
+    return null;
+}
 
 function showProgress(message: string) {
     let show = true;
@@ -197,6 +210,7 @@ function hash(buffer:Buffer): string {
 }
 
 export default {
+    getUpload,
     showProgress,
     editorEdit,
     getConfig,
