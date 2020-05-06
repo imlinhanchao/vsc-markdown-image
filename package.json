@@ -64,7 +64,7 @@
                         "Local",
                         "Coding",
                         "Imgur",
-                        "sm.ms",
+                        "SM.MS",
                         "Define by Self"
                     ],
                     "default": "Local",
@@ -74,7 +74,7 @@
                         "Upload the image to git repository in Coding.net . You can configure the repository through `#markdown-image.coding.repository`. You need to configure the Token to access the repository through `#markdown-image.coding.token`.",
                         "Upload the image to Imgur. You can configure `Client Id` through `#markdown-image.imgur.clientId`.",
                         "Upload the image to sm.ms. You can configure `Token` through `#markdown-image.sm_ms.token` if you have an account.",
-                        "You can define your code to upload. You need to configure the code path through `#markdown-image.define.path`"
+                        "You can define your code used to upload. You need to configure the code path through `#markdown-image.define.path`"
                     ]
                 },
                 "markdown-image.local.createFolderByDate": {
