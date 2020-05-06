@@ -9,6 +9,7 @@ import Local from './lib/local';
 import Coding from './lib/coding';
 import Imgur from './lib/imgur';
 import SM_MS from './lib/sm.ms';
+import Define from './lib/define';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -18,12 +19,17 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "markdown-image" is now active!');
     let config = utils.getConfig();
-    let upload : Upload | null = null;
-    switch(config.base.uploadMethod) {
-        case 'Local': upload = new Local(config); break;
-        case 'Coding': upload = new Coding(config); break;
-        case 'Imgur': upload = new Imgur(config); break;
-        case 'sm.ms': upload = new SM_MS(config); break;
+    let upload : Upload | null = getUpload();
+
+    function getUpload() : Upload | null{
+        switch(config.base.uploadMethod) {
+            case 'Local': return new Local(config);
+            case 'Coding': return new Coding(config);
+            case 'Imgur': return new Imgur(config);
+            case 'sm.ms': return new SM_MS(config);
+            case 'Define by Self': return new Define(config);
+        }
+        return null;
     }
 
     // The command has been defined in the package.json file
@@ -33,6 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
         let stop = () => {};
         try {
             stop = utils.showProgress('Uploading...');
+            console.log(config.base.uploadMethod);
             
             let editor = vscode.window.activeTextEditor;
             let selections = utils.getSelections();
@@ -99,6 +106,11 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(configCommand);
+
+    vscode.workspace.onDidChangeConfiguration(function(event) {
+        config = utils.getConfig();
+        upload = getUpload();
+    });
 }
 
 // this method is called when your extension is deactivated

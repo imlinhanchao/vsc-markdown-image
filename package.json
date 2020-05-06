@@ -65,15 +65,16 @@
                         "Coding",
                         "Imgur",
                         "sm.ms",
-                        "define by code"
+                        "Define by Self"
                     ],
                     "default": "Local",
                     "description": "Method to upload pictures. To the local or another picture CDN service.",
                     "enumDescriptions": [
                         "Upload the image to the project directory. You can use `#markdown-image.local.path` sets the relative path for upload.",
                         "Upload the image to git repository in Coding.net . You can configure the repository through `#markdown-image.coding.repository`. You need to configure the Token to access the repository through `#markdown-image.coding.token`.",
-                        "Upload the image to Imgur. You can configure `Client Id` through `#markdown-image.imgur.clientId`."
-                        "Upload the image to sm.ms. You don't need to configure anything others."
+                        "Upload the image to Imgur. You can configure `Client Id` through `#markdown-image.imgur.clientId`.",
+                        "Upload the image to sm.ms. You can configure `Token` through `#markdown-image.sm_ms.token` if you have an account.",
+                        "You can define your code to upload. You need to configure the code path through `#markdown-image.define.path`"
                     ]
                 },
                 "markdown-image.local.createFolderByDate": {
@@ -116,6 +117,16 @@
                     "type": "string",
                     "default": "",
                     "description": "Connect to Imgur via http proxy."
+                },
+                "markdown-image.sm_ms.token": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "SM.MS API token (Options). You can register an account and then visit [API Token](https://sm.ms/home/apitoken) Page to generate secret token."
+                },
+                "markdown-image.define.path": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "The Code Path. Your code must exports a function as `async function (filePath:string, markdownPath:string):string`.\n\nFor example: \n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, markdownPath) {\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```"
                 }
             }
         }
