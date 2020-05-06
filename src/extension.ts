@@ -10,6 +10,7 @@ import Coding from './lib/coding';
 import Imgur from './lib/imgur';
 import SM_MS from './lib/sm.ms';
 import Define from './lib/define';
+import Qiniu from './lib/qiniu';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -21,12 +22,13 @@ export function activate(context: vscode.ExtensionContext) {
     let config = utils.getConfig();
     let upload : Upload | null = getUpload();
 
-    function getUpload() : Upload | null{
+    function getUpload() : Upload | null {
         switch(config.base.uploadMethod) {
             case 'Local': return new Local(config);
             case 'Coding': return new Coding(config);
             case 'Imgur': return new Imgur(config);
             case 'SM.MS': return new SM_MS(config);
+            case 'Qiniu': return new Qiniu(config);
             case 'DIY': return new Define(config);
         }
         return null;

@@ -4,6 +4,7 @@ import { tmpdir } from 'os';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as packages from '../../package.json';
+import * as crypto from 'crypto';
 
 let pkg = packages as any;
 
@@ -189,6 +190,12 @@ function prompt(message: string, defaultVal: string = '') : Promise<string> {
     });
 }
 
+function hash(buffer:Buffer): string {
+    let sha256 = crypto.createHash('sha256');
+    let hash = sha256.update(buffer).digest('hex');
+    return hash;
+}
+
 export default {
     showProgress,
     editorEdit,
@@ -200,5 +207,6 @@ export default {
     getTmpFolder,
     sleep,
     confirm,
-    prompt
+    prompt,
+    hash
 };
