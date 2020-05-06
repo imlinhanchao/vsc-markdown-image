@@ -14,7 +14,7 @@ class Define implements Upload
 
     async upload(filePath: string): Promise<string | null> {
         try {
-            let define = require(this.config.define.path);
+            let define = require(this.config.diy.path);
             return await define(filePath, utils.getCurrentFilePath());
         }
         catch(e) {

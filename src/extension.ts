@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
             case 'Coding': return new Coding(config);
             case 'Imgur': return new Imgur(config);
             case 'SM.MS': return new SM_MS(config);
-            case 'Define by Self': return new Define(config);
+            case 'DIY': return new Define(config);
         }
         return null;
     }

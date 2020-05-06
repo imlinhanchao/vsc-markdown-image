@@ -65,7 +65,7 @@
                         "Coding",
                         "Imgur",
                         "SM.MS",
-                        "Define by Self"
+                        "DIY"
                     ],
                     "default": "Local",
                     "description": "Method to upload pictures. To the local or another picture CDN service.",
@@ -74,7 +74,7 @@
                         "Upload the image to git repository in Coding.net . You can configure the repository through `#markdown-image.coding.repository`. You need to configure the Token to access the repository through `#markdown-image.coding.token`.",
                         "Upload the image to Imgur. You can configure `Client Id` through `#markdown-image.imgur.clientId`.",
                         "Upload the image to sm.ms. You can configure `Token` through `#markdown-image.sm_ms.token` if you have an account.",
-                        "You can define your code used to upload. You need to configure the code path through `#markdown-image.define.path`"
+                        "You can define your code used to upload. You need to configure the code path through `#markdown-image.diy.path`"
                     ]
                 },
                 "markdown-image.local.createFolderByDate": {
@@ -123,7 +123,7 @@
                     "default": "",
                     "markdownDescription": "SM.MS API token (Options). You can register an account and then visit [API Token](https://sm.ms/home/apitoken) Page to generate secret token."
                 },
-                "markdown-image.define.path": {
+                "markdown-image.diy.path": {
                     "type": "string",
                     "default": "",
                     "markdownDescription": "The Code Path. Your code must exports a function as `async function (filePath:string, markdownPath:string):string`.\n\nFor example: \n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, markdownPath) {\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```"
