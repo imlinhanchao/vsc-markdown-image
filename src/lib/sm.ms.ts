@@ -17,10 +17,14 @@ class Imgur implements Upload
     async upload(filePath: string): Promise<string | null> {
         try {
             const form = new formData();
-            form.append('file_id', 0);
             form.append('smfile', fs.createReadStream(filePath));
+            if (this.config.sm_ms.token) { form.append('file_id', 0); }
+            let headers = this.config.sm_ms.token ? {
+                Authorization: `Basic ${this.config.sm_ms.token}`
+            } : undefined;
             let rsp = await got.post('https://sm.ms/api/v2/upload?inajax=1', {
-                body: form
+                body: form,
+                headers
             });
             
             let body = JSON.parse(rsp.body);
