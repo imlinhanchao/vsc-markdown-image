@@ -79,6 +79,12 @@
                         "You can define your code used to upload. You need to configure the code path through `#markdown-image.diy.path`"
                     ]
                 },
+                "markdown-image.base.fileNameFormat": {
+                    "type": "string",
+                    "default": "${hash}",
+                    "pattern": "^[^:*?<>|]+$",
+                    "markdownDescription": "The filename format for upload. You can use some variables: \n\n- `${filename}`: The original filename.  \n- `${mdname}`: The name of the Markdown file being edited.  \n- `${hash}`: The sha256 hash of image.  \n- `${timestramp}`: The timestramp of upload time.  \n- `${YY}`: The Year  \n-`${MM}`:The Month  \n- `${DD}`: The Day  \n- `${hh}`: The 12-hour clock  \n- `${HH}`: The 24-hour clock  \n- `${mm}`: The minutes  \n- `${ss}`: The seconds  \n- `${ms}`: The milliseconds  \n- `${rand[,number]}`: A random number, for example: `${rand,100}`. It will generate random numbers from 0 to 99."
+                },
                 "markdown-image.local.createFolderByDate": {
                     "type": "boolean",
                     "default": false,
