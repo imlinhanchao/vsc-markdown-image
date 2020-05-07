@@ -11,6 +11,15 @@ class Local implements Upload
         this.config = config;
     }
 
+    async getSavePath(filePath: string) {
+        let name = path.basename(await utils.prompt('Name the picture you pasted', path.basename(filePath, '.png')));
+        if (name) {
+            name = path.basename(name, path.extname(name)) + '.png';
+            return path.join(path.dirname(filePath), name);
+        }
+        return null;
+    }
+
     async reconfig(config: Config) {
         this.config = config;
     }
@@ -48,7 +57,7 @@ class Local implements Upload
             }
             fs.copyFileSync(filePath, savePath);
 
-            return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\//, '/');
+            return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/, '/');
         }
         catch(e) {
             vscode.window.showInformationMessage(`Save File Failed: ${e.message}`);

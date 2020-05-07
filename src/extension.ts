@@ -42,11 +42,10 @@ export function activate(context: vscode.ExtensionContext) {
                     if(p) { urls.push(p); }
                     continue;
                 }
-                let name = path.basename(await utils.prompt('Name the picture you pasted', path.basename(savePath, '.png')));
+                let name = await upload?.getSavePath(images[i]);
                 if (name) {
-                    name = path.basename(name, path.extname(name)) + '.png';
-                    images[i] = path.join(path.dirname(savePath), name);
-                    fs.renameSync(savePath, images[i]);
+                    fs.renameSync(images[i], name);
+                    images[i] = name;
                 }
                 let p = await upload?.upload(images[i]);
                 if(p) { urls.push(p); }

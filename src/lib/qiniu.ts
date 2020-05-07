@@ -15,6 +15,10 @@ class Qiniu implements Upload
         this.token = '';
         this.lastTimestramp = 0;
     }
+    
+    async getSavePath(filePath: string) {
+        return filePath;
+    }
 
     async reconfig(config: Config) {
         this.config = config;

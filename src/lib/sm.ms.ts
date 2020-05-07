@@ -9,6 +9,10 @@ class Imgur implements Upload
     constructor(config: Config) {
         this.config = config;
     }
+    
+    async getSavePath(filePath: string) {
+        return filePath;
+    }
 
     async reconfig(config: Config) {
         this.config = config;
