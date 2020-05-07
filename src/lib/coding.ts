@@ -17,7 +17,7 @@ class Coding implements Upload
         }
         this.config = config;
     }
-    
+
     async getSavePath(filePath: string) {
         return filePath;
     }
@@ -45,7 +45,7 @@ class Coding implements Upload
 
             let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'));
 
-            return data.urls[0];
+            return data.urls[0].replace('http:', 'https:');
         }
         catch(e) {
             vscode.window.showInformationMessage(`Upload File Failed: ${e.message}`);

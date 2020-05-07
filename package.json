@@ -143,7 +143,20 @@
                 "markdown-image.qiniu.domain": {
                     "type": "string",
                     "default": "",
+                    "pattern": "^http(s|)://[a-zA-Z0-9][-\\w]{0,62}(.[a-zA-Z0-9][-\\w]{0,62})+.?",
                     "markdownDescription": "Domain of Qiniu"
+                },
+                "markdown-image.qiniu.zone": {
+                    "type": "string",
+                    "enum": [
+                        "East China",
+                        "North China",
+                        "South China",
+                        "North America",
+                        "Southeast Asia"
+                    ],
+                    "default": "East China",
+                    "markdownDescription": "Zone of Qiniu"
                 },
                 "markdown-image.diy.path": {
                     "type": "string",

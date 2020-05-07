@@ -62,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
                     selection = selections?.[i] && editor?.document.getText(selections[i]);
                 }
                 
-                let text = `![${selection}](${urls[i].replace('http:', 'https:')})  \n`;
+                let text = `![${selection}](${urls[i]})  \n`;
                 if (selections?.[i] && selections?.length > 1) {
                     await utils.editorEdit(selections[i], text);
                 }

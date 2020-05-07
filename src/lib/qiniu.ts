@@ -31,7 +31,13 @@ class Qiniu implements Upload
             let key = utils.hash(fs.readFileSync(filePath)) + path.extname(filePath);
             let token = this.getToken(key);
             let config: qiniu.conf.ConfigOptions = new qiniu.conf.Config();
-            config.zone = qiniu.zone.Zone_z0;
+            switch(this.config.qiniu.zone) {
+                case 'East China': config.zone = qiniu.zone.Zone_z0; break;
+                case 'North China': config.zone = qiniu.zone.Zone_z1; break;
+                case 'South China': config.zone = qiniu.zone.Zone_z2; break;
+                case 'North America': config.zone = qiniu.zone.Zone_na0; break;
+                case 'Southeast Asia': config.zone = qiniu.zone.Zone_as0; break;
+            }
 
             let formUploader = new qiniu.form_up.FormUploader(config);
             let putExtra = new qiniu.form_up.PutExtra();
@@ -44,10 +50,11 @@ class Qiniu implements Upload
                         }
                         if (respInfo.statusCode === 200) {
                             console.log(respBody);
+                            resolve(url.resolve(this.config.qiniu.domain, key));
                         } else {
                             console.log(respInfo.statusCode);
                             console.log(respBody);
-                            resolve(url.resolve(this.config.qiniu.domain, key));
+                            reject(new Error(respBody.error));
                         }
                     });
                 });
