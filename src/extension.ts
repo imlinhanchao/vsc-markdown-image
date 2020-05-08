@@ -36,8 +36,8 @@ export function activate(context: vscode.ExtensionContext) {
 
             let urls = [];
             for (let i = 0; i < images.length; i++) {
-                let name = await upload?.getSavePath(images[i] !== savePath ? images[i] : '') || images[i];
-                console.log(`Uploading ${images[i]}`);
+                let name = await utils.formatName(config.base.fileNameFormat, images[i]) || images[i];
+                console.log(`Uploading ${images[i]} to ${name}.`);
                 let p = await upload?.upload(images[i], name);
                 if(p) { urls.push(p); }
             }

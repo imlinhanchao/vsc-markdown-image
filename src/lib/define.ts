@@ -7,10 +7,6 @@ class Define implements Upload
     constructor(config: Config) {
         this.config = config;
     }
-    
-    async getSavePath(filePath: string) {
-        return utils.formatName(this.config.base.format, filePath);
-    }
 
     async reconfig(config: Config) {
         this.config = config;

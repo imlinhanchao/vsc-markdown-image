@@ -11,10 +11,6 @@ class Local implements Upload
         this.config = config;
     }
 
-    async getSavePath(filePath: string) {
-        return utils.formatName(this.config.base.format, filePath);
-    }
-
     async reconfig(config: Config) {
         this.config = config;
     }
@@ -45,6 +41,15 @@ class Local implements Upload
                 }
             }
 
+            savePath = savePath.replace(/\\/, '/');
+            let dirs = savePath.split('/');
+            let folder = saveFolder;
+            for (let i = 0; i < dirs.length - 1; i++) {
+                folder = path.join(folder, dirs[i]);
+                if (fs.existsSync(folder)) { continue; }
+                fs.mkdirSync(folder);
+            }
+
             savePath = path.join(saveFolder, savePath);
             if (fs.existsSync(savePath) && 
             (await utils.confirm('The file was exists. Would you replace it?', ['Yes', 'No'])) === 'No') {
@@ -52,7 +57,7 @@ class Local implements Upload
             }
             fs.copyFileSync(filePath, savePath);
 
-            return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/, '/');
+            return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/');
         }
         catch(e) {
             vscode.window.showInformationMessage(`Save File Failed: ${e.message}`);

@@ -18,10 +18,6 @@ class Coding implements Upload
         this.config = config;
     }
 
-    async getSavePath(filePath: string) {
-        return utils.formatName(this.config.base.format, filePath);
-    }
-
     async reconfig(config: Config) {
         try {
             this.config = config;
