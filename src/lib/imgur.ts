@@ -20,7 +20,7 @@ class Imgur implements Upload
         this.config = config;
     }
 
-    async upload(filePath: string): Promise<string | null> {
+    async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
             let tunnel = this.config.imgur.httpProxy ? new HttpsProxyAgent(this.config.imgur.httpProxy) : undefined;
 

@@ -18,7 +18,7 @@ class Imgur implements Upload
         this.config = config;
     }
 
-    async upload(filePath: string): Promise<string | null> {
+    async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
             const form = new formData();
             form.append('smfile', fs.createReadStream(filePath));

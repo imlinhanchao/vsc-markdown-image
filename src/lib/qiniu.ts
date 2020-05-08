@@ -17,7 +17,7 @@ class Qiniu implements Upload
     }
     
     async getSavePath(filePath: string) {
-        return filePath;
+        return utils.formatName(this.config.base.format, filePath);
     }
 
     async reconfig(config: Config) {
@@ -26,9 +26,9 @@ class Qiniu implements Upload
         this.lastTimestramp = 0;
     }
 
-    async upload(filePath: string): Promise<string | null> {
+    async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
-            let key = utils.hash(fs.readFileSync(filePath)) + path.extname(filePath);
+            let key = savePath || (utils.hash(fs.readFileSync(filePath)) + path.extname(filePath));
             let token = this.getToken(key);
             let config: qiniu.conf.ConfigOptions = new qiniu.conf.Config();
             switch(this.config.qiniu.zone) {

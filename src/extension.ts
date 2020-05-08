@@ -30,24 +30,15 @@ export function activate(context: vscode.ExtensionContext) {
             let savePath = utils.getTmpFolder();
             savePath = path.join(savePath, `pic_${new Date().getTime()}.png`);
             let images = await utils.getPasteImage(savePath);
-            images = images.filter(img => ['.jpg', 'jpeg', '.gif', '.bmp', '.png'].find(ext => img.endsWith(ext)));
+            images = images.filter(img => ['.jpg', '.jpeg', '.gif', '.bmp', '.png', '.webp'].find(ext => img.endsWith(ext)));
 
             console.log(`Get ${images.length} Images`);
 
             let urls = [];
             for (let i = 0; i < images.length; i++) {
-                if (images[i] !== savePath) { 
-                    console.log(`Uploading ${images[i]}`);
-                    let p = await upload?.upload(images[i]);
-                    if(p) { urls.push(p); }
-                    continue;
-                }
-                let name = await upload?.getSavePath(images[i]);
-                if (name) {
-                    fs.renameSync(images[i], name);
-                    images[i] = name;
-                }
-                let p = await upload?.upload(images[i]);
+                let name = await upload?.getSavePath(images[i] !== savePath ? images[i] : '') || images[i];
+                console.log(`Uploading ${images[i]}`);
+                let p = await upload?.upload(images[i], name);
                 if(p) { urls.push(p); }
             }
 

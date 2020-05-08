@@ -12,19 +12,14 @@ class Local implements Upload
     }
 
     async getSavePath(filePath: string) {
-        let name = path.basename(await utils.prompt('Name the picture you pasted', path.basename(filePath, '.png')));
-        if (name) {
-            name = path.basename(name, path.extname(name)) + '.png';
-            return path.join(path.dirname(filePath), name);
-        }
-        return null;
+        return utils.formatName(this.config.base.format, filePath);
     }
 
     async reconfig(config: Config) {
         this.config = config;
     }
 
-    async upload(filePath: string): Promise<string | null> {
+    async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
             if (!utils.getCurrentRoot()) {
                 vscode.window.showInformationMessage('Please Open the project of the file with folder.');
@@ -50,7 +45,7 @@ class Local implements Upload
                 }
             }
 
-            let savePath = path.join(saveFolder, path.basename(filePath));
+            savePath = path.join(saveFolder, savePath);
             if (fs.existsSync(savePath) && 
             (await utils.confirm('The file was exists. Would you replace it?', ['Yes', 'No'])) === 'No') {
                 return null;

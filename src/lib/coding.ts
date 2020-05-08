@@ -19,7 +19,7 @@ class Coding implements Upload
     }
 
     async getSavePath(filePath: string) {
-        return filePath;
+        return utils.formatName(this.config.base.format, filePath);
     }
 
     async reconfig(config: Config) {
@@ -32,7 +32,7 @@ class Coding implements Upload
         }
     }
 
-    async upload(filePath: string): Promise<string | null> {
+    async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
             while (!Coding.coding.isInitialized()) { await utils.sleep(100); }  
 
@@ -43,7 +43,7 @@ class Coding implements Upload
                     `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${(now.getDate()).toString().padStart(2, '0')}`);
             }
 
-            let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'));
+            let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'), savePath);
 
             return data.urls[0].replace('http:', 'https:');
         }

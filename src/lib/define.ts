@@ -9,17 +9,17 @@ class Define implements Upload
     }
     
     async getSavePath(filePath: string) {
-        return filePath;
+        return utils.formatName(this.config.base.format, filePath);
     }
 
     async reconfig(config: Config) {
         this.config = config;
     }
 
-    async upload(filePath: string): Promise<string | null> {
+    async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
             let define = require(this.config.diy.path);
-            return await define(filePath, utils.getCurrentFilePath());
+            return await define(filePath, savePath, utils.getCurrentFilePath());
         }
         catch(e) {
             vscode.window.showInformationMessage(`Upload File Failed: ${e.message}`);

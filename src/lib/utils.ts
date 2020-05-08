@@ -64,6 +64,90 @@ function getSelections() : vscode.Selection[] | null{
     return selections;
 }
 
+async function formatName(format: string, filePath: string): Promise<string> {
+    let saveName = format;
+    let variables = [
+        'filename', 'mdname', 'hash', 'timestramp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)'
+    ];
+    for (let i = 0; i < variables.length; i++) {
+        let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
+        let mat = format.match(reg);
+        if (!mat) { continue; }
+        switch(variables[i]) {
+            case 'filename': {
+                let data = filePath ? path.basename(filePath, path.extname(filePath)) : 
+                    (path.basename(await prompt(`Name the picture you pasted (don't include extname, it's will be replace the \${filename} in the format).`)) || '');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'mdname': {
+                let data = path.basename(getCurrentFilePath(), '.md');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'hash': {
+                let data = hash(fs.readFileSync(filePath));
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'timestramp': {
+                let data = new Date().getTime().toString();
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'YY': {
+                let data = new Date().getFullYear().toString();
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'MM': {
+                let data = (new Date().getMonth() + 1).toString().padStart(2, '0');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'DD': {
+                let data = (new Date().getDate() + 1).toString().padStart(2, '0');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'hh': {
+                let hours = new Date().getHours();
+                let data = (hours > 12 ? hours - 12 : hours).toString().padStart(2, '0');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'HH': {
+                let data = new Date().getHours().toString().padStart(2, '0');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'mm': {
+                let data = new Date().getMinutes().toString().padStart(2, '0');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'ss': {
+                let data = new Date().getSeconds().toString().padStart(2, '0');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'mss': {
+                let data = new Date().getMilliseconds().toString().padStart(3, '0');
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'rand,(\\d+)': {
+                let n = parseInt(mat[1]);
+                let data = parseInt((Math.random() * n).toString()).toString();
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+        }
+    }
+
+    return saveName + (path.extname(filePath) || '.png');
+}
+
 function getConfig() {
     let keys: string[] = Object.keys(pkg.contributes.configuration.properties);
     let values: Config = {};
@@ -213,6 +297,7 @@ export default {
     getUpload,
     showProgress,
     editorEdit,
+    formatName,
     getConfig,
     getSelections,
     getPasteImage,
