@@ -70,7 +70,7 @@ function getSelections() : vscode.Selection[] | null{
     return selections;
 }
 
-async function formatName(format: string, filePath: string): Promise<string> {
+async function formatName(format: string, filePath: string, isPaste: boolean): Promise<string> {
     let saveName = format;
     let variables = [
         'filename', 'mdname', 'hash', 'timestramp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)'
@@ -81,8 +81,8 @@ async function formatName(format: string, filePath: string): Promise<string> {
         if (!mat) { continue; }
         switch(variables[i]) {
             case 'filename': {
-                let data = filePath ? path.basename(filePath, path.extname(filePath)) : 
-                    (path.basename(await prompt(locale['named_paste'])) || '');
+                let data = !isPaste ? path.basename(filePath, path.extname(filePath)) : 
+                    (path.basename(await prompt(locale['named_paste'], path.basename(filePath, '.png'))) || '');
                 saveName = saveName.replace(reg, data);
                 break;
             }
@@ -151,7 +151,8 @@ async function formatName(format: string, filePath: string): Promise<string> {
         }
     }
 
-    return saveName + (path.extname(filePath) || '.png');
+    
+    return saveName + (filePath ? path.extname(filePath) : '.png');
 }
 
 function mkdirs(dirname: string) {  
