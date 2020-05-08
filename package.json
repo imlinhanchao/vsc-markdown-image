@@ -145,11 +145,11 @@
                 "markdown-image.qiniu.zone": {
                     "type": "string",
                     "enum": [
-                        "East China",
-                        "North China",
-                        "South China",
-                        "North America",
-                        "Southeast Asia"
+                        "%markdown-image.qiniu.east%",
+                        "%markdown-image.qiniu.north%",
+                        "%markdown-image.qiniu.south%",
+                        "%markdown-image.qiniu.na%",
+                        "%markdown-image.qiniu.sa%"
                     ],
                     "default": "East China",
                     "markdownDescription": "%markdown-image.qiniu.zone%"

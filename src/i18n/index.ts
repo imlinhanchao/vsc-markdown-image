@@ -1,12 +1,13 @@
 import * as vscode from 'vscode';
+import * as i18n from './locale'; 
 
 export default () => {
-    let locale = require('./locale.json');
+    let locale = i18n.default;
     let lang = vscode.env.language;
-    let langLocale = null;
+    let langLocale: any = null;
 
     try {
-        langLocale = require(`./locale.${lang}.json`);
+        langLocale = i18n.$[lang];
     } catch (error) { 
         lang = lang.split('.')[0];
     }
