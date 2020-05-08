@@ -1,35 +1,63 @@
 # Markdown Image
 
-Easy to insert a image to markdown.
+An extension for conveniently inserting pictures in Markdown, which supports storing pictures in local or third-party CDN service.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Copy image files or paste screenshots.
+2. Automatically generate Markdown code insertion.
+3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Coding` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
+4. You can also customize the code to upload pictures.
+5. Support Windows, MacOS, Linux.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Linux users must install xclip.
+
+Ubuntu
+```bash
+sudo apt install xclip
+```
+
+CentOS
+```bash
+sudo yum install epel-release.noarch
+sudo yum install xclip
+```
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### Base Settings
 
-For example:
+- `markdown-image.base.uploadMethod`: Method to upload pictures. To the local or another picture CDN service.
+- `markdown-image.base.fileNameFormat`: The filename format for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables. You can find more in setting.
 
-This extension contributes the following settings:
+### Local Settings
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+- `markdown-image.local.path`: Picture storage directory that in the local (automatically created if it does not exist).
 
-## Known Issues
+### Coding Settings
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- `markdown-image.coding.token`: Coding person [access token](https://help.coding.net/docs/member/tokens.html).
+- `markdown-image.coding.repository`: Coding repository, for example: `https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`
+- `markdown-image.coding.path`: Picture upload directory that in the repository (automatically created if it does not exist).
+
+### Imgur Settings
+
+- `markdown-image.imgur.clientId`: The client id registered with imgur. You can registed it at [here](https://api.imgur.com/oauth2/addclient).
+- `markdown-image.imgur.httpProxy`: Connect to Imgur via http proxy.
+
+### SM.MS Settings
+
+- `markdown-image.sm_ms.token`: SM.MS API token (Options). You can register an account and then visit [API Token](https://sm.ms/home/apitoken) Page to generate secret token.
+
+### Qiniu Settings
+
+- `markdown-image.qiniu.accessKey`: The Access Key of account。
+- `markdown-image.qiniu.secretKey`: The Secret Key of account。
+- `markdown-image.qiniu.bucket`: The storage name。
+- `markdown-image.qiniu.domain`: Bound domain name of storage。
+- `markdown-image.qiniu.zone`:  Zone of storage.
 
 ## Release Notes
 

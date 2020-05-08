@@ -1,0 +1,76 @@
+# Markdown Image
+
+一個用於方便的在 Markdown 中插入圖片的擴展，支持將圖片存放在本地或第三方的圖床或對象存儲。
+
+## 功能
+
+1. 可複製圖片文件或截圖粘貼。
+2. 自動生成 Markdown 代碼插入。
+3. 可配置支持 `Imgur`，`七牛`，`SM.MS`，`Coding` 等圖床。默認為本地，需打開 Markdown 文件所在文件夾。
+4. 也可以自定義代碼實現圖片上傳。
+5. 支援 Windows，MacOS，Linux。
+
+## 依赖要求
+
+Windows 和 MacOS 用戶可直接使用，Linux 用戶須安裝 xclip.
+
+Ubuntu
+```bash
+sudo apt install xclip
+```
+
+CentOS
+```bash
+sudo yum install epel-release.noarch
+sudo yum install xclip
+```
+
+## 擴展設置項目
+
+### 基本設置項目
+
+- `markdown-image.base.uploadMethod`: 上傳圖片的方式，根據不同的方式，須在設置不同的項目。
+- `markdown-image.base.fileNameFormat`: 圖片文件命名格式化字符串。支持多種變量做格式化，可同時配置文件夾格式，具體見設置。
+
+### Local 设置项目
+
+- `markdown-image.local.path`: 圖片本地存放路徑，支持相對路徑，相對於所粘貼的 Markdown 文件。 `/` 表示打開的文件夾根目錄。若路徑不存在，將會自動創建。
+
+### Coding 設置項目
+
+- `markdown-image.coding.token`: Coding 的個人[訪問令牌](https://help.coding.net/docs/member/tokens.html)，用於訪問倉庫，上傳圖片。
+- `markdown-image.coding.repository`: 所要上传的目的仓库，比如：`https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`
+- `markdown-image.coding.path`: 圖片存放的倉庫目錄，默認為根目錄。
+
+### Imgur 設置項目
+
+- `markdown-image.imgur.clientId`: 在 `imgur` 註冊的`Client Id`。您可以在[這裡](https://api.imgur.com/oauth2/addclient)註冊。
+- `markdown-image.imgur.httpProxy`: 設置訪問的 HTTP 代理。
+
+### SM.MS 設置項目
+
+- `markdown-image.sm_ms.token`: SM.MS Secret Token。您可以註冊一個帳戶，然後訪問 [API Access](https://sm.ms/home/apitoken) 頁面生成。
+
+### 七牛設置項目
+
+- `markdown-image.qiniu.accessKey`: 七牛賬戶的 Access Key。
+- `markdown-image.qiniu.secretKey`: 七牛賬戶的 Secret Key。
+- `markdown-image.qiniu.bucket`: 七牛的對象存儲空間名。
+- `markdown-image.qiniu.domain`: 七牛空间绑定的域名。
+- `markdown-image.qiniu.zone`: 七牛空間的存儲區域。
+
+## 發布歷史
+
+### 1.0.0
+
+- 初版发布。
+
+-----------------------------------------------------------------------------------------------------------
+
+### 其他
+
+* [GitHub](https://github.com/imlinhanchao/vsc-markdown-image)
+* [VSCode Market](https://marketplace.visualstudio.com/items?itemName=hancel.markdown-image)
+* 圖標來自 [www.flaticon.com](https://www.flaticon.com/) 的 [Good Ware](https://www.flaticon.com/authors/good-ware)
+
+**Enjoy!**
