@@ -1,4 +1,5 @@
 import utils from './utils';
+import { locale as $l } from './utils';
 import * as vscode from 'vscode';
 import { Coding as CodingPicbed } from 'coding-picbed';
 
@@ -23,7 +24,7 @@ class Coding implements Upload
             Coding.coding.lastconfig = config.coding;
             await Coding.coding.config({ token: config.coding.token, repository: config.coding.repository });
         } catch (error) {
-            vscode.window.showErrorMessage(`Config Failed: ${error.message}`);
+            vscode.window.showErrorMessage(`${$l['config_failed']}${error.message}`);
         }
     }
 
@@ -37,7 +38,7 @@ class Coding implements Upload
             return data.urls[0].replace('http:', 'https:');
         }
         catch(e) {
-            vscode.window.showInformationMessage(`Upload File Failed: ${e.message}`);
+            vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
     }

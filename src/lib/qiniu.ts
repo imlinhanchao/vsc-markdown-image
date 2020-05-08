@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as url from 'url';
 import utils from './utils';
+import { locale as $l } from './utils';
 import * as qiniu from 'qiniu';
 
 class Qiniu implements Upload
@@ -28,11 +29,11 @@ class Qiniu implements Upload
             let token = this.getToken(key);
             let config: qiniu.conf.ConfigOptions = new qiniu.conf.Config();
             switch(this.config.qiniu.zone) {
-                case 'East China': config.zone = qiniu.zone.Zone_z0; break;
-                case 'North China': config.zone = qiniu.zone.Zone_z1; break;
-                case 'South China': config.zone = qiniu.zone.Zone_z2; break;
-                case 'North America': config.zone = qiniu.zone.Zone_na0; break;
-                case 'Southeast Asia': config.zone = qiniu.zone.Zone_as0; break;
+                case $l['qiniu.east']: config.zone = qiniu.zone.Zone_z0; break;
+                case $l['qiniu.north']: config.zone = qiniu.zone.Zone_z1; break;
+                case $l['qiniu.south']: config.zone = qiniu.zone.Zone_z2; break;
+                case $l['qiniu.na']: config.zone = qiniu.zone.Zone_na0; break;
+                case $l['qiniu.sa']: config.zone = qiniu.zone.Zone_as0; break;
             }
 
             let formUploader = new qiniu.form_up.FormUploader(config);
@@ -59,7 +60,7 @@ class Qiniu implements Upload
             return await upload();
         }
         catch(e) {
-            vscode.window.showInformationMessage(`Upload File Failed: ${e.message}`);
+            vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
     }

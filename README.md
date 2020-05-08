@@ -59,6 +59,17 @@ sudo yum install xclip
 - `markdown-image.qiniu.domain`: Bound domain name of storage。
 - `markdown-image.qiniu.zone`:  Zone of storage.
 
+### DIY Settings
+- `markdown-image.DIY.path`: The Code Path what you write. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.  
+    For example: 
+    ```javascript
+    const path = require('path');
+    module.exports = async function(filePath, savePath, markdownPath) {
+        // Return a picture access link
+        return path.relative(path.dirname(markdownPath), filePath);
+    }
+    ```
+
 ## Release Notes
 
 Users appreciate release notes as you update your extension.

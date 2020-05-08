@@ -6,8 +6,10 @@ import * as path from 'path';
 import * as packages from '../../package.json';
 import * as crypto from 'crypto';
 import Uploads from './uploads';
+import i18n from '../i18n/index';
 
 let pkg = packages as any;
+let locale = i18n();
 
 function getUpload(config: Config) : Upload | null {
     switch(config.base.uploadMethod) {
@@ -17,6 +19,10 @@ function getUpload(config: Config) : Upload | null {
         case 'SM.MS': return new Uploads.SM_MS(config);
         case 'Qiniu': return new Uploads.Qiniu(config);
         case 'DIY': return new Uploads.Define(config);
+        case '本地': return new Uploads.Local(config);
+        case '七牛': return new Uploads.Qiniu(config);
+        case '自定义': return new Uploads.Define(config);
+        case '自定義': return new Uploads.Define(config);
     }
     return null;
 }
@@ -76,7 +82,7 @@ async function formatName(format: string, filePath: string): Promise<string> {
         switch(variables[i]) {
             case 'filename': {
                 let data = filePath ? path.basename(filePath, path.extname(filePath)) : 
-                    (path.basename(await prompt(`Name the picture you pasted (don't include extname, it's will be replace the \${filename} in the format).`)) || '');
+                    (path.basename(await prompt(locale['named_paste'])) || '');
                 saveName = saveName.replace(reg, data);
                 break;
             }
@@ -204,7 +210,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
             ]);
             powershell.on('error', (e: any) => {
                 if (e.code === 'ENOENT') {
-                    vscode.window.showErrorMessage(`The powershell command is not in you PATH environment variables. Please add it and retry.`);
+                    vscode.window.showErrorMessage(locale['powershell_not_found']);
                 } else {
                     vscode.window.showErrorMessage(e);
                 }
@@ -248,7 +254,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
             ascript.stdout.on('data', (data) => {
                 let result = data.toString().trim();
                 if (result === "no xclip") {
-                    vscode.window.showInformationMessage('You need to install xclip command first.');
+                    vscode.window.showInformationMessage(locale['install_xclip']);
                     return;
                 }
                 let match = result.trim().match(/((\/[^\/]+)+\/[^\/]*?\.(jpg|jpeg|gif|bmp|png))/g);
@@ -320,5 +326,6 @@ export default {
     sleep,
     confirm,
     prompt,
-    hash
+    hash,
 };
+export { locale };

@@ -4,6 +4,7 @@ import got from 'got';
 import * as formData from 'form-data';
 import * as fs from 'fs';
 import * as path from 'path';
+import { locale as $l } from './utils';
 
 class Imgur implements Upload
 {
@@ -39,7 +40,7 @@ class Imgur implements Upload
             return JSON.parse(rsp.body).data.link;
         }
         catch(e) {
-            vscode.window.showInformationMessage(`Upload File Failed: ${e.message}`);
+            vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
     }

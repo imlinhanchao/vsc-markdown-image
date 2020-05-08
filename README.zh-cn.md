@@ -49,7 +49,7 @@ sudo yum install xclip
 
 ### SM.MS 设置项目
 
-- `markdown-image.sm_ms.token`: SM.MS Secret Token。您可以注册一个帐户，然后访问 [API Access](https://sm.ms/home/apitoken) 页面以生成。
+- `markdown-image.sm_ms.token`: SM.MS Secret Token。您可以注册一个帐户，然后访问 [API Access](https://sm.ms/home/apitoken) 页面生成。
 
 ### 七牛设置项目
 
@@ -58,6 +58,19 @@ sudo yum install xclip
 - `markdown-image.qiniu.bucket`: 七牛的对象存储空间名。
 - `markdown-image.qiniu.domain`: 七牛空间绑定的域名。
 - `markdown-image.qiniu.zone`: 七牛空间的存储区域。
+
+### 自定义设置项目
+
+- `markdown-image.DIY.path`: 你写的代码的路径。 你的代码比如 exports 一个像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函数。   
+    比如：
+    ```javascript
+    const path = require('path');
+    module.exports = async function(filePath, savePath, markdownPath) {
+        // Return a picture access link
+        return path.relative(path.dirname(markdownPath), filePath);
+    }
+    ```
+
 
 ## 发布历史
 

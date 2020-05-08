@@ -29,12 +29,12 @@
             {
                 "command": "markdown-image.paste",
                 "category": "Markdown Image",
-                "title": "Paste Image"
+                "title": "%markdown-image.command.paste%"
             },
             {
                 "command": "markdown-image.config",
                 "category": "Markdown Image",
-                "title": "Markdown Image Config Setting"
+                "title": "%markdown-image.command.config%"
             }
         ],
         "keybindings": [
@@ -56,7 +56,7 @@
         },
         "configuration": {
             "type": "object",
-            "title": "Markdown Image",
+            "title": "%markdown-image.title%",
             "properties": {
                 "markdown-image.base.uploadMethod": {
                     "type": "string",
@@ -65,82 +65,82 @@
                         "Coding",
                         "Imgur",
                         "SM.MS",
-                        "Qiniu",
-                        "DIY"
+                        "%markdown-image.qiniu%",
+                        "%markdown-image.DIY%"
                     ],
                     "default": "Local",
-                    "description": "Method to upload pictures. To the local or another picture CDN service.",
+                    "description": "%markdown-image.base.uploadMethod%",
                     "enumDescriptions": [
-                        "Upload the image to the project directory. You can use `#markdown-image.local.path` sets the relative path for upload.",
-                        "Upload the image to git repository in Coding.net . You can configure the repository through `#markdown-image.coding.repository`. You need to configure the Token to access the repository through `#markdown-image.coding.token`.",
-                        "Upload the image to Imgur. You can configure `Client Id` through `#markdown-image.imgur.clientId`.",
-                        "Upload the image to sm.ms. You can configure `Token` through `#markdown-image.sm_ms.token` if you have an account.",
-                        "Upload the image to qiniu.com.",
-                        "You can define your code used to upload. You need to configure the code path through `#markdown-image.diy.path`"
+                        "%markdown-image.base.uploadMethod.Local%",
+                        "%markdown-image.base.uploadMethod.Coding%",
+                        "%markdown-image.base.uploadMethod.Imgur%",
+                        "%markdown-image.base.uploadMethod.SM.MS%",
+                        "%markdown-image.base.uploadMethod.Qiniu%",
+                        "%markdown-image.base.uploadMethod.DIY%"
                     ]
                 },
                 "markdown-image.base.fileNameFormat": {
                     "type": "string",
                     "default": "${hash}",
                     "pattern": "^[^:*?<>|]+$",
-                    "markdownDescription": "The filename format for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables: \n\n- `${filename}`: The original filename.  \n- `${mdname}`: The name of the Markdown file being edited.  \n- `${hash}`: The sha256 hash of image.  \n- `${timestramp}`: The timestramp of upload time.  \n- `${YY}`: The Year  \n-`${MM}`:The Month  \n- `${DD}`: The Day  \n- `${hh}`: The 12-hour clock  \n- `${HH}`: The 24-hour clock  \n- `${mm}`: The minutes  \n- `${ss}`: The seconds  \n- `${mss}`: The milliseconds  \n- `${rand[,number]}`: A random number, for example: `${rand,100}`. It will generate random numbers from 0 to 99."
+                    "markdownDescription": "%markdown-image.base.fileNameFormat%"
                 },
                 "markdown-image.local.path": {
                     "type": "string",
                     "default": "/images",
-                    "description": "Picture storage directory that in the local (automatically created if it does not exist)."
+                    "description": "%markdown-image.local.path%"
                 },
                 "markdown-image.coding.path": {
                     "type": "string",
                     "default": "/",
-                    "description": "Picture upload directory that in the repository (automatically created if it does not exist)."
+                    "description": "%markdown-image.coding.path%"
                 },
                 "markdown-image.coding.token": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "Coding person [access token](https://help.coding.net/docs/member/tokens.html)."
+                    "markdownDescription": "%markdown-image.coding.token%"
                 },
                 "markdown-image.coding.repository": {
                     "type": "string",
                     "default": "",
                     "pattern": "^(https://([^.]*?).coding.net/p/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
-                    "markdownDescription": "Coding repository, for example: `https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`"
+                    "markdownDescription": "%markdown-image.coding.repository%"
                 },
                 "markdown-image.imgur.clientId": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "The client id registered with imgur. You can registed it at [here](https://api.imgur.com/oauth2/addclient)."
+                    "markdownDescription": "%markdown-image.imgur.clientId%"
                 },
                 "markdown-image.imgur.httpProxy": {
                     "type": "string",
                     "default": "",
-                    "description": "Connect to Imgur via http proxy."
+                    "description": "%markdown-image.imgur.httpProxy%"
                 },
                 "markdown-image.sm_ms.token": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "SM.MS API token (Options). You can register an account and then visit [API Token](https://sm.ms/home/apitoken) Page to generate secret token."
+                    "markdownDescription": "%markdown-image.sm_ms.token%"
                 },
                 "markdown-image.qiniu.accessKey": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "AccessKey of upload."
+                    "markdownDescription": "%markdown-image.qiniu.accessKey%"
                 },
                 "markdown-image.qiniu.secretKey": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "SecretKey of upload"
+                    "markdownDescription": "%markdown-image.qiniu.secretKey%"
                 },
                 "markdown-image.qiniu.bucket": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "Bucket of upload"
+                    "markdownDescription": "%markdown-image.qiniu.bucket%"
                 },
                 "markdown-image.qiniu.domain": {
                     "type": "string",
                     "default": "",
-                    "pattern": "^http(s|)://[a-zA-Z0-9][-\\w]{0,62}(.[a-zA-Z0-9][-\\w]{0,62})+.?",
-                    "markdownDescription": "Domain of Qiniu"
+                    "pattern": "^(http(s|)://[a-zA-Z0-9][-\\w]{0,62}(.[a-zA-Z0-9][-\\w]{0,62})+.|)?",
+                    "markdownDescription": "%markdown-image.qiniu.domain%"
                 },
                 "markdown-image.qiniu.zone": {
                     "type": "string",
@@ -152,12 +152,12 @@
                         "Southeast Asia"
                     ],
                     "default": "East China",
-                    "markdownDescription": "Zone of Qiniu"
+                    "markdownDescription": "%markdown-image.qiniu.zone%"
                 },
-                "markdown-image.diy.path": {
+                "markdown-image.DIY.path": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "The Code Path. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.\n\nFor example: \n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```"
+                    "markdownDescription": "%markdown-image.DIY.path%"
                 }
             }
         }
@@ -181,6 +181,7 @@
         "form-data": "^3.0.0",
         "got": "^10.7.0",
         "https-proxy-agent": "^4.0.0",
-        "qiniu": "^7.3.1"
+        "qiniu": "^7.3.1",
+        "vscode-nls": "^4.1.2"
     }
 }

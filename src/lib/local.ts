@@ -2,7 +2,7 @@ import utils from './utils';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-
+import { locale as $l } from './utils';
 
 class Local implements Upload
 {
@@ -18,7 +18,7 @@ class Local implements Upload
     async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
             if (!utils.getCurrentRoot()) {
-                vscode.window.showInformationMessage('Please Open the project of the file with folder.');
+                vscode.window.showInformationMessage($l['open_with_folder']);
                 return null;
             }
 
@@ -36,7 +36,7 @@ class Local implements Upload
             }
 
             if (fs.existsSync(savePath) && 
-            (await utils.confirm('The file was exists. Would you replace it?', ['Yes', 'No'])) === 'No') {
+            (await utils.confirm($l['replace_or_no'], [$l['Yes'], $l['Yes']])) === $l['Yes']) {
                 return null;
             }
             fs.copyFileSync(filePath, savePath);
@@ -44,7 +44,7 @@ class Local implements Upload
             return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/');
         }
         catch(e) {
-            vscode.window.showInformationMessage(`Save File Failed: ${e.message}`);
+            vscode.window.showInformationMessage(`${$l['save_failed']}${e.message}`);
             return null;
         }
     }

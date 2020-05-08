@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import utils from './utils';
+import { locale as $l } from './utils';
 
 class Define implements Upload
 {
@@ -14,11 +15,11 @@ class Define implements Upload
 
     async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
-            let define = require(this.config.diy.path);
+            let define = require(this.config.DIY.path);
             return await define(filePath, savePath, utils.getCurrentFilePath());
         }
         catch(e) {
-            vscode.window.showInformationMessage(`Upload File Failed: ${e.message}`);
+            vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
     }

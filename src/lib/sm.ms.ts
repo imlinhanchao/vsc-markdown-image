@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import got from 'got';
 import * as formData from 'form-data';
 import * as fs from 'fs';
+import { locale as $l } from './utils';
 
 class Imgur implements Upload
 {
@@ -35,7 +36,7 @@ class Imgur implements Upload
             return body.images || body.data.url;
         }
         catch(e) {
-            vscode.window.showInformationMessage(`Upload File Failed: ${e.message}`);
+            vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
     }

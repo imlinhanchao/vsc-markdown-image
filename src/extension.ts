@@ -4,6 +4,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import utils from './lib/utils';
+import { locale as $l } from './lib/utils';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -21,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
     let pasteCommand = vscode.commands.registerCommand('markdown-image.paste', async () => {
         let stop = () => {};
         try {
-            stop = utils.showProgress('Uploading...');
+            stop = utils.showProgress($l['uploading']);
             console.log(config.base.uploadMethod);
             
             let editor = vscode.window.activeTextEditor;
@@ -43,7 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
 
             let insertCode = '';
             for (let i = 0; i < urls.length; i++) {
-                let selection = `picture ${index++}`;
+                let selection = `${$l['picture']} ${index++}`;
                 if (selections?.length === 1 && editor?.document.getText(selections[0])) {
                     selection = `${editor?.document.getText(selections[0])} ${i + 1}`;
                 }
@@ -66,7 +67,7 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
         } catch (error) {
-            vscode.window.showErrorMessage(`Something was wrong: ${error.message}`);
+            vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message}`);
         }
 
         stop();
