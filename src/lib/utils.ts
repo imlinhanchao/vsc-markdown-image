@@ -148,6 +148,18 @@ async function formatName(format: string, filePath: string): Promise<string> {
     return saveName + (path.extname(filePath) || '.png');
 }
 
+function mkdirs(dirname: string) {  
+    //console.log(dirname);  
+    if (fs.existsSync(dirname)) {  
+        return true;  
+    } else {  
+        if (mkdirs(path.dirname(dirname))) {  
+            fs.mkdirSync(dirname);  
+            return true;  
+        }  
+    }  
+}
+
 function getConfig() {
     let keys: string[] = Object.keys(pkg.contributes.configuration.properties);
     let values: Config = {};
@@ -298,6 +310,7 @@ export default {
     showProgress,
     editorEdit,
     formatName,
+    mkdirs,
     getConfig,
     getSelections,
     getPasteImage,

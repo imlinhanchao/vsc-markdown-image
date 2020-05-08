@@ -25,32 +25,16 @@ class Local implements Upload
             let saveFolder = this.config.local.path.startsWith('/') ? 
                 path.join(utils.getCurrentRoot(), this.config.local.path) :
                 path.join(path.dirname(utils.getCurrentFilePath()), this.config.local.path);
+            
+            console.log(`Create Project Upload Folder.`);
+            
+            savePath = path.join(saveFolder, savePath);
+            saveFolder = path.dirname(savePath);
 
             if (!fs.existsSync(saveFolder)) {
-                fs.mkdirSync(saveFolder);
+                utils.mkdirs(saveFolder);
             }
 
-            console.log(`Create Project Upload Folder.`);
-
-            let now = new Date();
-            if (this.config.local.createFolderByDate) {
-                saveFolder = path.join(saveFolder, 
-                    `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${(now.getDate()).toString().padStart(2, '0')}`);
-                if (!fs.existsSync(saveFolder)) {
-                    fs.mkdirSync(saveFolder);
-                }
-            }
-
-            savePath = savePath.replace(/\\/, '/');
-            let dirs = savePath.split('/');
-            let folder = saveFolder;
-            for (let i = 0; i < dirs.length - 1; i++) {
-                folder = path.join(folder, dirs[i]);
-                if (fs.existsSync(folder)) { continue; }
-                fs.mkdirSync(folder);
-            }
-
-            savePath = path.join(saveFolder, savePath);
             if (fs.existsSync(savePath) && 
             (await utils.confirm('The file was exists. Would you replace it?', ['Yes', 'No'])) === 'No') {
                 return null;

@@ -1,5 +1,4 @@
 import utils from './utils';
-import * as path from 'path';
 import * as vscode from 'vscode';
 import { Coding as CodingPicbed } from 'coding-picbed';
 
@@ -33,12 +32,6 @@ class Coding implements Upload
             while (!Coding.coding.isInitialized()) { await utils.sleep(100); }  
 
             let saveFolder = this.config.coding.path;
-            let now = new Date();
-            if (this.config.coding.createFolderByDate) {
-                saveFolder = path.join(saveFolder, 
-                    `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${(now.getDate()).toString().padStart(2, '0')}`);
-            }
-
             let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'), savePath);
 
             return data.urls[0].replace('http:', 'https:');
