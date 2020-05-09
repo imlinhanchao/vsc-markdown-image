@@ -36,7 +36,7 @@ class Local implements Upload
             }
 
             if (fs.existsSync(savePath) && 
-            (await utils.confirm($l['replace_or_no'], [$l['Yes'], $l['Yes']])) === $l['Yes']) {
+            (await utils.confirm($l['replace_or_no'], [$l['Yes'], $l['No']])) === $l['No']) {
                 return null;
             }
             fs.copyFileSync(filePath, savePath);

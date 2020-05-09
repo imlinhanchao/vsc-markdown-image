@@ -6,7 +6,7 @@ English Readme / [简体中文说明](README.zh-cn.md) / [繁體中文說明](RE
 
 ## Features
 
-1. Copy image files or paste screenshots.
+1. Copy image files or paste screenshots, Shortcut key `Ctrl + Shift + V`, or right-click menu `Paste Image`.
 2. Automatically generate Markdown code insertion.
 3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Coding` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
 4. You can also customize the code to upload pictures.
@@ -73,6 +73,9 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+
+### 1.0.2
+- Fixed replace notice bug.
 
 ### 1.0.1
 - Update Readme.
