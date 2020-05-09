@@ -63,7 +63,7 @@ sudo yum install xclip
 
 ### 自定义设置项目
 
-- `markdown-image.DIY.path`: 你写的代码的路径。 你的代码比如 exports 一个像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函数。   
+- `markdown-image.DIY.path`: 你写的代码的路径。 你的代码必须 exports 一个像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函数。   
     比如：
     ```javascript
     const path = require('path');

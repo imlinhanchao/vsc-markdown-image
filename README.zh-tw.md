@@ -60,6 +60,18 @@ sudo yum install xclip
 - `markdown-image.qiniu.bucket`: 七牛的對象存儲空間名。
 - `markdown-image.qiniu.domain`: 七牛空间绑定的域名。
 - `markdown-image.qiniu.zone`: 七牛空間的存儲區域。
+- 
+### 自定义设置项目
+
+- `markdown-image.DIY.path`: 你寫的代碼的路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。   
+    比如：
+    ```javascript
+    const path = require('path');
+    module.exports = async function(filePath, savePath, markdownPath) {
+        // Return a picture access link
+        return path.relative(path.dirname(markdownPath), filePath);
+    }
+    ```
 
 ## 發布歷史
 
