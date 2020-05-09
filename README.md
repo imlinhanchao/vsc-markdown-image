@@ -2,7 +2,7 @@
 
 An extension for conveniently inserting pictures in Markdown, which supports storing pictures in local or third-party CDN service.
 
-English Readme / [简体中文说明](README.zh-cn.md) / [繁體中文說明](README.zh-cn.md)
+English Readme / [简体中文说明](README.zh-cn.md) / [繁體中文說明](README.zh-tw.md)
 
 ## Features
 

@@ -2,15 +2,19 @@
     "name": "markdown-image",
     "displayName": "Markdown Image",
     "description": "Easy to insert a image to markdown",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "publisher": "hancel",
     "engines": {
         "vscode": "^1.33.0"
     },
+    
     "keywords": [
         "Picture",
         "cdn",
         "markdown",
+        "imgur",
+        "七牛",
+        "sm.ms",
         "helper"
     ],
     "icon": "asserts/icon.png",
