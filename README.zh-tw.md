@@ -63,6 +63,10 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.0.1
+
+- 更新 Readme。
+
 ### 1.0.0
 
 - 初版发布。
