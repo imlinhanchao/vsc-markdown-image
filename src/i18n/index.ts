@@ -9,11 +9,11 @@ export default () => {
     try {
         langLocale = i18n.$[lang];
     } catch (error) { 
-        lang = lang.split('.')[0];
+        lang = lang.split('-')[0];
     }
     
     try {
-        langLocale = require(`./locale.${lang}.json`);
+        langLocale = i18n.$[lang];
     } catch (error) { }
     
     if (langLocale) { locale = Object.assign(locale, langLocale); }

@@ -1,3 +1,5 @@
+import zh_cn from './locale.zh-cn';
+import zh_tw from './locale.zh-tw';
 
 export default {
     config_failed: "Config Failed: ",
@@ -20,5 +22,5 @@ export default {
     powershell_not_found: "The powershell command is not in you PATH environment variables. Please add it and retry."
 };
 
-let $: any = {};
+let $: any = { 'zh-cn': zh_cn, 'zh-tw': zh_tw };
 export { $ };
