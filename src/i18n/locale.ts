@@ -19,7 +19,11 @@ export default {
     uploading: "Uploading...",
     picture: "picture",
     install_xclip: "You need to install xclip command first.",
-    powershell_not_found: "The powershell command is not in you PATH environment variables. Please add it and retry."
+    powershell_not_found: "The powershell command is not in you PATH environment variables. Please add it and retry.",
+    "like.extension": "Do you like this extension? Hope to get your kindly favorable comments.",
+    "like.ok": "Yes",
+    "like.no": "No",
+    "like.later": "Remind later",
 };
 
 let $: any = { 'zh-cn': zh_cn, 'zh-tw': zh_tw };

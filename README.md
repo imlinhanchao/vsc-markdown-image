@@ -1,8 +1,10 @@
+English Readme / [简体中文说明](README.zh-cn.md) / [繁體中文說明](README.zh-tw.md)
+
 # Markdown Image
 
 An extension for conveniently inserting pictures in Markdown, which supports storing pictures in local or third-party CDN service.
 
-English Readme / [简体中文说明](README.zh-cn.md) / [繁體中文說明](README.zh-tw.md)
+❤ [Sponsor me](https://www.paypal.me/imlinhanchao) / [赞助开发者](https://afdian.net/@imlinhanchao)
 
 ## Features
 
@@ -73,6 +75,10 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+
+### 1.0.3
+
+- Add sponsored links.
 
 ### 1.0.2
 - Fixed replace notice bug.

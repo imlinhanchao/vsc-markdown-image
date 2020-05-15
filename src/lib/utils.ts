@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { spawn } from 'child_process';
+import { spawn, exec } from 'child_process';
 import { tmpdir } from 'os';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -312,6 +312,33 @@ function hash(buffer:Buffer): string {
     return hash;
 }
 
+function noticeComment(context: vscode.ExtensionContext) {
+    let notice = context.globalState.get('notice');
+    let usetimes: number = context.globalState.get('usetimes') || 0;
+    if (!notice && usetimes > 100) {
+        confirm(locale['like.extension'], [locale['like.ok'], locale['like.no'], locale['like.later']])
+            .then((option) => {
+                switch(option) {
+                    case locale['like.ok']:
+                        exec('start https://marketplace.visualstudio.com/items?itemName=hancel.markdown-image');
+                        context.globalState.update('notice', true);
+                        break;
+                    case locale['like.no']:
+                        context.globalState.update('notice', true);
+                        break;
+                    case locale['like.later']:
+                        usetimes = 50;
+                        context.globalState.update('usetimes', usetimes);
+                        context.globalState.update('notice', false);
+                        break;
+                }
+            })
+            .catch(e => console.log(e));
+    } else if(!notice) {
+        context.globalState.update('usetimes', ++usetimes);
+    }
+}
+
 export default {
     getUpload,
     showProgress,
@@ -324,6 +351,7 @@ export default {
     getCurrentRoot,
     getCurrentFilePath,
     getTmpFolder,
+    noticeComment,
     sleep,
     confirm,
     prompt,

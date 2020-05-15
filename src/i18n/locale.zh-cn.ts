@@ -17,5 +17,9 @@ export default {
     uploading: "正在上传...",
     picture: "图",
     install_xclip: "您需要先安装 xclip 命令。",
-    powershell_not_found: "Powershell 不在你的 PATH 环境变量中。请添加把他加进去之后重试。"
+    powershell_not_found: "Powershell 不在你的 PATH 环境变量中。请添加把他加进去之后重试。",
+    "like.extension": "您喜欢这个扩展吗？给我一个好评吧！",
+    "like.ok": "好啊",
+    "like.no": "不要",
+    "like.later": "等等再说",
 };

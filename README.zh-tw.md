@@ -1,8 +1,10 @@
+[English Readme](README.md) / [简体中文说明](README.zh-cn.md) / 繁體中文說明
+
 # Markdown Image
 
 一個用於方便的在 Markdown 中插入圖片的擴展，支持將圖片存放在本地或第三方的圖床或對象存儲。
 
-[English Readme](README.md) / [简体中文说明](README.zh-cn.md) / 繁體中文說明
+❤ [Sponsor me](https://www.paypal.me/imlinhanchao) / [贊助開發者](https://afdian.net/@imlinhanchao)
 
 ## 功能
 
@@ -74,6 +76,10 @@ sudo yum install xclip
     ```
 
 ## 發布歷史
+
+### 1.0.3
+
+- 添加贊助鏈接。
 
 ### 1.0.2
 
