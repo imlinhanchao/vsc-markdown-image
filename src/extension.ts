@@ -66,6 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
                 await utils.editorEdit(editor?.selection.active, insertCode);
             }
 
+            utils.noticeComment(context);
         } catch (error) {
             console.dir(error);
             vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message}\n${error.toString()}`);
