@@ -4,7 +4,7 @@ English Readme / [简体中文说明](README.zh-cn.md) / [繁體中文說明](RE
 
 An extension for conveniently inserting pictures in Markdown, which supports storing pictures in local or third-party CDN service.
 
-❤ [Sponsor me](https://www.paypal.me/imlinhanchao) / [赞助开发者](https://afdian.net/@imlinhanchao)
+❤ [Sponsor me](https://www.paypal.me/imlinhanchao) / [赞助开发者](http://sponsor.hancel.org)
 
 ## Features
 
@@ -75,6 +75,10 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+
+### 1.0.4
+
+- Update sponsored links.
 
 ### 1.0.3
 

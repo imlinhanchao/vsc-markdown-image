@@ -4,7 +4,7 @@
 
 一個用於方便的在 Markdown 中插入圖片的擴展，支持將圖片存放在本地或第三方的圖床或對象存儲。
 
-❤ [Sponsor me](https://www.paypal.me/imlinhanchao) / [贊助開發者](https://afdian.net/@imlinhanchao)
+❤ [Sponsor me](https://www.paypal.me/imlinhanchao) / [贊助開發者](http://sponsor.hancel.org)
 
 ## 功能
 
@@ -76,6 +76,10 @@ sudo yum install xclip
     ```
 
 ## 發布歷史
+
+### 1.0.4
+
+- 更新贊助鏈接。
 
 ### 1.0.3
 
