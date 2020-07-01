@@ -30,5 +30,5 @@
     "markdown-image.qiniu.south": "华南",
     "markdown-image.qiniu.na": "北美",
     "markdown-image.qiniu.sa": "东南亚",
-    "markdown-image.DIY.path": "你写的代码的绝对路径。 你的代码必须 exports 一个像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函数。\n\n比如：\n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```\n函数参数分别是：\n- `filePath`: 文件的绝对路径。  \n- `savePath`: 保存的文件的路径，根据 `#markdown-image.base.fileNameFormat#` 生成。  \n- `markdownPath`: 正在编辑的 markdown 文件的路径。"
+    "markdown-image.DIY.path": "你写的代码的绝对路径。你可以写一个 Node.js 代码文件用于上传，并在此处填写文件路径。你的代码必须 exports 一个像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函数。\n\n比如：\n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```\n函数参数分别是：\n- `filePath`: 文件的绝对路径。  \n- `savePath`: 保存的文件的路径，根据 `#markdown-image.base.fileNameFormat#` 生成。  \n- `markdownPath`: 正在编辑的 markdown 文件的路径。"
 }
