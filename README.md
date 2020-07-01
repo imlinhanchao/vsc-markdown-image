@@ -78,6 +78,11 @@ sudo yum install xclip
 
 ### 1.0.4
 
+- Fixed file name include space could not preview.
+- Fixed random variable not work.
+  
+### 1.0.4
+
 - Update sponsored links.
 
 ### 1.0.3

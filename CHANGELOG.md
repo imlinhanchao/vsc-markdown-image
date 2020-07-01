@@ -1,7 +1,12 @@
 # Change Log
 All notable changes to the "markdown-image-helper" extension will be documented in this file.
 
-## [1.0.3] - 2020-05-18
+## [1.0.5] - 2020-07-01
+### Fixed
+- Fixed file name include space could not preview.
+- Fixed random variable not work.
+
+## [1.0.4] - 2020-05-18
 ### Updated
 - Update sponsored links.
 
