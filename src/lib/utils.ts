@@ -143,9 +143,13 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
                 break;
             }
             case 'rand,(\\d+)': {
-                let n = parseInt(mat[1]);
-                let data = parseInt((Math.random() * n).toString()).toString();
-                saveName = saveName.replace(reg, data);
+                for(let j = 0; j < mat.length; j++) {
+                    let numberMat = mat[j].match(/\d+/);
+                    if (!numberMat) { continue; }
+                    let n = parseInt(numberMat[0]);
+                    let data = parseInt((Math.random() * n).toString()).toString();
+                    saveName = saveName.replace(mat[j], data);
+                }
                 break;
             }
         }
