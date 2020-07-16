@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image-helper" extension will be documented in this file.
 
+## [1.0.6] - 2020-07-16
+### Fixed
+- Fixed the date variable has not consider the time zone.
+
 ## [1.0.5] - 2020-07-01
 ### Fixed
 - Fixed file name include space could not preview.

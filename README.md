@@ -76,7 +76,11 @@ sudo yum install xclip
 
 ## Release Notes
 
-### 1.0.4
+### 1.0.6
+
+- Fixed the date variable has not consider the time zone.
+
+### 1.0.5
 
 - Fixed file name include space could not preview.
 - Fixed random variable not work.
