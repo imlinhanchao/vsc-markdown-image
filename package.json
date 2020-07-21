@@ -46,14 +46,14 @@
                 "command": "markdown-image.paste",
                 "key": "alt+shift+v",
                 "mac": "alt+shift+v",
-                "when": "editorLangId == markdown"
+                "when": "editorLangId == markdown || editorLangId == mdx"
             }
         ],
         "menus": {
             "editor/context": [
                 {
                     "command": "markdown-image.paste",
-                    "when": "editorLangId == markdown",
+                    "when": "editorLangId == markdown || editorLangId == mdx",
                     "group": "9_cutcopypaste@4"
                 }
             ]
