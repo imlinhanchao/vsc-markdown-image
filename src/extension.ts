@@ -53,7 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
                     selection = selections?.[i] && editor?.document.getText(selections[i]);
                 }
                 
-                let text = `![${selection}](${encodeURIComponent(urls[i]).replace(/%2F/g, '/')})  \n`;
+                let text = `![${selection}](${encodeURIComponent(urls[i]).replace(/%2F/g, '/').replace(/%3A/g, ':')})  \n`;
                 if (selections?.[i] && selections?.length > 1) {
                     await utils.editorEdit(selections[i], text);
                 }
