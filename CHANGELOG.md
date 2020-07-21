@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image-helper" extension will be documented in this file.
 
+## [1.0.7] - 2020-07-21
+### Fixed
+- Fixed launch extension home page failed at MacOS and Linux.
+- Fixed the colon of the picture address is incorrectly encode.
+
 ## [1.0.6] - 2020-07-16
 ### Fixed
 - Fixed the date variable has not consider the time zone.
