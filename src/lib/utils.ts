@@ -316,6 +316,18 @@ function hash(buffer:Buffer): string {
     return hash;
 }
 
+function getOpenCmd(): string {
+    let cmd = 'explorer';
+    if (process.platform === 'win32') {
+        cmd = 'explorer';
+    } else if (process.platform === 'linux') {
+        cmd = 'xdg-open';
+    } else if (process.platform === 'darwin') {
+        cmd = 'open';
+    }
+    return cmd;
+}
+
 function noticeComment(context: vscode.ExtensionContext) {
     let notice = context.globalState.get('notice');
     let usetimes: number = context.globalState.get('usetimes') || 0;
@@ -324,7 +336,7 @@ function noticeComment(context: vscode.ExtensionContext) {
             .then((option) => {
                 switch(option) {
                     case locale['like.ok']:
-                        exec('start https://marketplace.visualstudio.com/items?itemName=hancel.markdown-image');
+                        exec(`${getOpenCmd()} https://marketplace.visualstudio.com/items?itemName=hancel.markdown-image`);
                         context.globalState.update('notice', true);
                         break;
                     case locale['like.no']:
