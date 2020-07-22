@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.0.8
+- Add mdx support.
+
 ### 1.0.7
 - Fixed launch extension home page failed at MacOS and Linux.
 - Fixed the colon of the picture address is incorrectly encode.

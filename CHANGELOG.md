@@ -1,5 +1,9 @@
 # Change Log
-All notable changes to the "markdown-image-helper" extension will be documented in this file.
+All notable changes to the "markdown-image" extension will be documented in this file.
+
+## [1.0.8] - 2020-07-22
+### Added
+- Added mdx support.
 
 ## [1.0.7] - 2020-07-21
 ### Fixed
