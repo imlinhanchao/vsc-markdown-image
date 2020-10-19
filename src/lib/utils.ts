@@ -102,43 +102,43 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
                 break;
             }
             case 'YY': {
-                let data = new Date().getUTCFullYear().toString();
+                let data = new Date().getFullYear().toString();
                 saveName = saveName.replace(reg, data);
                 break;
             }
             case 'MM': {
-                let data = (new Date().getUTCMonth() + 1).toString().padStart(2, '0');
+                let data = (new Date().getMonth() + 1).toString().padStart(2, '0');
                 saveName = saveName.replace(reg, data);
                 break;
             }
             case 'DD': {
-                let data = (new Date().getUTCDate() + 1).toString().padStart(2, '0');
+                let data = (new Date().getDate()).toString().padStart(2, '0');
                 saveName = saveName.replace(reg, data);
                 break;
             }
             case 'hh': {
-                let hours = new Date().getUTCHours();
+                let hours = new Date().getHours();
                 let data = (hours > 12 ? hours - 12 : hours).toString().padStart(2, '0');
                 saveName = saveName.replace(reg, data);
                 break;
             }
             case 'HH': {
-                let data = new Date().getUTCHours().toString().padStart(2, '0');
+                let data = new Date().getHours().toString().padStart(2, '0');
                 saveName = saveName.replace(reg, data);
                 break;
             }
             case 'mm': {
-                let data = new Date().getUTCMinutes().toString().padStart(2, '0');
+                let data = new Date().getMinutes().toString().padStart(2, '0');
                 saveName = saveName.replace(reg, data);
                 break;
             }
             case 'ss': {
-                let data = new Date().getUTCSeconds().toString().padStart(2, '0');
+                let data = new Date().getSeconds().toString().padStart(2, '0');
                 saveName = saveName.replace(reg, data);
                 break;
             }
             case 'mss': {
-                let data = new Date().getUTCMilliseconds().toString().padStart(3, '0');
+                let data = new Date().getMilliseconds().toString().padStart(3, '0');
                 saveName = saveName.replace(reg, data);
                 break;
             }
