@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.0.9
+- Fixed the problem of getting wrong date and hour in filename formatting.
+
 ### 1.0.8
 - Add mdx support.
 

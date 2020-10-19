@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.0.9] - 2020-10-19
+### Fixed
+- Fixed the problem of getting wrong date and hour in filename formatting.
+
 ## [1.0.8] - 2020-07-22
 ### Added
 - Added mdx support.
