@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.0.10] - 2020-12-06
+### Fixed
+- Fix the variable `$mdname` does not remove the extension name of `md`.
+
 ## [1.0.9] - 2020-10-19
 ### Fixed
 - Fixed the problem of getting wrong date and hour in filename formatting.

@@ -75,6 +75,8 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+### 1.0.10
+- Fix the variable `$mdname` does not remove the extension name of `md`.
 
 ### 1.0.9
 - Fixed the problem of getting wrong date and hour in filename formatting.
