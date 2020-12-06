@@ -87,7 +87,7 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
                 break;
             }
             case 'mdname': {
-                let data = path.basename(getCurrentFilePath(), '.md');
+                let data = path.basename(getCurrentFilePath(), path.extname(getCurrentFilePath()));
                 saveName = saveName.replace(reg, data);
                 break;
             }
