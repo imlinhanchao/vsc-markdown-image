@@ -27,7 +27,7 @@ class Imgur implements Upload
             let headers = this.config.sm_ms.token ? {
                 Authorization: `Basic ${this.config.sm_ms.token}`
             } : undefined;
-            let rsp = await got.post('https://sm.ms/api/v2/upload?inajax=1', {
+            let rsp = await got.post('https://sm.ms/api/v2/upload', {
                 body: form,
                 headers
             });
