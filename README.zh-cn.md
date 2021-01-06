@@ -77,6 +77,11 @@ sudo yum install xclip
 
 
 ## 发布历史
+### 1.0.11
+- 修正 `sm.ms` API 地址。
+- 修复了在 Linux 中找不到带空格的文件名的问题。
+- 添加了 `sm.ms` 没有设置 token 的提示。
+
 ### 1.0.10
 - 修复变量 `$mdname` 没有去除非 `md` 后缀名的问题。
 

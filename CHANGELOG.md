@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.0.11] - 2021-01-06
+### Fixed
+- Fix api url of `sm.ms`.
+- Fixed the file name with spaces cannot be found in Linux.
+### Added
+- Added prompt without token in `sm.ms`.
+
 ## [1.0.10] - 2020-12-06
 ### Fixed
 - Fix the variable `$mdname` does not remove the extension name of `md`.

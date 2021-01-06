@@ -75,6 +75,11 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+
+### 1.0.11
+- Fix api url of `sm.ms`.
+- Fixed the file name with spaces cannot be found in Linux.
+- Added prompt without token in `sm.ms`.
 ### 1.0.10
 - Fix the variable `$mdname` does not remove the extension name of `md`.
 
