@@ -23,11 +23,14 @@ class Imgur implements Upload
         try {
             const form = new formData();
             form.append('smfile', fs.createReadStream(filePath));
-            if (this.config.sm_ms.token) { form.append('file_id', 0); }
-            let headers = this.config.sm_ms.token ? {
+            if(!this.config.sm_ms.token) {
+                vscode.window.showInformationMessage(`${$l['smms.token-miss']}`);
+                return null;
+            }
+            let headers = {
                 Authorization: `Basic ${this.config.sm_ms.token}`
-            } : undefined;
-            let rsp = await got.post('https://sm.ms/api/v2/upload?inajax=1', {
+            };
+            let rsp = await got.post('https://sm.ms/api/v2/upload', {
                 body: form,
                 headers
             });

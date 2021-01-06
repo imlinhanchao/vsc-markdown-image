@@ -15,6 +15,7 @@ export default {
     'qiniu.south': "South China",
     'qiniu.na': "North America",
     'qiniu.sa': "Southeast Asia",
+    'smms.token-miss': 'Please setting sm.ms token first.',
     named_paste: "Name the picture you pasted (don't include extname, it's will be replace the ${filename} in the format).",
     uploading: "Uploading...",
     picture: "picture",

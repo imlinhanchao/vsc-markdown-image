@@ -13,6 +13,7 @@ export default {
     "qiniu.south": "華南",
     "qiniu.na": "北美",
     "qiniu.sa": "東南亞",
+    'smms.token-miss': '請先設置 sm.ms token。',
     named_paste: "給你粘貼的圖片起個名字（不需要包含後綴名，它將替換掉格式字符串中的 ${filename}）。",
     uploading: "正在上傳...",
     picture: "圖",
