@@ -42,7 +42,7 @@ function showProgress(message: string) {
             let timer = setInterval(() => {
                 if (show) { return; }
                 clearInterval(timer);
-                resolve();
+                resolve(show);
             }, 100);
         });
     });
@@ -82,7 +82,7 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
         switch(variables[i]) {
             case 'filename': {
                 let data = !isPaste ? path.basename(filePath, path.extname(filePath)) : 
-                    (path.basename(await prompt(locale['named_paste'], path.basename(filePath, '.png'))) || '');
+                    (path.basename((await prompt(locale['named_paste'], path.basename(filePath, '.png'))) || '') || '');
                 saveName = saveName.replace(reg, data);
                 break;
             }
@@ -295,13 +295,13 @@ function sleep (time: number) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-function confirm(message: string, options: string[]) : Promise<string> {
+function confirm(message: string, options: string[]) : Promise<string|undefined> {
     return new Promise((resolve, reject) => {
         return vscode.window.showInformationMessage(message, ...options).then(resolve);
     });
 }
 
-function prompt(message: string, defaultVal: string = '') : Promise<string> {
+function prompt(message: string, defaultVal: string = '') : Promise<string|undefined> {
     return new Promise((resolve, reject) => {
         return vscode.window.showInputBox({
             value: defaultVal,
