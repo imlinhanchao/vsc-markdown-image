@@ -262,7 +262,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                     vscode.window.showInformationMessage(locale['install_xclip']);
                     return;
                 }
-                let match = result.trim().match(/((\/[^\/]+)+\/[^\/]*?\.(jpg|jpeg|gif|bmp|png))/g);
+                let match = decodeURI(result).trim().match(/((\/[^\/]+)+\/[^\/]*?\.(jpg|jpeg|gif|bmp|png))/g);
                 resolve(match || []);
             });
         }
