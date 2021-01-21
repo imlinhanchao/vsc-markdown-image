@@ -12,7 +12,7 @@
     "markdown-image.base.uploadMethod.SM.MS": "将图像上传到 sm.ms。 您如果有一个帐户,可以通过 markdown-image.sm_ms.token 配置 `Secret Token` 。",
     "markdown-image.base.uploadMethod.Qiniu": "将图片上传到七牛对象存储，你有很多项目需要配置。",
     "markdown-image.base.uploadMethod.DIY": "您可以自定义用于上传的代码。您需要通过 markdown-image.DIY.path 配置代码路径。",
-    "markdown-image.base.fileNameFormat": "上传的文件名格式字符串。不支持 `Imgur` 和 `SM.MS`。 你有一些变量可以使用：  \n\n- `${filename}`: 原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称。  \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestramp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n-`${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。",
+    "markdown-image.base.fileNameFormat": "上传的文件名格式字符串。不支持 `Imgur` 和 `SM.MS`。 你有一些变量可以使用：  \n\n- `${filename}`: 原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称。  \n- `${path}`: 正在编辑的Markdown文件相对于根目录的路径。  \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestramp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n-`${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。",
     "markdown-image.local.path": "本地的图片存储目录（如果不存在，则自动创建）。支持相对路径，相对于所粘贴的 Markdown 文件。`/` 表示打开的文件夹根目录。。",
     "markdown-image.coding.path": "仓库中的图片保存目录（如果不存在，则自动创建）。",
     "markdown-image.coding.token": "Coding 的个人[访问令牌](https://help.coding.net/docs/member/tokens.html)，用于访问仓库，上传图片。",

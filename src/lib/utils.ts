@@ -73,7 +73,7 @@ function getSelections() : vscode.Selection[] | null{
 async function formatName(format: string, filePath: string, isPaste: boolean): Promise<string> {
     let saveName = format;
     let variables = [
-        'filename', 'mdname', 'hash', 'timestramp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)'
+        'filename', 'mdname', 'path', 'hash', 'timestramp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)'
     ];
     for (let i = 0; i < variables.length; i++) {
         let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
@@ -88,6 +88,11 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
             }
             case 'mdname': {
                 let data = path.basename(getCurrentFilePath(), path.extname(getCurrentFilePath()));
+                saveName = saveName.replace(reg, data);
+                break;
+            }
+            case 'path': {
+                let data = path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1);
                 saveName = saveName.replace(reg, data);
                 break;
             }

@@ -75,6 +75,8 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+### 1.0.12
+- Added file name variable `${path}`: "The path of the Markdown file being edited relative to the root directory."
 
 ### 1.0.11
 - Fix api url of `sm.ms`.

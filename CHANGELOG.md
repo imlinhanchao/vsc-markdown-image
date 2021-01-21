@@ -1,9 +1,13 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.0.12] - 2021-01-21
+### Added
+- Added file name variable `${path}`: "The path of the Markdown file being edited relative to the root directory."
+
 ## [1.0.11] - 2021-01-06
 ### Fixed
-- Fix api url of `sm.ms`.
+- Fixed api url of `sm.ms`.
 - Fixed the file name with spaces cannot be found in Linux.
 ### Added
 - Added prompt without token in `sm.ms`.
