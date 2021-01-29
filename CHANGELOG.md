@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.0.14] - 2021-01-29
+### Fixed
+- Fixed incompatibility with Windows 7.
+
 ## [1.0.13] - 2021-01-29
 ### Fixed
 - Fixed getting the path resolution error of the clipboard picture in Windows.

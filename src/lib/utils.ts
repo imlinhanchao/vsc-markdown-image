@@ -218,6 +218,9 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                 '-file', scriptPath,
                 imagePath
             ]);
+            // the powershell can't auto exit in windows 7 .
+            let timer = setTimeout(() => powershell.kill(), 2000);
+
             powershell.on('error', (e: any) => {
                 if (e.code === 'ENOENT') {
                     vscode.window.showErrorMessage(locale['powershell_not_found']);
@@ -225,11 +228,14 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                     vscode.window.showErrorMessage(e);
                 }
             });
+
             powershell.on('exit', function (code, signal) {
                 // console.debug('exit', code, signal);
             });
             powershell.stdout.on('data', (data) => {
                 data.toString().split('\n').forEach(d => output += (d.indexOf('Active code page:') < 0 ? d : ''));
+                clearTimeout(timer);
+                timer = setTimeout(() => powershell.kill(), 2000);
             });
             powershell.on('close', (code) => {
                 resolve(output.trim().split('\n').map(i => i.trim()));

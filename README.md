@@ -75,6 +75,10 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+
+### 1.0.14
+- Fixed incompatibility with Windows 7.
+
 ### 1.0.13
 - Fixed getting the path resolution error of the clipboard picture in Windows.
 
