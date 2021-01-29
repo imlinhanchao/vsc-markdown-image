@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.0.13] - 2021-01-29
+### Fixed
+- Fixed getting the path resolution error of the clipboard picture in Windows.
+
 ## [1.0.12] - 2021-01-21
 ### Added
 - Added file name variable `${path}`: "The path of the Markdown file being edited relative to the root directory."

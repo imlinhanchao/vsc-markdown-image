@@ -2,7 +2,7 @@
     "name": "markdown-image",
     "displayName": "Markdown Image",
     "description": "Easy to insert a image to markdown",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "publisher": "hancel",
     "engines": {
         "vscode": "^1.33.0"
