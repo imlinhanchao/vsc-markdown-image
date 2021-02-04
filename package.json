@@ -198,6 +198,7 @@
         "https-proxy-agent": "^4.0.0",
         "qiniu": "^7.3.1",
         "turndown": "^7.0.0",
+        "turndown-plugin-gfm": "^1.0.2",
         "vscode-nls": "^4.1.2"
     }
 }

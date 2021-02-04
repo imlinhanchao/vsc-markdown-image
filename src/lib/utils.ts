@@ -8,6 +8,7 @@ import * as crypto from 'crypto';
 import Uploads from './uploads';
 import i18n from '../i18n/index';
 import * as TurndownService from 'turndown';
+import { gfm } from 'turndown-plugin-gfm';
 
 let pkg = packages as any;
 let locale = i18n();
@@ -179,6 +180,7 @@ function mkdirs(dirname: string) {
 
 function html2Markdown(data: string) : string {
     let turndownService = new TurndownService();
+    turndownService.use(gfm);
     return turndownService.turndown(data);
 }
 
