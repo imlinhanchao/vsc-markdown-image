@@ -7,6 +7,7 @@ import * as packages from '../../package.json';
 import * as crypto from 'crypto';
 import Uploads from './uploads';
 import i18n from '../i18n/index';
+import * as TurndownService from 'turndown';
 
 let pkg = packages as any;
 let locale = i18n();
@@ -176,6 +177,11 @@ function mkdirs(dirname: string) {
     }  
 }
 
+function html2Markdown(data: string) : string {
+    let turndownService = new TurndownService();
+    return turndownService.turndown(data);
+}
+
 function getConfig() {
     let keys: string[] = Object.keys(pkg.contributes.configuration.properties);
     let values: Config = {};
@@ -280,6 +286,58 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
     });
 }
 
+function getRichText() : Promise<string>{
+    return new Promise((resolve, reject) => {    
+        let platform = process.platform;
+        if (platform === 'win32') {
+            // Windows
+            const scriptPath = path.join(__dirname, '..', '..' , 'asserts/rich.ps1');
+    
+            let command = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
+            let powershellExisted = fs.existsSync(command);
+            let output = '';
+            if (!powershellExisted) {
+                command = "powershell";
+            }
+    
+            const powershell = spawn(command, [
+                '-noprofile',
+                '-noninteractive',
+                '-nologo',
+                '-sta',
+                '-executionpolicy', 'unrestricted',
+                '-windowstyle', 'hidden',
+                '-file', scriptPath,
+            ]);
+            // the powershell can't auto exit in windows 7 .
+            let timer = setTimeout(() => powershell.kill(), 2000);
+
+            powershell.on('error', (e: any) => {
+                if (e.code === 'ENOENT') {
+                    vscode.window.showErrorMessage(locale['powershell_not_found']);
+                } else {
+                    vscode.window.showErrorMessage(e);
+                }
+            });
+
+            powershell.on('exit', function (code, signal) {
+                // console.debug('exit', code, signal);
+            });
+            powershell.stdout.on('data', (data) => {
+                data.toString().split('\n').forEach(d => output += (d.indexOf('Active code page:') < 0 ? d : ''));
+                clearTimeout(timer);
+                timer = setTimeout(() => powershell.kill(), 2000);
+            });
+            powershell.on('close', (code) => {
+                resolve(output.replace('</html>', '').replace('</body>', '').split('<body>').slice(-1)[0].trim());
+            });
+        }
+        else { 
+            resolve(''); 
+        }
+    });
+}
+
 function getCurrentRoot() : string {
     const editor = vscode.window.activeTextEditor;
     if (!editor || !vscode.workspace.workspaceFolders || vscode.workspace.workspaceFolders.length < 1) { return ''; }
@@ -372,9 +430,11 @@ export default {
     editorEdit,
     formatName,
     mkdirs,
+    html2Markdown,
     getConfig,
     getSelections,
     getPasteImage,
+    getRichText,
     getCurrentRoot,
     getCurrentFilePath,
     getTmpFolder,

@@ -83,6 +83,25 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(configCommand);
 
+    let richTextCommand = vscode.commands.registerCommand('markdown-image.paste-rich-text', async () => {
+        let stop = () => {};
+        try {
+            let editor = vscode.window.activeTextEditor;
+            let text = await utils.getRichText();
+
+            if(text) { 
+                utils.editorEdit(editor?.selection, utils.html2Markdown(text));
+            }
+        } catch (error) {
+            console.dir(error);
+            vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message}\n${error.toString()}`);
+        }
+
+        stop(); 
+    });
+
+    context.subscriptions.push(richTextCommand);
+
     vscode.workspace.onDidChangeConfiguration(function(event) {
         config = utils.getConfig();
         upload = utils.getUpload(config);
