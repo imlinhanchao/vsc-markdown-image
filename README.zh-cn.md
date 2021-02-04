@@ -77,6 +77,10 @@ sudo yum install xclip
 
 
 ## 发布历史
+
+### 1.1.0
+- 添加了 Beta 功能，支持粘贴富文本格式。 （仅支持Windows）
+
 ### 1.0.14
 - 修复了与 Windows 7 不兼容的问题。
 

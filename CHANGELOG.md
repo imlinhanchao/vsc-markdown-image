@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.0] - 2021-02-04
+### Added
+- Added Beta feature, support paste rich text. (Only supports Windows)
+
 ## [1.0.14] - 2021-01-29
 ### Fixed
 - Fixed incompatibility with Windows 7.

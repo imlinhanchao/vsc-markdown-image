@@ -5,6 +5,7 @@
     "markdown-image.DIY": "自定義",
     "markdown-image.command.paste": "粘貼圖片",
     "markdown-image.command.config": "Markdown 圖片配置",
+    "markdown-image.command.paste-rich-text": "粘貼富文本(Beta)",
     "markdown-image.base.uploadMethod": "上傳圖片的方式。到本地或其他圖片 CDN 服務。",
     "markdown-image.base.uploadMethod.Local": "將圖像上傳到項目目錄。您可以使用 markdown-image.local.path 設置上傳的相對路徑。",
     "markdown-image.base.uploadMethod.Coding": "將圖像上傳到 Coding.net 中的 Git 存儲庫。您可以通過markdown-image.coding.repository 配置存儲庫. 您必須通過 markdown-image.coding.token 配置個人訪問令牌訪問存儲庫。",

@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.0
+- Added Beta feature, support paste rich text. (Only supports Windows)
+
 ### 1.0.14
 - Fixed incompatibility with Windows 7.
 

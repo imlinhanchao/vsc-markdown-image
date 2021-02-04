@@ -2,12 +2,11 @@
     "name": "markdown-image",
     "displayName": "Markdown Image",
     "description": "Easy to insert a image to markdown",
-    "version": "1.0.14",
+    "version": "1.1.0",
     "publisher": "hancel",
     "engines": {
         "vscode": "^1.33.0"
     },
-    
     "keywords": [
         "Picture",
         "cdn",
@@ -24,7 +23,8 @@
     ],
     "activationEvents": [
         "onCommand:markdown-image.paste",
-        "onCommand:markdown-image.config"
+        "onCommand:markdown-image.config",
+        "onCommand:markdown-image.paste-rich-text"
     ],
     "repository": "https://github.com/imlinhanchao/vsc-markdown-image",
     "main": "./out/extension",
@@ -39,6 +39,11 @@
                 "command": "markdown-image.config",
                 "category": "Markdown Image",
                 "title": "%markdown-image.command.config%"
+            },
+            {
+                "command": "markdown-image.paste-rich-text",
+                "category": "Markdown Image",
+                "title": "%markdown-image.command.paste-rich-text%"
             }
         ],
         "keybindings": [
@@ -55,6 +60,11 @@
                     "command": "markdown-image.paste",
                     "when": "editorLangId == markdown || editorLangId == mdx",
                     "group": "9_cutcopypaste@4"
+                },
+                {
+                    "command": "markdown-image.paste-rich-text",
+                    "when": "isWindows && editorLangId == markdown || editorLangId == mdx",
+                    "group": "9_cutcopypaste@5"
                 }
             ]
         },
@@ -174,11 +184,12 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^3.1.4",
-        "vscode": "^1.1.25",
-        "tslint": "^5.8.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
+        "@types/turndown": "^5.0.0",
+        "tslint": "^5.8.0",
+        "typescript": "^3.1.4",
+        "vscode": "^1.1.25"
     },
     "dependencies": {
         "coding-picbed": "0.0.12",
@@ -186,6 +197,7 @@
         "got": "^10.7.0",
         "https-proxy-agent": "^4.0.0",
         "qiniu": "^7.3.1",
+        "turndown": "^7.0.0",
         "vscode-nls": "^4.1.2"
     }
 }
