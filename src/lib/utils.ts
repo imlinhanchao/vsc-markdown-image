@@ -178,7 +178,7 @@ function mkdirs(dirname: string) {
 }
 
 function html2Markdown(data: string) : string {
-    let turndownService = new TurndownService();
+    let turndownService = new TurndownService({ codeBlockStyle: 'fenced', headingStyle: 'atx', });
     return turndownService.turndown(data);
 }
 
@@ -291,7 +291,7 @@ function getRichText() : Promise<string>{
         let platform = process.platform;
         if (platform === 'win32') {
             // Windows
-            const scriptPath = path.join(__dirname, '..', '..' , 'asserts/rich.ps1');
+            const scriptPath = path.join(__dirname, '..', '..' , 'asserts/rtf.ps1');
     
             let command = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
             let powershellExisted = fs.existsSync(command);
@@ -332,8 +332,29 @@ function getRichText() : Promise<string>{
                 resolve(output.replace('</html>', '').replace('</body>', '').split('<body>').slice(-1)[0].trim());
             });
         }
-        else { 
+        else if (platform === 'darwin') {
+            // Mac
+            vscode.window.showInformationMessage('Not support in macos yet.');
             resolve(''); 
+        } else {
+            // Linux 
+    
+            let scriptPath = path.join(__dirname, '..', '..' , 'asserts/rtf.sh');
+            let result = ''
+            let ascript = spawn('sh', [scriptPath]);
+            ascript.on('error', (e: any) => {
+                vscode.window.showErrorMessage(e);
+            });
+            ascript.on('exit', (code, signal) => {
+                if (result === "no xclip") {
+                    vscode.window.showInformationMessage(locale['install_xclip']);
+                    return;
+                }
+                resolve(result);
+            });
+            ascript.stdout.on('data', (data) => {
+                result += data.toString().trim();
+            });
         }
     });
 }

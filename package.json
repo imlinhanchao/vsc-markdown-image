@@ -63,7 +63,7 @@
                 },
                 {
                     "command": "markdown-image.paste-rich-text",
-                    "when": "isWindows && editorLangId == markdown || editorLangId == mdx",
+                    "when": "editorLangId == markdown || editorLangId == mdx",
                     "group": "9_cutcopypaste@5"
                 }
             ]
