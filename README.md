@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.1
+- Fixed the path contains Chinese prompts cannot be found when pasting the copied picture.
+
 ### 1.1.0
 - Added Beta feature, support paste rich text. (Only supports Windows)
 
