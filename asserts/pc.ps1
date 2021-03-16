@@ -1,5 +1,10 @@
 param($imagePath)
 
+Add-Type -AssemblyName System.Text.Encoding
+function EncodingUTF8($data){
+    return [System.Text.Encoding]::Default.GetString([System.Text.Encoding]::UTF8.GetBytes($data));
+}
+
 # Adapted from https://github.com/octan3/img-clipboard-dump/blob/master/dump-clipboard-png.ps1
 chcp 65001 | out-null
 
@@ -12,7 +17,9 @@ if ($null -eq $img) {
         "no image"
         Exit 1
     }
-    $img
+    ($imagePath = [IO.Path]::GetDirectoryName($imagePath) + '\' + [IO.Path]::GetFileNameWithoutExtension($img) + [IO.Path]::GetExtension($img)) | out-null
+    Copy-Item $img $imagePath | out-null
+    EncodingUTF8($imagePath)
     Exit 0
 }
 
