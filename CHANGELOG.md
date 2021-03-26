@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.4] - 2021-03-26
+### Added
+- Added upload method `Data URL`.
+### Fixed
+- Fixed paste multiple documents invalid.
+
 ## [1.1.3] - 2021-03-26
 ### Fixed
 - Fixed the filename format variable `${path}` were uploaded to the `Coding` failure in the Windows.

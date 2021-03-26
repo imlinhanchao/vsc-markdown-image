@@ -76,6 +76,10 @@ sudo yum install xclip
     ```
 
 ## 發布歷史
+### 1.1.4
+- 新增插入 Markdown 圖片方式： `Data URL`.
+- 修正粘貼多個文件無效問題。
+
 ### 1.1.3
 - 修复了文件名變量`${path}`導致在 Windows 系統下存在兩級以上 Markdown 路徑時，`Coding` 圖床上傳失敗問題。
 

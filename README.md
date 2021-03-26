@@ -76,6 +76,10 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.4
+- Added upload method `Data URL`.
+- Fixed paste multiple documents invalid.
+
 ### 1.1.3
 - Fixed the filename format variable `${path}` were uploaded to the `Coding` failure in the Windows.
 
