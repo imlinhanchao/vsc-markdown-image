@@ -33,7 +33,7 @@ class Coding implements Upload
             while (!Coding.coding.isInitialized()) { await utils.sleep(100); }  
 
             let saveFolder = this.config.coding.path;
-            let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'), savePath);
+            let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'), savePath.replace(/\\/g, '/'));
 
             return data.urls[0].replace('http:', 'https:');
         }

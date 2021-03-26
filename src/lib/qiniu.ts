@@ -25,7 +25,7 @@ class Qiniu implements Upload
 
     async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
-            let key = savePath || (utils.hash(fs.readFileSync(filePath)) + path.extname(filePath));
+            let key = savePath.replace(/\\/g, '/') || (utils.hash(fs.readFileSync(filePath)) + path.extname(filePath));
             let token = this.getToken(key);
             let config: qiniu.conf.ConfigOptions = new qiniu.conf.Config();
             switch(this.config.qiniu.zone) {
