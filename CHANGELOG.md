@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.2] - 2021-03-26
+### Fixed
+- Fixed the path contains Chinese prompts cannot be found when pasting the copied picture again. 😂
+
 ## [1.1.1] - 2021-03-16
 ### Fixed
 - Fixed the path contains Chinese prompts cannot be found when pasting the copied picture.
