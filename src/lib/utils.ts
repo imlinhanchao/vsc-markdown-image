@@ -19,6 +19,7 @@ function getUpload(config: Config) : Upload | null {
         case 'Coding': return new Uploads.Coding(config);
         case 'Imgur': return new Uploads.Imgur(config);
         case 'SM.MS': return new Uploads.SM_MS(config);
+        case 'Data URL': return new Uploads.DataUrl(config);
         case 'Qiniu': return new Uploads.Qiniu(config);
         case 'DIY': return new Uploads.Define(config);
         case '本地': return new Uploads.Local(config);
@@ -58,6 +59,16 @@ function editorEdit(selection: vscode.Selection | vscode.Position | undefined | 
             if(selection) {
                 editBuilder.replace(selection, text);
             }
+        }).then(resolve);
+    });
+}
+
+function insertToEnd(text: string) :Promise<boolean> {
+    return new Promise((resolve, reject) => {
+        let linenumber = vscode.window.activeTextEditor?.document.lineCount || 1;
+        let pos = vscode.window.activeTextEditor?.document.lineAt(linenumber - 1).range.end || new vscode.Position(0, 0);
+        vscode.window.activeTextEditor?.edit(editBuilder => {
+            editBuilder.insert(pos, text);
         }).then(resolve);
     });
 }
@@ -242,7 +253,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                 // console.debug('exit', code, signal);
             });
             powershell.stdout.on('data', (data) => {
-                data.toString().split('\n').forEach(d => output += (d.indexOf('Active code page:') < 0 ? d : ''));
+                data.toString().split('\n').forEach(d => output += (d.indexOf('Active code page:') < 0 ? d + '\n' : ''));
                 clearTimeout(timer);
                 timer = setTimeout(() => powershell.kill(), 2000);
             });
@@ -455,6 +466,7 @@ export default {
     getUpload,
     showProgress,
     editorEdit,
+    insertToEnd,
     formatName,
     mkdirs,
     html2Markdown,

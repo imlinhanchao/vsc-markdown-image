@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
             let savePath = utils.getTmpFolder();
             savePath = path.join(savePath, `pic_${new Date().getTime()}.png`);
             let images = await utils.getPasteImage(savePath);
-            images = images.filter(img => ['.jpg', '.jpeg', '.gif', '.bmp', '.png', '.webp'].find(ext => img.endsWith(ext)));
+            images = images.filter(img => ['.jpg', '.jpeg', '.gif', '.bmp', '.png', '.webp', '.svg'].find(ext => img.endsWith(ext)));
 
             console.log(`Get ${images.length} Images`);
 
@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
                 if(p) { urls.push(p); }
             }
 
-            let insertCode = '';
+            let insertCode = '', insertTag = '';
             for (let i = 0; i < urls.length; i++) {
                 let selection = `${$l['picture']} ${index++}`;
                 if (selections?.length === 1 && editor?.document.getText(selections[0])) {
@@ -53,17 +53,38 @@ export function activate(context: vscode.ExtensionContext) {
                     selection = selections?.[i] && editor?.document.getText(selections[i]);
                 }
                 
-                let text = `![${selection}](${encodeURIComponent(urls[i]).replace(/%2F/g, '/').replace(/%3A/g, ':')})  \n`;
-                if (selections?.[i] && selections?.length > 1) {
-                    await utils.editorEdit(selections[i], text);
+                if (config.base.uploadMethod !== 'Data URL') { 
+                    urls[i] = encodeURIComponent(urls[i].toString()).replace(/%2F/g, '/').replace(/%3A/g, ':');
+                    let text = `![${selection}](${urls[i]})  \n`;
+                    if (selections?.[i] && selections?.length > 1) {
+                        await utils.editorEdit(selections[i], text);
+                    }
+                    else {
+                        insertCode += text;
+                    }
                 }
-                else {
-                    insertCode += text;
+                else
+                {
+                    let tag = new Date().getTime().toString();
+                    let text = `![${selection}][${tag}]  \n`;
+                    tag = `\n[${tag}]: ${urls[i]}`;
+                    if (selections?.[i] && selections?.length > 1) {
+                        await utils.insertToEnd(tag);
+                        await utils.editorEdit(selections[i], text);
+                    }
+                    else {
+                        insertCode += text;
+                        insertTag += tag;
+                    }
                 }
             }
 
             if (insertCode) {
-                await utils.editorEdit(editor?.selection.active, insertCode);
+                let pos = editor?.selection.active;
+                if (config.base.uploadMethod === 'Data URL') { 
+                    await utils.insertToEnd(insertTag);
+                }
+                await utils.editorEdit(pos, insertCode);
             }
 
             utils.noticeComment(context);
