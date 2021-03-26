@@ -10,17 +10,17 @@ class Qiniu implements Upload
 {
     config: Config;
     token: string;
-    lastTimestramp: number;
+    lastTimestamp: number;
     constructor(config: Config) {
         this.config = config;
         this.token = '';
-        this.lastTimestramp = 0;
+        this.lastTimestamp = 0;
     }
 
     async reconfig(config: Config) {
         this.config = config;
         this.token = '';
-        this.lastTimestramp = 0;
+        this.lastTimestamp = 0;
     }
 
     async upload(filePath: string, savePath: string): Promise<string | null> {
