@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.5
+- Fixed `Data URL` Setting Description.
+
 ### 1.1.4
 - Added upload method `Data URL`.
 - Fixed paste multiple documents invalid.

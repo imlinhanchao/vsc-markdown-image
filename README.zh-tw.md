@@ -76,6 +76,10 @@ sudo yum install xclip
     ```
 
 ## 發布歷史
+
+### 1.1.5
+修正 `Data URL` 設定項目説明。
+
 ### 1.1.4
 - 新增插入 Markdown 圖片方式： `Data URL`.
 - 修正粘貼多個文件無效問題。

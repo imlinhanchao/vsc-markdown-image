@@ -2,7 +2,7 @@
     "name": "markdown-image",
     "displayName": "Markdown Image",
     "description": "Easy to insert a image to markdown",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "publisher": "hancel",
     "engines": {
         "vscode": "^1.33.0"
@@ -90,6 +90,7 @@
                         "%markdown-image.base.uploadMethod.Coding%",
                         "%markdown-image.base.uploadMethod.Imgur%",
                         "%markdown-image.base.uploadMethod.SM.MS%",
+                        "%markdown-image.base.uploadMethod.DataURL%",
                         "%markdown-image.base.uploadMethod.Qiniu%",
                         "%markdown-image.base.uploadMethod.DIY%"
                     ]

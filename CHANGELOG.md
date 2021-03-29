@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.5] - 2021-03-29
+### Fixed
+- Fixed `Data URL` Setting Description.
+
 ## [1.1.4] - 2021-03-26
 ### Added
 - Added upload method `Data URL`.
