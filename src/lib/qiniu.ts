@@ -46,11 +46,11 @@ class Qiniu implements Upload
                             reject(respErr);
                         }
                         if (respInfo.statusCode === 200) {
-                            console.log(respBody);
+                            console.debug(respBody);
                             resolve(url.resolve(this.config.qiniu.domain, key));
                         } else {
-                            console.log(respInfo.statusCode);
-                            console.log(respBody);
+                            console.debug(respInfo.statusCode);
+                            console.debug(respBody);
                             reject(new Error(respBody.error));
                         }
                     });

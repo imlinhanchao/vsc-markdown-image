@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.6] - 2021-04-13
+### Fixed
+- Fixed extension log level.
+### Changed
+- Update action after replace file.
+
 ## [1.1.5] - 2021-03-29
 ### Fixed
 - Fixed `Data URL` Setting Description.

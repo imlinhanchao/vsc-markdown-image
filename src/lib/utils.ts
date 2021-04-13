@@ -179,7 +179,7 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
 }
 
 function mkdirs(dirname: string) {  
-    //console.log(dirname);  
+    //console.debug(dirname);  
     if (fs.existsSync(dirname)) {  
         return true;  
     } else {  
@@ -285,7 +285,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                 vscode.window.showErrorMessage(e);
             });
             ascript.on('exit', (code, signal) => {
-                // console.log('exit',code,signal);
+                // console.debug('exit',code,signal);
             });
             ascript.stdout.on('data', (data) => {
                 let result = data.toString().trim();
@@ -357,7 +357,7 @@ function getRichText() : Promise<string>{
             // Linux 
     
             let scriptPath = path.join(__dirname, '..', '..' , 'asserts/rtf.sh');
-            let result = ''
+            let result = '';
             let ascript = spawn('sh', [scriptPath]);
             ascript.on('error', (e: any) => {
                 vscode.window.showErrorMessage(e);
@@ -424,9 +424,9 @@ function hash(buffer:Buffer): string {
 }
 
 function getOpenCmd(): string {
-    let cmd = 'explorer';
+    let cmd = 'start';
     if (process.platform === 'win32') {
-        cmd = 'explorer';
+        cmd = 'start';
     } else if (process.platform === 'linux') {
         cmd = 'xdg-open';
     } else if (process.platform === 'darwin') {
@@ -456,7 +456,7 @@ function noticeComment(context: vscode.ExtensionContext) {
                         break;
                 }
             })
-            .catch(e => console.log(e));
+            .catch(e => console.debug(e));
     } else if(!notice) {
         context.globalState.update('usetimes', ++usetimes);
     }

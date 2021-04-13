@@ -76,6 +76,10 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.6
+- Fixed extension log level.
+- Update action after replace file.
+
 ### 1.1.5
 - Fixed `Data URL` Setting Description.
 

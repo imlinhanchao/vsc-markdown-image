@@ -26,7 +26,7 @@ class Local implements Upload
                 path.join(utils.getCurrentRoot(), this.config.local.path) :
                 path.join(path.dirname(utils.getCurrentFilePath()), this.config.local.path);
             
-            console.log(`Create Project Upload Folder.`);
+            console.debug(`Create Project Upload Folder.`);
             
             savePath = path.join(saveFolder, savePath);
             saveFolder = path.dirname(savePath);
@@ -37,7 +37,7 @@ class Local implements Upload
 
             if (fs.existsSync(savePath) && 
             (await utils.confirm($l['replace_or_no'], [$l['Yes'], $l['No']])) === $l['No']) {
-                return null;
+                return savePath;
             }
             fs.copyFileSync(filePath, savePath);
 

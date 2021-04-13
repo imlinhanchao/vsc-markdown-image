@@ -10,9 +10,9 @@ import { locale as $l } from './lib/utils';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
     let index = 1;
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // Use the console to output diagnostic information (console.debug) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "markdown-image" is now active!');
+    console.info('Congratulations, your extension "markdown-image" is now active!');
     let config = utils.getConfig();
     let upload : Upload | null = utils.getUpload(config);
 
@@ -23,7 +23,6 @@ export function activate(context: vscode.ExtensionContext) {
         let stop = () => {};
         try {
             stop = utils.showProgress($l['uploading']);
-            console.log(config.base.uploadMethod);
             
             let editor = vscode.window.activeTextEditor;
             let selections = utils.getSelections();
@@ -32,12 +31,12 @@ export function activate(context: vscode.ExtensionContext) {
             let images = await utils.getPasteImage(savePath);
             images = images.filter(img => ['.jpg', '.jpeg', '.gif', '.bmp', '.png', '.webp', '.svg'].find(ext => img.endsWith(ext)));
 
-            console.log(`Get ${images.length} Images`);
+            console.debug(`Get ${images.length} Images`);
 
             let urls = [];
             for (let i = 0; i < images.length; i++) {
                 let name = await utils.formatName(config.base.fileNameFormat, images[i], savePath === images[i]) || images[i];
-                console.log(`Uploading ${images[i]} to ${name}.`);
+                console.debug(`Uploading ${images[i]} to ${name}.`);
                 let p = await upload?.upload(images[i], name);
                 if(p) { urls.push(p); }
             }
