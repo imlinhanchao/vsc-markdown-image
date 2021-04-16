@@ -2,7 +2,7 @@
     "name": "markdown-image",
     "displayName": "Markdown Image",
     "description": "Easy to insert a image to markdown",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "publisher": "hancel",
     "engines": {
         "vscode": "^1.33.0"
@@ -100,6 +100,11 @@
                     "default": "${hash}",
                     "pattern": "^[^:*?<>|]+$",
                     "markdownDescription": "%markdown-image.base.fileNameFormat%"
+                },
+                "markdown-image.base.urlEncode": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "%markdown-image.base.urlEncode%"
                 },
                 "markdown-image.local.path": {
                     "type": "string",

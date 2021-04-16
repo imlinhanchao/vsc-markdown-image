@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.7
+- Added a option to switch whether url encode.
+
 ### 1.1.6
 - Fixed extension log level.
 - Update action after replace file.

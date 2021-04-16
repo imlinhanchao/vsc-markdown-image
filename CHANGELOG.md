@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.7] - 2021-04-16
+### Added
+- Added a option to switch whether url encode.
+
 ## [1.1.6] - 2021-04-13
 ### Fixed
 - Fixed extension log level.

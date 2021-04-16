@@ -53,7 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
                 }
                 
                 if (config.base.uploadMethod !== 'Data URL') { 
-                    urls[i] = encodeURIComponent(urls[i].toString()).replace(/%2F/g, '/').replace(/%3A/g, ':');
+                    if(config.base.urlEncode) { urls[i] = encodeURIComponent(urls[i].toString()).replace(/%2F/g, '/').replace(/%3A/g, ':'); }
                     let text = `![${selection}](${urls[i]})  \n`;
                     if (selections?.[i] && selections?.length > 1) {
                         await utils.editorEdit(selections[i], text);
