@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.8
+- Fixed vscode caches the `DIY` path code, causing a question that cannot be changed immediately.
+
 ### 1.1.7
 - Added a option to switch whether url encode.
 

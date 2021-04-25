@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## 1.1.8 - 2021-04-25
+- Fixed vscode caches the `DIY` path code, causing a question that cannot be changed immediately.
+
 ## [1.1.7] - 2021-04-16
 ### Added
 - Added a option to switch whether url encode.
