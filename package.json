@@ -95,6 +95,24 @@
                         "%markdown-image.base.uploadMethod.DIY%"
                     ]
                 },
+                "markdown-image.base.codeType": {
+                    "type": "string",
+                    "enum": [
+                        "Markdown",
+                        "HTML"
+                    ],
+                    "default": "Markdown",
+                    "description": "%markdown-image.base.codeType%",
+                    "enumDescriptions": [
+                        "%markdown-image.base.codeType.Markdown%",
+                        "%markdown-image.base.codeType.HTML%"
+                    ]
+                },
+                "markdown-image.base.imageWidth": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "%markdown-image.base.imageWidth%"
+                },
                 "markdown-image.base.fileNameFormat": {
                     "type": "string",
                     "default": "${hash}",
@@ -203,6 +221,7 @@
         "form-data": "^3.0.0",
         "got": "^10.7.0",
         "https-proxy-agent": "^4.0.0",
+        "image-size": "^1.0.0",
         "qiniu": "^7.3.1",
         "turndown": "^7.0.0",
         "turndown-plugin-gfm": "^1.0.2",

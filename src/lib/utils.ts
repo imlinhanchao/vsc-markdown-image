@@ -83,6 +83,14 @@ function getSelections() : vscode.Selection[] | null{
     return selections;
 }
 
+function formatCode(filePath: string, selection: string, maxWidth: number, codeType: string): string {
+    if (codeType === "Markdown") {
+        return `![${selection}](${filePath}${maxWidth > 0 ? ` =${maxWidth}x` : ''})  \n`;
+    }
+
+    return `<img alt="${selection}" src="${filePath}" ${maxWidth > 0 ? `width="${maxWidth}" ` : ''}/>  \n`;
+}
+
 async function formatName(format: string, filePath: string, isPaste: boolean): Promise<string> {
     let saveName = format;
     let variables = [
@@ -467,6 +475,7 @@ export default {
     showProgress,
     editorEdit,
     insertToEnd,
+    formatCode,
     formatName,
     mkdirs,
     html2Markdown,

@@ -77,6 +77,9 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.9
+- 添加設置選項 `markdown-image.base.codeType` 和 `markdown-image.base.imageWidth` 用於設置圖片最大寬度。
+
 ### 1.1.8
 - 修正 VSCode 會緩存 `DIY` 路徑代碼，導致修改無法即時生效的問題。
 

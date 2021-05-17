@@ -1,7 +1,12 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
-## 1.1.8 - 2021-04-25
+## [1.1.9] - 2021-05-17
+### Added
+- Added setting options `markdown-image.base.codeType` and `markdown-image.base.imageWidth` use to set the maximum image width.
+
+## [1.1.8] - 2021-04-25
+### Fixed
 - Fixed vscode caches the `DIY` path code, causing a question that cannot be changed immediately.
 
 ## [1.1.7] - 2021-04-16

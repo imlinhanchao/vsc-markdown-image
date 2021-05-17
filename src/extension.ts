@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import utils from './lib/utils';
 import { locale as $l } from './lib/utils';
+import { imageSize } from 'image-size';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -33,8 +34,10 @@ export function activate(context: vscode.ExtensionContext) {
 
             console.debug(`Get ${images.length} Images`);
 
-            let urls = [];
+            let urls = [], maxWidth = [];
             for (let i = 0; i < images.length; i++) {
+                let width = imageSize(images[i]).width || 0;
+                maxWidth.push(config.base.imageWidth < width ? config.base.imageWidth : 0);
                 let name = await utils.formatName(config.base.fileNameFormat, images[i], savePath === images[i]) || images[i];
                 console.debug(`Uploading ${images[i]} to ${name}.`);
                 let p = await upload?.upload(images[i], name);
@@ -54,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
                 
                 if (config.base.uploadMethod !== 'Data URL') { 
                     if(config.base.urlEncode) { urls[i] = encodeURIComponent(urls[i].toString()).replace(/%5C/g, '\\').replace(/%2F/g, '/').replace(/%3A/g, ':'); }
-                    let text = `![${selection}](${urls[i]})  \n`;
+                    let text = utils.formatCode(urls[i], selection, maxWidth[i], config.base.codeType);
                     if (selections?.[i] && selections?.length > 1) {
                         await utils.editorEdit(selections[i], text);
                     }

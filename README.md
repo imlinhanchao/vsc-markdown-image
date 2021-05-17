@@ -76,6 +76,9 @@ sudo yum install xclip
 
 ## Release Notes
 
+### 1.1.9
+- Added setting options `markdown-image.base.codeType` and `markdown-image.base.imageWidth` use to set the maximum image width.
+
 ### 1.1.8
 - Fixed vscode caches the `DIY` path code, causing a question that cannot be changed immediately.
 
