@@ -68,7 +68,7 @@ export function activate(context: vscode.ExtensionContext) {
                 else
                 {
                     let tag = new Date().getTime().toString();
-                    let text = `![${selection}][${tag}]  \n`;
+                    let text = utils.formatCode(tag, selection, maxWidth[i], 'Markdown');
                     tag = `\n[${tag}]: ${urls[i]}`;
                     if (selections?.[i] && selections?.length > 1) {
                         await utils.insertToEnd(tag);
