@@ -142,7 +142,7 @@
                 "markdown-image.coding.repository": {
                     "type": "string",
                     "default": "",
-                    "pattern": "^(https://([^.]*?).coding.net/p/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
+                    "pattern": "^(https://([^.]*?).coding.net/([^/]*?)/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
                     "markdownDescription": "%markdown-image.coding.repository%"
                 },
                 "markdown-image.imgur.clientId": {
