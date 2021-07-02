@@ -3,6 +3,7 @@
     "markdown-image.local": "本地",
     "markdown-image.qiniu": "七牛",
     "markdown-image.DIY": "自定義",
+    "markdown-image.Cloudinary": "Cloudinary",
     "markdown-image.command.paste": "粘貼圖片",
     "markdown-image.command.config": "Markdown 圖片配置",
     "markdown-image.command.paste-rich-text": "粘貼富文本 (Beta)",
@@ -14,6 +15,7 @@
     "markdown-image.base.uploadMethod.DataURL": "將圖片轉爲Data URL 插入.",
     "markdown-image.base.uploadMethod.Qiniu": "將圖片上傳到七牛對象存儲，你有很多項目需要配置。",
     "markdown-image.base.uploadMethod.DIY": "您可以自定義用於上傳的代碼。您需要通過 markdown-image.DIY.path 配置代碼路徑。",
+    "markdown-image.base.uploadMethod.Cloudinary": "Upload the image to Cloudinary. You can configure `Cloud Name` through markdown-image.cloudinary.cloudName.",
     "markdown-image.base.fileNameFormat": "上傳的文件名和路徑的格式字符串。不支持 `Imgur` 和 `SM.MS`。 你有一些變量可以使用： \n\n- `${filename}`: 圖片原始的文件名。  \n- `${mdname}`: 正在編輯的 Markdown 文件的名稱（不含擴展名）。  \n- `${path}`: 正在編輯的 Markdown 文件相對於根目錄的路徑。  \n- `${hash}`: 圖像的 sha256 哈希。  \n- `${timestamp}`: 上傳時間的時間戳。  \n- `${YY}`: 年份  \n- `${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小時制小時  \n- `${HH}`: 24小時制小時  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 隨機數, 比如：`${rand,100}`. 它將生成從 0 到99 的隨機數。",
     "markdown-image.base.urlEncode": "是否對圖像的 URL 編碼。",
     "markdown-image.base.codeType": "插入代碼的類型",
@@ -37,5 +39,9 @@
     "markdown-image.qiniu.south": "華南",
     "markdown-image.qiniu.na": "北美",
     "markdown-image.qiniu.sa": "東南亞",
-    "markdown-image.DIY.path": "你寫的代碼的絕對路徑。你可以寫一個 Node.js 代碼文件用於上傳，並在此處填寫文件路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。\n \n比如：\n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```\n函數參數分別是：\n- `filePath`: 文件的絕對路徑。 \n- `savePath` : 保存的文件的路徑，根據 `#markdown-image.base.fileNameFormat#` 生成。 \n- `markdownPath`: 正在編輯的 markdown 文件的路徑。"
+    "markdown-image.DIY.path": "你寫的代碼的絕對路徑。你可以寫一個 Node.js 代碼文件用於上傳，並在此處填寫文件路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。\n \n比如：\n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```\n函數參數分別是：\n- `filePath`: 文件的絕對路徑。 \n- `savePath` : 保存的文件的路徑，根據 `#markdown-image.base.fileNameFormat#` 生成。 \n- `markdownPath`: 正在編輯的 markdown 文件的路徑。",
+    "markdown-image.cloudinary.cloudName": "Your user account name.",
+    "markdown-image.cloudinary.apiKey": "API key for your account.",
+    "markdown-image.cloudinary.apiSecret": "API secret for your account.",
+    "markdown-image.cloudinary.folder": "Folder to upload the image to."
 }
