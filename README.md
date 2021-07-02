@@ -10,7 +10,7 @@ An extension for conveniently inserting pictures in Markdown, which supports sto
 
 1. Copy image files or paste screenshots, Shortcut key `Ctrl + Shift + V`, or right-click menu `Paste Image`.
 2. Automatically generate Markdown code insertion.
-3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Coding` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
+3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Coding`, `Cloudinary` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
 4. You can also customize the code to upload pictures.
 5. Support Windows, MacOS, Linux.
 
@@ -63,9 +63,16 @@ sudo yum install xclip
 - `markdown-image.qiniu.domain`: Bound domain name of storage。
 - `markdown-image.qiniu.zone`:  Zone of storage.
 
+### Cloudinary Settings
+These values can be found on your Cloudinary Dashboard
+- `markdown-image.cloudinary.cloudName`: Your user account name.
+- `markdown-image.cloudinary.apiKey`: API key for your account.
+- `markdown-image.cloudinary.apiSecret`: API secret for your account.
+- `markdown-image.cloudinary.folder`: Folder to upload the image to.
+
 ### DIY Settings
-- `markdown-image.DIY.path`: The Code Path what you write. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.  
-    For example: 
+- `markdown-image.DIY.path`: The Code Path what you write. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.
+    For example:
     ```javascript
     const path = require('path');
     module.exports = async function(filePath, savePath, markdownPath) {
@@ -75,6 +82,14 @@ sudo yum install xclip
     ```
 
 ## Release Notes
+
+### v.Next
+- Added support for Cloudinary CDN
+- Includes the following new settings:
+  * `markdown-image.cloudinary.cloudName`
+  * `markdown-image.cloudinary.apiKey`
+  * `markdown-image.cloudinary.apiSecret`
+  * `markdown-image.cloudinary.folder`
 
 ### 1.1.9
 - Added setting options `markdown-image.base.codeType` and `markdown-image.base.imageWidth` use to set the maximum image width.
@@ -133,7 +148,7 @@ sudo yum install xclip
 ### 1.0.7
 - Fixed launch extension home page failed at MacOS and Linux.
 - Fixed the colon of the picture address is incorrectly encode.
-   
+
 ### 1.0.6
 
 - Fixed the date variable has not consider the time zone.
@@ -142,7 +157,7 @@ sudo yum install xclip
 
 - Fixed file name include space could not preview.
 - Fixed random variable not work.
-  
+
 ### 1.0.4
 
 - Update sponsored links.

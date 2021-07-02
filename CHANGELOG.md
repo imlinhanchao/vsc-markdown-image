@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [v.Next] - TBD
+### Added
+- Added support for Cloudinary CDN
+- Includes the following new settings:
+  * `markdown-image.cloudinary.cloudName`
+  * `markdown-image.cloudinary.apiKey`
+  * `markdown-image.cloudinary.apiSecret`
+  * `markdown-image.cloudinary.folder`
+
 ## [1.1.9] - 2021-05-17
 ### Added
 - Added setting options `markdown-image.base.codeType` and `markdown-image.base.imageWidth` use to set the maximum image width.
@@ -105,6 +114,6 @@ All notable changes to the "markdown-image" extension will be documented in this
 ## [1.0.1] - 2020-05-09
 ### Fixed
 - Fixed Readme.
-  
+
 ## [1.0.0] - 2020-05-09
 - Finish First Version.

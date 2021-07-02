@@ -81,7 +81,8 @@
                         "SM.MS",
                         "Data URL",
                         "%markdown-image.qiniu%",
-                        "%markdown-image.DIY%"
+                        "%markdown-image.DIY%",
+                        "Cloudinary"
                     ],
                     "default": "Local",
                     "description": "%markdown-image.base.uploadMethod%",
@@ -92,7 +93,8 @@
                         "%markdown-image.base.uploadMethod.SM.MS%",
                         "%markdown-image.base.uploadMethod.DataURL%",
                         "%markdown-image.base.uploadMethod.Qiniu%",
-                        "%markdown-image.base.uploadMethod.DIY%"
+                        "%markdown-image.base.uploadMethod.DIY%",
+                        "%markdown-image.base.uploadMethod.Cloudinary%"
                     ]
                 },
                 "markdown-image.base.codeType": {
@@ -197,6 +199,26 @@
                     "type": "string",
                     "default": "",
                     "markdownDescription": "%markdown-image.DIY.path%"
+                },
+                "markdown-image.cloudinary.cloudName": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "%markdown-image.cloudinary.cloudName%"
+                },
+                "markdown-image.cloudinary.apiKey": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "%markdown-image.cloudinary.apiKey%"
+                },
+                "markdown-image.cloudinary.apiSecret": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "%markdown-image.cloudinary.apiSecret%"
+                },
+                "markdown-image.cloudinary.folder": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "%markdown-image.cloudinary.folder%"
                 }
             }
         }
@@ -217,6 +239,7 @@
         "vscode": "^1.1.25"
     },
     "dependencies": {
+        "cloudinary": "^1.26.1",
         "coding-picbed": "0.0.12",
         "form-data": "^3.0.0",
         "got": "^10.7.0",
