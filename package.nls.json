@@ -3,6 +3,7 @@
     "markdown-image.local": "Local",
     "markdown-image.qiniu": "Qiniu",
     "markdown-image.DIY": "DIY",
+    "markdown-image.Cloudinary": "Cloudinary",
     "markdown-image.command.paste": "Paste Image",
     "markdown-image.command.config": "Markdown Image Config Setting",
     "markdown-image.command.paste-rich-text": "Paste Rich Text (Beta)",
@@ -14,6 +15,7 @@
     "markdown-image.base.uploadMethod.DataURL": "Turn the picture into the DATA URL insert.",
     "markdown-image.base.uploadMethod.Qiniu": "Upload the image to qiniu.com.",
     "markdown-image.base.uploadMethod.DIY": "You can define your code used to upload. You need to configure the code path through markdown-image.DIY.path",
+    "markdown-image.base.uploadMethod.Cloudinary": "Upload the image to Cloudinary. You can configure `Cloud Name` through markdown-image.cloudinary.cloudName.",
     "markdown-image.base.fileNameFormat": "The filenname and path format string for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables: \n\n- `${filename}`: The original filename.  \n- `${mdname}`: The name of the Markdown file being edited.  \n- `${path}`: The path of the Markdown file being edited relative to the root directory.  \n- `${hash}`: The sha256 hash of image.  \n- `${timestamp}`: The timestamp of upload time.  \n- `${YY}`: The Year  \n-`${MM}`:The Month  \n- `${DD}`: The Day  \n- `${hh}`: The 12-hour clock  \n- `${HH}`: The 24-hour clock  \n- `${mm}`: The minutes  \n- `${ss}`: The seconds  \n- `${mss}`: The milliseconds  \n- `${rand,number}`: A random number, for example: `${rand,100}`. It will generate random numbers from 0 to 99.",
     "markdown-image.base.urlEncode": "Whether URL encode for the url of image.",
     "markdown-image.base.codeType": "The type of image code",
@@ -37,5 +39,9 @@
     "markdown-image.qiniu.south": "South China",
     "markdown-image.qiniu.na": "North America",
     "markdown-image.qiniu.sa": "Southeast Asia",
-    "markdown-image.DIY.path": "The Code File Path. You can write a Node.js code file to upload, and fill in the file path to here. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.\n\nFor example: \n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```\nThe arguments are :\n- `filePath`: The absolute path of the file.  \n- `savePath`: The path of the saved file generate according to `#markdown-image.base.format#`.  \n- `markdownPath`: The path of markdown file being edited."
+    "markdown-image.DIY.path": "The Code File Path. You can write a Node.js code file to upload, and fill in the file path to here. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.\n\nFor example: \n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```\nThe arguments are :\n- `filePath`: The absolute path of the file.  \n- `savePath`: The path of the saved file generate according to `#markdown-image.base.format#`.  \n- `markdownPath`: The path of markdown file being edited.",
+    "markdown-image.cloudinary.cloudName": "Your user account name.",
+    "markdown-image.cloudinary.apiKey": "API key for your account.",
+    "markdown-image.cloudinary.apiSecret": "API secret for your account.",
+    "markdown-image.cloudinary.folder": "Folder to upload the image to."
 }
