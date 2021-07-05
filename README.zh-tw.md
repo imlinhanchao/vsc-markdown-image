@@ -77,6 +77,14 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.10
+- 添加了對 Cloudinary CDN 的支持
+- 新增了包括以下新的設置：
+  * `markdown-image.cloudinary.cloudName`
+  * `markdown-image.cloudinary.apiKey`
+  * `markdown-image.cloudinary.apiSecret`
+  * `markdown-image.cloudinary.folder`
+
 ### 1.1.9
 - 添加設置選項 `markdown-image.base.codeType` 和 `markdown-image.base.imageWidth` 用於設置圖片最大寬度。
 

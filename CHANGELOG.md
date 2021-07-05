@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
-## [v.Next] - TBD
+## [1.1.10] - 2021-07-05
 ### Added
 - Added support for Cloudinary CDN
 - Includes the following new settings:

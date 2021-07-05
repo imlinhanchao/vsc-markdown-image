@@ -83,7 +83,7 @@ These values can be found on your Cloudinary Dashboard
 
 ## Release Notes
 
-### v.Next
+### 1.1.10
 - Added support for Cloudinary CDN
 - Includes the following new settings:
   * `markdown-image.cloudinary.cloudName`

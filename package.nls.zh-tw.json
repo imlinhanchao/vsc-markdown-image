@@ -40,8 +40,8 @@
     "markdown-image.qiniu.na": "北美",
     "markdown-image.qiniu.sa": "東南亞",
     "markdown-image.DIY.path": "你寫的代碼的絕對路徑。你可以寫一個 Node.js 代碼文件用於上傳，並在此處填寫文件路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。\n \n比如：\n\n ```javascript\nconst path = require('path');\nmodule.exports = async function(filePath, savePath, markdownPath) {\n\t// Return a picture access link\n\treturn path.relative(path.dirname(markdownPath), filePath); \n}\n```\n函數參數分別是：\n- `filePath`: 文件的絕對路徑。 \n- `savePath` : 保存的文件的路徑，根據 `#markdown-image.base.fileNameFormat#` 生成。 \n- `markdownPath`: 正在編輯的 markdown 文件的路徑。",
-    "markdown-image.cloudinary.cloudName": "Your user account name.",
-    "markdown-image.cloudinary.apiKey": "API key for your account.",
-    "markdown-image.cloudinary.apiSecret": "API secret for your account.",
-    "markdown-image.cloudinary.folder": "Folder to upload the image to."
+    "markdown-image.cloudinary.cloudName": "你的 Cloudinary 用戶名",
+    "markdown-image.cloudinary.apiKey": "你的 Cloudinary 賬戶 API key",
+    "markdown-image.cloudinary.apiSecret": "你的 Cloudinary 賬戶 API secret",
+    "markdown-image.cloudinary.folder": "你所要上傳到的文件夾"
 }
