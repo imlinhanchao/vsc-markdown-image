@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import * as path from "path";
 import utils, { locale as $l } from "./utils";
 import { UploadApiResponse, v2 as cloudinary } from "cloudinary";
 
@@ -44,19 +45,26 @@ class Cloudinary implements Upload {
   async doUpload(
     filePath: string,
     savePath: string,
-    config: { overwrite: boolean },
+    options: { overwrite: boolean },
   ): Promise<UploadApiResponse> {
     cloudinary.config({
       cloud_name: this.config.cloudinary.cloudName,
       api_key: this.config.cloudinary.apiKey,
       api_secret: this.config.cloudinary.apiSecret,
     });
+
+    const folder = path.join(
+      this.config.cloudinary.folder,
+      path.dirname(savePath),
+    );
+    const filename = path.basename(savePath);
+
     return cloudinary.uploader.upload(filePath, {
-      folder: this.config.cloudinary.folder,
-      filename_override: savePath,
+      folder: folder,
+      filename_override: filename,
       use_filename: true,
       unique_filename: false,
-      overwrite: config.overwrite,
+      overwrite: options.overwrite,
       fetch_format: "auto",
       quality: "auto",
     });
