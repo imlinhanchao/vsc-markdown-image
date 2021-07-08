@@ -83,7 +83,7 @@ These values can be found on your Cloudinary Dashboard
 
 ## Release Notes
 
-### [v.Next]
+### [1.1.11]
 - Updated Cloudinary CDN to use the `markdown-image.base.fileNameFormat` setting. The extension will check for existing files and will prompt to overwrite if necessary.
 
 ### 1.1.10

@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
-## [v.Next] - TBD
+## [1.1.11] - 2021-07-08
 ### Fixed
 - Updated Cloudinary CDN to use the `markdown-image.base.fileNameFormat` setting. The extension will check for existing files and will prompt to overwrite if necessary.
 

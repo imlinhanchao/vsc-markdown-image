@@ -77,6 +77,9 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### [1.1.11]
+- 更新了Cloudinary CDN 以使用 `markdown-image.base.fileNameFormat` 設置保存文件路徑。文件路徑若已存在，將提示是否覆蓋。
+
 ### 1.1.10
 - 添加了對 Cloudinary CDN 的支持
 - 新增了包括以下新的設置：
