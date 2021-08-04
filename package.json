@@ -51,19 +51,19 @@
                 "command": "markdown-image.paste",
                 "key": "alt+shift+v",
                 "mac": "alt+shift+v",
-                "when": "editorLangId == markdown || editorLangId == mdx"
+                "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb"
             }
         ],
         "menus": {
             "editor/context": [
                 {
                     "command": "markdown-image.paste",
-                    "when": "editorLangId == markdown || editorLangId == mdx",
+                    "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb",
                     "group": "9_cutcopypaste@4"
                 },
                 {
                     "command": "markdown-image.paste-rich-text",
-                    "when": "editorLangId == markdown || editorLangId == mdx",
+                    "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb",
                     "group": "9_cutcopypaste@5"
                 }
             ]

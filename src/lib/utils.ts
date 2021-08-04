@@ -389,6 +389,12 @@ function getCurrentRoot() : string {
     const editor = vscode.window.activeTextEditor;
     if (!editor || !vscode.workspace.workspaceFolders || vscode.workspace.workspaceFolders.length < 1) { return ''; }
     const resource = editor.document.uri;
+    if (resource.scheme == 'vscode-notebook-cell') {
+        let filePath = resource.fsPath;
+        let root = vscode.workspace.workspaceFolders.find(f => filePath.indexOf(f.uri.fsPath) >= 0);
+        if (root) return root.uri.fsPath;
+        else return '';
+    }
     if (resource.scheme !== 'file') { return ''; }
     const folder = vscode.workspace.getWorkspaceFolder(resource);
     if (!folder) { return ''; }
