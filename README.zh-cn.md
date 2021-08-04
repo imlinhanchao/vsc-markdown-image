@@ -78,6 +78,9 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.12
+- 添加支持在 jupyter 文件中的粘贴图像。
+
 ### [1.1.11]
 - 更新了Cloudinary CDN 以使用 `markdown-image.base.fileNameFormat` 设置保存文件路徑。文件路径若已存在，将提示是否覆盖。
 - 

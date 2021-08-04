@@ -83,7 +83,10 @@ These values can be found on your Cloudinary Dashboard
 
 ## Release Notes
 
-### [1.1.11]
+### 1.1.12
+- Added to support paste image in Jupyter file.
+
+### 1.1.11
 - Updated Cloudinary CDN to use the `markdown-image.base.fileNameFormat` setting. The extension will check for existing files and will prompt to overwrite if necessary.
 
 ### 1.1.10
