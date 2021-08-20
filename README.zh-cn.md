@@ -78,6 +78,9 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.13
+- 添加了设置项目 `markdown-image.local.referencePath` 用于支持修改在 Markdown 文件中的图片引用路径。
+
 ### 1.1.12
 - 添加支持在 jupyter 文件中的粘贴图像。
 

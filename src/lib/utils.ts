@@ -184,7 +184,7 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
     }
 
     
-    return saveName + (filePath ? path.extname(filePath) : '.png');
+    return saveName;
 }
 
 function mkdirs(dirname: string) {  

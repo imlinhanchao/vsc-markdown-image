@@ -83,6 +83,9 @@ These values can be found on your Cloudinary Dashboard
 
 ## Release Notes
 
+### 1.1.13
+- Added new setting `markdown-image.local.referencePath` to support DIY reference path in markdown file.
+
 ### 1.1.12
 - Added to support paste image in Jupyter file.
 

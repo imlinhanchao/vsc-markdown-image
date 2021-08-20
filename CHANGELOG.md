@@ -1,10 +1,14 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.13] - 2021-08-20
+### Added
+- Added new setting `markdown-image.local.referencePath` to support DIY reference path in markdown file.
+
 ## [1.1.12] - 2021-08-04
 ### Added
 - Added to support paste image in Jupyter file.
-- 
+
 ## [1.1.11] - 2021-07-08
 ### Fixed
 - Updated Cloudinary CDN to use the `markdown-image.base.fileNameFormat` setting. The extension will check for existing files and will prompt to overwrite if necessary.

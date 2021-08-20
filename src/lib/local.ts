@@ -41,7 +41,9 @@ class Local implements Upload
             }
             fs.copyFileSync(filePath, savePath);
 
-            return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/');
+            if(this.config.local.referencePath === '') return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/');
+            
+            return path.join(await utils.formatName(this.config.local.referencePath, savePath, false), path.basename(savePath)).replace(/\\/g, '/')
         }
         catch(e) {
             vscode.window.showInformationMessage(`${$l['save_failed']}${e.message}`);

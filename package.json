@@ -2,7 +2,7 @@
     "name": "markdown-image",
     "displayName": "Markdown Image",
     "description": "Easy to insert a image to markdown",
-    "version": "1.1.12",
+    "version": "1.1.13",
     "publisher": "hancel",
     "engines": {
         "vscode": "^1.33.0"
@@ -130,6 +130,11 @@
                     "type": "string",
                     "default": "/images",
                     "description": "%markdown-image.local.path%"
+                },
+                "markdown-image.local.referencePath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%markdown-image.local.referencePath%"
                 },
                 "markdown-image.coding.path": {
                     "type": "string",

@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
             for (let i = 0; i < images.length; i++) {
                 let width = imageSize(images[i]).width || 0;
                 maxWidth.push(config.base.imageWidth < width ? config.base.imageWidth : 0);
-                let name = await utils.formatName(config.base.fileNameFormat, images[i], savePath === images[i]) || images[i];
+                let name = config.base.fileNameFormat ? await utils.formatName(config.base.fileNameFormat, images[i], savePath === images[i]) + (images[i] ? path.extname(images[i]) : '.png') : images[i];
                 console.debug(`Uploading ${images[i]} to ${name}.`);
                 let p = await upload?.upload(images[i], name);
                 if(p) { urls.push(p); }
