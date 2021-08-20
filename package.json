@@ -85,7 +85,7 @@
                         "Cloudinary"
                     ],
                     "default": "Local",
-                    "description": "%markdown-image.base.uploadMethod%",
+                    "markdownDescription": "%markdown-image.base.uploadMethod%",
                     "enumDescriptions": [
                         "%markdown-image.base.uploadMethod.Local%",
                         "%markdown-image.base.uploadMethod.Coding%",
@@ -104,7 +104,7 @@
                         "HTML"
                     ],
                     "default": "Markdown",
-                    "description": "%markdown-image.base.codeType%",
+                    "markdownDescription": "%markdown-image.base.codeType%",
                     "enumDescriptions": [
                         "%markdown-image.base.codeType.Markdown%",
                         "%markdown-image.base.codeType.HTML%"
@@ -113,7 +113,7 @@
                 "markdown-image.base.imageWidth": {
                     "type": "number",
                     "default": 0,
-                    "description": "%markdown-image.base.imageWidth%"
+                    "markdownDescription": "%markdown-image.base.imageWidth%"
                 },
                 "markdown-image.base.fileNameFormat": {
                     "type": "string",
@@ -124,22 +124,22 @@
                 "markdown-image.base.urlEncode": {
                     "type": "boolean",
                     "default": true,
-                    "description": "%markdown-image.base.urlEncode%"
+                    "markdownDescription": "%markdown-image.base.urlEncode%"
                 },
                 "markdown-image.local.path": {
                     "type": "string",
                     "default": "/images",
-                    "description": "%markdown-image.local.path%"
+                    "markdownDescription": "%markdown-image.local.path%"
                 },
                 "markdown-image.local.referencePath": {
                     "type": "string",
                     "default": "",
-                    "description": "%markdown-image.local.referencePath%"
+                    "markdownDescription": "%markdown-image.local.referencePath%"
                 },
                 "markdown-image.coding.path": {
                     "type": "string",
                     "default": "/",
-                    "description": "%markdown-image.coding.path%"
+                    "markdownDescription": "%markdown-image.coding.path%"
                 },
                 "markdown-image.coding.token": {
                     "type": "string",
@@ -160,7 +160,7 @@
                 "markdown-image.imgur.httpProxy": {
                     "type": "string",
                     "default": "",
-                    "description": "%markdown-image.imgur.httpProxy%"
+                    "markdownDescription": "%markdown-image.imgur.httpProxy%"
                 },
                 "markdown-image.sm_ms.token": {
                     "type": "string",
