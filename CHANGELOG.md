@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.14] - 2021-09-06
+### Updated
+- Update Coding Picbed Package to fixed upload to coding error.
+
 ## [1.1.13] - 2021-08-20
 ### Added
 - Added new setting `markdown-image.local.referencePath` to support DIY reference path in markdown file.

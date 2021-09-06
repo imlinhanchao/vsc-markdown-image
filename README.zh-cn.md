@@ -78,6 +78,9 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.14
+- 更新 Coding-Picbed 修复上传到 Coding 错误。
+
 ### 1.1.13
 - 添加了设置项目 `markdown-image.local.referencePath` 用于支持修改在 Markdown 文件中的图片引用路径。
 
