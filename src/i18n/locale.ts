@@ -6,6 +6,8 @@ export default {
     upload_failed: "Upload File Failed: ",
     save_failed: "Save File Failed: ",
     something_wrong: "Something was wrong: ",
+    prompt_name_component: "Please enter a file name. The full name will be: ",
+    user_did_not_answer_prompt: "User did not answer prompt",
     open_with_folder: "Please Open the project of the file with folder.",
     replace_or_no: "The file was exists. Would you replace it?",
     Yes: "Yes",

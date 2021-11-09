@@ -95,7 +95,7 @@ function formatCode(filePath: string, selection: string, maxWidth: number, codeT
 async function formatName(format: string, filePath: string, isPaste: boolean): Promise<string> {
     let saveName = format;
     let variables = [
-        'filename', 'mdname', 'path', 'hash', 'timestramp', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)'
+        'filename', 'mdname', 'path', 'hash', 'timestramp', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'prompt'
     ];
     for (let i = 0; i < variables.length; i++) {
         let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
@@ -178,6 +178,15 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
                     let data = parseInt((Math.random() * n).toString()).toString();
                     saveName = saveName.replace(mat[j], data);
                 }
+                break;
+            }
+            case 'prompt': {
+                let promptInput = await vscode.window.showInputBox({ prompt: `${locale['prompt_name_component']}${saveName}` });
+                // TODO: make sure that promptInput is a filename-safe string (i.e., does not include special characters, etc.)
+                if (promptInput)
+                    saveName = saveName.replace(reg, promptInput);
+                else
+                    throw Error(locale['user_did_not_answer_prompt']);
                 break;
             }
         }
