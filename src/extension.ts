@@ -90,9 +90,9 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             utils.noticeComment(context);
-        } catch (error :any) {
+        } catch (error) {
             console.dir(error);
-            vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message}\n${error.toString()}`);
+            vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message in $l ? (<any>$l)[error.message] : error.message}\n${error.toString()}`);
         }
 
         stop();
@@ -115,7 +115,7 @@ export function activate(context: vscode.ExtensionContext) {
             if(text) { 
                 utils.editorEdit(editor?.selection, utils.html2Markdown(text));
             }
-        } catch (error:any) {
+        } catch (error) {
             console.dir(error);
             vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message}\n${error.toString()}`);
         }
