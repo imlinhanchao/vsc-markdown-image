@@ -77,6 +77,9 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.15
+- 添加文件格式化變量 `prompt`。 可以在粘貼圖像時通過輸入框輸入自定義名稱。
+
 ### 1.1.14
 - 更新 Coding-Picbed 修復上傳到 Coding 錯誤。
 

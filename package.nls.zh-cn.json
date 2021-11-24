@@ -16,7 +16,7 @@
     "markdown-image.base.uploadMethod.Qiniu": "将图片上传到七牛对象存储，你有很多项目需要配置。",
     "markdown-image.base.uploadMethod.DIY": "您可以自定义用于上传的代码。您需要通过 markdown-image.DIY.path 配置代码路径。",
     "markdown-image.base.uploadMethod.Cloudinary": "Upload the image to Cloudinary. You can configure `Cloud Name` through markdown-image.cloudinary.cloudName.",
-    "markdown-image.base.fileNameFormat": "上传的文件名与路径的格式字符串。不支持 `Imgur` 和 `SM.MS`。 你有一些变量可以使用：  \n\n- `${filename}`: 图片原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称（不含扩展名）。  \n- `${path}`: 正在编辑的 Markdown 文件相对于根目录的路径。  \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestamp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n-`${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。",
+    "markdown-image.base.fileNameFormat": "上传的文件名与路径的格式字符串。不支持 `Imgur` 和 `SM.MS`。 你有一些变量可以使用：  \n\n- `${filename}`: 图片原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称（不含扩展名）。  \n- `${path}`: 正在编辑的 Markdown 文件相对于根目录的路径。  \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestamp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n-`${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。\n- `${prompt}`: 可以在粘贴图像时通过输入框输入自定义名称。",
     "markdown-image.base.urlEncode": "是否对图像的 URL 编码。",
     "markdown-image.base.codeType": "插入代码的类型",
     "markdown-image.base.codeType.Markdown": "Markdown 代码，比如：![image](./image/file/path.jpg)",
