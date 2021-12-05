@@ -152,6 +152,27 @@
                     "pattern": "^(https://([^.]*?).coding.net/p/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
                     "markdownDescription": "%markdown-image.coding.repository%"
                 },
+                "markdown-image.github.path": {
+                    "type": "string",
+                    "default": "/",
+                    "markdownDescription": "%markdown-image.github.path%"
+                },
+                "markdown-image.github.token": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "%markdown-image.github.token%"
+                },
+                "markdown-image.github.repository": {
+                    "type": "string",
+                    "default": "",
+                    "pattern": "^(https://github.com/[^/]*?/[^/]*?/$",
+                    "markdownDescription": "%markdown-image.github.repository%"
+                },
+                "markdown-image.github.branch": {
+                    "type": "string",
+                    "default": "master",
+                    "markdownDescription": "%markdown-image.github.branch%"
+                },
                 "markdown-image.imgur.clientId": {
                     "type": "string",
                     "default": "",
@@ -247,7 +268,7 @@
         "cloudinary": "^1.26.1",
         "coding-picbed": "^0.0.13",
         "form-data": "^3.0.0",
-        "github-picbed": "^0.0.1",
+        "github-picbed": "^0.0.2",
         "got": "^10.7.0",
         "https-proxy-agent": "^4.0.0",
         "image-size": "^1.0.0",

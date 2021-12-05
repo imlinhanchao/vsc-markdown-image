@@ -17,6 +17,7 @@ function getUpload(config: Config) : Upload | null {
     switch(config.base.uploadMethod) {
         case 'Local': return new Uploads.Local(config);
         case 'Coding': return new Uploads.Coding(config);
+        case 'GitHub': return new Uploads.GitHub(config);
         case 'Imgur': return new Uploads.Imgur(config);
         case 'SM.MS': return new Uploads.SM_MS(config);
         case 'Data URL': return new Uploads.DataUrl(config);

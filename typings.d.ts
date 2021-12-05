@@ -11,6 +11,8 @@ declare module 'coding-picbed' {
     const Coding: any;
 }
 
+declare module 'github-picbed';
+
 declare module 'turndown-plugin-gfm' {
     export function gfm(turndownService: any) : void;
     export function highlightedCodeBlock(turndownService: any) : void;
