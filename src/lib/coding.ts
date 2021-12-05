@@ -23,7 +23,7 @@ class Coding implements Upload
             this.config = config;
             Coding.coding.lastconfig = config.coding;
             await Coding.coding.config({ token: config.coding.token, repository: config.coding.repository });
-        } catch (error) {
+        } catch (error: any) {
             vscode.window.showErrorMessage(`${$l['config_failed']}${error.message}`);
         }
     }
@@ -37,7 +37,7 @@ class Coding implements Upload
 
             return data.urls[0].replace('http:', 'https:');
         }
-        catch(e) {
+        catch(e: any) {
             vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }

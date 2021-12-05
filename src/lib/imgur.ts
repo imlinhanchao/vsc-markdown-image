@@ -39,7 +39,7 @@ class Imgur implements Upload
 
             return JSON.parse(rsp.body).data.link;
         }
-        catch(e) {
+        catch(e:any) {
             vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }

@@ -19,7 +19,7 @@ class Define implements Upload
             let define = require(this.config.DIY.path);
             return await define(filePath, savePath, utils.getCurrentFilePath());
         }
-        catch(e) {
+        catch(e:any) {
             vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }

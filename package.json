@@ -247,6 +247,7 @@
         "cloudinary": "^1.26.1",
         "coding-picbed": "^0.0.13",
         "form-data": "^3.0.0",
+        "github-picbed": "^0.0.1",
         "got": "^10.7.0",
         "https-proxy-agent": "^4.0.0",
         "image-size": "^1.0.0",

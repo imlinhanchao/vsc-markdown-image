@@ -34,7 +34,7 @@ class Cloudinary implements Upload {
         result = await this.doUpload(filePath, savePath, { overwrite: true });
       }
       return result.secure_url;
-    } catch (e) {
+    } catch (e: any) {
       vscode.window.showInformationMessage(
         `${$l["upload_failed"]}${e.message}`,
       );
