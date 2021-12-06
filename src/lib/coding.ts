@@ -37,8 +37,8 @@ class Coding implements Upload
             let data = await Coding.coding.upload(filePath, saveFolder.replace(/\\/g, '/'), savePath.replace(/\\/g, '/'));
 
             return data.urls[0].replace('http:', 'https:');
-        }
-        catch(e: any) {
+        } catch (error) {
+            let e = error as Error;
             vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }

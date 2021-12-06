@@ -38,8 +38,8 @@ class GitHub implements Upload
             let data = await GitHub.github.upload(filePath, null, savePath.replace(/\\/g, '/'));
 
             return data.url.replace('http:', 'https:');
-        }
-        catch(e: any) {
+        } catch (error) {
+            let e = error as Error;
             vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
