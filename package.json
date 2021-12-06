@@ -2,7 +2,7 @@
     "name": "markdown-image",
     "displayName": "Markdown Image",
     "description": "Easy to insert a image to markdown",
-    "version": "1.1.15",
+    "version": "1.1.16",
     "publisher": "hancel",
     "engines": {
         "vscode": "^1.33.0"
@@ -77,6 +77,7 @@
                     "enum": [
                         "Local",
                         "Coding",
+                        "GitHub",
                         "Imgur",
                         "SM.MS",
                         "Data URL",
@@ -89,6 +90,7 @@
                     "enumDescriptions": [
                         "%markdown-image.base.uploadMethod.Local%",
                         "%markdown-image.base.uploadMethod.Coding%",
+                        "%markdown-image.base.uploadMethod.GitHub%",
                         "%markdown-image.base.uploadMethod.Imgur%",
                         "%markdown-image.base.uploadMethod.SM.MS%",
                         "%markdown-image.base.uploadMethod.DataURL%",
@@ -165,7 +167,7 @@
                 "markdown-image.github.repository": {
                     "type": "string",
                     "default": "",
-                    "pattern": "^(https://github.com/[^/]*?/[^/]*?/$",
+                    "pattern": "^(https://github.com/[^/]*?/[^/]*?/*|)$",
                     "markdownDescription": "%markdown-image.github.repository%"
                 },
                 "markdown-image.github.branch": {

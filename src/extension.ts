@@ -115,9 +115,9 @@ export function activate(context: vscode.ExtensionContext) {
             if(text) { 
                 utils.editorEdit(editor?.selection, utils.html2Markdown(text));
             }
-        } catch (error:any) {
-            console.dir(error);
-            vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message}\n${error.toString()}`);
+        } catch (error) {
+            let e = error as Error;
+            vscode.window.showErrorMessage(`${$l['something_wrong']}${e.message}\n${e.toString()}`);
         }
 
         stop(); 

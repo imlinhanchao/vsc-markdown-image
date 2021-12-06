@@ -12,6 +12,7 @@ class GitHub implements Upload
         if (!GitHub.github) { GitHub.github = GitHubPic(config.github); }
         if(!GitHub.github.lastconfig || 
             GitHub.github.lastconfig.token !== config.github.token ||
+            GitHub.github.lastconfig.branch !== config.github.branch ||
             GitHub.github.lastconfig.repository !== config.github.repository
         ) {
             this.reconfig(config);
@@ -34,13 +35,13 @@ class GitHub implements Upload
         try {
             while (!GitHub.github.isInitialized()) { await utils.sleep(100); }  
 
-            savePath = path.join(this.config.github.path, savePath);
-            let data = await GitHub.github.upload(filePath, null, savePath.replace(/\\/g, '/'));
+            savePath = path.join(this.config.github.path, savePath).replace(/\\/g, '/').replace(/^\/|\/$/, '');
+            let data = await GitHub.github.upload({ data: filePath, filename: savePath });
 
             return data.url.replace('http:', 'https:');
         } catch (error) {
             let e = error as Error;
-            vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
+            vscode.window.showErrorMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
     }

@@ -10,6 +10,7 @@
     "markdown-image.base.uploadMethod": "上传图片的方式。到本地或其他图片CDN服务。",
     "markdown-image.base.uploadMethod.Local": "将图像上传到项目目录。您可以使用 markdown-image.local.path 设置上传的相对路径。",
     "markdown-image.base.uploadMethod.Coding": "将图像上传到 Coding.net 中的 Git 存储库。您可以通过 markdown-image.coding.repository 配置存储库. 您必须通过 markdown-image.coding.token 配置个人访问令牌访问存储库。",
+    "markdown-image.base.uploadMethod.GitHub": "将图像上传到 GitHub.com 中的 Git 存储库。您可以通过 markdown-image.github.repository 配置存储库. 您必须通过 markdown-image.github.token 配置个人访问令牌访问存储库。",
     "markdown-image.base.uploadMethod.Imgur": "将图像上传到 Imgur 。您可以通过 markdown-image.imgur.clientId 配置`Client Id`。",
     "markdown-image.base.uploadMethod.SM.MS": "将图像上传到 sm.ms。 您如果有一个帐户,可以通过 markdown-image.sm_ms.token 配置 `Secret Token` 。",
     "markdown-image.base.uploadMethod.DataURL": "将图片转为Data URL 插入.",

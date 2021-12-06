@@ -1,8 +1,13 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.16] - 2021-12-06
+### Added
+- Added to support upload image to github repository.
+
 ## [1.1.15] - 2021-11-24
-- Add file format variable `prompt`. Makes it possible to enter a custom name through an input prompt when pasting the image.
+### Added
+- Added file format variable `prompt`. Makes it possible to enter a custom name through an input prompt when pasting the image.
 
 ## [1.1.14] - 2021-09-06
 ### Updated

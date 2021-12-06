@@ -83,6 +83,9 @@ These values can be found on your Cloudinary Dashboard
 
 ## Release Notes
 
+### 1.1.16
+- Add to support upload image to github repository.
+
 ### 1.1.15
 - Add file format variable `prompt`. Makes it possible to enter a custom name through an input prompt when pasting the image.
 
