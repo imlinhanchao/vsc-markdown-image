@@ -47,7 +47,8 @@ class Local implements Upload
             
             return path.join(await utils.formatName(this.config.local.referencePath, savePath, false), path.basename(savePath)).replace(/\\/g, '/')
         }
-        catch(e: any) {
+        catch(error) {
+            let e = error as Error; 
             vscode.window.showInformationMessage(`${$l['save_failed']}${e.message}`);
             return null;
         }

@@ -18,7 +18,8 @@ class Local implements Upload
         try {
             return 'data:image/' + path.extname(filePath).substr(1) + ';base64,' + Buffer.from(fs.readFileSync(filePath)).toString('base64');
         }
-        catch(e:any) {
+        catch(error) {
+            let e = error as Error;
             vscode.window.showInformationMessage(`${$l['save_failed']}${e.message}`);
             return null;
         }

@@ -90,9 +90,9 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             utils.noticeComment(context);
-        } catch (error:any) {
-            console.dir(error);
-            vscode.window.showErrorMessage(`${$l['something_wrong']}${error.message in $l ? (<any>$l)[error.message] : error.message}\n${error.toString()}`);
+        } catch (error) {
+            let e = error as Error;
+            vscode.window.showErrorMessage(`${$l['something_wrong']}${e.message in $l ? (<any>$l)[e.message] : e.message}\n${e.toString()}`);
         }
 
         stop();

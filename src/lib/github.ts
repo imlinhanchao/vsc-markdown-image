@@ -24,8 +24,9 @@ class GitHub implements Upload
             this.config = config;
             GitHub.github.lastconfig = config.github;
             await GitHub.github.config(config.github);
-        } catch (error: any) {
-            vscode.window.showErrorMessage(`${$l['config_failed']}${error.message}`);
+        } catch (error) {
+            let e = error as Error;
+            vscode.window.showErrorMessage(`${$l['config_failed']}${e.message}`);
         }
     }
 

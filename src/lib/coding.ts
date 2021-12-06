@@ -23,8 +23,9 @@ class Coding implements Upload
             this.config = config;
             Coding.coding.lastconfig = config.coding;
             await Coding.coding.config({ token: config.coding.token, repository: config.coding.repository });
-        } catch (error: any) {
-            vscode.window.showErrorMessage(`${$l['config_failed']}${error.message}`);
+        } catch (error) {
+            let e = error as Error;
+            vscode.window.showErrorMessage(`${$l['config_failed']}${e.message}`);
         }
     }
 

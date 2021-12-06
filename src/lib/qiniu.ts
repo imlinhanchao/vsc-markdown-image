@@ -59,7 +59,8 @@ class Qiniu implements Upload
 
             return await upload();
         }
-        catch(e:any) {
+        catch(error) {
+            let e = error as Error;
             vscode.window.showInformationMessage(`${$l['upload_failed']}${e.message}`);
             return null;
         }
