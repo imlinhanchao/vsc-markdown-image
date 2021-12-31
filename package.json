@@ -1,282 +1,294 @@
 {
-    "name": "markdown-image",
-    "displayName": "Markdown Image",
-    "description": "Easy to insert a image to markdown",
-    "version": "1.1.16",
-    "publisher": "hancel",
-    "engines": {
-        "vscode": "^1.33.0"
-    },
-    "keywords": [
-        "Picture",
-        "cdn",
-        "markdown",
-        "imgur",
-        "七牛",
-        "sm.ms",
-        "helper"
+  "name": "markdown-image",
+  "displayName": "Markdown Image",
+  "description": "Easy to insert a image to markdown",
+  "version": "1.1.17",
+  "publisher": "hancel",
+  "engines": {
+    "vscode": "^1.33.0"
+  },
+  "keywords": [
+    "Picture",
+    "cdn",
+    "markdown",
+    "imgur",
+    "七牛",
+    "sm.ms",
+    "helper"
+  ],
+  "icon": "asserts/icon.png",
+  "license": "MIT",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:markdown-image.paste",
+    "onCommand:markdown-image.config",
+    "onCommand:markdown-image.paste-rich-text"
+  ],
+  "repository": "https://github.com/imlinhanchao/vsc-markdown-image",
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "markdown-image.paste",
+        "category": "Markdown Image",
+        "title": "%markdown-image.command.paste%"
+      },
+      {
+        "command": "markdown-image.config",
+        "category": "Markdown Image",
+        "title": "%markdown-image.command.config%"
+      },
+      {
+        "command": "markdown-image.paste-rich-text",
+        "category": "Markdown Image",
+        "title": "%markdown-image.command.paste-rich-text%"
+      }
     ],
-    "icon": "asserts/icon.png",
-    "license": "MIT",
-    "categories": [
-        "Other"
+    "keybindings": [
+      {
+        "command": "markdown-image.paste",
+        "key": "alt+shift+v",
+        "mac": "alt+shift+v",
+        "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb"
+      }
     ],
-    "activationEvents": [
-        "onCommand:markdown-image.paste",
-        "onCommand:markdown-image.config",
-        "onCommand:markdown-image.paste-rich-text"
-    ],
-    "repository": "https://github.com/imlinhanchao/vsc-markdown-image",
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "markdown-image.paste",
-                "category": "Markdown Image",
-                "title": "%markdown-image.command.paste%"
-            },
-            {
-                "command": "markdown-image.config",
-                "category": "Markdown Image",
-                "title": "%markdown-image.command.config%"
-            },
-            {
-                "command": "markdown-image.paste-rich-text",
-                "category": "Markdown Image",
-                "title": "%markdown-image.command.paste-rich-text%"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "markdown-image.paste",
-                "key": "alt+shift+v",
-                "mac": "alt+shift+v",
-                "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "command": "markdown-image.paste",
-                    "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb",
-                    "group": "9_cutcopypaste@4"
-                },
-                {
-                    "command": "markdown-image.paste-rich-text",
-                    "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb",
-                    "group": "9_cutcopypaste@5"
-                }
-            ]
+    "menus": {
+      "editor/context": [
+        {
+          "command": "markdown-image.paste",
+          "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb",
+          "group": "9_cutcopypaste@4"
         },
-        "configuration": {
-            "type": "object",
-            "title": "%markdown-image.title%",
-            "properties": {
-                "markdown-image.base.uploadMethod": {
-                    "type": "string",
-                    "enum": [
-                        "Local",
-                        "Coding",
-                        "GitHub",
-                        "Imgur",
-                        "SM.MS",
-                        "Data URL",
-                        "%markdown-image.qiniu%",
-                        "%markdown-image.DIY%",
-                        "Cloudinary"
-                    ],
-                    "default": "Local",
-                    "markdownDescription": "%markdown-image.base.uploadMethod%",
-                    "enumDescriptions": [
-                        "%markdown-image.base.uploadMethod.Local%",
-                        "%markdown-image.base.uploadMethod.Coding%",
-                        "%markdown-image.base.uploadMethod.GitHub%",
-                        "%markdown-image.base.uploadMethod.Imgur%",
-                        "%markdown-image.base.uploadMethod.SM.MS%",
-                        "%markdown-image.base.uploadMethod.DataURL%",
-                        "%markdown-image.base.uploadMethod.Qiniu%",
-                        "%markdown-image.base.uploadMethod.DIY%",
-                        "%markdown-image.base.uploadMethod.Cloudinary%"
-                    ]
-                },
-                "markdown-image.base.codeType": {
-                    "type": "string",
-                    "enum": [
-                        "Markdown",
-                        "HTML"
-                    ],
-                    "default": "Markdown",
-                    "markdownDescription": "%markdown-image.base.codeType%",
-                    "enumDescriptions": [
-                        "%markdown-image.base.codeType.Markdown%",
-                        "%markdown-image.base.codeType.HTML%"
-                    ]
-                },
-                "markdown-image.base.imageWidth": {
-                    "type": "number",
-                    "default": 0,
-                    "markdownDescription": "%markdown-image.base.imageWidth%"
-                },
-                "markdown-image.base.fileNameFormat": {
-                    "type": "string",
-                    "default": "${hash}",
-                    "pattern": "^[^:*?<>|]+$",
-                    "markdownDescription": "%markdown-image.base.fileNameFormat%"
-                },
-                "markdown-image.base.urlEncode": {
-                    "type": "boolean",
-                    "default": true,
-                    "markdownDescription": "%markdown-image.base.urlEncode%"
-                },
-                "markdown-image.local.path": {
-                    "type": "string",
-                    "default": "/images",
-                    "markdownDescription": "%markdown-image.local.path%"
-                },
-                "markdown-image.local.referencePath": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.local.referencePath%"
-                },
-                "markdown-image.coding.path": {
-                    "type": "string",
-                    "default": "/",
-                    "markdownDescription": "%markdown-image.coding.path%"
-                },
-                "markdown-image.coding.token": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.coding.token%"
-                },
-                "markdown-image.coding.repository": {
-                    "type": "string",
-                    "default": "",
-                    "pattern": "^(https://([^.]*?).coding.net/p/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
-                    "markdownDescription": "%markdown-image.coding.repository%"
-                },
-                "markdown-image.github.path": {
-                    "type": "string",
-                    "default": "/",
-                    "markdownDescription": "%markdown-image.github.path%"
-                },
-                "markdown-image.github.token": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.github.token%"
-                },
-                "markdown-image.github.repository": {
-                    "type": "string",
-                    "default": "",
-                    "pattern": "^(https://github.com/[^/]*?/[^/]*?/*|)$",
-                    "markdownDescription": "%markdown-image.github.repository%"
-                },
-                "markdown-image.github.branch": {
-                    "type": "string",
-                    "default": "master",
-                    "markdownDescription": "%markdown-image.github.branch%"
-                },
-                "markdown-image.imgur.clientId": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.imgur.clientId%"
-                },
-                "markdown-image.imgur.httpProxy": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.imgur.httpProxy%"
-                },
-                "markdown-image.sm_ms.token": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.sm_ms.token%"
-                },
-                "markdown-image.qiniu.accessKey": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.qiniu.accessKey%"
-                },
-                "markdown-image.qiniu.secretKey": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.qiniu.secretKey%"
-                },
-                "markdown-image.qiniu.bucket": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.qiniu.bucket%"
-                },
-                "markdown-image.qiniu.domain": {
-                    "type": "string",
-                    "default": "",
-                    "pattern": "^(http(s|)://[a-zA-Z0-9][-\\w]{0,62}(.[a-zA-Z0-9][-\\w]{0,62})+.|)?",
-                    "markdownDescription": "%markdown-image.qiniu.domain%"
-                },
-                "markdown-image.qiniu.zone": {
-                    "type": "string",
-                    "enum": [
-                        "%markdown-image.qiniu.east%",
-                        "%markdown-image.qiniu.north%",
-                        "%markdown-image.qiniu.south%",
-                        "%markdown-image.qiniu.na%",
-                        "%markdown-image.qiniu.sa%"
-                    ],
-                    "default": "East China",
-                    "markdownDescription": "%markdown-image.qiniu.zone%"
-                },
-                "markdown-image.DIY.path": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.DIY.path%"
-                },
-                "markdown-image.cloudinary.cloudName": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.cloudinary.cloudName%"
-                },
-                "markdown-image.cloudinary.apiKey": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.cloudinary.apiKey%"
-                },
-                "markdown-image.cloudinary.apiSecret": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.cloudinary.apiSecret%"
-                },
-                "markdown-image.cloudinary.folder": {
-                    "type": "string",
-                    "default": "",
-                    "markdownDescription": "%markdown-image.cloudinary.folder%"
-                }
-            }
+        {
+          "command": "markdown-image.paste-rich-text",
+          "when": "editorLangId == markdown || editorLangId == mdx || resourceExtname == .ipynb",
+          "group": "9_cutcopypaste@5"
         }
+      ]
     },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^2.2.42",
-        "@types/node": "^8.10.25",
-        "@types/turndown": "^5.0.0",
-        "tslint": "^5.8.0",
-        "typescript": "^3.9.7",
-        "vscode": "^1.1.25"
-    },
-    "dependencies": {
-        "cloudinary": "^1.26.1",
-        "coding-picbed": "^0.0.13",
-        "form-data": "^3.0.0",
-        "github-picbed": "^0.0.2",
-        "got": "^10.7.0",
-        "https-proxy-agent": "^4.0.0",
-        "image-size": "^1.0.0",
-        "qiniu": "^7.3.1",
-        "turndown": "^7.0.0",
-        "turndown-plugin-gfm": "^1.0.2",
-        "vscode-nls": "^4.1.2"
+    "configuration": {
+      "type": "object",
+      "title": "%markdown-image.title%",
+      "properties": {
+        "markdown-image.base.uploadMethod": {
+          "type": "string",
+          "enum": [
+            "Local",
+            "Coding",
+            "GitHub",
+            "Imgur",
+            "SM.MS",
+            "Data URL",
+            "%markdown-image.qiniu%",
+            "%markdown-image.DIY%",
+            "Cloudinary"
+          ],
+          "default": "Local",
+          "markdownDescription": "%markdown-image.base.uploadMethod%",
+          "enumDescriptions": [
+            "%markdown-image.base.uploadMethod.Local%",
+            "%markdown-image.base.uploadMethod.Coding%",
+            "%markdown-image.base.uploadMethod.GitHub%",
+            "%markdown-image.base.uploadMethod.Imgur%",
+            "%markdown-image.base.uploadMethod.SM.MS%",
+            "%markdown-image.base.uploadMethod.DataURL%",
+            "%markdown-image.base.uploadMethod.Qiniu%",
+            "%markdown-image.base.uploadMethod.DIY%",
+            "%markdown-image.base.uploadMethod.Cloudinary%"
+          ]
+        },
+        "markdown-image.base.codeType": {
+          "type": "string",
+          "enum": [
+            "Markdown",
+            "HTML"
+          ],
+          "default": "Markdown",
+          "markdownDescription": "%markdown-image.base.codeType%",
+          "enumDescriptions": [
+            "%markdown-image.base.codeType.Markdown%",
+            "%markdown-image.base.codeType.HTML%"
+          ]
+        },
+        "markdown-image.base.imageWidth": {
+          "type": "number",
+          "default": 0,
+          "markdownDescription": "%markdown-image.base.imageWidth%"
+        },
+        "markdown-image.base.fileNameFormat": {
+          "type": "string",
+          "default": "${hash}",
+          "pattern": "^[^:*?<>|]+$",
+          "markdownDescription": "%markdown-image.base.fileNameFormat%"
+        },
+        "markdown-image.base.urlEncode": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%markdown-image.base.urlEncode%"
+        },
+        "markdown-image.local.path": {
+          "type": "string",
+          "default": "/images",
+          "markdownDescription": "%markdown-image.local.path%"
+        },
+        "markdown-image.local.referencePath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.local.referencePath%"
+        },
+        "markdown-image.coding.path": {
+          "type": "string",
+          "default": "/",
+          "markdownDescription": "%markdown-image.coding.path%"
+        },
+        "markdown-image.coding.token": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.coding.token%"
+        },
+        "markdown-image.coding.repository": {
+          "type": "string",
+          "default": "",
+          "pattern": "^(https://([^.]*?).coding.net/p/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
+          "markdownDescription": "%markdown-image.coding.repository%"
+        },
+        "markdown-image.github.path": {
+          "type": "string",
+          "default": "/",
+          "markdownDescription": "%markdown-image.github.path%"
+        },
+        "markdown-image.github.token": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.github.token%"
+        },
+        "markdown-image.github.repository": {
+          "type": "string",
+          "default": "",
+          "pattern": "^(https://github.com/[^/]*?/[^/]*?/*|)$",
+          "markdownDescription": "%markdown-image.github.repository%"
+        },
+        "markdown-image.github.branch": {
+          "type": "string",
+          "default": "master",
+          "markdownDescription": "%markdown-image.github.branch%"
+        },
+        "markdown-image.imgur.clientId": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.imgur.clientId%"
+        },
+        "markdown-image.imgur.httpProxy": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.imgur.httpProxy%"
+        },
+        "markdown-image.sm_ms.token": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.sm_ms.token%"
+        },
+        "markdown-image.qiniu.accessKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.qiniu.accessKey%"
+        },
+        "markdown-image.qiniu.secretKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.qiniu.secretKey%"
+        },
+        "markdown-image.qiniu.bucket": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.qiniu.bucket%"
+        },
+        "markdown-image.qiniu.domain": {
+          "type": "string",
+          "default": "",
+          "pattern": "^(http(s|)://[a-zA-Z0-9][-\\w]{0,62}(.[a-zA-Z0-9][-\\w]{0,62})+.|)?",
+          "markdownDescription": "%markdown-image.qiniu.domain%"
+        },
+        "markdown-image.qiniu.zone": {
+          "type": "string",
+          "enum": [
+            "%markdown-image.qiniu.east%",
+            "%markdown-image.qiniu.north%",
+            "%markdown-image.qiniu.south%",
+            "%markdown-image.qiniu.na%",
+            "%markdown-image.qiniu.sa%"
+          ],
+          "default": "East China",
+          "markdownDescription": "%markdown-image.qiniu.zone%"
+        },
+        "markdown-image.DIY.path": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.DIY.path%"
+        },
+        "markdown-image.cloudinary.cloudName": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.cloudinary.cloudName%"
+        },
+        "markdown-image.cloudinary.apiKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.cloudinary.apiKey%"
+        },
+        "markdown-image.cloudinary.apiSecret": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.cloudinary.apiSecret%"
+        },
+        "markdown-image.cloudinary.folder": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.cloudinary.folder%"
+        },
+        "markdown-image.cloudflare.accountId": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.cloudflare.accountId%"
+        },
+        "markdown-image.cloudflare.apiToken": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.cloudflare.apiToken%"
+        }
+      }
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.10.25",
+    "@types/node-fetch": "^2.5.12",
+    "@types/turndown": "^5.0.0",
+    "tslint": "^5.8.0",
+    "typescript": "^3.9.7",
+    "vscode": "^1.1.25"
+  },
+  "dependencies": {
+    "cloudinary": "^1.26.1",
+    "coding-picbed": "^0.0.13",
+    "form-data": "^3.0.0",
+    "github-picbed": "^0.0.2",
+    "got": "^10.7.0",
+    "https-proxy-agent": "^4.0.0",
+    "image-size": "^1.0.0",
+    "node-fetch": "^2.6.6",
+    "qiniu": "^7.3.1",
+    "turndown": "^7.0.0",
+    "turndown-plugin-gfm": "^1.0.2",
+    "vscode-nls": "^4.1.2"
+  }
 }

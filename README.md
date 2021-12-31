@@ -70,6 +70,11 @@ These values can be found on your Cloudinary Dashboard
 - `markdown-image.cloudinary.apiSecret`: API secret for your account.
 - `markdown-image.cloudinary.folder`: Folder to upload the image to.
 
+### Cloudflare Settings
+These values can be found on your Cloudflare dashboard
+- `markdown-image.cloudflare.accountId`: Your account ID.
+- `markdown-image.cloudflare.apiToken`: Cloudflare Images API token.
+
 ### DIY Settings
 - `markdown-image.DIY.path`: The Code Path what you write. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.
     For example:
@@ -82,6 +87,12 @@ These values can be found on your Cloudinary Dashboard
     ```
 
 ## Release Notes
+
+### 1.1.17
+- Add support for Cloudflare Images.
+- Includes the following new settings:
+  * `markdown-image.cloudflare.accountId`
+  * `markdown-image.cloudflare.apiToken`
 
 ### 1.1.16
 - Add to support upload image to github repository.
