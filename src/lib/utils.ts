@@ -28,6 +28,7 @@ function getUpload(config: Config) : Upload | null {
         case '自定义': return new Uploads.Define(config);
         case '自定義': return new Uploads.Define(config);
         case 'Cloudinary': return new Uploads.Cloudinary(config);
+        case 'Cloudflare': return new Uploads.Cloudflare(config);
     }
     return null;
 }
@@ -104,7 +105,7 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
         if (!mat) { continue; }
         switch(variables[i]) {
             case 'filename': {
-                let data = !isPaste ? path.basename(filePath, path.extname(filePath)) : 
+                let data = !isPaste ? path.basename(filePath, path.extname(filePath)) :
                     (path.basename((await prompt(locale['named_paste'], path.basename(filePath, '.png'))) || '') || '');
                 saveName = saveName.replace(reg, data);
                 break;
@@ -124,7 +125,7 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
                 saveName = saveName.replace(reg, data);
                 break;
             }
-            case 'timestramp': 
+            case 'timestramp':
             case 'timestamp': {
                 let data = new Date().getTime().toString();
                 saveName = saveName.replace(reg, data);
@@ -193,20 +194,20 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
         }
     }
 
-    
+
     return saveName;
 }
 
-function mkdirs(dirname: string) {  
-    //console.debug(dirname);  
-    if (fs.existsSync(dirname)) {  
-        return true;  
-    } else {  
-        if (mkdirs(path.dirname(dirname))) {  
-            fs.mkdirSync(dirname);  
-            return true;  
-        }  
-    }  
+function mkdirs(dirname: string) {
+    //console.debug(dirname);
+    if (fs.existsSync(dirname)) {
+        return true;
+    } else {
+        if (mkdirs(path.dirname(dirname))) {
+            fs.mkdirSync(dirname);
+            return true;
+        }
+    }
 }
 
 function html2Markdown(data: string) : string {
@@ -220,8 +221,8 @@ function getConfig() {
     let values: Config = {};
     function toVal(str: string, val: string|undefined, cfg: Config) : string | Config {
         let keys = str.split('.');
-        if (keys.length === 1) { 
-            cfg[keys[0]] = val; 
+        if (keys.length === 1) {
+            cfg[keys[0]] = val;
         } else {
             cfg[keys[0]] = toVal(keys.slice(1).join('.'), val, cfg[keys[0]] || {});
         }
@@ -234,19 +235,19 @@ function getConfig() {
 function getPasteImage(imagePath: string) : Promise<string[]>{
     return new Promise((resolve, reject) => {
         if (!imagePath) { return; }
-    
+
         let platform = process.platform;
         if (platform === 'win32') {
             // Windows
             const scriptPath = path.join(__dirname, '..', '..' , 'asserts/pc.ps1');
-    
+
             let command = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
             let powershellExisted = fs.existsSync(command);
             let output = '';
             if (!powershellExisted) {
                 command = "powershell";
             }
-    
+
             const powershell = spawn(command, [
                 '-noprofile',
                 '-noninteractive',
@@ -283,7 +284,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
         else if (platform === 'darwin') {
             // Mac
             let scriptPath = path.join(__dirname, '..', '..' , 'asserts/mac.applescript');
-    
+
             let ascript = spawn('osascript', [scriptPath, imagePath]);
             ascript.on('error', (e: any) => {
                 vscode.window.showErrorMessage(e);
@@ -295,10 +296,10 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
                 resolve(data.toString().trim().split('\n'));
             });
         } else {
-            // Linux 
-    
+            // Linux
+
             let scriptPath = path.join(__dirname, '..', '..' , 'asserts/linux.sh');
-    
+
             let ascript = spawn('sh', [scriptPath, imagePath]);
             ascript.on('error', (e: any) => {
                 vscode.window.showErrorMessage(e);
@@ -320,19 +321,19 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
 }
 
 function getRichText() : Promise<string>{
-    return new Promise((resolve, reject) => {    
+    return new Promise((resolve, reject) => {
         let platform = process.platform;
         if (platform === 'win32') {
             // Windows
             const scriptPath = path.join(__dirname, '..', '..' , 'asserts/rtf.ps1');
-    
+
             let command = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
             let powershellExisted = fs.existsSync(command);
             let output = '';
             if (!powershellExisted) {
                 command = "powershell";
             }
-    
+
             const powershell = spawn(command, [
                 '-noprofile',
                 '-noninteractive',
@@ -371,10 +372,10 @@ function getRichText() : Promise<string>{
         else if (platform === 'darwin') {
             // Mac
             vscode.window.showInformationMessage('Not support in macos yet.');
-            resolve(''); 
+            resolve('');
         } else {
-            // Linux 
-    
+            // Linux
+
             let scriptPath = path.join(__dirname, '..', '..' , 'asserts/rtf.sh');
             let result = '';
             let ascript = spawn('sh', [scriptPath]);

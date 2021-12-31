@@ -7,7 +7,8 @@ import Qiniu from './qiniu';
 import DataUrl from './dataurl';
 import Define from './define';
 import Cloudinary from './cloudinary';
+import Cloudflare from './cloudflare';
 
 export default {
-    Local, Coding, GitHub, Imgur, SM_MS, Qiniu, DataUrl, Define, Cloudinary
+    Local, Coding, GitHub, Imgur, SM_MS, Qiniu, DataUrl, Define, Cloudinary, Cloudflare
 };
