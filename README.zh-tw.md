@@ -62,8 +62,20 @@ sudo yum install xclip
 - `markdown-image.qiniu.bucket`: 七牛的對象存儲空間名。
 - `markdown-image.qiniu.domain`: 七牛空间绑定的域名。
 - `markdown-image.qiniu.zone`: 七牛空間的存儲區域。
-- 
-### 自定义设置项目
+
+### Cloudinary 設置項目
+這些值可以在 Cloudinary Dashboard 上找到
+- `markdown-image.cloudinary.cloudName`: 你的帳戶名稱。
+- `markdown-image.cloudinary.apiKey`: 你的帳戶 API key。
+- `markdown-image.cloudinary.apiSecret`: 你的帳戶 API secret。
+- `markdown-image.cloudinary.folder`: 圖像上傳文件夾。
+
+### Cloudflare 設置項目
+這些值可以在 CloudFlare Dashboard 上找到
+- `markdown-image.cloudflare.accountId`: 你的帳戶名稱。
+- `markdown-image.cloudflare.apiToken`: Cloudflare API 令牌.
+
+### 自定義設置項目
 
 - `markdown-image.DIY.path`: 你寫的代碼的路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。   
     比如：
@@ -76,6 +88,12 @@ sudo yum install xclip
     ```
 
 ## 發布歷史
+
+### 1.1.17
+- 添加了對 Cloudflare CDN 支持.
+- 新增了包括以下新的設置：
+  * `markdown-image.cloudflare.accountId`
+  * `markdown-image.cloudflare.apiToken`
 
 ### 1.1.16
 - 添加支持上傳圖像到 Github 存儲庫。

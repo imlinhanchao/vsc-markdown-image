@@ -49,5 +49,7 @@
     "markdown-image.cloudinary.cloudName": "你的 Cloudinary 用户名",
     "markdown-image.cloudinary.apiKey": "你的 Cloudinary 账户 API key",
     "markdown-image.cloudinary.apiSecret": "你的 Cloudinary 账户 API secret",
-    "markdown-image.cloudinary.folder": "你所要上传到的文件夹"
-}
+    "markdown-image.cloudinary.folder": "你所要上传到的文件夹",
+    "markdown-image.cloudflare.accountId": "你的帐户名称",
+    "markdown-image.cloudflare.apiToken": "Cloudflare API 令牌"
+  }

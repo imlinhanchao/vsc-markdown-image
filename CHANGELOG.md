@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.17] - 2022-01-03
+### Added
+- Add support for Cloudflare Images.
+- Includes the following new settings:
+  * `markdown-image.cloudflare.accountId`
+  * `markdown-image.cloudflare.apiToken`
+
 ## [1.1.16] - 2021-12-06
 ### Added
 - Added to support upload image to github repository.
