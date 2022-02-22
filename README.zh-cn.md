@@ -90,6 +90,9 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.18
+- 修复 Local 模式不能使用绝对路径的问题。
+
 ### 1.1.17
 - 添加了对 Cloudflare CDN 支持.
 - 新增了包括以下新的设置：

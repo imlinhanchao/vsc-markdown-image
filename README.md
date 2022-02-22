@@ -87,6 +87,8 @@ These values can be found on your Cloudflare dashboard
     ```
 
 ## Release Notes
+### 1.1.18
+- Fixed local mode can't use absolute path.
 
 ### 1.1.17
 - Add support for Cloudflare Images.

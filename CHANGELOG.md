@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.18] - 2022-02-22
+### Fixed
+- Fixed local mode can't use absolute path.
+
 ## [1.1.17] - 2022-01-03
 ### Added
 - Add support for Cloudflare Images.
