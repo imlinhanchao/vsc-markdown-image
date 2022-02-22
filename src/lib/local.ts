@@ -23,12 +23,12 @@ class Local implements Upload
             }
 
             let saveFolder = this.config.local.path.startsWith('/') ? 
-                path.join(utils.getCurrentRoot(), this.config.local.path) :
-                path.join(path.dirname(utils.getCurrentFilePath()), this.config.local.path);
+                path.resolve(utils.getCurrentRoot(), this.config.local.path) :
+                path.resolve(path.dirname(utils.getCurrentFilePath()), this.config.local.path);
             
             console.debug(`Create Project Upload Folder.`);
             
-            savePath = path.join(saveFolder, savePath);
+            savePath = path.resolve(saveFolder, savePath);
             saveFolder = path.dirname(savePath);
 
             if (!fs.existsSync(saveFolder)) {
@@ -45,7 +45,7 @@ class Local implements Upload
                 return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/'); 
             }
             
-            return path.join(await utils.formatName(this.config.local.referencePath, savePath, false), path.basename(savePath)).replace(/\\/g, '/')
+            return path.resolve(await utils.formatName(this.config.local.referencePath, savePath, false), path.basename(savePath)).replace(/\\/g, '/')
         }
         catch(error) {
             let e = error as Error; 

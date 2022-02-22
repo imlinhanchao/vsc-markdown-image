@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
             let editor = vscode.window.activeTextEditor;
             let selections = utils.getSelections();
             let savePath = utils.getTmpFolder();
-            savePath = path.join(savePath, `pic_${new Date().getTime()}.png`);
+            savePath = path.resolve(savePath, `pic_${new Date().getTime()}.png`);
             let images = await utils.getPasteImage(savePath);
             images = images.filter(img => ['.jpg', '.jpeg', '.gif', '.bmp', '.png', '.webp', '.svg'].find(ext => img.endsWith(ext)));
 
