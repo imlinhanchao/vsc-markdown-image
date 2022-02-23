@@ -23,7 +23,7 @@ class Local implements Upload
             }
 
             let saveFolder = this.config.local.path.startsWith('/') ? 
-                path.resolve(utils.getCurrentRoot(), this.config.local.path) :
+                path.join(utils.getCurrentRoot(), this.config.local.path) :
                 path.resolve(path.dirname(utils.getCurrentFilePath()), this.config.local.path);
             
             console.debug(`Create Project Upload Folder.`);
