@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.19] - 2022-02-23
+- Fixed local mode always save to disk root path.
+
 ## [1.1.18] - 2022-02-22
 ### Fixed
 - Fixed local mode can't use absolute path.
