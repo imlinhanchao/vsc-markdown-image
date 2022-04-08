@@ -45,7 +45,7 @@ class Local implements Upload
                 return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/'); 
             }
             
-            return path.resolve(await utils.formatName(this.config.local.referencePath, savePath, false), path.basename(savePath)).replace(/\\/g, '/')
+            return path.join(await utils.formatName(this.config.local.referencePath, savePath, false), path.basename(savePath)).replace(/\\/g, '/')
         }
         catch(error) {
             let e = error as Error; 
