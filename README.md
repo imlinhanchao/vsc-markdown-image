@@ -88,6 +88,9 @@ These values can be found on your Cloudflare dashboard
 
 ## Release Notes
 
+### 1.1.20
+- Fixed bug of the setting start with `/` on `local.referencePath`.
+
 ### 1.1.19
 - Fixed local mode always save to disk root path.
 

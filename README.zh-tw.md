@@ -89,6 +89,9 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.20
+- 修復 Local 模式設置 `local.referencePath` 以 `/` 開始的值導致路徑從磁盘根目录開始的问题。
+
 ### 1.1.19
 - 修復 Local 模式設置保存到項目根目錄，實際保存到磁盤根目錄問題。
 

@@ -90,6 +90,9 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.20
+- 修复 Local 模式设置 `local.reference Path` 以 `/` 开始的值导致路径从磁盘根目录开始的问题。
+
 ### 1.1.19
 - 修复 Local 模式设置保存到项目根目录，实际保存到磁盘根目录问题。
 
