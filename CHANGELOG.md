@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.21] - 2022-05-09
+- Fix the problem of uploading to GitHub when the file path contains Chinese.
+
 ## [1.1.20] - 2022-04-08
 - Fixed bug of the setting start with `/` on `local.referencePath`.
 

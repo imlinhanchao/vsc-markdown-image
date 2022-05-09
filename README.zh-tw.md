@@ -89,6 +89,9 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.21
+- 修復了當文件路徑包含中文時，上傳到 GitHub 失敗的問題。
+
 ### 1.1.20
 - 修復 Local 模式設置 `local.referencePath` 以 `/` 開始的值導致路徑從磁盘根目录開始的问题。
 
