@@ -88,6 +88,9 @@ These values can be found on your Cloudflare dashboard
 
 ## Release Notes
 
+### 1.1.22
+- Fix upload wrong path in GitHub Mode.
+
 ### 1.1.21
 - Fix the problem of uploading to GitHub when the file path contains Chinese.
 
