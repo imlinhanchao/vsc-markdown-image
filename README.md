@@ -8,7 +8,7 @@ An extension for conveniently inserting pictures in Markdown, which supports sto
 
 ## Features
 
-1. Copy image files or paste screenshots, Shortcut key `Ctrl + Shift + V`, or right-click menu `Paste Image`.
+1. Copy image files or paste screenshots, Shortcut key `Alt + Shift + V`, or right-click menu `Paste Image`.
 2. Automatically generate Markdown code insertion.
 3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Coding`, `Cloudinary` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
 4. You can also customize the code to upload pictures.
