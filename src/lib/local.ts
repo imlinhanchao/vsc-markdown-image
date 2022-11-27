@@ -42,7 +42,11 @@ class Local implements Upload
             fs.copyFileSync(filePath, savePath);
 
             if(this.config.local.referencePath === '') { 
-                return path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/'); 
+                let linkPath = path.relative(path.dirname(utils.getCurrentFilePath()), savePath).replace(/\\/g, '/'); 
+                if(!linkPath.startsWith('..')){
+                    linkPath = '.' + path.seq + linkPath;
+                }
+                return linkPath;
             }
             
             return path.join(await utils.formatName(this.config.local.referencePath, savePath, false), path.basename(savePath)).replace(/\\/g, '/')
