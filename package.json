@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.33.0"
@@ -175,6 +175,11 @@
           "default": "master",
           "markdownDescription": "%markdown-image.github.branch%"
         },
+        "markdown-image.github.cdn": {
+          "type": "string",
+          "default": "https://cdn.jsdelivr.net/gh/${username}/${repository}@${branch}/${filepath}",
+          "markdownDescription": "%markdown-image.github.cdn%"
+        },
         "markdown-image.imgur.clientId": {
           "type": "string",
           "default": "",
@@ -280,8 +285,8 @@
   "dependencies": {
     "cloudinary": "^1.26.1",
     "coding-picbed": "^0.0.13",
-    "form-data": "^3.0.0",
-    "github-picbed": "^0.0.4",
+    "form-data": "^3.0.1",
+    "github-picbed": "^0.0.6",
     "got": "^10.7.0",
     "https-proxy-agent": "^4.0.0",
     "image-size": "^1.0.0",

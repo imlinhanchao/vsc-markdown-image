@@ -37,8 +37,14 @@ class GitHub implements Upload
 
             savePath = path.join(this.config.github.path, savePath).replace(/\\/g, '/').replace(/^\/|\/$/, '');
             let data = await GitHub.github.upload({ data: filePath, filename: savePath });
+            let options = GitHub.github.options;
 
-            return data.url.replace('http:', 'https:');
+            return this.config.github.cdn
+              .replace(/\${username}/g, options.username)
+              .replace(/\${repository}/g, options.repository)
+              .replace(/\${branch}/g, options.branch)
+              .replace(/\${filepath}/g, data.filename)
+
         } catch (error) {
             let e = error as Error;
             vscode.window.showErrorMessage(`${$l['upload_failed']}${e.message}`);
