@@ -8,7 +8,7 @@
   "markdown-image.command.paste": "Paste Image",
   "markdown-image.command.config": "Markdown Image Config Setting",
   "markdown-image.command.paste-rich-text": "Paste Rich Text (Beta)",
-  "markdown-image.base.uploadMethod": "Method to upload pictures. To the local or another picture CDN service.",
+  "markdown-image.base.uploadMethod": "Method to upload pictures. To the local or another picture CDN service.\n\n- Local [Options](#markdown-image.local.path)\n\n- GitHub [Options](#markdown-image.github.branch)\n\n- Imgur [Options](#markdown-image.imgur.clientId)\n\n- SM.MS [Options](#markdown-image.imgur.clientId)\n\n- Qiniu [Options](#markdown-image.qiniu.accessKey)\n\n- DIY [Options](#markdown-image.DIY.path)\n\n- Cloudinary [Options](#markdown-image.cloudinary.apiKey)\n\n- Cloudflare [Options](#markdown-image.cloudflare.accountId)",
   "markdown-image.base.uploadMethod.Local": "Upload the image to the project directory. You can use markdown-image.local.path sets the relative path for upload.",
   "markdown-image.base.uploadMethod.Coding": "Upload the image to git repository in Coding.net . You can configure the repository through markdown-image.coding.repository. You need to configure the Token to access the repository through markdown-image.coding.token.",
   "markdown-image.base.uploadMethod.GitHub": "Upload the image to git repository in GitHub.com . You can configure the repository through markdown-image.github.repository. You need to configure the Token to access the repository through markdown-image.github.token.",

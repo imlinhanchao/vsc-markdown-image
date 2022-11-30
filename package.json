@@ -76,7 +76,7 @@
           "type": "string",
           "enum": [
             "Local",
-            "Coding",
+            "Coding(deprecated)",
             "GitHub",
             "Imgur",
             "SM.MS",
