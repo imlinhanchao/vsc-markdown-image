@@ -88,6 +88,9 @@ These values can be found on your Cloudflare dashboard
 
 ## Release Notes
 
+### 1.1.23
+- Added new setting `markdown-image.github.cdn` to settting GitHub CDN Format Address.
+
 ### 1.1.22
 - Fix upload wrong path in GitHub Mode.
 

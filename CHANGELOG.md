@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.23] - 2022-11-30
+- Added new setting `markdown-image.github.cdn` to settting GitHub CDN Format Address.
+
 ## [1.1.22] - 2022-05-10
 - Fix upload wrong path in GitHub Mode.
 

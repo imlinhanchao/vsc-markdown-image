@@ -90,6 +90,9 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.23
+- 添加了新设置项目 `markdown-image.github.cdn` 去设置 GitHub CDN 地址.
+
 ### 1.1.22
 - 修复 GitHub 模式上传文件路径错误问题。
 
