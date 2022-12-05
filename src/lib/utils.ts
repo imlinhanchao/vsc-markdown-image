@@ -198,6 +198,13 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
     return saveName;
 }
 
+function getAlt(context: vscode.ExtensionContext) {
+  let fsPath = getCurrentFilePath();
+  let lastIndex = parseInt(context.globalState.get(fsPath) || '0')
+  context.globalState.update(fsPath, `${lastIndex + 1}`);
+  return `${locale['picture']} ${lastIndex + 1}`
+}
+
 function mkdirs(dirname: string) {
     //console.debug(dirname);
     if (fs.existsSync(dirname)) {
@@ -495,6 +502,7 @@ export default {
     insertToEnd,
     formatCode,
     formatName,
+    getAlt,
     mkdirs,
     html2Markdown,
     getConfig,

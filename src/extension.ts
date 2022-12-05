@@ -46,7 +46,7 @@ export function activate(context: vscode.ExtensionContext) {
 
             let insertCode = '', insertTag = '';
             for (let i = 0; i < urls.length; i++) {
-                let selection = `${$l['picture']} ${index++}`;
+                let selection = utils.getAlt(context);
                 if (selections?.length === 1 && editor?.document.getText(selections[0])) {
                     selection = `${editor?.document.getText(selections[0])} ${i + 1}`;
                 }
