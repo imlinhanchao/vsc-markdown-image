@@ -90,6 +90,10 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.24
+- 修正一些 `markdown-image.local.referencePath` 的使用 bug；
+- 修正图片 `alt` 计数在重载控件重新开始的问题。
+
 ### 1.1.23
 - 添加了新设置项目 `markdown-image.github.cdn` 去设置 GitHub CDN 地址.
 

@@ -1,19 +1,28 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.24] - 2022-12-06
+### Fixed
+- Fixed some bug of the option `markdown-image.local.referencePath`.
+- Fixed the `alt` count of image restart when restarted extension.
+
 ## [1.1.23] - 2022-11-30
+### Added
 - Added new setting `markdown-image.github.cdn` to settting GitHub CDN Format Address.
 
 ## [1.1.22] - 2022-05-10
-- Fix upload wrong path in GitHub Mode.
+### Fixed
+- Fixed upload wrong path in GitHub Mode.
 
 ## [1.1.21] - 2022-05-09
-- Fix the problem of uploading to GitHub when the file path contains Chinese.
+### Fixed
+- Fixed the problem of uploading to GitHub when the file path contains Chinese.
 
 ## [1.1.20] - 2022-04-08
 - Fixed bug of the setting start with `/` on `local.referencePath`.
 
 ## [1.1.19] - 2022-02-23
+### Fixed
 - Fixed local mode always save to disk root path.
 
 ## [1.1.18] - 2022-02-22

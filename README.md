@@ -88,6 +88,10 @@ These values can be found on your Cloudflare dashboard
 
 ## Release Notes
 
+### 1.1.24
+- Fixed some bug of the option `markdown-image.local.referencePath`.
+- Fixed the `alt` count of image restart when restarted extension.
+
 ### 1.1.23
 - Added new setting `markdown-image.github.cdn` to settting GitHub CDN Format Address.
 
