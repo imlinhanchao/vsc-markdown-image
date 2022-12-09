@@ -35,7 +35,7 @@ sudo yum install xclip
 
 - `markdown-image.base.uploadMethod`: Method to upload pictures. To the local or another picture CDN service.
 - `markdown-image.base.fileNameFormat`: The filename format for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables. You can find more in setting.
-- `markdown-image.base.codeType`: The type of image code, you can set to <img> tag or markdown
+- `markdown-image.base.codeType`: The type of image code, you can set to `<img>` tag or markdown
 - `markdown-image.base.imageWidth`: The maximum width of the image, if the image is greater than this width, the width is set to this value. Set to 0 means not change.
 - `markdown-image.base.urlEncode`: Whether URL encode for the url of image.
 

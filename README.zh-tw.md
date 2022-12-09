@@ -35,7 +35,7 @@ sudo yum install xclip
 
 - `markdown-image.base.uploadMethod`: 上傳圖片的方式，根據不同的方式，須在設置不同的項目。
 - `markdown-image.base.fileNameFormat`: 圖片文件命名格式化字符串。支持多種變量做格式化，可同時配置文件夾格式，具體見設置。
-- `markdown-image.base.codeType`: 插入代碼的類型， 你可以設置為使用 <img> 標籤或 Markdown。
+- `markdown-image.base.codeType`: 插入代碼的類型， 你可以設置為使用 `<img>` 標籤或 Markdown。
 - `markdown-image.base.imageWidth`: 圖片的最大寬度，若圖片大於這個寬度，則會設置寬度為該值。設置為 0 則表示不設置。
 - `markdown-image.base.urlEncode`: 是否對圖像的 URL 編碼。
 
