@@ -1,6 +1,17 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.26] - 2022-12-09
+### Added
+- Add support for Cloudflare Images.
+- Includes the following new settings:
+  * `markdown-image.upyun.bucket`
+  * `markdown-image.upyun.domain`
+  * `markdown-image.upyun.operator`
+  * `markdown-image.upyun.password`
+  * `markdown-image.upyun.path`
+  * `markdown-image.upyun.link`
+
 ## [1.1.25] - 2022-12-09
 ### Fixed
 - Fixed image url of GitHub CDN encode wrong when enable `markdown-image.base.urlEncode` .
