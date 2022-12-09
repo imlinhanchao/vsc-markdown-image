@@ -25,6 +25,9 @@ function getUpload(config: Config) : Upload | null {
         case 'DIY': return new Uploads.Define(config);
         case '本地': return new Uploads.Local(config);
         case '七牛': return new Uploads.Qiniu(config);
+        case 'Upyun': return new Uploads.Upyun(config);
+        case '又拍云': return new Uploads.Upyun(config);
+        case '又拍雲': return new Uploads.Upyun(config);
         case '自定义': return new Uploads.Define(config);
         case '自定義': return new Uploads.Define(config);
         case 'Cloudinary': return new Uploads.Cloudinary(config);

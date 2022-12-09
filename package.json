@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.25",
+  "version": "1.1.26",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.33.0"
@@ -82,6 +82,7 @@
             "SM.MS",
             "Data URL",
             "%markdown-image.qiniu%",
+            "%markdown-image.upyun%",
             "%markdown-image.DIY%",
             "Cloudinary"
           ],
@@ -95,6 +96,7 @@
             "%markdown-image.base.uploadMethod.SM.MS%",
             "%markdown-image.base.uploadMethod.DataURL%",
             "%markdown-image.base.uploadMethod.Qiniu%",
+            "%markdown-image.base.uploadMethod.Upyun%",
             "%markdown-image.base.uploadMethod.DIY%",
             "%markdown-image.base.uploadMethod.Cloudinary%"
           ]
@@ -228,6 +230,43 @@
           "default": "East China",
           "markdownDescription": "%markdown-image.qiniu.zone%"
         },
+        "markdown-image.upyun.bucket": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.upyun.bucket%"
+        },
+        "markdown-image.upyun.domain": {
+          "type": "string",
+          "default": "",
+          "pattern": "^(http(s|)://[a-zA-Z0-9][-\\w]{0,62}(.[a-zA-Z0-9][-\\w]{0,62})+.|)?",
+          "markdownDescription": "%markdown-image.upyun.domain%"
+        },
+        "markdown-image.upyun.operator": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.upyun.operator%"
+        },
+        "markdown-image.upyun.password": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.upyun.password%"
+        },
+        "markdown-image.upyun.path": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.upyun.path%"
+        },
+        "markdown-image.upyun.link": {
+          "type": "string",
+          "enum": [
+            "%markdown-image.upyun.smart%",
+            "%markdown-image.upyun.telecom%",
+            "%markdown-image.upyun.unicom%",
+            "%markdown-image.upyun.mobile%"
+          ],
+          "default": "%markdown-image.upyun.smart%",
+          "markdownDescription": "%markdown-image.upyun.link%"
+        },
         "markdown-image.DIY.path": {
           "type": "string",
           "default": "",
@@ -292,6 +331,7 @@
     "image-size": "^1.0.0",
     "node-fetch": "^2.6.6",
     "qiniu": "^7.3.1",
+    "upyun": "^3.4.6",
     "turndown": "^7.0.0",
     "turndown-plugin-gfm": "^1.0.2",
     "vscode-nls": "^4.1.2"
