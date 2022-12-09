@@ -69,11 +69,20 @@ sudo yum install xclip
 
 ### Qiniu Settings
 
-- `markdown-image.qiniu.accessKey`: The Access Key of account。
-- `markdown-image.qiniu.secretKey`: The Secret Key of account。
-- `markdown-image.qiniu.bucket`: The storage name。
-- `markdown-image.qiniu.domain`: Bound domain name of storage。
+- `markdown-image.qiniu.accessKey`: The Access Key of account.
+- `markdown-image.qiniu.secretKey`: The Secret Key of account.
+- `markdown-image.qiniu.bucket`: The storage name.
+- `markdown-image.qiniu.domain`: Bound domain name of storage.
 - `markdown-image.qiniu.zone`:  Zone of storage.
+
+### Upyun Settings
+
+- `markdown-image.upyun.bucket`: Storge name of upload.
+- `markdown-image.upyun.domain`: Domain bind with storge name.
+- `markdown-image.upyun.operator`: Operator of upyun.
+- `markdown-image.upyun.password`: Password of upyun operator.
+- `markdown-image.upyun.path`:  The path that img store.
+- `markdown-image.upyun.link`:  The link that connect to upyun.
 
 ### Cloudinary Settings
 These values can be found on your Cloudinary Dashboard
@@ -99,6 +108,16 @@ These values can be found on your Cloudflare dashboard
     ```
 
 ## Release Notes
+
+### 1.1.26
+- Add support for Cloudflare Images.
+- Includes the following new settings:
+  * `markdown-image.upyun.bucket`
+  * `markdown-image.upyun.domain`
+  * `markdown-image.upyun.operator`
+  * `markdown-image.upyun.password`
+  * `markdown-image.upyun.path`
+  * `markdown-image.upyun.link`
 
 ### 1.1.25
 - Fixed image url of GitHub CDN encode wrong when enable `markdown-image.base.urlEncode` .

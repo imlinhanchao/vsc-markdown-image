@@ -75,6 +75,15 @@ sudo yum install xclip
 - `markdown-image.qiniu.domain`: 七牛空间绑定的域名。
 - `markdown-image.qiniu.zone`: 七牛空間的存儲區域。
 
+### 又拍云设置项目
+
+- `markdown-image.upyun.bucket`: 又拍雲的雲存儲服務名稱。
+- `markdown-image.upyun.domain`: 又拍雲雲存儲服務綁定的域名。
+- `markdown-image.upyun.operator`: 又拍雲的操作員名。
+- `markdown-image.upyun.password`: 又拍雲的操作員密碼。
+- `markdown-image.upyun.path`:  又拍雲圖片存儲路徑。
+- `markdown-image.upyun.link`:  又拍雲鏈接線路。
+
 ### Cloudinary 設置項目
 這些值可以在 Cloudinary Dashboard 上找到
 - `markdown-image.cloudinary.cloudName`: 你的帳戶名稱。
@@ -100,6 +109,17 @@ sudo yum install xclip
     ```
 
 ## 發布歷史
+
+### 1.1.17
+- 添加了對 又拍雲 支持.
+- 新增了包括以下新的設置：
+  * `markdown-image.upyun.bucket`
+  * `markdown-image.upyun.domain`
+  * `markdown-image.upyun.operator`
+  * `markdown-image.upyun.password`
+  * `markdown-image.upyun.path`
+  * `markdown-image.upyun.link`
+
 
 ### 1.1.25
 - 修正當開啟 `markdown-image.base.urlEncode` 時，GitHub CDN 地址編碼錯誤的問題。
