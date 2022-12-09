@@ -35,16 +35,28 @@ sudo yum install xclip
 
 - `markdown-image.base.uploadMethod`: Method to upload pictures. To the local or another picture CDN service.
 - `markdown-image.base.fileNameFormat`: The filename format for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables. You can find more in setting.
+- `markdown-image.base.codeType`: The type of image code, you can set to <img> tag or markdown
+- `markdown-image.base.imageWidth`: The maximum width of the image, if the image is greater than this width, the width is set to this value. Set to 0 means not change.
+- `markdown-image.base.urlEncode`: Whether URL encode for the url of image.
 
 ### Local Settings
 
 - `markdown-image.local.path`: Picture storage directory that in the local (automatically created if it does not exist).
+- `markdown-image.local.referencePath`: The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`
 
 ### Coding Settings
 
 - `markdown-image.coding.token`: Coding person [access token](https://help.coding.net/docs/member/tokens.html).
 - `markdown-image.coding.repository`: Coding repository, for example: `https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`
 - `markdown-image.coding.path`: Picture upload directory that in the repository (automatically created if it does not exist).
+
+### GitHub Settings
+
+- `markdown-image.github.path`: Picture upload directory that in the repository (automatically created if it does not exist). The repository must initialization first.
+- `markdown-image.github.token`: GitHub person [access token](https://github.com/settings/tokens).
+- `markdown-image.github.repository`: GitHub repository, for example: `https://github.com/username/repository`
+- `markdown-image.github.branch`: GitHub repository branch to save.
+- `markdown-image.github.cdn`: The github cdn address format to be used, `${username}` is the username of `markdown-image.github.repository`, and `${repository}` is the repository name. `${branch}` is the value of `markdown-image.github.branch`. `${filepath}` is the upload path in repository.
 
 ### Imgur Settings
 
@@ -87,6 +99,9 @@ These values can be found on your Cloudflare dashboard
     ```
 
 ## Release Notes
+
+### 1.1.25
+- Fixed image url of GitHub CDN encode wrong when enable `markdown-image.base.urlEncode` .
 
 ### 1.1.24
 - Fixed some bug of the option `markdown-image.local.referencePath`.

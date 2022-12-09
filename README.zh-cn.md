@@ -35,16 +35,28 @@ sudo yum install xclip
 
 - `markdown-image.base.uploadMethod`: 上传图片的方式，根据不同的方式，须在设置不同的项目。
 - `markdown-image.base.fileNameFormat`: 图片文件命名格式化字符串。支持多种变量做格式化，可同时配置文件夹格式，具体见设置。
+- `markdown-image.base.codeType`: 插入代码的类型， 你可以设置为使用 <img> 标签或 Markdown。
+- `markdown-image.base.imageWidth`: 图片的最大宽度，若图片大于这个宽度，则会设置宽度为该值。设置为 0 则表示不设置。
+- `markdown-image.base.urlEncode`: 是否对图像的 URL 编码。
 
 ### Local 设置项目
 
 - `markdown-image.local.path`: 图片本地存放路径，支持相对路径，相对于所粘贴的 Markdown 文件。`/` 表示打开的文件夹根目录。若路径不存在，将会自动创建。
+- `markdown-image.local.referencePath`: Markdown 中的图片的引用路径格式（不包含文件名）。留空表示使用相对路径。 你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有变量。例如：`/images/${YY}-${MM}/`
 
 ### Coding 设置项目
 
 - `markdown-image.coding.token`: Coding 的个人[访问令牌](https://help.coding.net/docs/member/tokens.html)，用于访问仓库，上传图片。
 - `markdown-image.coding.repository`: 所要上传的目的仓库，比如：`https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`
 - `markdown-image.coding.path`: 图片存放的仓库目录，默认为根目录。
+
+### GitHub Settings
+
+- `markdown-image.github.path`: 仓库中的图片保存目录（如果不存在，则自动创建）。
+- `markdown-image.github.token`: GitHub 的个人[访问令牌](https://github.com/settings/tokens)，用于访问仓库，上传图片。
+- `markdown-image.github.repository`: 所要上传的目的仓库，比如：`https://github.com/username/repository/`。仓库必须要先初始化。
+- `markdown-image.github.branch`: 要存放图片的仓库分支。
+- `markdown-image.github.cdn`: 要使用的 CDN 地址格式，`${username}` 表示上传仓库的用户名，`${repository}` 表示上传的仓库，`${branch}` 表示上传的分支，`${filepath}` 表示上传的仓库目录与文件名。
 
 ### Imgur 设置项目
 
@@ -87,8 +99,10 @@ sudo yum install xclip
     }
     ```
 
-
 ## 发布历史
+
+### 1.1.25
+- 修正当开启 `markdown-image.base.urlEncode` 时，GitHub CDN 地址编码错误的问题。
 
 ### 1.1.24
 - 修正一些 `markdown-image.local.referencePath` 的使用 bug；

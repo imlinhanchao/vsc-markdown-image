@@ -28,7 +28,7 @@
     "markdown-image.coding.path": "仓库中的图片保存目录（如果不存在，则自动创建）。",
     "markdown-image.coding.token": "Coding 的个人[访问令牌](https://help.coding.net/docs/member/tokens.html)，用于访问仓库，上传图片。",
     "markdown-image.coding.repository": "所要上传的目的仓库，比如：`https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`。仓库必须要先初始化。",
-    "markdown-image.github.path": "仓库中的图片保存目录（如果不存在，则自动创建）。",
+    "markdown-image.github.path": "仓库中的图片保存目录（如果不存在，则自动创建）。仓库需要先初始化。",
     "markdown-image.github.token": "GitHub 的个人[访问令牌](https://github.com/settings/tokens)，用于访问仓库，上传图片。",
     "markdown-image.github.repository": "所要上传的目的仓库，比如：`https://github.com/username/repository/`。仓库必须要先初始化。",
     "markdown-image.github.branch": "要存放图片的仓库分支。",

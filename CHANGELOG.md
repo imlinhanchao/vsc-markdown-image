@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.25] - 2022-12-09
+### Fixed
+- Fixed image url of GitHub CDN encode wrong when enable `markdown-image.base.urlEncode` .
+
 ## [1.1.24] - 2022-12-06
 ### Fixed
 - Fixed some bug of the option `markdown-image.local.referencePath`.
