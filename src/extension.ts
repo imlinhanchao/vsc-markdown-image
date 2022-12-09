@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
                 }
                 
                 if (config.base.uploadMethod !== 'Data URL') { 
-                    if(config.base.urlEncode) { urls[i] = encodeURIComponent(urls[i].toString()).replace(/%5C/g, '\\').replace(/%2F/g, '/').replace(/%3A/g, ':'); }
+                    if(config.base.urlEncode) { urls[i] = encodeURIComponent(urls[i].toString()).replace(/%5C/g, '\\').replace(/%2F/g, '/').replace(/%3A/g, ':').replace(/%40/g, '@'); }
                     let text = utils.formatCode(urls[i], selection, maxWidth[i], config.base.codeType);
                     if (selections?.[i] && selections?.length > 1) {
                         await utils.editorEdit(selections[i], text);
