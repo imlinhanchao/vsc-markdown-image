@@ -3,7 +3,7 @@ All notable changes to the "markdown-image" extension will be documented in this
 
 ## [1.1.26] - 2022-12-09
 ### Added
-- Add support for Cloudflare Images.
+- Add support for Upyun.
 - Includes the following new settings:
   * `markdown-image.upyun.bucket`
   * `markdown-image.upyun.domain`
