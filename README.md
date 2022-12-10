@@ -110,7 +110,7 @@ These values can be found on your Cloudflare dashboard
 ## Release Notes
 
 ### 1.1.26
-- Add support for Cloudflare Images.
+- Add support for Upyun.
 - Includes the following new settings:
   * `markdown-image.upyun.bucket`
   * `markdown-image.upyun.domain`
