@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.26",
+  "version": "1.1.27",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.33.0"
@@ -84,7 +84,8 @@
             "%markdown-image.qiniu%",
             "%markdown-image.upyun%",
             "%markdown-image.DIY%",
-            "Cloudinary"
+            "Cloudinary",
+            "S3"
           ],
           "default": "Local",
           "markdownDescription": "%markdown-image.base.uploadMethod%",
@@ -98,7 +99,8 @@
             "%markdown-image.base.uploadMethod.Qiniu%",
             "%markdown-image.base.uploadMethod.Upyun%",
             "%markdown-image.base.uploadMethod.DIY%",
-            "%markdown-image.base.uploadMethod.Cloudinary%"
+            "%markdown-image.base.uploadMethod.Cloudinary%",
+            "%markdown-image.base.uploadMethod.S3%"
           ]
         },
         "markdown-image.base.codeType": {
@@ -301,6 +303,36 @@
           "type": "string",
           "default": "",
           "markdownDescription": "%markdown-image.cloudflare.apiToken%"
+        },
+        "markdown-image.s3.endpoint": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.s3.endpoint%",
+          "order": 0
+        },
+        "markdown-image.s3.region": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.s3.region%",
+          "order": 1
+        },
+        "markdown-image.s3.bucketName": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.s3.bucketName%",
+          "order": 2
+        },
+        "markdown-image.s3.accessKeyId": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.s3.accessKeyId%",
+          "order": 3
+        },
+        "markdown-image.s3.secretAccessKey": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "%markdown-image.s3.secretAccessKey%",
+          "order": 4
         }
       }
     }
@@ -322,6 +354,8 @@
     "vscode": "^1.1.25"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.304.0",
+    "@aws-sdk/s3-request-presigner": "^3.304.0",
     "cloudinary": "^1.26.1",
     "coding-picbed": "^0.0.13",
     "form-data": "^3.0.1",
@@ -331,9 +365,9 @@
     "image-size": "^1.0.0",
     "node-fetch": "^2.6.6",
     "qiniu": "^7.3.1",
-    "upyun": "^3.4.6",
     "turndown": "^7.0.0",
     "turndown-plugin-gfm": "^1.0.2",
+    "upyun": "^3.4.6",
     "vscode-nls": "^4.1.2"
   }
 }

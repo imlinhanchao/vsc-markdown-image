@@ -9,7 +9,8 @@ import DataUrl from './dataurl';
 import Define from './define';
 import Cloudinary from './cloudinary';
 import Cloudflare from './cloudflare';
+import S3 from './s3';
 
 export default {
-    Local, Coding, GitHub, Imgur, SM_MS, Qiniu, DataUrl, Define, Cloudinary, Cloudflare, Upyun
+    Local, Coding, GitHub, Imgur, SM_MS, Qiniu, DataUrl, Define, Cloudinary, Cloudflare, Upyun, S3
 };

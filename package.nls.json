@@ -20,6 +20,7 @@
   "markdown-image.base.uploadMethod.Upyun": "Upload the image to upyun.com.",
   "markdown-image.base.uploadMethod.DIY": "You can define your code used to upload. You need to configure the code path through markdown-image.DIY.path",
   "markdown-image.base.uploadMethod.Cloudinary": "Upload the image to Cloudinary. You can configure `Cloud Name` through markdown-image.cloudinary.cloudName.",
+  "markdown-image.base.uploadMethod.S3": "Upload the image to any S3 API compatible server, for example, AWS S3, MinIO, Backblaze B2, etc.",
   "markdown-image.base.uploadMethod.Cloudflare": "Upload the image to Cloudflare Image. You can configure `accountId` through markdown-image.cloudflare.accountId.",
   "markdown-image.base.fileNameFormat": "The filenname and path format string for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables: \n\n- `${filename}`: The original filename.  \n- `${mdname}`: The name of the Markdown file being edited.  \n- `${path}`: The path of the Markdown file being edited relative to the root directory.  \n- `${hash}`: The sha256 hash of image.  \n- `${timestamp}`: The timestamp of upload time.  \n- `${YY}`: The Year  \n- `${MM}`:The Month  \n- `${DD}`: The Day  \n- `${hh}`: The 12-hour clock  \n- `${HH}`: The 24-hour clock  \n- `${mm}`: The minutes  \n- `${ss}`: The seconds  \n- `${mss}`: The milliseconds  \n- `${rand,number}`: A random number, for example: `${rand,100}`. It will generate random numbers from 0 to 99 \n- `${prompt}`: Makes it possible to enter a custom name through an input prompt when pasting the image.",
   "markdown-image.base.urlEncode": "Whether URL encode for the url of image.",
@@ -66,5 +67,10 @@
   "markdown-image.cloudinary.apiSecret": "API secret for your account.",
   "markdown-image.cloudinary.folder": "Folder to upload the image to.",
   "markdown-image.cloudflare.accountId": "Your Cloudflare account ID.",
-  "markdown-image.cloudflare.apiToken": "You Clouflare Image API token."
+  "markdown-image.cloudflare.apiToken": "You Clouflare Image API token.",
+  "markdown-image.s3.endpoint": "Your S3 API endpoint obtained from bucket setting or dashboard. It should include protocol as well, e.g. `http/https`.",
+  "markdown-image.s3.region": "Your S3 bucket region obtained from the bucket setting.",
+  "markdown-image.s3.bucketName": "Your S3 bucket name.",
+  "markdown-image.s3.accessKeyId": "Your S3 access key ID.",
+  "markdown-image.s3.secretAccessKey": "Your S3 secret access key."
 }
