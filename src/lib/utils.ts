@@ -32,6 +32,7 @@ function getUpload(config: Config) : Upload | null {
         case '自定義': return new Uploads.Define(config);
         case 'Cloudinary': return new Uploads.Cloudinary(config);
         case 'Cloudflare': return new Uploads.Cloudflare(config);
+        case 'S3': return new Uploads.S3(config);
     }
     return null;
 }
