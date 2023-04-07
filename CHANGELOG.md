@@ -1,6 +1,16 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.27] - 2023-04-07
+
+- Add support for S3 compatible providers.
+- Includes the following new settings:
+  - `markdown-image.s3.endpoint`
+  - `markdown-image.s3.region`
+  - `markdown-image.s3.bucketName`
+  - `markdown-image.s3.accessKeyId`
+  - `markdown-image.s3.secretAccessKey`
+  
 ## [1.1.26] - 2022-12-09
 ### Added
 - Add support for Upyun.

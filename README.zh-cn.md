@@ -96,6 +96,17 @@ sudo yum install xclip
 - `markdown-image.cloudflare.accountId`: 你的帐户名称
 - `markdown-image.cloudflare.apiToken`: Cloudflare API 令牌。
 
+### S3 Settings
+
+这些值可以在 S3 服务 Dashboard 上找到
+
+- `markdown-image.s3.endpoint`: 你的 S3 API 端点，是从存储桶设置或 dashboard 获得的。
+- `markdown-image.s3.region`: 你的 S3 存储桶区域，是从存储桶设置中获得的。
+- `markdown-image.s3.bucketName`: 你的 S3 存储桶名称。存储桶访问权限应该是公开的。
+- `markdown-image.s3.accessKeyId`: 你的 S3 access key ID。
+- `markdown-image.s3.secretAccessKey`: 你的 S3 secret access key。
+
+
 ### 自定义设置项目
 
 - `markdown-image.DIY.path`: 你写的代码的路径。 你的代码必须 exports 一个像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函数。   
@@ -109,6 +120,16 @@ sudo yum install xclip
     ```
 
 ## 发布历史
+
+### 1.1.27
+
+- 添加了对 S3 的支持。
+- 新增了包括以下新的设置：
+  - `markdown-image.s3.endpoint`
+  - `markdown-image.s3.region`
+  - `markdown-image.s3.bucketName`
+  - `markdown-image.s3.accessKeyId`
+  - `markdown-image.s3.secretAccessKey`
 
 ### 1.1.26
 - 添加了对 又拍云 支持.

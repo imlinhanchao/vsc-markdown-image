@@ -91,6 +91,16 @@ sudo yum install xclip
 - `markdown-image.cloudinary.apiSecret`: 你的帳戶 API secret。
 - `markdown-image.cloudinary.folder`: 圖像上傳文件夾。
 
+### S3 Settings
+
+這些值可以在 S3 服務 Dashboard 上找到
+
+- `markdown-image.s3.endpoint`: 你的 S3 API 端點，是從存儲桶設置或 dashboard 獲得的。
+- `markdown-image.s3.region`: 你的 S3 存儲桶區域，是從存儲桶設置中獲得的。
+- `markdown-image.s3.bucketName`: 你的 S3 存儲桶名稱。存儲桶訪問權限應該是公開的。
+- `markdown-image.s3.accessKeyId`: 你的 S3 access key ID。
+- `markdown-image.s3.secretAccessKey`: 你的 S3 secret access key。
+
 ### Cloudflare 設置項目
 這些值可以在 CloudFlare Dashboard 上找到
 - `markdown-image.cloudflare.accountId`: 你的帳戶名稱。
@@ -110,7 +120,17 @@ sudo yum install xclip
 
 ## 發布歷史
 
-### 1.1.17
+### 1.1.27
+
+- 添加了對 S3 的支持。
+- 新增了包括以下新的設置：
+  - `markdown-image.s3.endpoint`
+  - `markdown-image.s3.region`
+  - `markdown-image.s3.bucketName`
+  - `markdown-image.s3.accessKeyId`
+  - `markdown-image.s3.secretAccessKey`
+
+### 1.1.26
 - 添加了對 又拍雲 支持.
 - 新增了包括以下新的設置：
   * `markdown-image.upyun.bucket`

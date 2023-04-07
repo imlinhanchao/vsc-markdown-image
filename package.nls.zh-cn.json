@@ -64,5 +64,10 @@
     "markdown-image.cloudinary.apiSecret": "你的 Cloudinary 账户 API secret",
     "markdown-image.cloudinary.folder": "你所要上传到的文件夹",
     "markdown-image.cloudflare.accountId": "你的帐户名称",
-    "markdown-image.cloudflare.apiToken": "Cloudflare API 令牌"
+    "markdown-image.cloudflare.apiToken": "Cloudflare API 令牌",
+    "markdown-image.s3.endpoint": "你的 S3 API 端点，是从存储桶设置或 dashboard 获得的。应包括协议，比如：`http/https`。",
+    "markdown-image.s3.region": "你的 S3 存储桶区域，是从存储桶设置中获得的。",
+    "markdown-image.s3.bucketName": "你的 S3 存储桶名称。",
+    "markdown-image.s3.accessKeyId": "你的 S3 access key ID。",
+    "markdown-image.s3.secretAccessKey": "你的 S3 secret access key。"
   }
