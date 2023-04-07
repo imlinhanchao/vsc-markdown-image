@@ -228,9 +228,11 @@ function html2Markdown(data: string) : string {
 }
 
 function getConfig() {
-    let keys: string[] = Object.keys(pkg.contributes.configuration.properties);
+    const configurations: { properties: object, title: string }[] = pkg.contributes.configuration;
+    const keys: string[] = configurations.reduce((acc, config) => acc.concat(Object.keys(config.properties)), [] as string[])
+
     let values: Config = {};
-    function toVal(str: string, val: string|undefined, cfg: Config) : string | Config {
+    function toVal(str: string, val: string | undefined, cfg: Config): string | Config {
         let keys = str.split('.');
         if (keys.length === 1) {
             cfg[keys[0]] = val;
