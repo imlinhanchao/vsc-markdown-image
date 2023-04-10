@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.27",
+  "version": "1.1.28",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.33.0"
@@ -111,7 +111,8 @@
               "%markdown-image.upyun%",
               "%markdown-image.DIY%",
               "Cloudinary",
-              "S3"
+              "S3",
+              "SFTP"
             ],
             "enumDescriptions": [
               "%markdown-image.base.uploadMethod.Local%",
@@ -426,6 +427,53 @@
           }
         },
         "title": "S3"
+      },
+      {
+        "properties": {
+          "markdown-image.sftp.host": {
+            "default": "",
+            "markdownDescription": "%markdown-image.sftp.host%",
+            "order": 0,
+            "type": "string"
+          },
+          "markdown-image.sftp.port": {
+            "default": 22,
+            "markdownDescription": "%markdown-image.sftp.port%",
+            "order": 1,
+            "type": "number"
+          },
+          "markdown-image.sftp.username": {
+            "default": "",
+            "markdownDescription": "%markdown-image.sftp.username%",
+            "order": 2,
+            "type": "string"
+          },
+          "markdown-image.sftp.password": {
+            "default": "",
+            "markdownDescription": "%markdown-image.sftp.password%",
+            "order": 3,
+            "type": "string"
+          },
+          "markdown-image.sftp.privateKeyPath": {
+            "default": "",
+            "markdownDescription": "%markdown-image.sftp.privateKeyPath%",
+            "order": 4,
+            "type": "string"
+          },
+          "markdown-image.sftp.path": {
+            "default": "/images",
+            "markdownDescription": "%markdown-image.sftp.path%",
+            "order": 5,
+            "type": "string"
+          },
+          "markdown-image.sftp.referencePath": {
+            "default": "",
+            "markdownDescription": "%markdown-image.sftp.referencePath%",
+            "order": 6,
+            "type": "string"
+          }
+        },
+        "title": "SFTP"
       }
     ]
   },
@@ -448,6 +496,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.304.0",
     "@aws-sdk/s3-request-presigner": "^3.304.0",
+    "@types/ssh2-sftp-client": "^9.0.0",
     "cloudinary": "^1.26.1",
     "coding-picbed": "^0.0.13",
     "form-data": "^3.0.1",
@@ -457,6 +506,7 @@
     "image-size": "^1.0.0",
     "node-fetch": "^2.6.6",
     "qiniu": "^7.3.1",
+    "ssh2-sftp-client": "^9.0.4",
     "turndown": "^7.0.0",
     "turndown-plugin-gfm": "^1.0.2",
     "upyun": "^3.4.6",

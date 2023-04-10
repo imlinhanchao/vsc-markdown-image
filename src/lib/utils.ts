@@ -33,6 +33,7 @@ function getUpload(config: Config) : Upload | null {
         case 'Cloudinary': return new Uploads.Cloudinary(config);
         case 'Cloudflare': return new Uploads.Cloudflare(config);
         case 'S3': return new Uploads.S3(config);
+        case 'SFTP': return new Uploads.Sftp(config);
     }
     return null;
 }
@@ -419,7 +420,7 @@ function getCurrentRoot() : string {
         if (root) return root.uri.fsPath;
         else return '';
     }
-    if (resource.scheme !== 'file') { return ''; }
+    if (resource.scheme !== 'file' && resource.scheme !== 'vscode-remote') { return ''; }
     const folder = vscode.workspace.getWorkspaceFolder(resource);
     if (!folder) { return ''; }
     return folder.uri.fsPath;

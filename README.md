@@ -31,6 +31,19 @@ sudo yum install epel-release.noarch
 sudo yum install xclip
 ```
 
+## Notice
+
+If you want to use in the Remote Mode, please set `remote.extensionKind` like this:
+```json
+"remote.extensionKind": {
+  "hancel.markdown-image": [
+    "ui"
+  ]
+}
+``` 
+
+And if you want to save image in your remote workplace, you must use `SFTP` upload method. `Local` couldn't use in Remote Mode.
+
 ## Extension Settings
 
 ### Base Settings
@@ -111,6 +124,16 @@ These values can be found in your S3 service provider dashboard
 - `markdown-image.s3.bucketName`: The name of the S3 bucket to upload images to. Access to the bucket should be public.
 - `markdown-image.s3.accessKeyId`: Your S3 API access key ID.
 - `markdown-image.s3.secretAccessKey`: Your S3 secret access key.
+
+### SFTP Settings
+
+- `markdown-image.sftp.host`: The host of the remote server.
+- `markdown-image.sftp.port`: The ssh port of the remote server.
+- `markdown-image.sftp.username`: The username of the remote server.
+- `markdown-image.sftp.password`: The password of the remote server.
+- `markdown-image.sftp.privateKeyPath`: The private key path of the remote server.
+- `markdown-image.sftp.path`: Picture storage directory that in the remote (automatically created if it does not exist). Notice: You can't use variable in here. You can use variable in `#markdown-image.base.fileNameFormat#`.
+- `markdown-image.sftp.referencePath`: The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`
 
 ### DIY Settings
 

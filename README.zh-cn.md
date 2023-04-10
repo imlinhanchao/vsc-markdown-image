@@ -28,6 +28,18 @@ CentOS
 sudo yum install epel-release.noarch
 sudo yum install xclip
 ```
+## 注意事项
+
+如果你要在 Remote 模式中使用，请设置 `remote.extensionKind` 如下：
+```json
+"remote.extensionKind": {
+  "hancel.markdown-image": [
+    "ui"
+  ]
+}
+``` 
+
+而且，如果要将图片保存在远程工作目录中，则必须使用 `SFTP` 上传方法，`Local` 方法无法在 Remote 模式中使用。
 
 ## 扩展设置项目
 
@@ -96,7 +108,7 @@ sudo yum install xclip
 - `markdown-image.cloudflare.accountId`: 你的帐户名称
 - `markdown-image.cloudflare.apiToken`: Cloudflare API 令牌。
 
-### S3 Settings
+### S3 设置项目
 
 这些值可以在 S3 服务 Dashboard 上找到
 
@@ -105,6 +117,16 @@ sudo yum install xclip
 - `markdown-image.s3.bucketName`: 你的 S3 存储桶名称。存储桶访问权限应该是公开的。
 - `markdown-image.s3.accessKeyId`: 你的 S3 access key ID。
 - `markdown-image.s3.secretAccessKey`: 你的 S3 secret access key。
+
+### SFTP 设置项目
+
+- `markdown-image.sftp.host`: 远程服务器地址。
+- `markdown-image.sftp.port`: SSH 服务端口。
+- `markdown-image.sftp.username`: 远程用户名。
+- `markdown-image.sftp.password`: SSH 密码。
+- `markdown-image.sftp.privateKeyPath`: 远程私钥文件路径。
+- `markdown-image.sftp.path`: 远程服务器的图片存储目录（如果不存在，则自动创建）。支持相对路径，相对于所粘贴的 Markdown 文件。 `/` 表示打开的文件夹根目录。注意：您不能在此处使用变量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用变量。
+- `markdown-image.sftp.referencePath`: Markdown 中的图片的引用路径格式（不包含文件名）。留空表示使用相对路径。 你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有变量。例如：`/images/${YY}-${MM}/`
 
 
 ### 自定义设置项目

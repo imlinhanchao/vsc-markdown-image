@@ -8,7 +8,7 @@
     "markdown-image.command.paste": "粘贴图片",
     "markdown-image.command.config": "Markdown 图片配置",
     "markdown-image.command.paste-rich-text": "粘贴富文本 (Beta)",
-    "markdown-image.base.uploadMethod": "上传图片的方式。到本地或其他图片CDN服务。\n\n- 本地 [设置项目](#markdown-image.local.path)\n\n- GitHub [设置项目](#markdown-image.github.branch)\n\n- Imgur [设置项目](#markdown-image.imgur.clientId)\n\n- SM.MS [设置项目](#markdown-image.imgur.clientId)\n\n- 七牛 [设置项目](#markdown-image.qiniu.accessKey)\n\n- 又拍云 [设置项目](#markdown-image.upyun.bucket)\n\n- 自定义 [设置项目](#markdown-image.DIY.path)\n\n- Cloudinary [设置项目](#markdown-image.cloudinary.apiKey)\n\n- Cloudflare [设置项目](#markdown-image.cloudflare.accountId)",
+    "markdown-image.base.uploadMethod": "上传图片的方式。到本地或其他图片CDN服务。\n\n- 本地 [设置项目](#markdown-image.local.path)\n\n- GitHub [设置项目](#markdown-image.github.branch)\n\n- Imgur [设置项目](#markdown-image.imgur.clientId)\n\n- SM.MS [设置项目](#markdown-image.imgur.clientId)\n\n- 七牛 [设置项目](#markdown-image.qiniu.accessKey)\n\n- 又拍云 [设置项目](#markdown-image.upyun.bucket)\n\n- 自定义 [设置项目](#markdown-image.DIY.path)\n\n- Cloudinary [设置项目](#markdown-image.cloudinary.apiKey)\n\n- Cloudflare [设置项目](#markdown-image.cloudflare.accountId)\n\n- S3 [设置项目](#markdown-image.s3.endpoint)",
     "markdown-image.base.uploadMethod.Local": "将图像上传到项目目录。您可以使用 markdown-image.local.path 设置上传的相对路径。",
     "markdown-image.base.uploadMethod.Coding": "将图像上传到 Coding.net 中的 Git 存储库。您可以通过 markdown-image.coding.repository 配置存储库. 您必须通过 markdown-image.coding.token 配置个人访问令牌访问存储库。",
     "markdown-image.base.uploadMethod.GitHub": "将图像上传到 GitHub.com 中的 Git 存储库。您可以通过 markdown-image.github.repository 配置存储库. 您必须通过 markdown-image.github.token 配置个人访问令牌访问存储库。",
@@ -37,7 +37,7 @@
     "markdown-image.github.cdn": "要使用的 CDN 地址格式，${username} 表示上传仓库的用户名，${repository} 表示上传的仓库，${branch} 表示上传的分支，${filepath} 表示上传的仓库目录与文件名。",
     "markdown-image.imgur.clientId": "在 `imgur` 注册的 `Client Id`。您可以在[这儿](https://api.imgur.com/oauth2/addclient)注册。",
     "markdown-image.imgur.httpProxy": "通过 HTTP 代理连接到 Imgur。",
-    "markdown-image.sm_ms.token": "SM.MS Secret Token。您可以注册一个帐户，然后访问 [API Access](https://sm.ms/home/apitoken) 页面以生成。",
+    "markdown-image.sm_ms.token": "SM.MS Secret Token。您可以注册一个帐户，然后访问 [API Access](https://smms.app/home/apitoken) 页面以生成。",
     "markdown-image.qiniu.accessKey": "七牛账户的 Access Key。",
     "markdown-image.qiniu.secretKey": "七牛账户的 Secret Key。",
     "markdown-image.qiniu.bucket": "七牛的对象存储空间名。",
@@ -69,5 +69,12 @@
     "markdown-image.s3.region": "你的 S3 存储桶区域，是从存储桶设置中获得的。",
     "markdown-image.s3.bucketName": "你的 S3 存储桶名称。",
     "markdown-image.s3.accessKeyId": "你的 S3 access key ID。",
-    "markdown-image.s3.secretAccessKey": "你的 S3 secret access key。"
+    "markdown-image.s3.secretAccessKey": "你的 S3 secret access key。",
+    "markdown-image.sftp.host": "远程服务器地址。",
+    "markdown-image.sftp.port": "SSH 服务端口。",
+    "markdown-image.sftp.username": "远程用户名。",
+    "markdown-image.sftp.password": "SSH 密码。",
+    "markdown-image.sftp.privateKeyPath": "远程私钥文件路径。",
+    "markdown-image.sftp.path": "远程服务器的图片存储目录（如果不存在，则自动创建）。支持相对路径，相对于所粘贴的 Markdown 文件。 `/` 表示打开的文件夹根目录。注意：您不能在此处使用变量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用变量。",
+    "markdown-image.sftp.referencePath": "Markdown 中的图片的引用路径格式（不包含文件名）。留空表示使用相对路径。 你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有变量。例如：`/images/${YY}-${MM}/`"
   }

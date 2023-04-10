@@ -27,4 +27,9 @@ export default {
     "like.ok": "好啊",
     "like.no": "不要",
     "like.later": "等等再说",
+    sftp_not_host: "您必须配置远程服务器地址。",
+    sftp_not_port: "您必须配置 SSH 端口。",
+    sftp_not_username: "您必须配置SSH 用户名。",
+    sftp_not_password: "您必须配置 SSH 密码或私钥文件路径。",
+    sftp_connect_failed: "连接到 SSH 服务器失败：",
 };

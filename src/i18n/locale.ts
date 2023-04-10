@@ -31,6 +31,11 @@ export default {
     "like.ok": "Yes",
     "like.no": "No",
     "like.later": "Remind later",
+    sftp_not_host: "You must config the ssh host.",
+    sftp_not_port: "You must config the ssh port.",
+    sftp_not_username: "You must config the ssh username.",
+    sftp_not_password: "You must config a ssh password or private key file path.",
+    sftp_connect_failed: "Connect to the ssh server failed: ",
 };
 
 let $: any = { 'zh-cn': zh_cn, 'zh-tw': zh_tw };

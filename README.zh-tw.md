@@ -28,6 +28,18 @@ CentOS
 sudo yum install epel-release.noarch
 sudo yum install xclip
 ```
+## 注意事項
+
+如果你要在 Remote 模式中使用，請設置 `remote.extensionKind` 如下：
+```json
+"remote.extensionKind": {
+  "hancel.markdown-image": [
+    "ui"
+  ]
+}
+``` 
+
+而且，如果要將圖像保存在遠程工作目录中，則必須使用 `SFTP` 上傳方法，`Local` 方法無法在 Remote 模式中使用。
 
 ## 擴展設置項目
 
@@ -91,7 +103,12 @@ sudo yum install xclip
 - `markdown-image.cloudinary.apiSecret`: 你的帳戶 API secret。
 - `markdown-image.cloudinary.folder`: 圖像上傳文件夾。
 
-### S3 Settings
+### Cloudflare 設置項目
+這些值可以在 CloudFlare Dashboard 上找到
+- `markdown-image.cloudflare.accountId`: 你的帳戶名稱。
+- `markdown-image.cloudflare.apiToken`: Cloudflare API 令牌.
+
+### S3 設置項目
 
 這些值可以在 S3 服務 Dashboard 上找到
 
@@ -101,10 +118,15 @@ sudo yum install xclip
 - `markdown-image.s3.accessKeyId`: 你的 S3 access key ID。
 - `markdown-image.s3.secretAccessKey`: 你的 S3 secret access key。
 
-### Cloudflare 設置項目
-這些值可以在 CloudFlare Dashboard 上找到
-- `markdown-image.cloudflare.accountId`: 你的帳戶名稱。
-- `markdown-image.cloudflare.apiToken`: Cloudflare API 令牌.
+### SFTP 設置項目
+
+- `markdown-image.sftp.host`: 遠端伺服器地址。
+- `markdown-image.sftp.port`: SSH 服務端口。
+- `markdown-image.sftp.username`: 遠端賬戶。
+- `markdown-image.sftp.password`: SSH 密碼。
+- `markdown-image.sftp.privateKeyPath`: 遠端私鑰文件路徑。
+- `markdown-image.sftp.path`: 遠端伺服器的圖片存儲目錄（如果不存在，則自動創建）。支持相對路徑，相對於所粘貼的 Markdown 文件。 `/` 表示打開的文件夾根目錄。注意：您不能在此處使用變量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用變量。
+- `markdown-image.sftp.referencePath`: Markdown 中的圖片的引用路徑格式（不包含文件名）。留空表示使用相對路徑。你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有變量。例如：`/images/${YY}-${MM}/`
 
 ### 自定義設置項目
 
