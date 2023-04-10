@@ -1,8 +1,24 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.28] - 2023-04-10
+
+### Added
+- Support group setting.
+- Add support for remote mode.
+- Add SFTP upload method.
+- Includes the following new settings:
+  - `markdown-image.sftp.host`
+  - `markdown-image.sftp.port`
+  - `markdown-image.sftp.username`
+  - `markdown-image.sftp.password`
+  - `markdown-image.sftp.privateKeyPath`
+  - `markdown-image.sftp.path`
+  - `markdown-image.sftp.referencePath`
+
 ## [1.1.27] - 2023-04-07
 
+### Added
 - Add support for S3 compatible providers.
 - Includes the following new settings:
   - `markdown-image.s3.endpoint`

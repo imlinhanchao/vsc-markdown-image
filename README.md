@@ -149,6 +149,20 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.28
+
+- Support group setting.
+- Add support for remote mode.
+- Add SFTP upload method.
+- Includes the following new settings:
+  - `markdown-image.sftp.host`
+  - `markdown-image.sftp.port`
+  - `markdown-image.sftp.username`
+  - `markdown-image.sftp.password`
+  - `markdown-image.sftp.privateKeyPath`
+  - `markdown-image.sftp.path`
+  - `markdown-image.sftp.referencePath`
+
 ### 1.1.27
 
 - Add support for S3 compatible providers.

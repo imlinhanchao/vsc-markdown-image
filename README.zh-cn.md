@@ -143,6 +143,20 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.28
+
+- 支持设置项目分组
+- 添加对远程模式的支持。
+- 添加 SFTP 上传方法。
+- 包括以下新设置：
+  - `markdown-image.sftp.host`
+  - `markdown-image.sftp.port`
+  - `markdown-image.sftp.username`
+  - `markdown-image.sftp.password`
+  - `markdown-image.sftp.privateKeyPath`
+  - `markdown-image.sftp.path`
+  - `markdown-image.sftp.referencePath`
+
 ### 1.1.27
 
 - 添加了对 S3 的支持。
