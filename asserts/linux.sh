@@ -4,10 +4,8 @@
 command -v xclip >/dev/null 2>&1 || { echo >&1 "no xclip"; exit 1; }
 
 # write image in clipboard to file (see http://unix.stackexchange.com/questions/145131/copy-image-from-clipboard-to-file)
-if
-xclip -selection clipboard -target image/png -o >/dev/null 2>&1
-then
-xclip -selection clipboard -target image/png -o >$1 2>/dev/null
+xclip -selection clipboard -target image/png -o >$1
+if [ $? -eq 0 ]; then
 echo $1
 else
 content=$(xclip -selection c -o)
