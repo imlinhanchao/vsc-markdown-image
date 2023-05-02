@@ -149,6 +149,9 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.29
+- Fix failed to get image from clipboard on deepin.
+
 ### 1.1.28
 
 - Support group setting.

@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.29] - 2023-05-02
+
+### Fixed
+- Fix failed to get image from clipboard on deepin.
+
 ## [1.1.28] - 2023-04-10
 
 ### Added
