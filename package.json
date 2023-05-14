@@ -213,6 +213,12 @@
             "markdownDescription": "%markdown-image.github.token%",
             "order": 1,
             "type": "string"
+					},
+					"markdown-image.github.httpProxy": {
+						"default": "",
+						"markdownDescription": "%markdown-image.github.httpProxy%",
+						"order": 5,
+						"type": "string"
           }
         },
         "title": "GitHub"
