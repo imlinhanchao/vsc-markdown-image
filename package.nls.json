@@ -38,6 +38,7 @@
   "markdown-image.github.repository": "GitHub repository, for example: `https://github.com/username/repository`",
   "markdown-image.github.branch": "GitHub repository branch to save.",
   "markdown-image.github.cdn": "The github cdn address format to be used, `${username}` is the username of `#markdown-image.github.repository#`, and `${repository}` is the repository name. `${branch}` is the value of `#markdown-image.github.branch#`. `${filepath}` is the upload path in repository.",
+  "markdown-image.github.httpProxy": "Connect to Github via http proxy.",
   "markdown-image.imgur.clientId": "The client id registered with imgur. You can registed it at [here](https://api.imgur.com/oauth2/addclient).",
   "markdown-image.imgur.httpProxy": "Connect to Imgur via http proxy.",
   "markdown-image.sm_ms.token": "SM.MS API token (Options). You can register an account and then visit [API Token](https://smms.app/home/apitoken) Page to generate secret token.",

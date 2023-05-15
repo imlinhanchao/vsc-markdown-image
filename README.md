@@ -34,13 +34,14 @@ sudo yum install xclip
 ## Notice
 
 If you want to use in the Remote Mode, please set `remote.extensionKind` like this:
+
 ```json
 "remote.extensionKind": {
   "hancel.markdown-image": [
     "ui"
   ]
 }
-``` 
+```
 
 And if you want to save image in your remote workplace, you must use `SFTP` upload method. `Local` couldn't use in Remote Mode.
 
@@ -72,6 +73,7 @@ And if you want to save image in your remote workplace, you must use `SFTP` uplo
 - `markdown-image.github.repository`: GitHub repository, for example: `https://github.com/username/repository`
 - `markdown-image.github.branch`: GitHub repository branch to save.
 - `markdown-image.github.cdn`: The github cdn address format to be used, `${username}` is the username of `markdown-image.github.repository`, and `${repository}` is the repository name. `${branch}` is the value of `markdown-image.github.branch`. `${filepath}` is the upload path in repository.
+- `markdown-image.github.httpProxy`: Connect to Github via http proxy.
 
 ### Imgur Settings
 
@@ -150,6 +152,7 @@ These values can be found in your S3 service provider dashboard
 ## Release Notes
 
 ### 1.1.29
+
 - Fix failed to get image from clipboard on deepin.
 
 ### 1.1.28

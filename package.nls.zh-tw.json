@@ -34,6 +34,7 @@
     "markdown-image.github.repository": "所要上傳的目的倉庫，比如：`https://github.com/username/repository/`。倉庫必須要先初始化。 ",
     "markdown-image.github.branch": "要存放圖片的倉庫分支。",
     "markdown-image.github.cdn": "要使用的 CDN 地址格式，${username} 表示上傳倉庫的用戶名，${repository} 表示上傳的倉庫，${branch} 表示上傳的分支，${filepath} 表示上傳的倉庫目錄與文件名。",
+    "markdown-image.github.httpProxy": "通過 HTTP 代理連接到 Github。",
     "markdown-image.imgur.clientId": "在 `imgur` 註冊的 `Client Id`。您可以在[這兒](https://api.imgur.com/oauth2/addclient)註冊。",
     "markdown-image.imgur.httpProxy": "通過 HTTP 代理連接到 Imgur。",
     "markdown-image.sm_ms.token": "SM.MS Secret Token。您可以註冊一個帳戶，然後訪問 [API Access](https://smms.app/home/apitoken) 頁面生成。",
