@@ -8,7 +8,7 @@
 
 ## 功能
 
-1. 可複製圖片文件或截圖粘貼，快捷键 `Alt + Shift + V`，或右键菜单`粘贴图片`。
+1. 可複製圖片文件或截圖粘貼，快捷键 `Alt + Shift + V`，或右键菜单 `粘贴图片`。
 2. 自動生成 Markdown 代碼插入。
 3. 可配置支持 `Imgur`，`七牛`，`SM.MS`，`Coding` 等圖床。默認為本地，需打開 Markdown 文件所在文件夾。
 4. 也可以自定義代碼實現圖片上傳。
@@ -19,25 +19,29 @@
 Windows 和 MacOS 用戶可直接使用，Linux 用戶須安裝 xclip.
 
 Ubuntu
+
 ```bash
 sudo apt install xclip
 ```
 
 CentOS
+
 ```bash
 sudo yum install epel-release.noarch
 sudo yum install xclip
 ```
+
 ## 注意事項
 
 如果你要在 Remote 模式中使用，請設置 `remote.extensionKind` 如下：
+
 ```json
 "remote.extensionKind": {
   "hancel.markdown-image": [
     "ui"
   ]
 }
-``` 
+```
 
 而且，如果要將圖像保存在遠程工作目录中，則必須使用 `SFTP` 上傳方法，`Local` 方法無法在 Remote 模式中使用。
 
@@ -69,10 +73,11 @@ sudo yum install xclip
 - `markdown-image.github.repository`: 所要上傳的目的倉庫，比如：`https://github.com/username/repository/`。倉庫必須要先初始化。
 - `markdown-image.github.branch`: 要存放圖片的倉庫分支。
 - `markdown-image.github.cdn`: 要使用的 CDN 地址格式，`${username}` 表示上傳倉庫的用戶名，`${repository}` 表示上傳的倉庫，`${branch}` 表示上傳的分支，`${filepath}` 表示上傳的倉庫目錄與文件名。
+- `markdown-image.github.httpProxy` : 設置訪問Github的 HTTP 代理。
 
 ### Imgur 設置項目
 
-- `markdown-image.imgur.clientId`: 在 `imgur` 註冊的`Client Id`。您可以在[這裡](https://api.imgur.com/oauth2/addclient)註冊。
+- `markdown-image.imgur.clientId`: 在 `imgur` 註冊的 `Client Id`。您可以在[這裡](https://api.imgur.com/oauth2/addclient)註冊。
 - `markdown-image.imgur.httpProxy`: 設置訪問的 HTTP 代理。
 
 ### SM.MS 設置項目
@@ -97,14 +102,18 @@ sudo yum install xclip
 - `markdown-image.upyun.link`:  又拍雲鏈接線路。
 
 ### Cloudinary 設置項目
+
 這些值可以在 Cloudinary Dashboard 上找到
+
 - `markdown-image.cloudinary.cloudName`: 你的帳戶名稱。
 - `markdown-image.cloudinary.apiKey`: 你的帳戶 API key。
 - `markdown-image.cloudinary.apiSecret`: 你的帳戶 API secret。
 - `markdown-image.cloudinary.folder`: 圖像上傳文件夾。
 
 ### Cloudflare 設置項目
+
 這些值可以在 CloudFlare Dashboard 上找到
+
 - `markdown-image.cloudflare.accountId`: 你的帳戶名稱。
 - `markdown-image.cloudflare.apiToken`: Cloudflare API 令牌.
 
@@ -130,19 +139,20 @@ sudo yum install xclip
 
 ### 自定義設置項目
 
-- `markdown-image.DIY.path`: 你寫的代碼的路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。   
-    比如：
-    ```javascript
-    const path = require('path');
-    module.exports = async function(filePath, savePath, markdownPath) {
-        // Return a picture access link
-        return path.relative(path.dirname(markdownPath), filePath);
-    }
-    ```
+- `markdown-image.DIY.path`: 你寫的代碼的路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。
+  比如：
+  ```javascript
+  const path = require('path');
+  module.exports = async function(filePath, savePath, markdownPath) {
+      // Return a picture access link
+      return path.relative(path.dirname(markdownPath), filePath);
+  }
+  ```
 
 ## 發布歷史
 
 ### 1.1.29
+
 - 修正在 Deepin 系統無法獲取剪貼板圖片的問題。
 
 ### 1.1.28
@@ -170,6 +180,7 @@ sudo yum install xclip
   - `markdown-image.s3.secretAccessKey`
 
 ### 1.1.26
+
 - 添加了對 又拍雲 支持.
 - 新增了包括以下新的設置：
   * `markdown-image.upyun.bucket`
@@ -179,57 +190,72 @@ sudo yum install xclip
   * `markdown-image.upyun.path`
   * `markdown-image.upyun.link`
 
-
 ### 1.1.25
+
 - 修正當開啟 `markdown-image.base.urlEncode` 時，GitHub CDN 地址編碼錯誤的問題。
 
 ### 1.1.24
+
 - 修正一些 `markdown-image.local.referencePath` 的使用 bug；
 - 修正圖片 `alt` 計數在重載控件重新開始的問題。
 
 ### 1.1.23
+
 - 添加了新設置項目 `markdown-image.github.cdn` 去設置 GitHub CDN 地址.
 
 ### 1.1.22
+
 - 修复 GitHub 模式上傳文件路徑錯誤問題。
 
 ### 1.1.21
+
 - 修復了當文件路徑包含中文時，上傳到 GitHub 失敗的問題。
 
 ### 1.1.20
+
 - 修復 Local 模式設置 `local.referencePath` 以 `/` 開始的值導致路徑從磁盘根目录開始的问题。
 
 ### 1.1.19
+
 - 修復 Local 模式設置保存到項目根目錄，實際保存到磁盤根目錄問題。
 
 ### 1.1.18
+
 - 修復 Local 模式不能使用絕對路徑的問題。
 
 ### 1.1.17
+
 - 添加了對 Cloudflare CDN 支持.
 - 新增了包括以下新的設置：
   * `markdown-image.cloudflare.accountId`
   * `markdown-image.cloudflare.apiToken`
 
 ### 1.1.16
+
 - 添加支持上傳圖像到 Github 存儲庫。
 
 ### 1.1.15
+
 - 添加文件格式化變量 `prompt`。 可以在粘貼圖像時通過輸入框輸入自定義名稱。
 
 ### 1.1.14
+
 - 更新 Coding-Picbed 修復上傳到 Coding 錯誤。
 
 ### 1.1.13
+
 - 添加了設置项目 `markdown-image.local.referencePath` 用于支持修改在 Markdown 文件中的图片引用路徑。
 
 ### 1.1.12
+
 - 添加支持在 jupyter 文件中的粘貼圖像。
 
 ### [1.1.11]
+
 - 更新了Cloudinary CDN 以使用 `markdown-image.base.fileNameFormat` 設置保存文件路徑。文件路徑若已存在，將提示是否覆蓋。
 
 ### 1.1.10
+
 - 添加了對 Cloudinary CDN 的支持
 - 新增了包括以下新的設置：
   * `markdown-image.cloudinary.cloudName`
@@ -238,60 +264,79 @@ sudo yum install xclip
   * `markdown-image.cloudinary.folder`
 
 ### 1.1.9
+
 - 添加設置選項 `markdown-image.base.codeType` 和 `markdown-image.base.imageWidth` 用於設置圖片最大寬度。
 
 ### 1.1.8
+
 - 修正 VSCode 會緩存 `DIY` 路徑代碼，導致修改無法即時生效的問題。
 
 ### 1.1.7
+
 - 新增一個選項用於切換是否對 URL 編碼。
-  
+
 ### 1.1.6
+
 - 修正擴展Log等級，避免干擾其他擴展開發者。
-- 更新替換文件後動作。 
+- 更新替換文件後動作。
 
 ### 1.1.5
+
 - 修正 `Data URL` 設定項目説明。
 
 ### 1.1.4
+
 - 新增插入 Markdown 圖片方式： `Data URL`.
 - 修正粘貼多個文件無效問題。
 
 ### 1.1.3
-- 修复了文件名變量`${path}`導致在 Windows 系統下存在兩級以上 Markdown 路徑時，`Coding` 圖床上傳失敗問題。
+
+- 修复了文件名變量 `${path}`導致在 Windows 系統下存在兩級以上 Markdown 路徑時，`Coding` 圖床上傳失敗問題。
 
 ### 1.1.2
+
 - 再一次修復了粘貼複製的圖片時，路徑包含中文提示無法找到問題。😂
 
 ### 1.1.1
+
 - 修復了粘貼複製的圖片時，路徑包含中文提示無法找到問題。
 
 ### 1.1.0
+
 - 添加了 Beta 功能，支持粘貼富文本格式。（僅支持Windows）
 
 ### 1.0.14
+
 - 修復了與 Windows 7 不兼容的問題。
 
 ### 1.0.13
+
 - 修復了在 Windows 中獲取剪貼板圖片的路徑分辨率錯誤的問題。
 
 ### 1.0.12
+
 - 添加了文件名變量 `${path}`： 正在編輯的 Markdown 文件相對於根目錄的路徑。
 
 ### 1.0.11
+
 - 修正 `sm.ms` API 地址。
 - 修復了在 Linux 中找不到帶空格的文件名的問題。
 - 添加了 `sm.ms` 沒有設置 token 的提示。
+
 ### 1.0.10
+
 - 修復變量 `$mdname` 沒有去除非 `md` 後綴名的問題。
 
 ### 1.0.9
+
 - 修復了文件名格式化日期小時獲取錯誤的問題。
 
 ### 1.0.8
+
 - 加入支持 mdx 文件。
 
 ### 1.0.7
+
 - 修復了無法自動在 MacOS 和 Linux 上啟動擴展名主頁的問題。
 - 修復了圖片地址冒號被錯誤轉義的問題。
 
@@ -300,6 +345,7 @@ sudo yum install xclip
 - 修正日期變量沒有考慮時區的問題。
 
 ### 1.0.5
+
 - 修正包含空格的文件名無法預覽的問題。
 - 修正 ${rand} 變量不可用的問題。
 
@@ -323,7 +369,7 @@ sudo yum install xclip
 
 - 初版发布。
 
------------------------------------------------------------------------------------------------------------
+---
 
 ### 其他
 
