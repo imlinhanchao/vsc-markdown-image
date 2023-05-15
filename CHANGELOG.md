@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.30] - 2023-05-15
+
+### Added
+- Added new setting `markdown-image.github.httpProxy` to settting GitHub http proxy.
+
 ## [1.1.29] - 2023-05-02
 
 ### Fixed

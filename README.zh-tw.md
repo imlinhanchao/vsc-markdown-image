@@ -151,6 +151,10 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.30
+
+- 添加了新設置項目 `markdown-image.github.httpProxy` 去設置 GitHub HTTP 代理.
+
 ### 1.1.29
 
 - 修正在 Deepin 系統無法獲取剪貼板圖片的問題。

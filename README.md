@@ -151,6 +151,10 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.30
+
+- Added new setting `markdown-image.github.httpProxy` to settting GitHub http proxy.
+
 ### 1.1.29
 
 - Fix failed to get image from clipboard on deepin.
