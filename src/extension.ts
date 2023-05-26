@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
         let stop = () => {};
         try {
             stop = utils.showProgress($l['uploading']);
-            
+
             let editor = vscode.window.activeTextEditor;
             let selections = utils.getSelections();
             let savePath = utils.getTmpFolder();
@@ -53,8 +53,8 @@ export function activate(context: vscode.ExtensionContext) {
                 {
                     selection = selections?.[i] && editor?.document.getText(selections[i]);
                 }
-                
-                if (config.base.uploadMethod !== 'Data URL') { 
+
+                if (config.base.uploadMethod !== 'Data URL') {
                     if(config.base.urlEncode) { urls[i] = encodeURIComponent(urls[i].toString()).replace(/%5C/g, '\\').replace(/%2F/g, '/').replace(/%3A/g, ':').replace(/%40/g, '@'); }
                     let text = utils.formatCode(urls[i], selection, maxWidth[i], config.base.codeType);
                     if (selections?.[i] && selections?.length > 1) {
@@ -82,10 +82,16 @@ export function activate(context: vscode.ExtensionContext) {
 
             if (insertCode) {
                 let pos = editor?.selection.active;
-                if (config.base.uploadMethod === 'Data URL') { 
+                if (config.base.uploadMethod === 'Data URL') {
                     await utils.insertToEnd(insertTag);
+                } else if (pos) {
+                    await utils.editorEdit(pos, insertCode);
+                } else {
+                    vscode.env.clipboard.writeText(insertCode);
+                    setTimeout(() => {
+                        vscode.commands.executeCommand("editor.action.clipboardPasteAction");
+                    }, 100);
                 }
-                await utils.editorEdit(pos, insertCode);
             }
 
             utils.noticeComment(context);
@@ -111,7 +117,7 @@ export function activate(context: vscode.ExtensionContext) {
             let editor = vscode.window.activeTextEditor;
             let text = await utils.getRichText();
 
-            if(text) { 
+            if(text) {
                 utils.editorEdit(editor?.selection, utils.html2Markdown(text));
             }
         } catch (error) {
@@ -119,7 +125,7 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.window.showErrorMessage(`${$l['something_wrong']}${e.message}\n${e.toString()}`);
         }
 
-        stop(); 
+        stop();
     });
 
     context.subscriptions.push(richTextCommand);
