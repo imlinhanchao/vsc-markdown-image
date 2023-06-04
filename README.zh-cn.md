@@ -151,9 +151,16 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.31
+
+- 添加了新设置项目 `markdown-image.base.uploadMethods` 用于支援多种上传方式并发上传。
+- 添加了新设置项目 `markdown-image.base.fileFormat` 用于设置剪切板图片文件保存格式。
+- 移除已失效的 Coding 图床。
+- 支援图片粘贴到非常规编辑窗口。
+
 ### 1.1.30
 
-- 添加了新设置项目 `markdown-image.github.httpProxy` 去设置 GitHub HTTP 代理.
+- 添加了新设置项目 `markdown-image.github.httpProxy` 去设置 GitHub HTTP 代理。
 
 ### 1.1.29
 

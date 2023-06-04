@@ -151,6 +151,13 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.31
+
+- Added a new setting item `markdown-image.base.uploadMethods` to support concurrent uploads with multiple upload methods.
+- Added a new setting item `markdown-image.base.fileFormat` to set the file format for saving clipboard images.
+- Removed the deprecated Coding image hosting service.
+- Supported pasting images into unconventional editing windows.
+
 ### 1.1.30
 
 - Added new setting `markdown-image.github.httpProxy` to settting GitHub http proxy.

@@ -1,6 +1,16 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.31] - 2023-06-04
+
+### Added
+- Added a new setting item `markdown-image.base.uploadMethods` to support concurrent uploads with multiple upload methods.
+- Added a new setting item `markdown-image.base.fileFormat` to set the file format for saving clipboard images.
+- Supported pasting images into unconventional editing windows.
+
+### Deprecated
+- Removed the deprecated Coding image upload method.
+
 ## [1.1.30] - 2023-05-15
 
 ### Added
