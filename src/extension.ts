@@ -12,7 +12,7 @@ function getUploadInstance(config: any) {
 
     // Get All Upload Methods
     let uploadMethods = config.base.uploadMethods || [];
-    uploadMethods.push(config.base.uploadMethod);
+    uploadMethods.unshift(config.base.uploadMethod);
     uploadMethods = Array.from(new Set(uploadMethods));
 
     // Load All Upload Method Instance
