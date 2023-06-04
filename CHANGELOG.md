@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
-## [1.1.31] - 2023-06-04
+## [1.1.33] - 2023-06-04
 
 ### Added
 - Added a new setting item `markdown-image.base.uploadMethods` to support concurrent uploads with multiple upload methods.

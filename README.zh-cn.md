@@ -151,7 +151,7 @@ sudo yum install xclip
 
 ## 发布历史
 
-### 1.1.31
+### 1.1.33
 
 - 添加了新设置项目 `markdown-image.base.uploadMethods` 用于支援多种上传方式并发上传。
 - 添加了新设置项目 `markdown-image.base.fileFormat` 用于设置剪切板图片文件保存格式。
