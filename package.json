@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.30",
+  "version": "1.1.31",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.33.0"
@@ -82,27 +82,26 @@
               "%markdown-image.base.codeType.HTML%"
             ],
             "markdownDescription": "%markdown-image.base.codeType%",
-            "order": 1,
+            "order": 2,
             "type": "string"
           },
           "markdown-image.base.fileNameFormat": {
             "default": "${hash}",
             "markdownDescription": "%markdown-image.base.fileNameFormat%",
-            "order": 3,
+            "order": 4,
             "pattern": "^[^:*?<>|]+$",
             "type": "string"
           },
           "markdown-image.base.imageWidth": {
             "default": 0,
             "markdownDescription": "%markdown-image.base.imageWidth%",
-            "order": 2,
+            "order": 3,
             "type": "number"
           },
           "markdown-image.base.uploadMethod": {
             "default": "Local",
             "enum": [
               "Local",
-              "Coding(deprecated)",
               "GitHub",
               "Imgur",
               "SM.MS",
@@ -134,14 +133,40 @@
           "markdown-image.base.uploadMethods": {
             "default": [],
             "markdownDescription": "%markdown-image.base.uploadMethods%",
-            "order": 4,
-            "type": "array"
+            "order": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Local",
+                "GitHub",
+                "Imgur",
+                "SM.MS",
+                "Data URL",
+                "%markdown-image.qiniu%",
+                "%markdown-image.upyun%",
+                "%markdown-image.DIY%",
+                "Cloudinary",
+                "S3",
+                "SFTP"
+              ]
+            }
           },
           "markdown-image.base.urlEncode": {
             "default": true,
             "markdownDescription": "%markdown-image.base.urlEncode%",
             "order": 5,
             "type": "boolean"
+          },
+          "markdown-image.base.fileFormat": {
+            "default": "png",
+            "markdownDescription": "%markdown-image.base.fileFormat%",
+            "enum": [
+              "png",
+              "jpg"
+            ],
+            "order": 6,
+            "type": "string"
           }
         },
         "title": "Base"
@@ -517,6 +542,7 @@
     "https-proxy-agent": "^4.0.0",
     "image-size": "^1.0.0",
     "node-fetch": "^2.6.6",
+    "png-to-jpeg": "^1.0.1",
     "qiniu": "^7.3.1",
     "ssh2-sftp-client": "^9.0.4",
     "turndown": "^7.0.0",

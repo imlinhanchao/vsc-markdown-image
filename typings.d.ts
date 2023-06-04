@@ -20,3 +20,5 @@ declare module 'turndown-plugin-gfm' {
     export function tables(turndownService: any) : void;
     export function taskListItems(turndownService: any) : void;
 }
+
+declare module 'png-to-jpeg';

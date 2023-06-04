@@ -9,12 +9,13 @@ import Uploads from './uploads';
 import i18n from '../i18n/index';
 import * as TurndownService from 'turndown';
 import { gfm } from 'turndown-plugin-gfm';
+import * as pngToJpeg from 'png-to-jpeg';
 
 let pkg = packages as any;
 let locale = i18n();
 
-function getUpload(config: Config) : Upload | null {
-    switch(config.base.uploadMethod) {
+function getUpload(uploadMethod: string, config: any) : Upload | null {
+    switch(uploadMethod) {
         case 'Local': return new Uploads.Local(config);
         case 'Coding': return new Uploads.Coding(config);
         case 'GitHub': return new Uploads.GitHub(config);
@@ -438,6 +439,17 @@ function getTmpFolder() {
     return savePath;
 }
 
+function convertImage(imagePath: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+        pngToJpeg({quality: 90})(fs.readFileSync(imagePath)).then((output: Buffer) => {
+            const newImage = path.join(path.dirname(imagePath), path.basename(imagePath, path.extname(imagePath)) + '.jpg');
+            fs.writeFileSync(newImage, output);
+            resolve(newImage);
+            fs.unlinkSync(imagePath);
+        })
+    });
+}
+
 function sleep (time: number) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
@@ -519,6 +531,7 @@ export default {
     getCurrentRoot,
     getCurrentFilePath,
     getTmpFolder,
+    convertImage,
     noticeComment,
     sleep,
     confirm,

@@ -7,31 +7,28 @@ import utils from './lib/utils';
 import { locale as $l } from './lib/utils';
 import { imageSize } from 'image-size';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+function getUploadInstance(config: any) {
+    let uploads: Upload[] = [];
+
+    // Get All Upload Methods
+    let uploadMethods = config.base.uploadMethods || [];
+    uploadMethods.push(config.base.uploadMethod);
+    uploadMethods = Array.from(new Set(uploadMethods));
+
+    // Load All Upload Method Instance
+    for (const t of uploadMethods) {
+        const upload = utils.getUpload(t, config)
+        if (upload) uploads.push(upload);
+    }
+
+    return uploads;
+}
+
 export function activate(context: vscode.ExtensionContext) {
-    // Use the console to output diagnostic information (console.debug) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
     console.info('Congratulations, your extension "markdown-image" is now active!');
     let config = utils.getConfig();
-    let uploads: any[] = [];
-    if (Array.isArray(config.base.uploadMethods) && config.base.uploadMethods.length > 0 ) {
-        for (const t of config.base.uploadMethods) {
-            let cfg = Object.assign({}, config, {
-                'base': Object.assign({}, config.base, {'uploadMethod': t})
-            });
+    let uploads: Upload[] = getUploadInstance(config);
 
-            // vscode.window.showInformationMessage(`cfg=${JSON.stringify(cfg)}`);
-            uploads.push(utils.getUpload(cfg));
-        }
-    } else {
-        let upload : Upload | null = utils.getUpload(config);
-
-        uploads.push(upload);
-    }
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
     let pasteCommand = vscode.commands.registerCommand('markdown-image.paste', async () => {
         let stop = () => {};
         try {
@@ -43,6 +40,9 @@ export function activate(context: vscode.ExtensionContext) {
             savePath = path.resolve(savePath, `pic_${new Date().getTime()}.png`);
             let images = await utils.getPasteImage(savePath);
             images = images.filter(img => ['.jpg', '.jpeg', '.gif', '.bmp', '.png', '.webp', '.svg'].find(ext => img.endsWith(ext)));
+            if (config.base.fileFormat == 'jpg' && images.length === 1 && images[0] == savePath) {
+                images[0] = await utils.convertImage(images[0])
+            }
 
             console.debug(`Get ${images.length} Images`);
 
@@ -56,7 +56,8 @@ export function activate(context: vscode.ExtensionContext) {
                 let p;
                 for (let j = 0; j < uploads.length; j++) {
                     let upload = uploads[j];
-                    p = await (upload === null || upload === void 0 ? void 0 : upload.upload(images[i], name));
+                    const result = await upload.upload(images[i], name);
+                    if (j == 0) p = result;
                 }
                 if(p) { urls.push(p); }
             }
@@ -150,7 +151,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     vscode.workspace.onDidChangeConfiguration(function(event) {
         config = utils.getConfig();
-        upload = utils.getUpload(config);
+        uploads = getUploadInstance(config);
     });
 }
 
