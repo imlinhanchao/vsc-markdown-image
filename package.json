@@ -131,10 +131,16 @@
             "order": 0,
             "type": "string"
           },
+          "markdown-image.base.uploadMethods": {
+            "default": [],
+            "markdownDescription": "%markdown-image.base.uploadMethods%",
+            "order": 4,
+            "type": "array"
+          },
           "markdown-image.base.urlEncode": {
             "default": true,
             "markdownDescription": "%markdown-image.base.urlEncode%",
-            "order": 4,
+            "order": 5,
             "type": "boolean"
           }
         },
@@ -213,12 +219,12 @@
             "markdownDescription": "%markdown-image.github.token%",
             "order": 1,
             "type": "string"
-					},
-					"markdown-image.github.httpProxy": {
-						"default": "",
-						"markdownDescription": "%markdown-image.github.httpProxy%",
-						"order": 5,
-						"type": "string"
+          },
+          "markdown-image.github.httpProxy": {
+            "default": "",
+            "markdownDescription": "%markdown-image.github.httpProxy%",
+            "order": 5,
+            "type": "string"
           }
         },
         "title": "GitHub"

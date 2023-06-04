@@ -14,8 +14,21 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.info('Congratulations, your extension "markdown-image" is now active!');
     let config = utils.getConfig();
-    let upload : Upload | null = utils.getUpload(config);
+    let uploads: any[] = [];
+    if (Array.isArray(config.base.uploadMethods) && config.base.uploadMethods.length > 0 ) {
+        for (const t of config.base.uploadMethods) {
+            let cfg = Object.assign({}, config, {
+                'base': Object.assign({}, config.base, {'uploadMethod': t})
+            });
 
+            // vscode.window.showInformationMessage(`cfg=${JSON.stringify(cfg)}`);
+            uploads.push(utils.getUpload(cfg));
+        }
+    } else {
+        let upload : Upload | null = utils.getUpload(config);
+
+        uploads.push(upload);
+    }
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
@@ -23,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
         let stop = () => {};
         try {
             stop = utils.showProgress($l['uploading']);
-            
+
             let editor = vscode.window.activeTextEditor;
             let selections = utils.getSelections();
             let savePath = utils.getTmpFolder();
@@ -39,7 +52,12 @@ export function activate(context: vscode.ExtensionContext) {
                 maxWidth.push(config.base.imageWidth < width ? config.base.imageWidth : 0);
                 let name = config.base.fileNameFormat ? await utils.formatName(config.base.fileNameFormat, images[i], savePath === images[i]) + (images[i] ? path.extname(images[i]) : '.png') : images[i];
                 console.debug(`Uploading ${images[i]} to ${name}.`);
-                let p = await upload?.upload(images[i], name);
+
+                let p;
+                for (let j = 0; j < uploads.length; j++) {
+                    let upload = uploads[j];
+                    p = await (upload === null || upload === void 0 ? void 0 : upload.upload(images[i], name));
+                }
                 if(p) { urls.push(p); }
             }
 
@@ -53,8 +71,8 @@ export function activate(context: vscode.ExtensionContext) {
                 {
                     selection = selections?.[i] && editor?.document.getText(selections[i]);
                 }
-                
-                if (config.base.uploadMethod !== 'Data URL') { 
+
+                if (config.base.uploadMethod !== 'Data URL') {
                     if(config.base.urlEncode) { urls[i] = encodeURIComponent(urls[i].toString()).replace(/%5C/g, '\\').replace(/%2F/g, '/').replace(/%3A/g, ':').replace(/%40/g, '@'); }
                     let text = utils.formatCode(urls[i], selection, maxWidth[i], config.base.codeType);
                     if (selections?.[i] && selections?.length > 1) {
@@ -82,10 +100,16 @@ export function activate(context: vscode.ExtensionContext) {
 
             if (insertCode) {
                 let pos = editor?.selection.active;
-                if (config.base.uploadMethod === 'Data URL') { 
+                if (config.base.uploadMethod === 'Data URL') {
                     await utils.insertToEnd(insertTag);
+                } else if (pos) {
+                    await utils.editorEdit(pos, insertCode);
+                } else {
+                    vscode.env.clipboard.writeText(insertCode);
+                    setTimeout(() => {
+                        vscode.commands.executeCommand("editor.action.clipboardPasteAction");
+                    }, 100);
                 }
-                await utils.editorEdit(pos, insertCode);
             }
 
             utils.noticeComment(context);
@@ -111,7 +135,7 @@ export function activate(context: vscode.ExtensionContext) {
             let editor = vscode.window.activeTextEditor;
             let text = await utils.getRichText();
 
-            if(text) { 
+            if(text) {
                 utils.editorEdit(editor?.selection, utils.html2Markdown(text));
             }
         } catch (error) {
@@ -119,7 +143,7 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.window.showErrorMessage(`${$l['something_wrong']}${e.message}\n${e.toString()}`);
         }
 
-        stop(); 
+        stop();
     });
 
     context.subscriptions.push(richTextCommand);
