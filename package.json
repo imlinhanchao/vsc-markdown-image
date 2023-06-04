@@ -190,30 +190,6 @@
       },
       {
         "properties": {
-          "markdown-image.coding.path": {
-            "default": "/",
-            "markdownDescription": "%markdown-image.coding.path%",
-            "order": 0,
-            "type": "string"
-          },
-          "markdown-image.coding.repository": {
-            "default": "",
-            "markdownDescription": "%markdown-image.coding.repository%",
-            "order": 2,
-            "pattern": "^(https://([^.]*?).coding.net/p/([^/]*?)/(d/([^/]*?)/(git|)|)|)$",
-            "type": "string"
-          },
-          "markdown-image.coding.token": {
-            "default": "",
-            "markdownDescription": "%markdown-image.coding.token%",
-            "order": 1,
-            "type": "string"
-          }
-        },
-        "title": "Coding"
-      },
-      {
-        "properties": {
           "markdown-image.github.branch": {
             "default": "master",
             "markdownDescription": "%markdown-image.github.branch%",
