@@ -92,6 +92,12 @@
             "pattern": "^[^:*?<>|]+$",
             "type": "string"
           },
+          "markdown-image.base.altFormat": {
+            "default": "%markdown-image.base.altFormat.default%",
+            "markdownDescription": "%markdown-image.base.altFormat%",
+            "order": 4,
+            "type": "string"
+          },
           "markdown-image.base.imageWidth": {
             "default": 0,
             "markdownDescription": "%markdown-image.base.imageWidth%",

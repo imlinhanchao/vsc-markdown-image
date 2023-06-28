@@ -14,8 +14,8 @@ import * as pngToJpeg from 'png-to-jpeg';
 let pkg = packages as any;
 let locale = i18n();
 
-function getUpload(uploadMethod: string, config: any) : Upload | null {
-    switch(uploadMethod) {
+function getUpload (uploadMethod: string, config: any): Upload | null {
+    switch (uploadMethod) {
         case 'Local': return new Uploads.Local(config);
         case 'Coding': return new Uploads.Coding(config);
         case 'GitHub': return new Uploads.GitHub(config);
@@ -39,9 +39,9 @@ function getUpload(uploadMethod: string, config: any) : Upload | null {
     return null;
 }
 
-function showProgress(message: string) {
+function showProgress (message: string) {
     let show = true;
-    function stopProgress() {
+    function stopProgress () {
         show = false;
     }
 
@@ -62,17 +62,17 @@ function showProgress(message: string) {
     return stopProgress;
 }
 
-function editorEdit(selection: vscode.Selection | vscode.Position | undefined | null, text: string) :Promise<boolean> {
+function editorEdit (selection: vscode.Selection | vscode.Position | undefined | null, text: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
         vscode.window.activeTextEditor?.edit(editBuilder => {
-            if(selection) {
+            if (selection) {
                 editBuilder.replace(selection, text);
             }
         }).then(resolve);
     });
 }
 
-function insertToEnd(text: string) :Promise<boolean> {
+function insertToEnd (text: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
         let linenumber = vscode.window.activeTextEditor?.document.lineCount || 1;
         let pos = vscode.window.activeTextEditor?.document.lineAt(linenumber - 1).range.end || new vscode.Position(0, 0);
@@ -82,7 +82,7 @@ function insertToEnd(text: string) :Promise<boolean> {
     });
 }
 
-function getSelections() : vscode.Selection[] | null{
+function getSelections (): vscode.Selection[] | null {
     let editor = vscode.window.activeTextEditor;
     if (!editor) {
         return null; // No open text editor
@@ -92,7 +92,7 @@ function getSelections() : vscode.Selection[] | null{
     return selections;
 }
 
-function formatCode(filePath: string, selection: string, maxWidth: number, codeType: string): string {
+function formatCode (filePath: string, selection: string, maxWidth: number, codeType: string): string {
     if (codeType === "Markdown") {
         return `![${selection}](${filePath}${maxWidth > 0 ? ` =${maxWidth}x` : ''})  \n`;
     }
@@ -100,7 +100,84 @@ function formatCode(filePath: string, selection: string, maxWidth: number, codeT
     return `<img alt="${selection}" src="${filePath}" ${maxWidth > 0 ? `width="${maxWidth}" ` : ''}/>  \n`;
 }
 
-async function formatName(format: string, filePath: string, isPaste: boolean): Promise<string> {
+async function variableGetter (variable: string,
+    { filePath, isPaste, match, context, saveName }:
+        {
+            filePath: string,
+            isPaste: boolean,
+            match?: string,
+            context?: vscode.ExtensionContext,
+            saveName?: string;
+        }): Promise<string> {
+    switch (variable) {
+        case 'filename': {
+            return !isPaste ? path.basename(filePath, path.extname(filePath)) :
+                (path.basename((await prompt(locale['named_paste'], path.basename(filePath, '.png'))) || '') || '');
+        }
+        case 'mdname': {
+            return path.basename(getCurrentFilePath(), path.extname(getCurrentFilePath()));
+        }
+        case 'path': {
+            return path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1);
+        }
+        case 'hash': {
+            return hash(fs.readFileSync(filePath));
+        }
+        case 'timestramp': // spell mistake
+        case 'timestamp': {
+            return new Date().getTime().toString();
+        }
+        case 'YY': {
+            return new Date().getFullYear().toString();
+        }
+        case 'MM': {
+            return (new Date().getMonth() + 1).toString().padStart(2, '0');
+        }
+        case 'DD': {
+            return (new Date().getDate()).toString().padStart(2, '0');
+        }
+        case 'hh': {
+            let hours = new Date().getHours();
+            return (hours > 12 ? hours - 12 : hours).toString().padStart(2, '0');
+        }
+        case 'HH': {
+            return new Date().getHours().toString().padStart(2, '0');
+        }
+        case 'mm': {
+            return new Date().getMinutes().toString().padStart(2, '0');
+        }
+        case 'ss': {
+            return new Date().getSeconds().toString().padStart(2, '0');
+        }
+        case 'mss': {
+            return new Date().getMilliseconds().toString().padStart(3, '0');
+        }
+        case 'rand,(\\d+)': {
+            let numberMat = match!.match(/\d+/);
+            if (!numberMat) { return ''; }
+            let n = parseInt(numberMat[0]);
+            return parseInt((Math.random() * n).toString()).toString();
+        }
+        case 'prompt': {
+            let promptInput = await vscode.window.showInputBox({ prompt: `${locale['prompt_name_component']}${saveName || ''}` });
+            // make sure that promptInput is a filename-safe string
+            promptInput = promptInput?.replace(/[:*?<>|]/g, '').trim();
+            if (promptInput)
+                return promptInput;
+            else
+                throw Error(locale['user_did_not_answer_prompt']);
+        }
+        case 'index': {
+            const fsPath = getCurrentFilePath();
+            let lastIndex = parseInt(context!.globalState.get(fsPath) || '0')
+            context!.globalState.update(fsPath, `${lastIndex + 1}`);
+            return lastIndex.toString();
+        }
+    }
+    return '';
+}
+
+async function formatName (format: string, filePath: string, isPaste: boolean): Promise<string> {
     let saveName = format;
     let variables = [
         'filename', 'mdname', 'path', 'hash', 'timestramp', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'prompt'
@@ -109,109 +186,48 @@ async function formatName(format: string, filePath: string, isPaste: boolean): P
         let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
         let mat = format.match(reg);
         if (!mat) { continue; }
-        switch(variables[i]) {
-            case 'filename': {
-                let data = !isPaste ? path.basename(filePath, path.extname(filePath)) :
-                    (path.basename((await prompt(locale['named_paste'], path.basename(filePath, '.png'))) || '') || '');
-                saveName = saveName.replace(reg, data);
-                break;
+        if (variables[i] === 'rand,(\\d+)') {
+            for (let j = 0; j < mat.length; j++) {
+                const data = await variableGetter(variables[i], { filePath, isPaste, match: mat[j] });
+                if (!data) continue;
+                saveName = saveName.replace(mat[j], data);
             }
-            case 'mdname': {
-                let data = path.basename(getCurrentFilePath(), path.extname(getCurrentFilePath()));
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'path': {
-                let data = path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1);
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'hash': {
-                let data = hash(fs.readFileSync(filePath));
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'timestramp':
-            case 'timestamp': {
-                let data = new Date().getTime().toString();
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'YY': {
-                let data = new Date().getFullYear().toString();
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'MM': {
-                let data = (new Date().getMonth() + 1).toString().padStart(2, '0');
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'DD': {
-                let data = (new Date().getDate()).toString().padStart(2, '0');
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'hh': {
-                let hours = new Date().getHours();
-                let data = (hours > 12 ? hours - 12 : hours).toString().padStart(2, '0');
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'HH': {
-                let data = new Date().getHours().toString().padStart(2, '0');
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'mm': {
-                let data = new Date().getMinutes().toString().padStart(2, '0');
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'ss': {
-                let data = new Date().getSeconds().toString().padStart(2, '0');
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'mss': {
-                let data = new Date().getMilliseconds().toString().padStart(3, '0');
-                saveName = saveName.replace(reg, data);
-                break;
-            }
-            case 'rand,(\\d+)': {
-                for(let j = 0; j < mat.length; j++) {
-                    let numberMat = mat[j].match(/\d+/);
-                    if (!numberMat) { continue; }
-                    let n = parseInt(numberMat[0]);
-                    let data = parseInt((Math.random() * n).toString()).toString();
-                    saveName = saveName.replace(mat[j], data);
-                }
-                break;
-            }
-            case 'prompt': {
-                let promptInput = await vscode.window.showInputBox({ prompt: `${locale['prompt_name_component']}${saveName}` });
-                // TODO: make sure that promptInput is a filename-safe string (i.e., does not include special characters, etc.)
-                if (promptInput)
-                    saveName = saveName.replace(reg, promptInput);
-                else
-                    throw Error(locale['user_did_not_answer_prompt']);
-                break;
-            }
+        } else {
+            const data = await variableGetter(variables[i], { filePath, isPaste, saveName });
+            if (!data) continue;
+            saveName = saveName.replace(mat[0], data);
         }
     }
-
 
     return saveName;
 }
 
-function getAlt(context: vscode.ExtensionContext) {
-  let fsPath = getCurrentFilePath();
-  let lastIndex = parseInt(context.globalState.get(fsPath) || '0')
-  context.globalState.update(fsPath, `${lastIndex + 1}`);
-  return `${locale['picture']} ${lastIndex + 1}`
+async function getAlt (format: string, filePath: string, isPaste: boolean, context: vscode.ExtensionContext) {
+    let alt = format;
+    let variables = [
+        'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index'
+    ];
+
+    for (let i = 0; i < variables.length; i++) {
+        let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
+        let mat = format.match(reg);
+        if (!mat) { continue; }
+        if (variables[i] === 'rand,(\\d+)') {
+            for (let j = 0; j < mat.length; j++) {
+                const data = await variableGetter(variables[i], { filePath, isPaste, match: mat[j] });
+                if (!data) continue;
+                alt = alt.replace(mat[j], data);
+            }
+        } else {
+            const data = await variableGetter(variables[i], { filePath, isPaste, context });
+            if (!data) continue;
+            alt = alt.replace(mat[0], data);
+        }
+    }
+    return alt;
 }
 
-function mkdirs(dirname: string) {
+function mkdirs (dirname: string) {
     //console.debug(dirname);
     if (fs.existsSync(dirname)) {
         return true;
@@ -223,18 +239,18 @@ function mkdirs(dirname: string) {
     }
 }
 
-function html2Markdown(data: string) : string {
+function html2Markdown (data: string): string {
     let turndownService = new TurndownService({ codeBlockStyle: 'fenced', headingStyle: 'atx', });
     turndownService.use(gfm);
     return turndownService.turndown(data);
 }
 
-function getConfig() {
+function getConfig () {
     const configurations: { properties: object, title: string }[] = pkg.contributes.configuration;
     const keys: string[] = configurations.reduce((acc, config) => acc.concat(Object.keys(config.properties)), [] as string[])
 
     let values: Config = {};
-    function toVal(str: string, val: string | undefined, cfg: Config): string | Config {
+    function toVal (str: string, val: string | undefined, cfg: Config): string | Config {
         let keys = str.split('.');
         if (keys.length === 1) {
             cfg[keys[0]] = val;
@@ -247,14 +263,14 @@ function getConfig() {
     return values;
 }
 
-function getPasteImage(imagePath: string) : Promise<string[]>{
+function getPasteImage (imagePath: string): Promise<string[]> {
     return new Promise((resolve, reject) => {
         if (!imagePath) { return; }
 
         let platform = process.platform;
         if (platform === 'win32') {
             // Windows
-            const scriptPath = path.join(__dirname, '..', '..' , 'asserts/pc.ps1');
+            const scriptPath = path.join(__dirname, '..', '..', 'asserts/pc.ps1');
 
             let command = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
             let powershellExisted = fs.existsSync(command);
@@ -298,7 +314,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
         }
         else if (platform === 'darwin') {
             // Mac
-            let scriptPath = path.join(__dirname, '..', '..' , 'asserts/mac.applescript');
+            let scriptPath = path.join(__dirname, '..', '..', 'asserts/mac.applescript');
 
             let ascript = spawn('osascript', [scriptPath, imagePath]);
             ascript.on('error', (e: any) => {
@@ -313,7 +329,7 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
         } else {
             // Linux
 
-            let scriptPath = path.join(__dirname, '..', '..' , 'asserts/linux.sh');
+            let scriptPath = path.join(__dirname, '..', '..', 'asserts/linux.sh');
 
             let ascript = spawn('sh', [scriptPath, imagePath]);
             ascript.on('error', (e: any) => {
@@ -335,12 +351,12 @@ function getPasteImage(imagePath: string) : Promise<string[]>{
     });
 }
 
-function getRichText() : Promise<string>{
+function getRichText (): Promise<string> {
     return new Promise((resolve, reject) => {
         let platform = process.platform;
         if (platform === 'win32') {
             // Windows
-            const scriptPath = path.join(__dirname, '..', '..' , 'asserts/rtf.ps1');
+            const scriptPath = path.join(__dirname, '..', '..', 'asserts/rtf.ps1');
 
             let command = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe";
             let powershellExisted = fs.existsSync(command);
@@ -360,7 +376,7 @@ function getRichText() : Promise<string>{
             ]);
             // the powershell can't auto exit in windows 7 .
             let timer = setTimeout(() => powershell.kill(), 2000);
-            let buffers:any = []; let size = 0;
+            let buffers: any = []; let size = 0;
             powershell.on('error', (e: any) => {
                 if (e.code === 'ENOENT') {
                     vscode.window.showErrorMessage(locale['powershell_not_found']);
@@ -380,7 +396,7 @@ function getRichText() : Promise<string>{
             });
             powershell.on('close', (code) => {
                 Buffer.concat(buffers, size).toString()
-                .split('\n').forEach(d => output += (d.indexOf('Active code page:') < 0 ? d : ''));
+                    .split('\n').forEach(d => output += (d.indexOf('Active code page:') < 0 ? d : ''));
                 resolve(output.replace('</html>', '').replace('</body>', '').split('<body>').slice(-1)[0].trim());
             });
         }
@@ -391,7 +407,7 @@ function getRichText() : Promise<string>{
         } else {
             // Linux
 
-            let scriptPath = path.join(__dirname, '..', '..' , 'asserts/rtf.sh');
+            let scriptPath = path.join(__dirname, '..', '..', 'asserts/rtf.sh');
             let result = '';
             let ascript = spawn('sh', [scriptPath]);
             ascript.on('error', (e: any) => {
@@ -411,7 +427,7 @@ function getRichText() : Promise<string>{
     });
 }
 
-function getCurrentRoot() : string {
+function getCurrentRoot (): string {
     const editor = vscode.window.activeTextEditor;
     if (!editor || !vscode.workspace.workspaceFolders || vscode.workspace.workspaceFolders.length < 1) { return ''; }
     const resource = editor.document.uri;
@@ -427,21 +443,21 @@ function getCurrentRoot() : string {
     return folder.uri.fsPath;
 }
 
-function getCurrentFilePath() : string {
+function getCurrentFilePath (): string {
     const editor = vscode.window.activeTextEditor;
     if (!editor || !vscode.workspace.workspaceFolders || vscode.workspace.workspaceFolders.length < 1) { return ''; }
     return editor.document.uri.fsPath;
 }
 
-function getTmpFolder() {
+function getTmpFolder () {
     let savePath = path.join(tmpdir(), pkg.name);
     if (!fs.existsSync(savePath)) { fs.mkdirSync(savePath); }
     return savePath;
 }
 
-function convertImage(imagePath: string): Promise<string> {
+function convertImage (imagePath: string): Promise<string> {
     return new Promise((resolve, reject) => {
-        pngToJpeg({quality: 90})(fs.readFileSync(imagePath)).then((output: Buffer) => {
+        pngToJpeg({ quality: 90 })(fs.readFileSync(imagePath)).then((output: Buffer) => {
             const newImage = path.join(path.dirname(imagePath), path.basename(imagePath, path.extname(imagePath)) + '.jpg');
             fs.writeFileSync(newImage, output);
             resolve(newImage);
@@ -454,13 +470,13 @@ function sleep (time: number) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-function confirm(message: string, options: string[]) : Promise<string|undefined> {
+function confirm (message: string, options: string[]): Promise<string | undefined> {
     return new Promise((resolve, reject) => {
         return vscode.window.showInformationMessage(message, ...options).then(resolve);
     });
 }
 
-function prompt(message: string, defaultVal: string = '') : Promise<string|undefined> {
+function prompt (message: string, defaultVal: string = ''): Promise<string | undefined> {
     return new Promise((resolve, reject) => {
         return vscode.window.showInputBox({
             value: defaultVal,
@@ -469,13 +485,13 @@ function prompt(message: string, defaultVal: string = '') : Promise<string|undef
     });
 }
 
-function hash(buffer:Buffer): string {
+function hash (buffer: Buffer): string {
     let sha256 = crypto.createHash('sha256');
     let hash = sha256.update(buffer).digest('hex');
     return hash;
 }
 
-function getOpenCmd(): string {
+function getOpenCmd (): string {
     let cmd = 'start';
     if (process.platform === 'win32') {
         cmd = 'start';
@@ -487,13 +503,13 @@ function getOpenCmd(): string {
     return cmd;
 }
 
-function noticeComment(context: vscode.ExtensionContext) {
+function noticeComment (context: vscode.ExtensionContext) {
     let notice = context.globalState.get('notice');
     let usetimes: number = context.globalState.get('usetimes') || 0;
     if (!notice && usetimes > 100) {
         confirm(locale['like.extension'], [locale['like.ok'], locale['like.no'], locale['like.later']])
             .then((option) => {
-                switch(option) {
+                switch (option) {
                     case locale['like.ok']:
                         exec(`${getOpenCmd()} https://marketplace.visualstudio.com/items?itemName=hancel.markdown-image`);
                         context.globalState.update('notice', true);
@@ -509,7 +525,7 @@ function noticeComment(context: vscode.ExtensionContext) {
                 }
             })
             .catch(e => console.debug(e));
-    } else if(!notice) {
+    } else if (!notice) {
         context.globalState.update('usetimes', ++usetimes);
     }
 }
