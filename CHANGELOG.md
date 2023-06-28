@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.34] - 2023-06-28
+
+### Added
+- Added a new setting item `markdown-image.base.altFormat` to set the placeholder for image code.
+
 ## [1.1.33] - 2023-06-04
 
 ### Added

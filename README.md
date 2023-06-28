@@ -151,6 +151,10 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.34
+
+- Added a new setting item `markdown-image.base.altFormat` to set the placeholder for image code.
+
 ### 1.1.33
 
 - Added a new setting item `markdown-image.base.uploadMethods` to support concurrent uploads with multiple upload methods.

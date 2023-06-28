@@ -151,6 +151,10 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.34
+
+- 添加了新設置項目 markdown-image.base.altFormat 用於設置圖片程式碼的佔位符。
+
 ### 1.1.33
 
 - 添加了新設置項目 `markdown-image.base.uploadMethods` 用於支援多種上傳方式並發上傳。
