@@ -190,12 +190,12 @@ async function formatName (format: string, filePath: string, isPaste: boolean): 
             for (let j = 0; j < mat.length; j++) {
                 const data = await variableGetter(variables[i], { filePath, isPaste, match: mat[j] });
                 if (!data) continue;
-                saveName = saveName.replace(mat[j], data);
+                saveName = saveName.replaceAll(mat[j], data);
             }
         } else {
             const data = await variableGetter(variables[i], { filePath, isPaste, saveName });
             if (!data) continue;
-            saveName = saveName.replace(mat[0], data);
+            saveName = saveName.replaceAll(mat[0], data);
         }
     }
 
@@ -216,12 +216,12 @@ async function getAlt (format: string, filePath: string, isPaste: boolean, conte
             for (let j = 0; j < mat.length; j++) {
                 const data = await variableGetter(variables[i], { filePath, isPaste, match: mat[j] });
                 if (!data) continue;
-                alt = alt.replace(mat[j], data);
+                alt = alt.replaceAll(mat[j], data);
             }
         } else {
             const data = await variableGetter(variables[i], { filePath, isPaste, context });
             if (!data) continue;
-            alt = alt.replace(mat[0], data);
+            alt = alt.replaceAll(mat[0], data);
         }
     }
     return alt;
