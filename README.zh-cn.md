@@ -151,6 +151,10 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.35
+
+- 修正文件名变量相同变量仅第一个有效问题。
+
 ### 1.1.34
 
 - 添加了新设置项目 `markdown-image.base.altFormat` 用于设置图片代码的占位符。

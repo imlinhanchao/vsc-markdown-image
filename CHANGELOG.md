@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.35] - 2023-06-30
+
+### Fixed
+- Fixed the issue where only the first occurrence of the same variable for `fileNameFormat` was effective.
+
 ## [1.1.34] - 2023-06-28
 
 ### Added

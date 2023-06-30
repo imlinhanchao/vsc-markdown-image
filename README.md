@@ -151,6 +151,10 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.35
+
+- Fixed the issue where only the first occurrence of the same variable for `fileNameFormat` was effective.
+
 ### 1.1.34
 
 - Added a new setting item `markdown-image.base.altFormat` to set the placeholder for image code.
