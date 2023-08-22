@@ -202,7 +202,7 @@ async function formatName (format: string, filePath: string, isPaste: boolean): 
     return saveName;
 }
 
-async function getAlt (format: string, filePath: string, isPaste: boolean, context: vscode.ExtensionContext) {
+async function getAlt (format: string, filePath: string, context: vscode.ExtensionContext) {
     let alt = format;
     let variables = [
         'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index'
@@ -214,12 +214,12 @@ async function getAlt (format: string, filePath: string, isPaste: boolean, conte
         if (!mat) { continue; }
         if (variables[i] === 'rand,(\\d+)') {
             for (let j = 0; j < mat.length; j++) {
-                const data = await variableGetter(variables[i], { filePath, isPaste, match: mat[j] });
+                const data = await variableGetter(variables[i], { filePath, isPaste: false, match: mat[j] });
                 if (!data) continue;
                 alt = alt.replaceAll(mat[j], data);
             }
         } else {
-            const data = await variableGetter(variables[i], { filePath, isPaste, context });
+            const data = await variableGetter(variables[i], { filePath, isPaste: false, context });
             if (!data) continue;
             alt = alt.replaceAll(mat[0], data);
         }

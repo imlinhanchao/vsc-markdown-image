@@ -151,6 +151,10 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.36
+
+- Fixed the issue where the placeholder `filename` was not using the value calculated by `fileNameFormat`.
+
 ### 1.1.35
 
 - Fixed the issue where only the first occurrence of the same variable for `fileNameFormat` was effective.

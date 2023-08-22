@@ -59,12 +59,13 @@ export function activate(context: vscode.ExtensionContext) {
                     const result = await upload.upload(images[i], name);
                     if (j == 0) p = result;
                 }
+                images[i] = name;
                 if(p) { urls.push(p); }
             }
 
             let insertCode = '', insertTag = '';
             for (let i = 0; i < urls.length; i++) {
-                let selection = await utils.getAlt(config.base.altFormat, images[i], savePath === images[i], context);
+                let selection = await utils.getAlt(config.base.altFormat, images[i], context);
                 if (selections?.length === 1 && editor?.document.getText(selections[0])) {
                     selection = `${editor?.document.getText(selections[0])} ${i + 1}`;
                 }

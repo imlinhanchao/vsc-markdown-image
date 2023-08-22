@@ -151,6 +151,10 @@ sudo yum install xclip
 
 ## 發布歷史
 
+### 1.1.36
+
+- 修复了占位符变量 `filename` 没有使用 `fileNameFormat` 计算后的值的问题。
+
 ### 1.1.35
 
 - 修正文件名變量相同變量僅第一個有效問題。
