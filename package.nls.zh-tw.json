@@ -8,7 +8,7 @@
     "markdown-image.command.paste": "粘貼圖片",
     "markdown-image.command.config": "Markdown 圖片配置",
     "markdown-image.command.paste-rich-text": "粘貼富文本 (Beta)",
-    "markdown-image.base.uploadMethod": "上傳圖片的方式。到本地或其他圖片 CDN 服務。\n\n- 本地 [設置項目](#markdown-image.local.path)\n\n- GitHub [設置項目](#markdown-image.github.branch)\n\n- Imgur [設置項目](#markdown-image.imgur.clientId)\n\n- SM.MS [設置項目](#markdown-image.imgur.clientId)\n\n- 七牛 [設置項目](#markdown-image.qiniu.accessKey)\n\n- 又拍雲 [設置項目](#markdown-image.upyun.bucket)\n\n- 自定義 [設置項目](#markdown-image.DIY.path)\n\n- Cloudinary [設置項目](#markdown-image.cloudinary.apiKey)\n\n- Cloudflare [設置項目](#markdown-image.cloudflare.accountId)\n\n- S3 [設置項目](#markdown-image.s3.endpoint)",
+    "markdown-image.base.uploadMethod": "上傳圖片的方式。到本地或其他圖片 CDN 服務。\n\n- 本地 [設置項目](#markdown-image.local.path)\n\n- GitHub [設置項目](#markdown-image.github.branch)\n\n- Imgur [設置項目](#markdown-image.imgur.clientId)\n\n- SM.MS [設置項目](#markdown-image.sm_ms.token)\n\n- 七牛 [設置項目](#markdown-image.qiniu.accessKey)\n\n- 又拍雲 [設置項目](#markdown-image.upyun.bucket)\n\n- 自定義 [設置項目](#markdown-image.DIY.path)\n\n- Cloudinary [設置項目](#markdown-image.cloudinary.apiKey)\n\n- Cloudflare [設置項目](#markdown-image.cloudflare.accountId)\n\n- S3 [設置項目](#markdown-image.s3.endpoint)",
     "markdown-image.base.uploadMethod.Local": "將圖像上傳到項目目錄。您可以使用 markdown-image.local.path 設置上傳的相對路徑。",
     "markdown-image.base.uploadMethod.Coding": "將圖像上傳到 Coding.net 中的 Git 存儲庫。您可以通過markdown-image.coding.repository 配置存儲庫. 您必須通過 markdown-image.coding.token 配置個人訪問令牌訪問存儲庫。",
     "markdown-image.base.uploadMethod.Imgur": "將圖像上傳到 Imgur。您可以通過 markdown-image.imgur.clientId 配置`Client Id`。",
