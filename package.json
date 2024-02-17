@@ -540,7 +540,7 @@
     "coding-picbed": "^0.0.13",
     "form-data": "^3.0.1",
     "github-picbed": "^0.0.7",
-    "got": "^10.7.0",
+    "got": "^11.8.5",
     "https-proxy-agent": "^4.0.0",
     "image-size": "^1.0.0",
     "node-fetch": "^2.6.6",
