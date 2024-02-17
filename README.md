@@ -10,7 +10,7 @@ An extension for conveniently inserting pictures in Markdown, which supports sto
 
 1. Copy image files or paste screenshots, Shortcut key `Alt + Shift + V`, or right-click menu `Paste Image`.
 2. Automatically generate Markdown code insertion.
-3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Coding`, `Cloudinary` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
+3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Cloudflare`, `Cloudinary`, `S3`, `Azure Storage` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
 4. You can also customize the code to upload pictures.
 5. Support Windows, MacOS, Linux.
 
@@ -59,12 +59,6 @@ And if you want to save image in your remote workplace, you must use `SFTP` uplo
 
 - `markdown-image.local.path`: Picture storage directory that in the local (automatically created if it does not exist).
 - `markdown-image.local.referencePath`: The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`
-
-### Coding Settings
-
-- `markdown-image.coding.token`: Coding person [access token](https://help.coding.net/docs/member/tokens.html).
-- `markdown-image.coding.repository`: Coding repository, for example: `https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`
-- `markdown-image.coding.path`: Picture upload directory that in the repository (automatically created if it does not exist).
 
 ### GitHub Settings
 
@@ -137,6 +131,10 @@ These values can be found in your S3 service provider dashboard
 - `markdown-image.sftp.path`: Picture storage directory that in the remote (automatically created if it does not exist). Notice: You can't use variable in here. You can use variable in `#markdown-image.base.fileNameFormat#`.
 - `markdown-image.sftp.referencePath`: The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`
 
+### Azure Storage Settings
+- `markdown-image.azure.connectionString`: The connection string of the Azure Storage account.
+- `markdown-image.azure.container`: The name of the container to upload images to.
+
 ### DIY Settings
 
 - `markdown-image.DIY.path`: The Code Path what you write. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.
@@ -150,6 +148,10 @@ These values can be found in your S3 service provider dashboard
   ```
 
 ## Release Notes
+
+### 1.1.37
+
+- Add support for Azure Storage.
 
 ### 1.1.36
 

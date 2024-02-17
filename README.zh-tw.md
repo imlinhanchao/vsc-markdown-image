@@ -60,12 +60,6 @@ sudo yum install xclip
 - `markdown-image.local.path`: 圖片本地存放路徑，支持相對路徑，相對於所粘貼的 Markdown 文件。 `/` 表示打開的文件夾根目錄。若路徑不存在，將會自動創建。
 - `markdown-image.local.referencePath`: Markdown 中的圖片的引用路徑格式（不包含文件名）。留空表示使用相對路徑。你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有變量。例如：`/images/${YY}-${MM}/`
 
-### Coding 設置項目
-
-- `markdown-image.coding.token`: Coding 的個人[訪問令牌](https://help.coding.net/docs/member/tokens.html)，用於訪問倉庫，上傳圖片。
-- `markdown-image.coding.repository`: 所要上传的目的仓库，比如：`https://coding-demo.coding.net/p/coding-demo/d/coding-demo/git`
-- `markdown-image.coding.path`: 圖片存放的倉庫目錄，默認為根目錄。
-
 ### GitHub Settings
 
 - `markdown-image.github.path`: 倉庫中的圖片保存目錄（如果不存在，則自動創建）。
@@ -137,6 +131,11 @@ sudo yum install xclip
 - `markdown-image.sftp.path`: 遠端伺服器的圖片存儲目錄（如果不存在，則自動創建）。支持相對路徑，相對於所粘貼的 Markdown 文件。 `/` 表示打開的文件夾根目錄。注意：您不能在此處使用變量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用變量。
 - `markdown-image.sftp.referencePath`: Markdown 中的圖片的引用路徑格式（不包含文件名）。留空表示使用相對路徑。你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有變量。例如：`/images/${YY}-${MM}/`
 
+### Azure Storage 設置項目
+
+- `markdown-image.azure.connectionString`: 你的 Azure 存儲連接字符串。
+- `markdown-image.azure.container`: 你的 Azure 存儲容器名稱。
+
 ### 自定義設置項目
 
 - `markdown-image.DIY.path`: 你寫的代碼的路徑。你的代碼必須 exports 一個像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函數。
@@ -150,6 +149,10 @@ sudo yum install xclip
   ```
 
 ## 發布歷史
+
+### 1.1.37
+
+- 添加了 Azure 对象存储的支持。
 
 ### 1.1.36
 

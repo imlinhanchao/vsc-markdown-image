@@ -35,6 +35,7 @@ function getUpload (uploadMethod: string, config: any): Upload | null {
         case 'Cloudflare': return new Uploads.Cloudflare(config);
         case 'S3': return new Uploads.S3(config);
         case 'SFTP': return new Uploads.Sftp(config);
+        case 'Azure Storage': return new Uploads.Azure(config);
     }
     return null;
 }

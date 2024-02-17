@@ -137,6 +137,11 @@ sudo yum install xclip
 - `markdown-image.sftp.path`: 远程服务器的图片存储目录（如果不存在，则自动创建）。支持相对路径，相对于所粘贴的 Markdown 文件。 `/` 表示打开的文件夹根目录。注意：您不能在此处使用变量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用变量。
 - `markdown-image.sftp.referencePath`: Markdown 中的图片的引用路径格式（不包含文件名）。留空表示使用相对路径。 你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有变量。例如：`/images/${YY}-${MM}/`
 
+### Azure Storage 设置项目
+
+- `markdown-image.azure.connectionString`: 你的 Azure 存储连接字符串。
+- `markdown-image.azure.container`: 你的 Azure 存储容器名称。
+
 ### 自定义设置项目
 
 - `markdown-image.DIY.path`: 你写的代码的路径。 你的代码必须 exports 一个像 `async function (filePath:string, savePath:string, markdownPath:string):string` 的函数。
@@ -150,6 +155,10 @@ sudo yum install xclip
   ```
 
 ## 发布历史
+
+### 1.1.37
+
+- 添加了 Azure 对象存储的支持。
 
 ### 1.1.36
 

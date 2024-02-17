@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.37] - 2024-02-17
+- Add support for Azure Storage.
+
 ## [1.1.36] - 2023-08-22
 
 ### Fixed

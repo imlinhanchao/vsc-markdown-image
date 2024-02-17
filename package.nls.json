@@ -22,6 +22,8 @@
   "markdown-image.base.uploadMethod.Cloudinary": "Upload the image to Cloudinary. You can configure `Cloud Name` through markdown-image.cloudinary.cloudName.",
   "markdown-image.base.uploadMethod.S3": "Upload the image to any S3 API compatible server, for example, AWS S3, MinIO, Backblaze B2, etc.",
   "markdown-image.base.uploadMethod.Cloudflare": "Upload the image to Cloudflare Image. You can configure `accountId` through markdown-image.cloudflare.accountId.",
+  "markdown-image.base.uploadMethod.SFTP": "Upload the image to SFTP server. You can configure the server through markdown-image.sftp.host.",
+  "markdown-image.base.uploadMethod.Azure": "Upload the image to Azure Blob Storage. You can configure the connection string through markdown-image.azure.connect-string.",
   "markdown-image.base.uploadMethods": "Multiple upload services are used for concurrent uploading. The default is empty. The list should contain the selectable values of the `markdown-image.base.uploadMethod` option mentioned above. The upload results from the configured upload methods will not be inserted into the Markdown file.",
   "markdown-image.base.fileNameFormat": "The filenname and path format string for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables: \n\n- `${filename}`: The original filename.  \n- `${mdname}`: The name of the Markdown file being edited.  \n- `${path}`: The path of the Markdown file being edited relative to the root directory.  \n- `${hash}`: The sha256 hash of image.  \n- `${timestamp}`: The timestamp of upload time.  \n- `${YY}`: The Year  \n- `${MM}`:The Month  \n- `${DD}`: The Day  \n- `${hh}`: The 12-hour clock  \n- `${HH}`: The 24-hour clock  \n- `${mm}`: The minutes  \n- `${ss}`: The seconds  \n- `${mss}`: The milliseconds  \n- `${rand,number}`: A random number, for example: `${rand,100}`. It will generate random numbers from 0 to 99 \n- `${prompt}`: Makes it possible to enter a custom name through an input prompt when pasting the image.",
   "markdown-image.base.urlEncode": "Whether URL encode for the url of image.",
@@ -84,5 +86,7 @@
   "markdown-image.sftp.password": "The password of the remote server.",
   "markdown-image.sftp.privateKeyPath": "The private key path of the remote server.",
   "markdown-image.sftp.path": "Picture storage directory that in the remote (automatically created if it does not exist). Notice: You can't use variable in here. You can use variable in `#markdown-image.base.fileNameFormat#`.",
-  "markdown-image.sftp.referencePath": "The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`"
+  "markdown-image.sftp.referencePath": "The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`",
+  "markdown-image.azure.connect-string": "The connection string of your Azure Blob Storage account.",
+  "markdown-image.azure.container": "The container name of your Azure Blob Storage account."
 }

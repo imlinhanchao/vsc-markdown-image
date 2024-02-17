@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.36",
+  "version": "1.1.37",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.62.0"
@@ -21,11 +21,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:markdown-image.paste",
-    "onCommand:markdown-image.config",
-    "onCommand:markdown-image.paste-rich-text"
-  ],
+  "activationEvents": [],
   "repository": "https://github.com/imlinhanchao/vsc-markdown-image",
   "main": "./out/extension",
   "contributes": {
@@ -114,23 +110,27 @@
               "Data URL",
               "%markdown-image.qiniu%",
               "%markdown-image.upyun%",
-              "%markdown-image.DIY%",
               "Cloudinary",
+              "Cloudflare",
               "S3",
-              "SFTP"
+              "SFTP",
+              "Azure Storage",
+              "%markdown-image.DIY%"
             ],
             "enumDescriptions": [
               "%markdown-image.base.uploadMethod.Local%",
-              "%markdown-image.base.uploadMethod.Coding%",
               "%markdown-image.base.uploadMethod.GitHub%",
               "%markdown-image.base.uploadMethod.Imgur%",
               "%markdown-image.base.uploadMethod.SM.MS%",
               "%markdown-image.base.uploadMethod.DataURL%",
               "%markdown-image.base.uploadMethod.Qiniu%",
               "%markdown-image.base.uploadMethod.Upyun%",
-              "%markdown-image.base.uploadMethod.DIY%",
               "%markdown-image.base.uploadMethod.Cloudinary%",
-              "%markdown-image.base.uploadMethod.S3%"
+              "%markdown-image.base.uploadMethod.Cloudflare%",
+              "%markdown-image.base.uploadMethod.S3%",
+              "%markdown-image.base.uploadMethod.SFTP%",
+              "%markdown-image.base.uploadMethod.Azure%",
+              "%markdown-image.base.uploadMethod.DIY%"
             ],
             "markdownDescription": "%markdown-image.base.uploadMethod%",
             "order": 0,
@@ -151,10 +151,12 @@
                 "Data URL",
                 "%markdown-image.qiniu%",
                 "%markdown-image.upyun%",
-                "%markdown-image.DIY%",
                 "Cloudinary",
+                "Cloudflare",
                 "S3",
-                "SFTP"
+                "SFTP",
+                "Azure Storage",
+                "%markdown-image.DIY%"
               ]
             }
           },
@@ -357,17 +359,6 @@
       },
       {
         "properties": {
-          "markdown-image.DIY.path": {
-            "default": "",
-            "markdownDescription": "%markdown-image.DIY.path%",
-            "order": 0,
-            "type": "string"
-          }
-        },
-        "title": "DIY"
-      },
-      {
-        "properties": {
           "markdown-image.cloudinary.apiKey": {
             "default": "",
             "markdownDescription": "%markdown-image.cloudinary.apiKey%",
@@ -493,6 +484,34 @@
           }
         },
         "title": "SFTP"
+      },
+      {
+        "properties": {
+          "markdown-image.azure.connectionString": {
+            "default": "",
+            "markdownDescription": "%markdown-image.azure.connect-string%",
+            "order": 0,
+            "type": "string"
+          },
+          "markdown-image.azure.container": {
+            "default": "",
+            "markdownDescription": "%markdown-image.azure.container%",
+            "order": 1,
+            "type": "string"
+          }
+        },
+        "title": "Azure Storage"
+      },
+      {
+        "properties": {
+          "markdown-image.DIY.path": {
+            "default": "",
+            "markdownDescription": "%markdown-image.DIY.path%",
+            "order": 0,
+            "type": "string"
+          }
+        },
+        "title": "DIY"
       }
     ]
   },
@@ -515,6 +534,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.304.0",
     "@aws-sdk/s3-request-presigner": "^3.304.0",
+    "@azure/storage-blob": "^12.17.0",
     "@types/ssh2-sftp-client": "^9.0.0",
     "cloudinary": "^1.26.1",
     "coding-picbed": "^0.0.13",
