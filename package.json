@@ -487,16 +487,36 @@
       },
       {
         "properties": {
+          "markdown-image.azure.authenticationMethod": {
+            "default": "Passwordless",
+            "markdownDescription": "%markdown-image.azure.authenticationMethod%",
+            "enum": [
+              "Passwordless",
+              "Connection String"
+            ],
+            "enumDescriptions": [
+              "%markdown-image.azure.authenticationMethod.Passwordless%",
+              "%markdown-image.azure.authenticationMethod.ConnectionString%"
+            ],
+            "order": 0,
+            "type": "string"
+          },
+          "markdown-image.azure.accountName": {
+            "default": "",
+            "markdownDescription": "%markdown-image.azure.accountName%",
+            "order": 1,
+            "type": "string"
+          },
           "markdown-image.azure.connectionString": {
             "default": "",
             "markdownDescription": "%markdown-image.azure.connect-string%",
-            "order": 0,
+            "order": 2,
             "type": "string"
           },
           "markdown-image.azure.container": {
             "default": "",
             "markdownDescription": "%markdown-image.azure.container%",
-            "order": 1,
+            "order": 3,
             "type": "string"
           }
         },
@@ -534,6 +554,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.304.0",
     "@aws-sdk/s3-request-presigner": "^3.304.0",
+    "@azure/identity": "^4.0.1",
     "@azure/storage-blob": "^12.17.0",
     "@types/ssh2-sftp-client": "^9.0.0",
     "cloudinary": "^1.26.1",

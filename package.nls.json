@@ -87,6 +87,10 @@
   "markdown-image.sftp.privateKeyPath": "The private key path of the remote server.",
   "markdown-image.sftp.path": "Picture storage directory that in the remote (automatically created if it does not exist). Notice: You can't use variable in here. You can use variable in `#markdown-image.base.fileNameFormat#`.",
   "markdown-image.sftp.referencePath": "The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`",
+  "markdown-image.azure.authenticationMethod": "The authentication method to use for the Azure Blob Storage account. The default is `Passwordless`. You can obtain more information from [here](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-nodejs?tabs=managed-identity%2Croles-azure-portal%2Csign-in-azure-cli#authenticate-to-azure-and-authorize-access-to-blob-data) .",
+  "markdown-image.azure.authenticationMethod.Passwordless": "Use the account name to authenticate. You must first execute `az login` to log in to Azure CLI.",
+  "markdown-image.azure.authenticationMethod.ConnectionString": "Use the connection string to authenticate.",
+  "markdown-image.azure.accountName": "Your Azure Blob Storage account.",
   "markdown-image.azure.connect-string": "The connection string of your Azure Blob Storage account.",
   "markdown-image.azure.container": "The container name of your Azure Blob Storage account."
 }

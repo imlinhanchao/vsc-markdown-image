@@ -36,6 +36,8 @@ export default {
     sftp_not_username: "You must config the ssh username.",
     sftp_not_password: "You must config a ssh password or private key file path.",
     sftp_connect_failed: "Connect to the ssh server failed: ",
+    connection_string_empty: "The connection string is empty.",
+    account_name_empty: "The account name is empty.",
 };
 
 let $: any = { 'zh-cn': zh_cn, 'zh-tw': zh_tw };

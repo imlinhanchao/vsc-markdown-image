@@ -32,4 +32,6 @@ export default {
     sftp_not_username: "您必须配置SSH 用户名。",
     sftp_not_password: "您必须配置 SSH 密码或私钥文件路径。",
     sftp_connect_failed: "连接到 SSH 服务器失败：",
+    connection_string_empty: "连接字符串为空。",
+    account_name_empty: "账户名为空。",
 };

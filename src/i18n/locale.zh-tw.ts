@@ -32,4 +32,6 @@ export default {
     sftp_not_username: "您必須配置 SSH 賬戶。",
     sftp_not_password: "您必須配置 SSH 密碼或私鑰文件路徑。",
     sftp_connect_failed: "連接到 SSH 伺服器失敗：",
+    connection_string_empty: "連接字符串為空。",
+    account_name_empty: "賬戶名為空。",
 };

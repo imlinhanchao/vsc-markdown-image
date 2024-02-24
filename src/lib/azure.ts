@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { locale as $l } from './utils';
 import { BlobServiceClient } from "@azure/storage-blob";
+import { DefaultAzureCredential } from '@azure/identity';
 
 class Azure implements Upload
 {
@@ -18,11 +19,36 @@ class Azure implements Upload
 
     async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
-            const blobServiceClient = BlobServiceClient.fromConnectionString(
-                this.config.azure.connectionString
-            );
+            const { authenticationMethod, connectionString, accountName, container } = this.config.azure;
+            let authMethod = authenticationMethod;
+            if (connectionString !== '' && accountName === '') {
+                authMethod = 'connectionString';
+            }
+            else if (connectionString === '' && accountName !== '') {
+                authMethod = 'Passwordless';
+            }
+            if (authMethod === 'connectionString' && connectionString === '') {
+                vscode.window.showInformationMessage($l['connection_string_empty']);
+                return null;
+            }
+            if (authMethod === 'Passwordless' && accountName === '') {
+                vscode.window.showInformationMessage($l['account_name_empty']);
+                return null;
+            }
 
-            const containerClient = blobServiceClient.getContainerClient(this.config.azure.container);
+            let blobServiceClient: BlobServiceClient;
+            if (authMethod === 'connectionString') {
+                blobServiceClient = BlobServiceClient.fromConnectionString(
+                    connectionString
+                );
+            } else {
+                blobServiceClient = new BlobServiceClient(
+                    `https://${accountName}.blob.core.windows.net`,
+                    new DefaultAzureCredential()
+                );
+            }
+
+            const containerClient = blobServiceClient.getContainerClient(container);
             const blockBlobClient = containerClient.getBlockBlobClient(savePath);
             await blockBlobClient.uploadFile(filePath);
 
