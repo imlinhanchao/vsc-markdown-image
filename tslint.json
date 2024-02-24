@@ -11,5 +11,8 @@
 		],
 		"triple-equals": true
 	},
+	"exclude": [
+		"node_modules/**/*.ts"
+	],
 	"defaultSeverity": "warning"
 }
