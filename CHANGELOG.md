@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.38] - 2024-02-24
+- Supports Azure Blob Storage Passwordless authentication method.
+
 ## [1.1.37] - 2024-02-17
 - Add support for Azure Storage.
 

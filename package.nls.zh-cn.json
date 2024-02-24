@@ -86,10 +86,10 @@
     "markdown-image.sftp.privateKeyPath": "远程私钥文件路径。",
     "markdown-image.sftp.path": "远程服务器的图片存储目录（如果不存在，则自动创建）。支持相对路径，相对于所粘贴的 Markdown 文件。 `/` 表示打开的文件夹根目录。注意：您不能在此处使用变量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用变量。",
     "markdown-image.sftp.referencePath": "Markdown 中的图片的引用路径格式（不包含文件名）。留空表示使用相对路径。 你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有变量。例如：`/images/${YY}-${MM}/`",
-    "markdown-image.azure.authenticationMethod": "用于 Azure Blob 存储帐户的身份验证方法。默认值为 `Passwordless`。您可以从这里获取更多信息。",
+    "markdown-image.azure.authenticationMethod": "用于 Azure Blob 存储帐户的身份验证方法。默认值为 `Passwordless`。您可以从[这里](https://learn.microsoft.com/zh-cn/azure/storage/blobs/storage-quickstart-blobs-nodejs?tabs=managed-identity%2Croles-azure-portal%2Csign-in-azure-cli#authenticate-to-azure-and-authorize-access-to-blob-data)获取更多信息。",
     "markdown-image.azure.authenticationMethod.Passwordless": "使用帐户名称进行身份验证。您必须首先执行 `az login` 登录到 Azure CLI。",
     "markdown-image.azure.authenticationMethod.ConnectionString": "使用连接字符串进行身份验证。",
-    "markdown-image.azure.accountName": "您的 Azure Blob 存储帐户。",
+    "markdown-image.azure.accountName": "Azure Blob 存储帐户。",
     "markdown-image.azure.connect-string": "Azure 存储连接字符串。",
     "markdown-image.azure.container": "Azure 存储容器名称。"
   }

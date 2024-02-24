@@ -132,6 +132,8 @@ These values can be found in your S3 service provider dashboard
 - `markdown-image.sftp.referencePath`: The reference path format in markdown(not include file name). Empty means use relative path. You can use variable of `#markdown-image.base.fileNameFormat#` in here. For example: `/images/${YY}-${MM}/`
 
 ### Azure Storage Settings
+- `markdown-image.azure.authenticationMethod`: The authentication method to use for the Azure Blob Storage account. The default is `Passwordless`. You can obtain more information from [here](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-nodejs?tabs=managed-identity%2Croles-azure-portal%2Csign-in-azure-cli#authenticate-to-azure-and-authorize-access-to-blob-data).
+- `markdown-image.azure.accountName`: Your Azure Blob Storage account.
 - `markdown-image.azure.connectionString`: The connection string of the Azure Storage account.
 - `markdown-image.azure.container`: The name of the container to upload images to.
 
@@ -148,6 +150,9 @@ These values can be found in your S3 service provider dashboard
   ```
 
 ## Release Notes
+
+### 1.1.38
+- Supports Azure Blob Storage Passwordless authentication method.
 
 ### 1.1.37
 

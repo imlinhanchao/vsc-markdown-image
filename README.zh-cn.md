@@ -139,6 +139,8 @@ sudo yum install xclip
 
 ### Azure Storage 设置项目
 
+- `markdown-image.azure.authenticationMethod`: 用于 Azure Blob 存储帐户的身份验证方法。默认值为 `Passwordless`。您可以从[这里](https://learn.microsoft.com/zh-cn/azure/storage/blobs/storage-quickstart-blobs-nodejs?tabs=managed-identity%2Croles-azure-portal%2Csign-in-azure-cli#authenticate-to-azure-and-authorize-access-to-blob-data)获取更多信息。
+- `markdown-image.azure.accountName`: 您的 Azure Blob 存储帐户。
 - `markdown-image.azure.connectionString`: 你的 Azure 存储连接字符串。
 - `markdown-image.azure.container`: 你的 Azure 存储容器名称。
 
@@ -155,6 +157,9 @@ sudo yum install xclip
   ```
 
 ## 发布历史
+
+### 1.1.38
+- 支援 Azure Blob Storage Passwordless 认证方式。
 
 ### 1.1.37
 

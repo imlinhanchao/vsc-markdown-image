@@ -25,7 +25,6 @@ function getUploadInstance(config: any) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-    console.info('Congratulations, your extension "markdown-image" is now active!');
     let config = utils.getConfig();
     let uploads: Upload[] = getUploadInstance(config);
 
@@ -43,8 +42,6 @@ export function activate(context: vscode.ExtensionContext) {
             if (config.base.fileFormat == 'jpg' && images.length === 1 && images[0] == savePath) {
                 images[0] = await utils.convertImage(images[0])
             }
-
-            console.debug(`Get ${images.length} Images`);
 
             let urls = [], maxWidth = [];
             for (let i = 0; i < images.length; i++) {
