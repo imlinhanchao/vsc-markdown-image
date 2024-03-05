@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import mime from "mime";
 import { readFileSync } from "fs";
 import {
   S3Client,
@@ -79,6 +80,7 @@ class S3 implements Upload {
       Bucket: bucketName,
       Body: body,
       Key: savePath,
+      ContentType: mime.getType(filePath) || "application/octet-stream",
     });
 
     return this.s3Client.send(putObjectCommand);

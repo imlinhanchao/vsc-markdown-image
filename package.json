@@ -564,6 +564,7 @@
     "got": "^10.7.0",
     "https-proxy-agent": "^4.0.0",
     "image-size": "^1.0.0",
+    "mime": "^4.0.1",
     "node-fetch": "^2.6.6",
     "png-to-jpeg": "^1.0.1",
     "qiniu": "^7.3.1",
