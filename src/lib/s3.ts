@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import mime from "mime";
+import * as mime from "mime";
 import { readFileSync } from "fs";
 import {
   S3Client,
