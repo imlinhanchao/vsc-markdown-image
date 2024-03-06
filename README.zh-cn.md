@@ -158,6 +158,9 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.39
+- 为 s3 上传方法添加了 `Content-Type`。
+
 ### 1.1.38
 - 支援 Azure Blob Storage Passwordless 认证方式。
 

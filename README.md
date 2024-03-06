@@ -151,6 +151,9 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.39
+- Add `Content-Type` to s3 upload method.
+
 ### 1.1.38
 - Supports Azure Blob Storage Passwordless authentication method.
 
