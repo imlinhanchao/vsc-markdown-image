@@ -120,6 +120,7 @@ These values can be found in your S3 service provider dashboard
 - `markdown-image.s3.bucketName`: The name of the S3 bucket to upload images to. Access to the bucket should be public.
 - `markdown-image.s3.accessKeyId`: Your S3 API access key ID.
 - `markdown-image.s3.secretAccessKey`: Your S3 secret access key.
+- `markdown-image.s3.cdn`: Your S3 CDN Url. You can use variable `${bucket}` `${region}` `${pathname}` and `${filepath}`. For example: `https://${bucket}.${region}.s3.amazonaws.com/${pathname}/${filepath}`.
 
 ### SFTP Settings
 
@@ -150,6 +151,9 @@ These values can be found in your S3 service provider dashboard
   ```
 
 ## Release Notes
+
+### 1.1.40
+- Added a new setting item `markdown-image.s3.cdn` to set the s3 cdn url.
 
 ### 1.1.39
 - Add `Content-Type` to s3 upload method.

@@ -1,13 +1,24 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.40] - 2024-03-11
+
+### Added
+- Added a new setting item `markdown-image.s3.cdn` to set the s3 cdn url.
+
 ## [1.1.39] - 2024-03-06
+
+### Added
 - Add `Content-Type` to s3 upload method.
 
 ## [1.1.38] - 2024-02-24
+
+### Added
 - Supports Azure Blob Storage Passwordless authentication method.
 
 ## [1.1.37] - 2024-02-17
+
+### Added
 - Add support for Azure Storage.
 
 ## [1.1.36] - 2023-08-22

@@ -120,6 +120,7 @@ sudo yum install xclip
 - `markdown-image.s3.bucketName`: 你的 S3 存儲桶名稱。存儲桶訪問權限應該是公開的。
 - `markdown-image.s3.accessKeyId`: 你的 S3 access key ID。
 - `markdown-image.s3.secretAccessKey`: 你的 S3 secret access key。
+- `markdown-image.s3.cdn`: 設定你的 S3 CDN URL。你可以使用變數 `${bucket}` `${region}` `${pathname}` and `${filepath}`。比如：`https://${bucket}.${region}.s3.amazonaws.com/${pathname}/${filepath}`。
 
 ### SFTP 設置項目
 
@@ -151,6 +152,9 @@ sudo yum install xclip
   ```
 
 ## 發布歷史
+
+### 1.1.40
+- 新增了新設定項目 `markdown-image.s3.cdn` 用於設定 s3 CDN 位址。
 
 ### 1.1.39
 - 為 s3 上傳方法新增了 `Content-Type`。
