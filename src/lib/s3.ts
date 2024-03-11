@@ -62,7 +62,18 @@ class S3 implements Upload {
       });
       const encodedURL = await getSignedUrl(this.s3Client, getObjectCommand);
 
-      return this.sanitizeURL(encodedURL);
+      if (!this.config.s3.cdn) {
+        return this.sanitizeURL(encodedURL);
+      }
+
+      const decodedURL = decodeURIComponent(encodedURL);
+      const urlObject = new URL(decodedURL);
+
+      return this.config.s3.cdn
+        .replace(/\${bucket}/g, this.config.s3.bucket)
+        .replace(/\${region}/g, this.config.s3.region)
+        .replace(/\${pathname}/g, urlObject.pathname)
+        .replace(/\${filepath}/g, savePath);
     } catch (error) {
       let e = error as Error;
       vscode.window.showInformationMessage(

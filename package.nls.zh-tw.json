@@ -78,6 +78,7 @@
     "markdown-image.s3.bucketName": "你的 S3 存儲桶名稱。",
     "markdown-image.s3.accessKeyId": "你的 S3 access key ID.",
     "markdown-image.s3.secretAccessKey": "你的 S3 secret access key.",
+    "markdown-image.s3.cdn": "設定你的 S3 CDN URL。你可以使用變數 `${bucket}` `${region}` `${pathname}` and `${filepath}`。比如：`https://${bucket}.${region}.s3.amazonaws.com/${pathname}/${filepath}`",
     "markdown-image.sftp.host": "遠端伺服器地址。",
     "markdown-image.sftp.port": "SSH 服務端口。",
     "markdown-image.sftp.username": "遠端賬戶。",

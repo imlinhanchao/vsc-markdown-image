@@ -438,7 +438,14 @@
             "markdownDescription": "%markdown-image.s3.secretAccessKey%",
             "order": 4,
             "type": "string"
+          },
+          "markdown-image.s3.cdn": {
+            "default": "",
+            "markdownDescription": "%markdown-image.s3.cdn%",
+            "order": 4,
+            "type": "string"
           }
+
         },
         "title": "S3"
       },
