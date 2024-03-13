@@ -442,10 +442,14 @@
           "markdown-image.s3.cdn": {
             "default": "",
             "markdownDescription": "%markdown-image.s3.cdn%",
-            "order": 4,
+            "order": 5,
             "type": "string"
+          },
+          "markdown-image.s3.config": {
+            "markdownDescription": "%markdown-image.s3.config%",
+            "order": 6,
+            "type": "object"
           }
-
         },
         "title": "S3"
       },

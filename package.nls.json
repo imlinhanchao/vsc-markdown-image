@@ -81,6 +81,7 @@
   "markdown-image.s3.accessKeyId": "Your S3 access key ID.",
   "markdown-image.s3.secretAccessKey": "Your S3 secret access key.",
   "markdown-image.s3.cdn": "Your S3 CDN Url. You can use variable `${bucket}` `${region}` `${pathname}` and `${filepath}`. For example: `https://${bucket}.${region}.s3.amazonaws.com/${pathname}/${filepath}`.",
+  "markdown-image.s3.config": "The other configuration of the S3Client. You can get all options in [here](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/s3/).",
   "markdown-image.sftp.host": "The host of the remote server.",
   "markdown-image.sftp.port": "The ssh port of the remote server.",
   "markdown-image.sftp.username": "The username of the remote server.",

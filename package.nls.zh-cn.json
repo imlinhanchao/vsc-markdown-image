@@ -80,6 +80,7 @@
     "markdown-image.s3.accessKeyId": "你的 S3 access key ID。",
     "markdown-image.s3.secretAccessKey": "你的 S3 secret access key。",
     "markdown-image.s3.cdn": "设置你的 S3 CDN URL。你可以使用变量 `${bucket}` `${region}` `${pathname}` and `${filepath}`。比如：`https://${bucket}.${region}.s3.amazonaws.com/${pathname}/${filepath}`。",
+    "markdown-image.s3.config": "S3Client 的其它配置项目。你可以在[此处](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/s3/)中获得所有选项。",
     "markdown-image.sftp.host": "远程服务器地址。",
     "markdown-image.sftp.port": "SSH 服务端口。",
     "markdown-image.sftp.username": "远程用户名。",

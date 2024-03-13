@@ -16,8 +16,9 @@ class S3 implements Upload {
 
   constructor(config: Config) {
     this.config = config;
-    const { endpoint, region, accessKeyId, secretAccessKey } = this.config.s3;
+    const { endpoint, region, accessKeyId, secretAccessKey, config: cfg } = this.config.s3;
     this.s3Client = new S3Client({
+      ...cfg,
       endpoint: endpoint,
       region: region,
       credentials: {
