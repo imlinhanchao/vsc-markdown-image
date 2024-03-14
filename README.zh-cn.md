@@ -159,6 +159,10 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.41
+- 添加了新设置项目 `markdown-image.s3.config` 用于配置 s3 client.
+- 修正 s3 CDN 地址变量错误的问题。
+
 ### 1.1.40
 - 添加了新设置项目 `markdown-image.s3.cdn` 用于设置 s3 CDN 地址。
 

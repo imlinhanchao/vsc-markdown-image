@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.41] - 2024-03-14
+
+### Added
+- Added a new setting item `markdown-image.s3.config` to config s3 client.
+
+### Fixed
+- Fixed the s3 cdn url generate wrong.
+
 ## [1.1.40] - 2024-03-11
 
 ### Added

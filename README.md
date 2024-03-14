@@ -152,6 +152,10 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.41
+- Added a new setting item `markdown-image.s3.config` to config s3 client.
+- Fixed the s3 cdn url generate wrong.
+
 ### 1.1.40
 - Added a new setting item `markdown-image.s3.cdn` to set the s3 cdn url.
 

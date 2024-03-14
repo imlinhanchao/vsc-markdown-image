@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.40",
+  "version": "1.1.41",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.62.0"
@@ -563,6 +563,7 @@
     "@types/node": "^8.10.25",
     "@types/node-fetch": "^2.5.12",
     "@types/turndown": "^5.0.0",
+    "@types/ssh2-sftp-client": "^9.0.0",
     "tslint": "^5.8.0",
     "typescript": "4.1",
     "vscode": "^1.1.25"
@@ -572,7 +573,6 @@
     "@aws-sdk/s3-request-presigner": "^3.304.0",
     "@azure/identity": "^4.0.1",
     "@azure/storage-blob": "^12.17.0",
-    "@types/ssh2-sftp-client": "^9.0.0",
     "cloudinary": "^1.26.1",
     "coding-picbed": "^0.0.13",
     "form-data": "^3.0.1",
