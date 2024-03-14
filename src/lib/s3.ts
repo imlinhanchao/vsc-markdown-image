@@ -71,7 +71,7 @@ class S3 implements Upload {
       const urlObject = new URL(decodedURL);
 
       return this.config.s3.cdn
-        .replace(/\${bucket}/g, this.config.s3.bucket)
+        .replace(/\${bucket}/g, this.config.s3.bucketName)
         .replace(/\${region}/g, this.config.s3.region)
         .replace(/\${pathname}/g, urlObject.pathname)
         .replace(/\${filepath}/g, savePath);
