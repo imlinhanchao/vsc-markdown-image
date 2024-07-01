@@ -152,6 +152,9 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.42
+- Fixed the issue where the `path` variable is not in Unix format when running at Microsoft Windows.
+
 ### 1.1.41
 - Added a new setting item `markdown-image.s3.config` to config s3 client.
 - Fixed the s3 cdn url generate wrong.
