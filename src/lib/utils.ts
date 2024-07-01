@@ -119,9 +119,6 @@ async function variableGetter (variable: string,
             return path.basename(getCurrentFilePath(), path.extname(getCurrentFilePath()));
         }
         case 'path': {
-            return path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1);
-        }
-        case 'pathUnix':{
             return path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1).replace('\\', '/');
         }
         case 'hash': {
@@ -184,7 +181,7 @@ async function variableGetter (variable: string,
 async function formatName (format: string, filePath: string, isPaste: boolean): Promise<string> {
     let saveName = format;
     let variables = [
-        'filename', 'mdname', 'path', 'pathUnix', 'hash', 'timestramp', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'prompt'
+        'filename', 'mdname', 'path', 'hash', 'timestramp', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'prompt'
     ];
     for (let i = 0; i < variables.length; i++) {
         let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
@@ -209,7 +206,7 @@ async function formatName (format: string, filePath: string, isPaste: boolean): 
 async function getAlt (format: string, filePath: string, context: vscode.ExtensionContext) {
     let alt = format;
     let variables = [
-        'filename', 'mdname', 'path', 'pathUnix', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index'
+        'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index'
     ];
 
     for (let i = 0; i < variables.length; i++) {
