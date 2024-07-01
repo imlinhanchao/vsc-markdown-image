@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.42] - 2024-07-01
+- Fixed the issue where the `path` variable is not in Unix format when running at Microsoft Windows.
+
 ## [1.1.41] - 2024-03-14
 
 ### Added

@@ -159,8 +159,11 @@ sudo yum install xclip
 
 ## 发布历史
 
+### 1.1.42
+- 修正 `path` 变量在 Windows 操作系统下不符合 Unix 格式的问题。
+
 ### 1.1.41
-- 添加了新设置项目 `markdown-image.s3.config` 用于配置 s3 client.
+- 添加了新设置项目 `markdown-image.s3.config` 用于配置 s3 client。
 - 修正 s3 CDN 地址变量错误的问题。
 
 ### 1.1.40
