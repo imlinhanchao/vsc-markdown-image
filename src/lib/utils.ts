@@ -119,7 +119,7 @@ async function variableGetter (variable: string,
             return path.basename(getCurrentFilePath(), path.extname(getCurrentFilePath()));
         }
         case 'path': {
-            return path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1).replace('\\', '/');
+            return path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1).replace(/\\/g, '/');
         }
         case 'hash': {
             return hash(fs.readFileSync(filePath));

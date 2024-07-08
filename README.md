@@ -152,6 +152,9 @@ These values can be found in your S3 service provider dashboard
 
 ## Release Notes
 
+### 1.1.43
+- Fixed the issue where the `path` variable still had incomplete backslashes replaced.
+
 ### 1.1.42
 - Fixed the issue where the `path` variable is not in Unix format when running at Microsoft Windows.
 

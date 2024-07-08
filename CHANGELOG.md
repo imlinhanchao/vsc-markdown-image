@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.43] - 2024-07-08
+
+### Fixed
+- Fixed the issue where the `path` variable still had incomplete backslashes replaced.
+
 ## [1.1.42] - 2024-07-01
 
 ### Fixed
