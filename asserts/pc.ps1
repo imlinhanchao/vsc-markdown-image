@@ -47,4 +47,4 @@ finally {
     if ($stream) { $stream.Dispose() }
 }
 
-$imagePath
+Exit 0
