@@ -93,9 +93,16 @@ function getSelections (): vscode.Selection[] | null {
     return selections;
 }
 
-function formatCode (filePath: string, selection: string, maxWidth: number, codeType: string): string {
+async function formatCode (filePath: string, selection: string, maxWidth: number, codeType: string, format: string) {
     if (codeType === "Markdown") {
         return `![${selection}](${filePath}${maxWidth > 0 ? ` =${maxWidth}x` : ''})  \n`;
+    }
+
+    if (codeType === "DIY") {
+        let code = await formatName(format, filePath, false);
+        code.replaceAll('${src}', filePath);
+        code.replaceAll('${alt}', selection);
+        return code;
     }
 
     return `<img alt="${selection}" src="${filePath}" ${maxWidth > 0 ? `width="${maxWidth}" ` : ''}/>  \n`;
@@ -206,7 +213,7 @@ async function formatName (format: string, filePath: string, isPaste: boolean): 
 async function getAlt (format: string, filePath: string, context: vscode.ExtensionContext) {
     let alt = format;
     let variables = [
-        'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index'
+        'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index', 'prompt'
     ];
 
     for (let i = 0; i < variables.length; i++) {
@@ -291,7 +298,7 @@ function getPasteImage (imagePath: string): Promise<string[]> {
                 imagePath
             ]);
             // the powershell can't auto exit in windows 7 .
-            let timer = setTimeout(() => powershell.kill(), 2000);
+            let timer = setTimeout(() => powershell.kill(), 8000);
 
             powershell.on('error', (e: any) => {
                 if (e.code === 'ENOENT') {

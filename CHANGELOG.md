@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.44] - 2025-01-06
+
+### Fixed
+- Fixed the issue where disabling Encode caused addresses with spaces to fail to preview correctly.
+
+### Added
+- Added a new setting `markdown-image.base.codeFormat` to support setting the image code format.
+
+### Updated
+- Updated the setting `markdown-image.base.codeType` to add the `DIY` option, supporting custom image code formats.
+- Updated the setting `markdown-image.base.altFormat` to add support for the `${prompt}` variable.
+
 ## [1.1.43] - 2024-07-08
 
 ### Fixed
