@@ -75,33 +75,41 @@
             "default": "Markdown",
             "enum": [
               "Markdown",
-              "HTML"
+              "HTML",
+              "DIY"
             ],
             "enumDescriptions": [
               "%markdown-image.base.codeType.Markdown%",
-              "%markdown-image.base.codeType.HTML%"
+              "%markdown-image.base.codeType.HTML%",
+              "%markdown-image.base.codeType.DIY%"
             ],
             "markdownDescription": "%markdown-image.base.codeType%",
             "order": 2,
             "type": "string"
           },
+          "markdown-image.base.codeFormat": {
+            "default": "![${alt}](${src})",
+            "markdownDescription": "%markdown-image.base.codeFormat%",
+            "order": 3,
+            "type": "string"
+          },
           "markdown-image.base.fileNameFormat": {
             "default": "${hash}",
             "markdownDescription": "%markdown-image.base.fileNameFormat%",
-            "order": 4,
+            "order": 5,
             "pattern": "^[^:*?<>|]+$",
             "type": "string"
           },
           "markdown-image.base.altFormat": {
             "default": "%markdown-image.base.altFormat.default%",
             "markdownDescription": "%markdown-image.base.altFormat%",
-            "order": 4,
+            "order": 6,
             "type": "string"
           },
           "markdown-image.base.imageWidth": {
             "default": 0,
             "markdownDescription": "%markdown-image.base.imageWidth%",
-            "order": 3,
+            "order": 4,
             "type": "number"
           },
           "markdown-image.base.uploadMethod": {
@@ -167,7 +175,7 @@
           "markdown-image.base.urlEncode": {
             "default": true,
             "markdownDescription": "%markdown-image.base.urlEncode%",
-            "order": 5,
+            "order": 7,
             "type": "boolean"
           },
           "markdown-image.base.fileFormat": {
@@ -177,7 +185,7 @@
               "png",
               "jpg"
             ],
-            "order": 6,
+            "order": 8,
             "type": "string"
           }
         },

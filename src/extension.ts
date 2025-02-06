@@ -73,7 +73,7 @@ export function activate(context: vscode.ExtensionContext) {
 
                 if (config.base.uploadMethod !== 'Data URL') {
                     if(config.base.urlEncode) { urls[i] = encodeURIComponent(urls[i].toString()).replace(/%5C/g, '\\').replace(/%2F/g, '/').replace(/%3A/g, ':').replace(/%40/g, '@'); }
-                    let text = utils.formatCode(urls[i], selection, maxWidth[i], config.base.codeType);
+                    let text = await utils.formatCode(urls[i], selection, maxWidth[i], config.base.codeType, config.base.codeFormat || '![${alt}](${src})');
                     if (selections?.[i] && selections?.length > 1) {
                         await utils.editorEdit(selections[i], text);
                     }
@@ -84,7 +84,7 @@ export function activate(context: vscode.ExtensionContext) {
                 else
                 {
                     let tag = new Date().getTime().toString();
-                    let text = utils.formatCode(tag, selection, maxWidth[i], 'Markdown');
+                    let text = await utils.formatCode(tag, selection, maxWidth[i], 'Markdown', '');
                     tag = `\n[${tag}]: ${urls[i]}`;
                     if (selections?.[i] && selections?.length > 1) {
                         await utils.insertToEnd(tag);
