@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.44] - 2025-01-06
+
+### Fixed
+- 修正不启用 Encode 地址带空格导致无法正常预览问题
+
+### Added
+- 新增设置项 `markdown-image.base.codeFormat`，支持设置图片代码格式；
+
+### Updated
+- 设置项 `markdown-image.base.codeType` 添加 `DIY` 选项，支持自定义图片代码格式；
+- 设置项 `markdown-image.base.altFormat` 添加 `${prompt}` 变量支持；
+
 ## [1.1.43] - 2024-07-08
 
 ### Fixed
