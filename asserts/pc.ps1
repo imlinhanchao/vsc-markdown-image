@@ -4,6 +4,12 @@ param($imagePath)
 chcp 65001
 
 Add-Type -Assembly PresentationCore
+
+if (-not $imagePath) {
+    "image path unspecified"
+    Exit 1
+}
+
 $img = [Windows.Clipboard]::GetImage()
 
 if ($null -eq $img) {
@@ -16,29 +22,9 @@ if ($null -eq $img) {
     Exit 0
 }
 
-if (-not $imagePath) {
-    "no image"
-    Exit 1
-}
-
-$sourceFormat = $img.Format
-$hasAlpha = @(
-    [Windows.Media.PixelFormats]::Bgra32,
-    [Windows.Media.PixelFormats]::Pbgra32,
-    [Windows.Media.PixelFormats]::Prgba64,
-    [Windows.Media.PixelFormats]::Rgba64
-) -contains $sourceFormat
-
-$targetFormat = if ($hasAlpha) {
-    [Windows.Media.PixelFormats]::Pbgra32
-} else {
-    [Windows.Media.PixelFormats]::Rgb24
-}
-
-$fcb = New-Object Windows.Media.Imaging.FormatConvertedBitmap($img, $targetFormat, $null, 0)
-
 try {
-    $stream = [IO.File]::Open($imagePath, [IO.FileMode]::OpenOrCreate)
+    $stream = [IO.File]::Open($imagePath, [IO.FileMode]::Create)
+    $fcb = New-Object Windows.Media.Imaging.FormatConvertedBitmap($img, $img.Format, $null, 100)
     $encoder = New-Object Windows.Media.Imaging.PngBitmapEncoder
     $encoder.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($fcb)) | Out-Null
     $encoder.Save($stream)
