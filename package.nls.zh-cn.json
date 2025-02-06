@@ -33,7 +33,7 @@
     "markdown-image.base.codeType.DIY": "自定义插入代码，你需要通过 `#markdown-image.base.codeFormat#` 配置代码格式。",
     "markdown-image.base.codeFormat": "自定义插入代码的格式，需设置 `#markdown-image.base.codeType#` 为 `DIY`。你可以使用 `${src}` 和 `${alt}` 变量，分别表示图片地址与默认占位符（由 `#markdown-image.base.altFormat#` 定义）。比如：`![${alt}](${src})`。也可以使用 `#markdown-image.base.fileNameFormat#` 中的所有变量。",
     "markdown-image.base.imageWidth": "图片的最大宽度，若图片大于这个宽度，则会设置宽度为该值。设置为 0 则表示不设置。",
-    "markdown-image.base.altFormat": "Markdown 代码的占位符。你有一些变量可以使用：  \n\n- `${filename}`: 图片原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称（不含扩展名）。 \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestamp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n- `${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。\n- `${index}`: 文件通过插件粘贴的图片 index。",
+    "markdown-image.base.altFormat": "Markdown 代码的占位符。你有一些变量可以使用：  \n\n- `${filename}`: 图片原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称（不含扩展名）。 \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestamp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n- `${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。\n- `${index}`: 文件通过插件粘贴的图片 index。\n- `${prompt}`: 通过输入框输入自定义名称。",
     "markdown-image.base.altFormat.default": "图 ${index}",
     "markdown-image.local.path": "本地的图片存储目录（如果不存在，则自动创建）。支持相对路径，相对于所粘贴的 Markdown 文件。 `/` 表示打开的文件夹根目录。注意：您不能在此处使用变量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用变量。",
     "markdown-image.local.referencePath": "Markdown 中的图片的引用路径格式（不包含文件名）。留空表示使用相对路径。 你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有变量。例如：`/images/${YY}-${MM}/`",

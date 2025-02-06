@@ -32,7 +32,7 @@
     "markdown-image.base.codeType.DIY": "自定義插入代碼，你需要通過 `#markdown-image.base.codeFormat#` 配置代碼格式。",
     "markdown-image.base.codeFormat": "自定義插入代碼的格式，需設置 `#markdown-image.base.codeType#` 爲 `DIY`。你可以使用 `${src}` 和 `${alt}` 變量，分別表示圖片地址與默認佔位符（由 `#markdown-image.base.altFormat#` 定義）。比如：`![${alt}](${src})`。也可以使用 `#markdown-image.base.fileNameFormat#` 中的所有變量。",
     "markdown-image.base.imageWidth": "圖片的最大寬度，若圖片大於這個寬度，則會設置寬度為該值。設置為 0 則表示不設置。",
-    "markdown-image.base.altFormat": "Markdown 代碼的佔位符。您可以使用以下變量：\n\n- `${filename}`：圖片原始的檔案名稱。\n- `${mdname}`：正在編輯的 Markdown 檔案的名稱（不包含副檔名）。\n- `${hash}`：圖像的 sha256 雜湊。\n- `${timestamp}`：上傳時間的時間戳。\n- `${YY}`：年份\n- `${MM}`：月份\n- `${DD}`：日期\n- `${hh}`：12 小時制的小時\n- `${HH}`：24 小時制的小時\n- `${mm}`：分鐘\n- `${ss}`：秒\n- `${mss}`：毫秒\n- `${rand,number}`：隨機數，例如：`${rand,100}`。它將生成從 0 到 99 的隨機數。\n- `${index}`：插件粘貼到文件中的圖片索引。",
+    "markdown-image.base.altFormat": "Markdown 代碼的佔位符。您可以使用以下變量：\n\n- `${filename}`：圖片原始的檔案名稱。\n- `${mdname}`：正在編輯的 Markdown 檔案的名稱（不包含副檔名）。\n- `${hash}`：圖像的 sha256 雜湊。\n- `${timestamp}`：上傳時間的時間戳。\n- `${YY}`：年份\n- `${MM}`：月份\n- `${DD}`：日期\n- `${hh}`：12 小時制的小時\n- `${HH}`：24 小時制的小時\n- `${mm}`：分鐘\n- `${ss}`：秒\n- `${mss}`：毫秒\n- `${rand,number}`：隨機數，例如：`${rand,100}`。它將生成從 0 到 99 的隨機數。\n- `${index}`：插件粘貼到文件中的圖片索引。\n- `${prompt}`: 通過輸入框輸入自定義名稱。",
     "markdown-image.base.altFormat.default": "圖 ${index}",
     "markdown-image.local.path": "本地的圖片存儲目錄（如果不存在，則自動創建）。支持相對路徑，相對於所粘貼的 Markdown 文件。`/` 表示打開的文件夾根目錄。注意：您不能在此處使用變量。您可以在 `#markdown-image.base.fileNameFormat#` 中使用變量。",
     "markdown-image.local.referencePath": "Markdown 中的圖片的引用路徑格式（不包含文件名）。留空表示使用相對路徑。你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有變量。例如：`/images/${YY}-${MM}/`",

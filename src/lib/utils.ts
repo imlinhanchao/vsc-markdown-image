@@ -213,7 +213,7 @@ async function formatName (format: string, filePath: string, isPaste: boolean): 
 async function getAlt (format: string, filePath: string, context: vscode.ExtensionContext) {
     let alt = format;
     let variables = [
-        'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index'
+        'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index', 'prompt'
     ];
 
     for (let i = 0; i < variables.length; i++) {
