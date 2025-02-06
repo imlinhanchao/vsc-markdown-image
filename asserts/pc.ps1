@@ -7,12 +7,12 @@ Add-Type -Assembly PresentationCore
 $img = [Windows.Clipboard]::GetImage()
 
 if ($null -eq $img) {
-    $img = [Windows.Clipboard]::GetFileDropList()
-    if ($null -eq $img) {
+    $files = [Windows.Clipboard]::GetFileDropList()
+    if ($null -eq $files) {
         "no image"
         Exit 1
     }
-    $img
+    $files
     Exit 0
 }
 
@@ -21,11 +21,30 @@ if (-not $imagePath) {
     Exit 1
 }
 
-$fcb = new-object Windows.Media.Imaging.FormatConvertedBitmap($img, [Windows.Media.PixelFormats]::Pbgra32, $null, 0)
-$stream = [IO.File]::Open($imagePath, "OpenOrCreate")
-$encoder = New-Object Windows.Media.Imaging.PngBitmapEncoder
-$encoder.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($fcb)) | out-null
-$encoder.Save($stream) | out-null
-$stream.Dispose() | out-null
+$sourceFormat = $img.Format
+$hasAlpha = @(
+    [Windows.Media.PixelFormats]::Bgra32,
+    [Windows.Media.PixelFormats]::Pbgra32,
+    [Windows.Media.PixelFormats]::Prgba64,
+    [Windows.Media.PixelFormats]::Rgba64
+) -contains $sourceFormat
+
+$targetFormat = if ($hasAlpha) {
+    [Windows.Media.PixelFormats]::Pbgra32
+} else {
+    [Windows.Media.PixelFormats]::Rgb24
+}
+
+$fcb = New-Object Windows.Media.Imaging.FormatConvertedBitmap($img, $targetFormat, $null, 0)
+
+try {
+    $stream = [IO.File]::Open($imagePath, [IO.FileMode]::OpenOrCreate)
+    $encoder = New-Object Windows.Media.Imaging.PngBitmapEncoder
+    $encoder.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($fcb)) | Out-Null
+    $encoder.Save($stream)
+}
+finally {
+    if ($stream) { $stream.Dispose() }
+}
 
 $imagePath
