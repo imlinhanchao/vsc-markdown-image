@@ -4,30 +4,34 @@ param($imagePath)
 chcp 65001
 
 Add-Type -Assembly PresentationCore
-$img = [Windows.Clipboard]::GetImage()
-
-if ($null -eq $img) {
-    $img = [Windows.Clipboard]::GetFileDropList()
-    if ($null -eq $img) {
-        "no image"
-        Exit 1
-    }
-    $img
-    Exit 0
-}
 
 if (-not $imagePath) {
-    "no image"
+    "image path unspecified"
     Exit 1
 }
 
-$fcb = new-object Windows.Media.Imaging.FormatConvertedBitmap($img, [Windows.Media.PixelFormats]::Rgb24, $null, 0)
+$img = [Windows.Clipboard]::GetImage()
 
-$stream = [IO.File]::Open($imagePath, "OpenOrCreate")
-$encoder = New-Object Windows.Media.Imaging.PngBitmapEncoder
-$encoder.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($fcb)) | out-null
-$encoder.Save($stream) | out-null
-$stream.Dispose() | out-null
+if ($null -eq $img) {
+    $files = [Windows.Clipboard]::GetFileDropList()
+    if ($null -eq $files) {
+        "no image"
+        Exit 1
+    }
+    $files
+    Exit 0
+}
+
+try {
+    $stream = [IO.File]::Open($imagePath, [IO.FileMode]::Create)
+    $fcb = New-Object Windows.Media.Imaging.FormatConvertedBitmap($img, $img.Format, $null, 100)
+    $encoder = New-Object Windows.Media.Imaging.PngBitmapEncoder
+    $encoder.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($fcb)) | Out-Null
+    $encoder.Save($stream)
+}
+finally {
+    if ($stream) { $stream.Dispose() }
+}
 
 $imagePath
 
