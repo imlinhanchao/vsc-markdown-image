@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.46] - 2025-02-07
+
+### Fixed
+- Reverted changes from version `1.1.45` to fix the issue where the background of a copied PNG image turns black when pasted.
+
 ## [1.1.45] - 2025-02-07
 
 ### Fixed
