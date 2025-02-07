@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.44",
+  "version": "1.1.45",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.62.0"
@@ -22,9 +22,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:markdown-image.paste",
-    "onCommand:markdown-image.config",
-    "onCommand:markdown-image.paste-rich-text"
+    "onLanguage:markdown"
   ],
   "repository": "https://github.com/imlinhanchao/vsc-markdown-image",
   "main": "./out/extension",

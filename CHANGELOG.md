@@ -1,7 +1,15 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
-## [1.1.44] - 2025-01-06
+## [1.1.45] - 2025-02-07
+
+### Fixed
+- Fixed transparent background turning black when copy png Image on paste.
+
+### Updated
+- Support auto activate the extension when the markdown file is opened.
+
+## [1.1.44] - 2025-02-06
 
 ### Fixed
 - Fixed the issue where disabling Encode caused addresses with spaces to fail to preview correctly.
