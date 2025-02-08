@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.47] - 2025-02-08
+
+### Fixed
+- Fixed multiple files could not be copied and pasted on Mac.
+- Fixed pasted rich text on Windows had garbled characters.
+
 ## [1.1.46] - 2025-02-07
 
 ### Fixed
