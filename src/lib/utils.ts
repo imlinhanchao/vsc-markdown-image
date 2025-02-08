@@ -383,8 +383,9 @@ function getRichText (): Promise<string> {
                 '-file', scriptPath,
             ]);
             // the powershell can't auto exit in windows 7 .
-            let timer = setTimeout(() => powershell.kill(), 2000);
+            let timer = setTimeout(() => powershell.kill(), 8000);
             let buffers: any = []; let size = 0;
+            let result = '';
             powershell.on('error', (e: any) => {
                 if (e.code === 'ENOENT') {
                     vscode.window.showErrorMessage(locale['powershell_not_found']);
@@ -397,15 +398,15 @@ function getRichText (): Promise<string> {
                 // console.debug('exit', code, signal);
             });
             powershell.stdout.on('data', (data) => {
+                result += data.toString();
                 buffers.push(data);
                 size += data.length;
                 clearTimeout(timer);
-                timer = setTimeout(() => powershell.kill(), 2000);
+                timer = setTimeout(() => powershell.kill(), 8000);
             });
             powershell.on('close', (code) => {
-                Buffer.concat(buffers, size).toString()
-                    .split('\n').forEach(d => output += (d.indexOf('Active code page:') < 0 ? d : ''));
-                resolve(output.replace('</html>', '').replace('</body>', '').split('<body>').slice(-1)[0].trim());
+                output = (result.match(/<body>[\s\S]*<\/body>/g) || [''])[0];
+                resolve(output.replace(/<\/*body>/g, '').trim());
             });
         }
         else if (platform === 'darwin') {
