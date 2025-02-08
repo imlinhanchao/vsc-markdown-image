@@ -1,10 +1,7 @@
-param($imagePath)
+Add-Type -Assembly PresentationCore
 
-chcp 65001 | out-null
-Add-Type -AssemblyName System.Windows.Forms
-Add-Type -AssemblyName System.Text.Encoding
+($html = [Windows.Clipboard]::GetData([Windows.DataFormats]::Html)) | out-null
 
-($html = [System.Windows.Forms.Clipboard]::GetText([System.Windows.Forms.TextDataFormat]::Html)) | out-null
-
-$html
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::WriteLine($html)
 
