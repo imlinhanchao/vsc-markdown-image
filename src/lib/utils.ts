@@ -384,7 +384,6 @@ function getRichText (): Promise<string> {
             ]);
             // the powershell can't auto exit in windows 7 .
             let timer = setTimeout(() => powershell.kill(), 8000);
-            let buffers: any = []; let size = 0;
             let result = '';
             powershell.on('error', (e: any) => {
                 if (e.code === 'ENOENT') {
@@ -399,8 +398,6 @@ function getRichText (): Promise<string> {
             });
             powershell.stdout.on('data', (data) => {
                 result += data.toString();
-                buffers.push(data);
-                size += data.length;
                 clearTimeout(timer);
                 timer = setTimeout(() => powershell.kill(), 8000);
             });
