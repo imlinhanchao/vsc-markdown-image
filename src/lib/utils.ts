@@ -93,19 +93,20 @@ function getSelections (): vscode.Selection[] | null {
     return selections;
 }
 
-async function formatCode (filePath: string, selection: string, maxWidth: number, codeType: string, format: string) {
-    if (codeType === "Markdown") {
-        return `![${selection}](${filePath}${maxWidth > 0 ? ` =${maxWidth}x` : ''})  \n`;
-    }
+async function formatCode(filePath: string, selection: string, maxWidth: number, codeType: string, format: string) {
+    switch (codeType) {
+        case "Markdown":
+            return `![${selection}](${filePath}${maxWidth > 0 ? ` =${maxWidth}x` : ''})  \n`;
 
-    if (codeType === "DIY") {
-        let code = await formatName(format, filePath, false);
-        code.replaceAll('${src}', filePath);
-        code.replaceAll('${alt}', selection);
-        return code;
-    }
+        case "DIY":
+            let code = await formatName(format, filePath, false);
+            code = code.replaceAll('${src}', filePath);
+            code = code.replaceAll('${alt}', selection);
+            return code;
 
-    return `<img alt="${selection}" src="${filePath}" ${maxWidth > 0 ? `width="${maxWidth}" ` : ''}/>  \n`;
+        default:
+            return `<img alt="${selection}" src="${filePath}" ${maxWidth > 0 ? `width="${maxWidth}" ` : ''}/>  \n`;
+    }
 }
 
 async function variableGetter (variable: string,
