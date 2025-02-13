@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.49] - 2025-02-13
+
+### Fixed
+- Fixed bug of format code by DIY.
+
 ## [1.1.48] - 2025-02-11
 
 ### Fixed
