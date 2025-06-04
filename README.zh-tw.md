@@ -1,4 +1,4 @@
-[English Readme](README.md) / [简体中文说明](README.zh-cn.md) / 繁體中文說明
+[English Readme](README.md) / [简体中文说明](README.zh-cn.md) / 繁體中文說明 / [日本語説明](README.ja.md)
 
 # Markdown Image
 
