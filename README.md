@@ -140,7 +140,7 @@ These values can be found in your S3 service provider dashboard
 - `markdown-image.azure.connectionString`: The connection string of the Azure Storage account.
 - `markdown-image.azure.container`: The name of the container to upload images to.
 
-### DIY Settings
+#### DIY Settings
 
 - `markdown-image.DIY.path`: The Code Path what you write. Your code must exports a function as `async function (filePath:string, savePath:string, markdownPath:string):string`.
   For example:
@@ -151,6 +151,63 @@ These values can be found in your S3 service provider dashboard
     return path.relative(path.dirname(markdownPath), filePath);
   };
   ```
+### Example: Deterministic Filenames and Hugo Page Bundles
+
+Some workflows (such as Hugo page bundles or SSH‑remote editing) benefit from deterministic image filenames and saving images next to the current Markdown file. DIY mode makes this possible by overriding the default save logic.
+
+Below is a minimal example showing how to:
+
+- detect the folder containing the Markdown file
+- generate a predictable filename like <folder>-image-1.png
+- return a correct relative Markdown link
+
+\`\`\`javascript
+const fs = require("fs");
+const path = require("path");
+
+module.exports = async function (filePath, savePath, markdownPath) {
+  const folder = path.dirname(markdownPath);
+  const base = path.basename(folder);
+  const ext = path.extname(filePath) || ".png";
+
+  // Find the next available filename: <folder>-image-1.png, <folder>-image-2.png, etc.
+  let counter = 1;
+  let target;
+  do {
+    target = path.join(folder, base + "-image-" + counter + ext);
+    counter++;
+  } while (fs.existsSync(target));
+
+  // Move the temp file to the final location
+  fs.renameSync(filePath, target);
+
+  // Return a relative Markdown link
+  return path.relative(path.dirname(markdownPath), target);
+};
+\`\`\`
+
+A full working version of this script is available here:
+https://github.com/GumShoeNoir/MarkDownImageDiy
+
+This repository includes a drop‑in DIY script that can be added as a Git submodule for reproducible workflows.
+
+### Suggested Enhancement
+
+To make deterministic filename generation possible without a DIY script, it would be helpful if the extension exposed a variable such as:
+
+- ${currentFolderName} — the name of the folder containing the Markdown file
+- ${bundleName} — the name of the Hugo page bundle (same as folder name in most cases)
+
+This would allow users to define patterns like:
+
+${currentFolderName}-image-${counter}${ext}
+
+directly in the built‑in filename template, eliminating the need for custom scripts in many common workflows (Hugo page bundles, SSH‑remote editing, colocated assets, etc.).
+
+### Full Write‑Up
+
+A detailed explanation of this workflow, including Hugo page bundles, SSH remote development, and deterministic naming, is available here:
+https://gumshoenoir.com/posts/hancel-markdown-image-extension-diy/
 
 ### Others
 
