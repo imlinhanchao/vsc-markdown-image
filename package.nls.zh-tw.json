@@ -22,7 +22,7 @@
     "markdown-image.base.uploadMethod.S3": "將圖片上傳到 Amazon S3。您需要配置 S3 的 API 端點、區域、存儲桶名、Access Key ID 和 Secret Access Key",
     "markdown-image.base.uploadMethod.SFTP": "將圖片上傳到 SFTP 服務器。您需要配置 SFTP 服務器地址、端口、賬戶、密碼或私鑰文件路徑。",
     "markdown-image.base.uploadMethod.Azure": "將圖片上傳到 Azure Blob 存儲。您需要配置 Azure 存儲帳戶連接字符串和容器名。",
-    "markdown-image.base.fileNameFormat": "上傳的檔案名稱與路徑的格式字串。不支援 Imgur 和 SM.MS。您可以使用以下變數：\n\n- ${filename}：圖片原始的檔案名稱。\n- ${mdname}：正在編輯的 Markdown 檔案的名稱（不包含副檔名）。\n- ${path}：正在編輯的 Markdown 檔案相對於根目錄的路徑。\n- ${hash}：圖片的 sha256 雜湊。\n- ${timestamp}：上傳時間的時間戳記。\n- ${YY}：年份\n- ${MM}：月份\n- ${DD}：日期\n- ${hh}：12 小時制的小時\n- ${HH}：24 小時制的小時\n- ${mm}：分鐘\n- ${ss}：秒\n- ${mss}：毫秒\n- ${rand,number}：隨機數，例如：${rand,100}。它將生成從 0 到 99 的隨機數。\n- ${prompt}：在貼上圖片時可通過輸入框輸入自訂名稱。",
+    "markdown-image.base.fileNameFormat": "上傳的檔案名稱與路徑的格式字串。不支援 Imgur 和 SM.MS。您可以使用以下變數：\n\n- ${filename}：圖片原始的檔案名稱。\n- ${mdname}：正在編輯的 Markdown 檔案的名稱（不包含副檔名）。\n- `${folderName}`: Markdown 檔案所在資料夾名稱，也可以增加參數表示父級資料夾，例如：`${folderName,1}`，若在 /a/b/c/d.md，則表示 c。 \n- ${path}：正在編輯的 Markdown 檔案相對於根目錄的路徑。\n- ${hash}：圖片的 sha256 雜湊。\n- ${timestamp}：上傳時間的時間戳記。\n- ${YY}：年份\n- ${MM}：月份\n- ${DD}：日期\n- ${hh}：12 小時制的小時\n- ${HH}：24 小時制的小時\n- ${mm}：分鐘\n- ${ss}：秒\n- ${mss}：毫秒\n- ${rand,number}：隨機數，例如：${rand,100}。它將生成從 0 到 99 的隨機數。\n- ${prompt}：在貼上圖片時可通過輸入框輸入自訂名稱。",
     "markdown-image.base.uploadMethods": "可用於並行上傳的多個上傳方法。默認為空，列表應包含上述提到的 `#markdown-image.base.uploadMethod#` 選項的可選值。配置的上傳方法的上傳結果將不會插入到 Markdown 文件中。",
     "markdown-image.base.urlEncode": "是否對圖像的 URL 編碼。",
     "markdown-image.base.fileFormat": "剪貼板圖像文件格式。 您可以使用`png`或`jpg`。",

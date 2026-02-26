@@ -126,6 +126,13 @@ async function variableGetter (variable: string,
         case 'mdname': {
             return path.basename(getCurrentFilePath(), path.extname(getCurrentFilePath()));
         }
+        case 'folder(,\\d+)?': {
+            let numberMat = match!.match(/\d+/);
+            let n = numberMat ? parseInt(numberMat[0]) : 0;
+            let dir = path.dirname(getCurrentFilePath());
+            let folders = dir.split(path.sep).reverse();
+            return folders[n] || '';
+        }
         case 'path': {
             return path.dirname(getCurrentFilePath()).replace(getCurrentRoot(), '').slice(1).replace(/\\/g, '/');
         }
@@ -189,13 +196,13 @@ async function variableGetter (variable: string,
 async function formatName (format: string, filePath: string, isPaste: boolean): Promise<string> {
     let saveName = format;
     let variables = [
-        'filename', 'mdname', 'path', 'hash', 'timestramp', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'prompt'
+        'filename', 'mdname', 'folder(,\\d+)?', 'path', 'hash', 'timestramp', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'prompt'
     ];
     for (let i = 0; i < variables.length; i++) {
         let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
         let mat = format.match(reg);
         if (!mat) { continue; }
-        if (variables[i] === 'rand,(\\d+)') {
+        if (['rand,(\\d+)', 'folder(,\\d+)?'].includes(variables[i])) {
             for (let j = 0; j < mat.length; j++) {
                 const data = await variableGetter(variables[i], { filePath, isPaste, match: mat[j] });
                 if (!data) continue;
@@ -214,14 +221,14 @@ async function formatName (format: string, filePath: string, isPaste: boolean): 
 async function getAlt (format: string, filePath: string, context: vscode.ExtensionContext) {
     let alt = format;
     let variables = [
-        'filename', 'mdname', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index', 'prompt'
+        'filename', 'mdname', 'folder(,\\d+)?', 'path', 'hash', 'timestamp', 'YY', 'MM', 'DD', 'HH', 'hh', 'mm', 'ss', 'mss', 'rand,(\\d+)', 'index', 'prompt'
     ];
 
     for (let i = 0; i < variables.length; i++) {
         let reg = new RegExp(`\\$\\{${variables[i]}\\}`, 'g');
         let mat = format.match(reg);
         if (!mat) { continue; }
-        if (variables[i] === 'rand,(\\d+)') {
+        if (['rand,(\\d+)', 'folder(,\\d+)?'].includes(variables[i])) {
             for (let j = 0; j < mat.length; j++) {
                 const data = await variableGetter(variables[i], { filePath, isPaste: false, match: mat[j] });
                 if (!data) continue;
