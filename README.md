@@ -151,6 +151,8 @@ These values can be found in your S3 service provider dashboard
     return path.relative(path.dirname(markdownPath), filePath);
   };
   ```
+  
+  - [Hugo DIY Script](https://github.com/GumShoeNoir/MarkDownImageDiy) (By [@gumshoenoir](https://github.com/gumshoenoir))
 
 ### Others
 

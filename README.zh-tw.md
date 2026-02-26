@@ -57,12 +57,12 @@ sudo yum install xclip
 - `markdown-image.base.imageWidth`: 圖片的最大寬度，若圖片大於這個寬度，則會設置寬度為該值。設置為 0 則表示不設置。
 - `markdown-image.base.urlEncode`: 是否對圖像的 URL 編碼。
 
-### Local 设置项目
+### Local 設置項目
 
 - `markdown-image.local.path`: 圖片本地存放路徑，支持相對路徑，相對於所粘貼的 Markdown 文件。 `/` 表示打開的文件夾根目錄。若路徑不存在，將會自動創建。
 - `markdown-image.local.referencePath`: Markdown 中的圖片的引用路徑格式（不包含文件名）。留空表示使用相對路徑。你可以使用 `#markdown-image.base.fileNameFormat#` 中的所有變量。例如：`/images/${YY}-${MM}/`
 
-### GitHub Settings
+### GitHub 設置項目
 
 - `markdown-image.github.path`: 倉庫中的圖片保存目錄（如果不存在，則自動創建）。
 - `markdown-image.github.token`: Git Hub 的個人[訪問令牌](https://github. com/settings/tokens)，用於訪問倉庫，上傳圖片。
@@ -88,7 +88,7 @@ sudo yum install xclip
 - `markdown-image.qiniu.domain`: 七牛空间绑定的域名。
 - `markdown-image.qiniu.zone`: 七牛空間的存儲區域。
 
-### 又拍云设置项目
+### 又拍雲設置項目
 
 - `markdown-image.upyun.bucket`: 又拍雲的雲存儲服務名稱。
 - `markdown-image.upyun.domain`: 又拍雲雲存儲服務綁定的域名。
@@ -152,6 +152,8 @@ sudo yum install xclip
       return path.relative(path.dirname(markdownPath), filePath);
   }
   ```
+  
+  - [Hugo 博客 DIY 腳本](https://github.com/GumShoeNoir/MarkDownImageDiy) (來自 [@gumshoenoir](https://github.com/gumshoenoir))
 
 ### 其他
 

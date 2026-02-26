@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.50] - 2026-02-26
+
+### Fixed
+- Fixed apple script for pasting images.
+
+### Added
+- Added FileName Variable `${folderName}`: "The name of the folder where the Markdown file is located."
+
 ## [1.1.49] - 2025-02-13
 
 ### Fixed

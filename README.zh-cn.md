@@ -153,6 +153,8 @@ sudo yum install xclip
   }
   ```
 
+  - [Hugo 博客 DIY 脚本](https://github.com/GumShoeNoir/MarkDownImageDiy) (来自 [@gumshoenoir](https://github.com/gumshoenoir))
+
 ### 其他
 
 * [GitHub](https://github.com/imlinhanchao/vsc-markdown-image)

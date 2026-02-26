@@ -2,7 +2,7 @@
   "name": "markdown-image",
   "displayName": "Markdown Image",
   "description": "Easy to insert a image to markdown",
-  "version": "1.1.49",
+  "version": "1.1.50",
   "publisher": "hancel",
   "engines": {
     "vscode": "^1.62.0"
@@ -68,6 +68,8 @@
     },
     "configuration": [
       {
+        "id": "markdown-image.base",
+        "order": 0,
         "properties": {
           "markdown-image.base.codeType": {
             "default": "Markdown",
@@ -190,6 +192,8 @@
         "title": "Base"
       },
       {
+        "id": "markdown-image.local",
+        "order": 1,
         "properties": {
           "markdown-image.local.path": {
             "default": "/images",
@@ -207,6 +211,8 @@
         "title": "Local"
       },
       {
+        "id": "markdown-image.github",
+        "order": 2,
         "properties": {
           "markdown-image.github.branch": {
             "default": "master",
@@ -249,6 +255,8 @@
         "title": "GitHub"
       },
       {
+        "id": "markdown-image.imgur",
+        "order": 3,
         "properties": {
           "markdown-image.imgur.clientId": {
             "default": "",
@@ -266,6 +274,8 @@
         "title": "Imgur"
       },
       {
+        "id": "markdown-image.sm_ms",
+        "order": 4,
         "properties": {
           "markdown-image.sm_ms.token": {
             "default": "",
@@ -277,6 +287,8 @@
         "title": "SM.MS"
       },
       {
+        "id": "markdown-image.qiniu",
+        "order": 5,
         "properties": {
           "markdown-image.qiniu.accessKey": {
             "default": "",
@@ -320,6 +332,8 @@
         "title": "Qiniu"
       },
       {
+        "id": "markdown-image.upyun",
+        "order": 6,
         "properties": {
           "markdown-image.upyun.bucket": {
             "default": "",
@@ -368,6 +382,8 @@
         "title": "Upyun"
       },
       {
+        "id": "markdown-image.cloudinary",
+        "order": 7,
         "properties": {
           "markdown-image.cloudinary.apiKey": {
             "default": "",
@@ -397,6 +413,8 @@
         "title": "Cloudinary"
       },
       {
+        "id": "markdown-image.cloudflare",
+        "order": 8,
         "properties": {
           "markdown-image.cloudflare.accountId": {
             "default": "",
@@ -414,6 +432,8 @@
         "title": "Cloudflare"
       },
       {
+        "id": "markdown-image.s3",
+        "order": 9,
         "properties": {
           "markdown-image.s3.accessKeyId": {
             "default": "",
@@ -460,6 +480,8 @@
         "title": "S3"
       },
       {
+        "id": "markdown-image.sftp",
+        "order": 10,
         "properties": {
           "markdown-image.sftp.host": {
             "default": "",
@@ -507,6 +529,8 @@
         "title": "SFTP"
       },
       {
+        "id": "markdown-image.azure",
+        "order": 11,
         "properties": {
           "markdown-image.azure.authenticationMethod": {
             "default": "Passwordless",
@@ -544,6 +568,8 @@
         "title": "Azure Storage"
       },
       {
+        "id": "markdown-image.DIY",
+        "order": 12,
         "properties": {
           "markdown-image.DIY.path": {
             "default": "",
