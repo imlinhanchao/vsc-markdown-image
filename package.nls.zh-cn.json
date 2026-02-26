@@ -24,7 +24,7 @@
     "markdown-image.base.uploadMethod.SFTP": "上传图片到 SFTP。你有很多项目需要配置。",
     "markdown-image.base.uploadMethod.Azure": "上传图片到 Azure。",
     "markdown-image.base.uploadMethods": "可用于并行上传的上传方法，默认为空，列表内容为上面 `#markdown-image.base.uploadMethod#` 选项的可选值。此处设置的上传方法的上传结果，将不会被插入到 Markdown 文件中。",
-    "markdown-image.base.fileNameFormat": "上传的文件名与路径的格式字符串。不支持 `Imgur` 和 `SM.MS`。 你有一些变量可以使用：  \n\n- `${filename}`: 图片原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称（不含扩展名）。  \n- `${path}`: 正在编辑的 Markdown 文件相对于根目录的路径。  \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestamp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n- `${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。\n- `${prompt}`: 可以在粘贴图像时通过输入框输入自定义名称。",
+    "markdown-image.base.fileNameFormat": "上传的文件名与路径的格式字符串。不支持 `Imgur` 和 `SM.MS`。 你有一些变量可以使用：  \n\n- `${filename}`: 图片原始的文件名。  \n- `${mdname}`: 正在编辑的 Markdown 文件的名称（不含扩展名）。  \n- `${folderName}`: Markdown 文件所在文件夹名称，还可以增加参数表示父级文件夹，比如：`${folderName,1}`，若在 /a/b/c/d.md，则表示 c。\n- `${path}`: 正在编辑的 Markdown 文件相对于根目录的路径。  \n- `${hash}`: 图像的 sha256 哈希。  \n- `${timestamp}`: 上传时间的时间戳。  \n- `${YY}`: 年份  \n- `${MM}`: 月份  \n- `${DD}`: 日期  \n- `${hh}`: 12小时制小时  \n- `${HH}`: 24小时制小时  \n- `${mm}`: 分  \n- `${ss}`: 秒  \n- `${mss}`: 毫秒  \n- `${rand,number}`: 随机数, 比如：`${rand,100}`. 它将生成从 0 到 99 的随机数。\n- `${prompt}`: 可以在粘贴图像时通过输入框输入自定义名称。",
     "markdown-image.base.urlEncode": "是否对图像的 URL 编码。",
     "markdown-image.base.fileFormat": "剪贴板图像文件格式。您可以使用`png`或`jpg`。",
     "markdown-image.base.codeType": "插入代码的类型",
