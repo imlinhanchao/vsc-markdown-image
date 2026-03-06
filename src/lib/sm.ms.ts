@@ -1,7 +1,4 @@
 import * as vscode from 'vscode';
-import got from 'got';
-import * as formData from 'form-data';
-import * as fs from 'fs';
 import { locale as $l } from './utils';
 
 class SM_SM implements Upload
