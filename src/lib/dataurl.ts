@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { locale as $l } from './utils';
 
-class Local implements Upload
+class DataUrl implements Upload
 {
     config: Config;
     constructor(config: Config) {
@@ -26,4 +26,4 @@ class Local implements Upload
     }
 }
 
-export default Local;
+export default DataUrl;

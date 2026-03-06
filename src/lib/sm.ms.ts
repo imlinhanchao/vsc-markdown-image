@@ -4,7 +4,7 @@ import * as formData from 'form-data';
 import * as fs from 'fs';
 import { locale as $l } from './utils';
 
-class Imgur implements Upload
+class SM_SM implements Upload
 {
     config: Config;
     constructor(config: Config) {
@@ -21,22 +21,7 @@ class Imgur implements Upload
 
     async upload(filePath: string, savePath: string): Promise<string | null> {
         try {
-            const form = new formData();
-            form.append('smfile', fs.createReadStream(filePath));
-            if(!this.config.sm_ms.token) {
-                vscode.window.showInformationMessage(`${$l['smms.token-miss']}`);
-                return null;
-            }
-            let headers = {
-                Authorization: `Basic ${this.config.sm_ms.token}`
-            };
-            let rsp = await got.post('https://smms.app/api/v2/upload', {
-                body: form,
-                headers
-            });
-            
-            let body = JSON.parse(rsp.body);
-            return body.images || body.data.url;
+            throw(new Error('SM.MS is no longer available, please use S.EE instead'));
         }
         catch(error) {
             let e = error as Error;
@@ -46,4 +31,4 @@ class Imgur implements Upload
     }
 }
 
-export default Imgur;
+export default SM_SM;

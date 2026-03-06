@@ -118,7 +118,7 @@
               "Local",
               "GitHub",
               "Imgur",
-              "SM.MS",
+              "S.EE",
               "Data URL",
               "%markdown-image.qiniu%",
               "%markdown-image.upyun%",
@@ -159,7 +159,7 @@
                 "Local",
                 "GitHub",
                 "Imgur",
-                "SM.MS",
+                "S.EE",
                 "Data URL",
                 "%markdown-image.qiniu%",
                 "%markdown-image.upyun%",
@@ -274,17 +274,17 @@
         "title": "Imgur"
       },
       {
-        "id": "markdown-image.sm_ms",
+        "id": "markdown-image.s_ee",
         "order": 4,
         "properties": {
-          "markdown-image.sm_ms.token": {
+          "markdown-image.s_ee.token": {
             "default": "",
-            "markdownDescription": "%markdown-image.sm_ms.token%",
+            "markdownDescription": "%markdown-image.s_ee.token%",
             "order": 0,
             "type": "string"
           }
         },
-        "title": "SM.MS"
+        "title": "S.EE"
       },
       {
         "id": "markdown-image.qiniu",

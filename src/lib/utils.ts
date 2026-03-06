@@ -21,6 +21,7 @@ function getUpload (uploadMethod: string, config: any): Upload | null {
         case 'GitHub': return new Uploads.GitHub(config);
         case 'Imgur': return new Uploads.Imgur(config);
         case 'SM.MS': return new Uploads.SM_MS(config);
+        case 'S.EE': return new Uploads.S_EE(config);
         case 'Data URL': return new Uploads.DataUrl(config);
         case 'Qiniu': return new Uploads.Qiniu(config);
         case 'DIY': return new Uploads.Define(config);

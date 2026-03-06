@@ -18,6 +18,7 @@ export default {
     'upyun.unicom': "联通（网通）线路：v2.api.upyun.com",
     'upyun.mobile': "移动（铁通）线路：v3.api.upyun.com",
     'smms.token-miss': '请先设置 sm.ms token。',
+    'see.token-miss': '请先设置 S.EE token。',
     named_paste: "给你粘贴的图片起个名字（不需要包含后缀名，它将替换掉格式字符串中的 ${filename}）。",
     uploading: "正在上传...",
     picture: "图",

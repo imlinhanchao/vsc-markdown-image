@@ -3,6 +3,7 @@ import Coding from './coding';
 import GitHub from './github';
 import Imgur from './imgur';
 import SM_MS from './sm.ms';
+import S_EE from './s.ee';
 import Qiniu from './qiniu';
 import Upyun from './upyun';
 import DataUrl from './dataurl';
@@ -14,5 +15,5 @@ import Sftp from './sftp';
 import Azure from './azure';
 
 export default {
-    Local, Coding, GitHub, Imgur, SM_MS, Qiniu, DataUrl, Define, Cloudinary, Cloudflare, Upyun, S3, Sftp, Azure
+    Local, Coding, GitHub, Imgur, SM_MS, S_EE, Qiniu, DataUrl, Define, Cloudinary, Cloudflare, Upyun, S3, Sftp, Azure
 };

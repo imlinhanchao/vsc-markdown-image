@@ -22,6 +22,7 @@ export default {
     'upyun.unicom': "China Unicom: v2.api.upyun.com",
     'upyun.mobile': "China Mobile: v3.api.upyun.com",
     'smms.token-miss': 'Please setting sm.ms token first.',
+    "see.token-miss": 'Please setting S.EE token first.',
     named_paste: "Name the picture you pasted (don't include extname, it's will be replace the ${filename} in the format).",
     uploading: "Uploading...",
     picture: "picture",
