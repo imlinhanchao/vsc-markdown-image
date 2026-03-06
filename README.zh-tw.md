@@ -10,7 +10,7 @@
 
 1. 可複製圖片文件或截圖粘貼，快捷键 `Alt + Shift + V`，或右键菜单 `粘贴图片`。
 2. 自動生成 Markdown 代碼插入。
-3. 可配置支持 `Imgur`，`七牛`，`SM.MS`，`Coding` 等圖床。默認為本地，需打開 Markdown 文件所在文件夾。
+3. 可配置支持 `Imgur`，`七牛`，`S.EE`，`Coding` 等圖床。默認為本地，需打開 Markdown 文件所在文件夾。
 4. 也可以自定義代碼實現圖片上傳。
 5. 支援 Windows，MacOS，Linux。
 
@@ -76,9 +76,9 @@ sudo yum install xclip
 - `markdown-image.imgur.clientId`: 在 `imgur` 註冊的 `Client Id`。您可以在[這裡](https://api.imgur.com/oauth2/addclient)註冊。
 - `markdown-image.imgur.httpProxy`: 設置訪問的 HTTP 代理。
 
-### SM.MS 設置項目
+### S.EE 設置項目
 
-- `markdown-image.sm_ms.token`: SM.MS Secret Token。您可以註冊一個帳戶，然後訪問 [API Access](https://sm.ms/home/apitoken) 頁面生成。
+- `markdown-image.s_ee.token`: S.EE Secret Token。您可以註冊一個帳戶，然後訪問 [API Access](https://s.ee/user/developers/) 頁面生成。
 
 ### 七牛設置項目
 

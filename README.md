@@ -10,7 +10,7 @@ An extension for conveniently inserting pictures in Markdown, which supports sto
 
 1. Copy image files or paste screenshots, Shortcut key `Alt + Shift + V`, or right-click menu `Paste Image`.
 2. Automatically generate Markdown code insertion.
-3. Configurable to support `Imgur`, `Qiniu`, `SM.MS`, `Cloudflare`, `Cloudinary`, `S3`, `Azure Storage` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
+3. Configurable to support `Imgur`, `Qiniu`, `S.EE`, `Cloudflare`, `Cloudinary`, `S3`, `Azure Storage` and other CDN service. The default is local, you need to open the folder where the Markdown file is located.
 4. You can also customize the code to upload pictures.
 5. Support Windows, MacOS, Linux.
 
@@ -51,7 +51,7 @@ And if you want to save image in your remote workplace, you must use `SFTP` uplo
 
 - `markdown-image.base.uploadMethod`: Method to upload pictures. To the local or another picture CDN service.
 - `markdown-image.base.uploadMethods`: The upload method for parallel upload. The upload results of the upload method set here will not be inserted into the Markdown file.
-- `markdown-image.base.fileNameFormat`: The filename format for upload. Not Support in `Imgur` and `SM.MS`. You can use some variables. You can find more in setting.
+- `markdown-image.base.fileNameFormat`: The filename format for upload. Not Support in `Imgur` and `S.EE`. You can use some variables. You can find more in setting.
 - `markdown-image.base.codeType`: The type of image code, you can set to `<img>` tag or markdown
 - `markdown-image.base.codeFormat`: Insert code format, effective when `markdown-image.base.codeType` is set to `DIY`.
 - `markdown-image.base.imageWidth`: The maximum width of the image, if the image is greater than this width, the width is set to this value. Set to 0 means not change.
@@ -76,9 +76,9 @@ And if you want to save image in your remote workplace, you must use `SFTP` uplo
 - `markdown-image.imgur.clientId`: The client id registered with imgur. You can registed it at [here](https://api.imgur.com/oauth2/addclient).
 - `markdown-image.imgur.httpProxy`: Connect to Imgur via http proxy.
 
-### SM.MS Settings
+### S.EE Settings
 
-- `markdown-image.sm_ms.token`: SM.MS API token (Options). You can register an account and then visit [API Token](https://sm.ms/home/apitoken) Page to generate secret token.
+- `markdown-image.s_ee.token`: S.EE API token (Options). You can register an account and then visit [API Token](https://s.ee/user/developers/) Page to generate secret token.
 
 ### Qiniu Settings
 

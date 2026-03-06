@@ -10,7 +10,7 @@
 
 1. 可复制图片文件或截图粘贴，快捷键 `Alt + Shift + V`，或右键菜单 `粘贴图片`。
 2. 自动生成 Markdown 代码插入。
-3. 可配置支持 `Imgur`，`七牛`，`SM.MS`，`Coding` 等图床。默认为本地，需打开 Markdown 文件所在文件夹。
+3. 可配置支持 `Imgur`，`七牛`，`S.EE`，`Coding` 等图床。默认为本地，需打开 Markdown 文件所在文件夹。
 4. 也可以自定义代码实现图片上传。
 5. 支援 Windows，MacOS，Linux。
 
@@ -76,9 +76,9 @@ sudo yum install xclip
 - `markdown-image.imgur.clientId`: 在 `imgur` 注册的 `Client Id`。您可以在[这儿](https://api.imgur.com/oauth2/addclient)注册。
 - `markdown-image.imgur.httpProxy`: 设置访问的 HTTP 代理。
 
-### SM.MS 设置项目
+### S.EE 设置项目
 
-- `markdown-image.sm_ms.token`: SM.MS Secret Token。您可以注册一个帐户，然后访问 [API Access](https://sm.ms/home/apitoken) 页面生成。
+- `markdown-image.s_ee.token`: S.EE Secret Token。您可以注册一个帐户，然后访问 [API Access](https://s.ee/user/developers/) 页面生成。
 
 ### 七牛设置项目
 

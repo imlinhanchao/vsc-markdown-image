@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the "markdown-image" extension will be documented in this file.
 
+## [1.1.51] - 2026-03-06
+
+- Added `S.EE` upload method. And remove `SM.MS` upload method because of the API is unstable.
+
 ## [1.1.50] - 2026-02-26
 
 ### Fixed
